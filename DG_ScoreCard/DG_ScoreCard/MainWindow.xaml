@@ -1,8 +1,13 @@
 ﻿<Window x:Class="DG_ScoreCard.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="LoginWindow" Height="455.74" Width="734.366" WindowStyle="None">
     <Grid>
-        
+        <Button x:Name="btn_close_login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="63" Margin="663,0,0,0" Height="62" Click="btn_close_loginClick">
+            <Button.Content>
+                <Image Source="canclebtn.png"/>
+            </Button.Content>
+        </Button>
+
     </Grid>
 </Window>

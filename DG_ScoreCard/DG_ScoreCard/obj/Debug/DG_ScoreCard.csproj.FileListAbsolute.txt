@@ -1,1 +1,12 @@
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\DG_ScoreCard.exe.config
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\DG_ScoreCard.exe
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\DG_ScoreCard.pdb
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\MainWindow.baml
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\MainWindow.g.cs
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\App.g.cs
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard_MarkupCompile.cache
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.g.resources
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.Properties.Resources.resources
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.csproj.GenerateResource.Cache
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.exe
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.pdb

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DG_ScoreCard
+namespace WpfApplication1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,9 +25,17 @@ namespace DG_ScoreCard
             InitializeComponent();
         }
 
-        private void btn_close_loginClick(object sender, RoutedEventArgs e)
+        private void dclick_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            test_data.Text = "help";
+        }
+
+        private void btn_closeClick(object sender, RoutedEventArgs e)
+        {
+           // this.Close(); //closes current window
             App.Current.Shutdown(); //Shutsdown Application
         }
+
+   
     }
 }
