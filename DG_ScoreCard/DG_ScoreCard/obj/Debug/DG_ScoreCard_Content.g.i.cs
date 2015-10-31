@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("large-cancel-close-button-166.6-10442.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/blue-background.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/brushed-titanium.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/pacman_like_icon.png")]
 
 

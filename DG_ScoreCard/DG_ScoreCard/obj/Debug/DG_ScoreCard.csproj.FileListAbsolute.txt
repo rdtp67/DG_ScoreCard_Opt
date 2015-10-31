@@ -10,3 +10,6 @@ C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.csproj.GenerateResource.Cache
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.exe
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.pdb
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.csprojResolveAssemblyReference.cache
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Splash.baml
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Splash.g.cs
