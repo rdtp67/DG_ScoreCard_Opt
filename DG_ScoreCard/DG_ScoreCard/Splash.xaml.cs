@@ -11,17 +11,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace DG_ScoreCard
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
+ 
     public partial class Window1 : Window
     {
+        /*****************************************************************************************************************************************************/
+        /**************************                                          Variables                                              **************************/
+        /*****************************************************************************************************************************************************/
+
+        const string myConnection = "datasource=localhost;port=3306;username=root;password=root; database=discgolf";
+        MySqlConnection myConn = new MySqlConnection(myConnection);
+
         public Window1()
         {
             InitializeComponent();
+          
         }
     }
 }

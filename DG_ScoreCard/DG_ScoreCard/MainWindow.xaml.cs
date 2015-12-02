@@ -14,11 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 
+
+
 namespace DG_ScoreCard
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         /*****************************************************************************************************************************************************/
@@ -32,6 +32,7 @@ namespace DG_ScoreCard
         public MainWindow()
         {
             InitializeComponent();
+           
         }
 
         private void btn_close_loginClick(object sender, RoutedEventArgs e)
