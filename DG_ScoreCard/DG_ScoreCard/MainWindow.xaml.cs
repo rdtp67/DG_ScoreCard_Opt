@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace DG_ScoreCard
 {
@@ -20,6 +21,14 @@ namespace DG_ScoreCard
     /// </summary>
     public partial class MainWindow : Window
     {
+        /*****************************************************************************************************************************************************/
+        /**************************                                          Variables                                              **************************/
+        /*****************************************************************************************************************************************************/
+
+        const string myConnection = "datasource=localhost;port=3306;username=root;password=root; database=discgolf";
+        MySqlConnection myConn = new MySqlConnection(myConnection);
+
+
         public MainWindow()
         {
             InitializeComponent();

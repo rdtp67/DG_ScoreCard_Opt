@@ -1,0 +1,11 @@
+﻿<Window x:Class="DG_ScoreCard.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login" Height="400" Width="500" Icon="Media/pacman_like_icon.png" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Media/brushed-titanium.jpg"/>
+    </Window.Background>
+    <Grid>
+        
+    </Grid>
+</Window>
