@@ -23,5 +23,10 @@ namespace DG_ScoreCard
         {
             InitializeComponent();
         }
+
+        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown(); //Shutsdown Application
+        }
     }
 }
