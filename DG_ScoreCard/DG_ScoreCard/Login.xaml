@@ -68,14 +68,7 @@
                         <ControlTemplate.Resources>
                             <Storyboard x:Key="Storyboard1"/>
                         </ControlTemplate.Resources>
-                        <Grid x:Name="grid" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Visibility="Visible" Margin="0.833,0,-274,-95.717" Opacity="1">
-                            <Menu x:Name="menu" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,10,0" VerticalAlignment="Stretch" Width="Auto" Opacity="0">
-                                <MenuItem Header="MenuItem" VerticalAlignment="Bottom" Height="22.167" Opacity="0">
-                                    <Separator Height="41.5" HorizontalAlignment="Right" Width="36.007"/>
-                                    <MenuItem Header="MenuItem"/>
-                                </MenuItem>
-                            </Menu>
-                        </Grid>
+                        <Grid x:Name="grid" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Visibility="Visible" Margin="0.833,0,-274,-95.717" Opacity="1"/>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMainMenu" Value="True"/>
                         </ControlTemplate.Triggers>
@@ -108,10 +101,10 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="loginTextBox" Margin="20,70,20,10" TextWrapping="Wrap" Background="#FF19148E" Style="{DynamicResource loginTextBox}" FontSize="16" SpellCheck.IsEnabled="True" Foreground="White"/>
-            <TextBox x:Name="passwordTextBox" Margin="20,44,20,36" TextWrapping="Wrap" Grid.Row="1" Background="#FF19148E" d:LayoutOverrides="VerticalAlignment"/>
+            <TextBox x:Name="loginTextBox" Margin="20,70,20,10" TextWrapping="Wrap" Background="#FF191478" Style="{DynamicResource loginTextBox}" SpellCheck.IsEnabled="True" Foreground="White" Grid.IsSharedSizeScope="True" TextAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="21.333" SelectionBrush="White"/>
             <TextBlock x:Name="loginTextBlock" Margin="20,36,20,51" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Text="Login"/>
             <TextBlock x:Name="passwordTextBlock" Margin="20,10,20,0" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Text="Password" Grid.Row="1" Height="29" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="passwordBox" Margin="20,54,20,0" Grid.Row="1" Height="35" VerticalAlignment="Top" FontSize="21.333" Background="#FF191478" SelectionBrush="White" Foreground="White" PasswordChar="*"/>
         </Grid>
         <Button x:Name="button" Content="Submit" HorizontalAlignment="Right" Height="40.5" Margin="0,0,45,146" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Button x:Name="button_Copy" Content="Cancel" HorizontalAlignment="Left" Height="40.5" Margin="45,0,0,146" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" Click="button_Copy_Click"/>
@@ -128,7 +121,6 @@
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
-            <Menu x:Name="menu" Height="22" VerticalAlignment="Bottom" Style="{DynamicResource loginMenu}"/>
         </Grid>
     </Grid>
 </Window>

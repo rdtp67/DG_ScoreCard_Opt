@@ -61,6 +61,9 @@
     <Compile Include="Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Signin.xaml.cs">
+      <DependentUpon>Signin.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +81,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Signin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

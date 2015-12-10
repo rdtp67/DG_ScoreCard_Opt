@@ -27,3 +27,5 @@ C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\ko\Microsoft.
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\ru\Microsoft.Expression.Drawing.resources.dll
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\zh-Hans\Microsoft.Expression.Drawing.resources.dll
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\zh-Hant\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Signin.g.cs
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Signin.baml
