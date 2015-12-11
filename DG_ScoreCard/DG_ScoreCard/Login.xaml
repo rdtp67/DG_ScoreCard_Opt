@@ -122,5 +122,6 @@
                 </Path.RenderTransform>
             </Path>
         </Grid>
+        <Button x:Name="signupButton" Content="Sign Up&#xD;&#xA;" Height="45.993" Margin="74.396,0,148.266,50.355" VerticalAlignment="Bottom" Click="signupButton_Click"/>
     </Grid>
 </Window>

@@ -28,5 +28,13 @@ namespace DG_ScoreCard
         {
             App.Current.Shutdown(); //Shutsdown Application
         }
+
+        private void signupButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            SignUp SignUpWin = new SignUp(this);
+            SignUpWin.Show();
+            this.Close();
+        }
     }
 }

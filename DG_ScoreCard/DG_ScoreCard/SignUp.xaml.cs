@@ -15,13 +15,17 @@ using System.Windows.Shapes;
 namespace DG_ScoreCard
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for SignUp.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class SignUp : Window
     {
-        public Window2()
+        private Login mainWindow;
+
+        public SignUp(Login mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
+
     }
 }
