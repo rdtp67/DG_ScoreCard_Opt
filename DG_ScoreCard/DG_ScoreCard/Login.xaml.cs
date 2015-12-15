@@ -19,9 +19,20 @@ namespace DG_ScoreCard
     /// </summary>
     public partial class Login : Window
     {
+
+        private SignUp mainWindow;
+
+
         public Login()
         {
             InitializeComponent();
+        }
+
+
+        public Login(SignUp mainWindow)
+        {
+            InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
@@ -35,6 +46,11 @@ namespace DG_ScoreCard
             SignUp SignUpWin = new SignUp(this);
             SignUpWin.Show();
             this.Close();
+        }
+
+        private void movebar_Rec_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }
