@@ -27,17 +27,19 @@ namespace DG_ScoreCard
             this.mainWindow = mainWindow;
         }
 
-        private void movebar_Rec_MouseDown(object sender, MouseButtonEventArgs e)
+        private void movebar_r_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
-        private void backarrow_BA_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void backarrow2_BA_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
             Login LoginWin = new Login(this);
             LoginWin.Show();
             this.Close();
         }
+
+        
     }
 }

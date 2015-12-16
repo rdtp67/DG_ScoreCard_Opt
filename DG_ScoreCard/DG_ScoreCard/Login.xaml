@@ -101,13 +101,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="loginTextBox" Margin="20,70,20,10" TextWrapping="Wrap" Background="#FF191478" Style="{DynamicResource loginTextBox}" SpellCheck.IsEnabled="True" Foreground="White" Grid.IsSharedSizeScope="True" TextAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="21.333" SelectionBrush="White"/>
+            <TextBox x:Name="login1_tb" Margin="20,70,20,10" TextWrapping="Wrap" Background="#FF191478" Style="{DynamicResource loginTextBox}" SpellCheck.IsEnabled="True" Foreground="White" Grid.IsSharedSizeScope="True" TextAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="21.333" SelectionBrush="White"/>
             <TextBlock x:Name="loginTextBlock" Margin="20,36,20,51" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Text="Login"/>
             <TextBlock x:Name="passwordTextBlock" Margin="20,10,20,0" TextWrapping="Wrap" Foreground="White" FontSize="18.667" Text="Password" Grid.Row="1" Height="29" VerticalAlignment="Top"/>
-            <PasswordBox x:Name="passwordBox" Margin="20,58.5,20,0" Grid.Row="1" Height="35" VerticalAlignment="Top" FontSize="21.333" Background="#FF191478" SelectionBrush="White" Foreground="White" PasswordChar="*"/>
+            <PasswordBox x:Name="password1_pb" Margin="20,58.5,20,0" Grid.Row="1" Height="35" VerticalAlignment="Top" FontSize="21.333" Background="#FF191478" SelectionBrush="White" Foreground="White" PasswordChar="*"/>
         </Grid>
-        <Button x:Name="button" Content="Submit" HorizontalAlignment="Right" Height="40.5" Margin="0,0,45,146" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="button_Copy" Content="Cancel" HorizontalAlignment="Left" Height="40.5" Margin="45,0,0,146" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" Click="button_Copy_Click"/>
+        <Button x:Name="submit1_btn" Content="Submit" HorizontalAlignment="Right" Height="40.5" Margin="0,0,45,146" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button x:Name="exit1_btn" Content="Exit" HorizontalAlignment="Right" Height="40.5" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" Click="exit1_btn_Click"/>
         <Grid HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" VerticalAlignment="Top" Width="72.334">
             <Rectangle x:Name="rectangle" Fill="#FFAAA8BD" Stroke="#FF221F42"/>
             <Rectangle Fill="White" Margin="5.333,2.75,4,10" Stroke="White" Opacity="0.3"/>
@@ -122,7 +122,7 @@
                 </Path.RenderTransform>
             </Path>
         </Grid>
-        <Button x:Name="signupButton" Content="Sign Up&#xD;&#xA;" Height="45.993" Margin="115.396,0,107.266,56.355" VerticalAlignment="Bottom" Click="signupButton_Click"/>
-        <Rectangle x:Name="movebar_Rec" Height="10.5" Margin="99,3.5,4.5,0" Stroke="White" VerticalAlignment="Top" Fill="White" Opacity="0" Cursor="SizeAll" MouseDown="movebar_Rec_MouseDown"/>
+        <Button x:Name="signup1_btn" Content="Sign Up" Height="40.5" Margin="45,0,192.5,146" VerticalAlignment="Bottom" Click="signup1_btn_Click" Background="White" RenderTransformOrigin="0.498,0.63" FontSize="18.667"/>
+        <Rectangle x:Name="movebar1_r" Height="10.5" Margin="99,3.5,4.5,0" Stroke="White" VerticalAlignment="Top" Fill="White" Opacity="0" Cursor="SizeAll" MouseDown="movebar1_r_MouseDown"/>
     </Grid>
 </Window>

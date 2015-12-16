@@ -35,12 +35,12 @@ namespace DG_ScoreCard
             this.mainWindow = mainWindow;
         }
 
-        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        private void exit1_btn_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown(); //Shutsdown Application
         }
 
-        private void signupButton_Click(object sender, RoutedEventArgs e)
+        private void signup1_btn_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             SignUp SignUpWin = new SignUp(this);
@@ -48,7 +48,7 @@ namespace DG_ScoreCard
             this.Close();
         }
 
-        private void movebar_Rec_MouseDown(object sender, MouseButtonEventArgs e)
+        private void movebar1_r_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
