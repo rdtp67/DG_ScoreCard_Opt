@@ -113,7 +113,7 @@
                 <Grid Height="44" Margin="0.443,0,0,0" VerticalAlignment="Top" Grid.Column="2">
                     <Label x:Name="label_Copy" Content="Optional" FontSize="18.667" FontWeight="Bold" Margin="-0.443,0,0,0"/>
                 </Grid>
-                <TextBox x:Name="username2_tb" Height="31" Margin="10,79,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="username2_tb" Height="31" Margin="10,79,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White"/>
                 <Label x:Name="label1" Content="Username" HorizontalAlignment="Left" Height="30" Margin="10,49,0,0" VerticalAlignment="Top" Width="70"/>
                 <Label x:Name="label1_Copy" Content="Password" HorizontalAlignment="Left" Height="30" Margin="10,115,0,0" VerticalAlignment="Top" Width="70"/>
                 <PasswordBox x:Name="password2_pb" Height="31" Margin="10,145,10,0" VerticalAlignment="Top"/>
@@ -132,7 +132,7 @@
                 <TextBox x:Name="phone2_tb" Height="31" Margin="10,0,10,31" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="2"/>
                 <Label x:Name="label1_Copy6" Content="Phone Number" Height="30" Margin="10,0,98.443,62" VerticalAlignment="Bottom" Grid.Column="2"/>
             </Grid>
-            <Button x:Name="submit2_btn" Content="Submit" HorizontalAlignment="Right" Height="21" Margin="0,0,36,4" VerticalAlignment="Bottom" Width="57" Background="White" />
+            <Button x:Name="submit2_btn" Content="Submit" HorizontalAlignment="Right" Height="21" Margin="0,0,36,4" VerticalAlignment="Bottom" Width="57" Background="White" Click="submit2_btn_Click"/>
         </Grid>
         <Rectangle x:Name="movebar2_r" Height="12.667" Stroke="#FF5CC8E0" VerticalAlignment="Top" MouseDown="movebar_r_MouseDown" Cursor="SizeAll" Fill="#FF5CC8E0" Margin="10,3.333,10,0"/>
         <ed:BlockArrow x:Name="backarrow2_BA" HorizontalAlignment="Left" Height="18" Margin="23,0,0,16" Orientation="Right" VerticalAlignment="Bottom" Width="39" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="backarrow2_BA_MouseLeftButtonDown" Style="{DynamicResource backarrow_BA}">
