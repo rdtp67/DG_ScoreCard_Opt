@@ -66,36 +66,37 @@ namespace DG_ScoreCard
                 }
                 else
                 {
-                    //Password
+                    //Password check
                     if(isPasswordMatch(password2_pb.Password, confirm2_pb.Password) == false)
                     {
                         MessageBox.Show("Passwords do not match.");
                     }
                     else
                     {
-                        try
-                        {
-                            myConn.Open();
-                            MySqlCommand cmd = new MySqlCommand();
-                            cmd.Connection = myConn;
-                            cmd.CommandText = "INSERT INTO user(user_name, user_password, user_email, user_phone) VALUES(@user_name, @password, @email, @phone)";
-                            cmd.Prepare();
-                            cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
-                            cmd.Parameters.AddWithValue("@password", password2_pb.Password);
-                            cmd.Parameters.AddWithValue("@email", email2_tb.Text);
-                            cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
-                            cmd.ExecuteNonQuery();
+                        //Check length of fields
+                            try
+                            {
+                                myConn.Open();
+                                MySqlCommand cmd = new MySqlCommand();
+                                cmd.Connection = myConn;
+                                cmd.CommandText = "INSERT INTO user(user_name, user_password, user_email, phone) VALUES(@user_name, @password, @email, @phone)";
+                                cmd.Prepare();
+                                cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
+                                cmd.Parameters.AddWithValue("@password", password2_pb.Password);
+                                cmd.Parameters.AddWithValue("@email", email2_tb.Text);
+                                cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
+                                cmd.ExecuteNonQuery();
 
-                            MessageBox.Show("User has been created!");
-                        }
-                        catch
-                        {
-                            MessageBox.Show("User creation has failed.");
-                        }
-                        finally
-                        {
-                            myConn.Close();
-                        }
+                                MessageBox.Show("User has been created!");
+                            }
+                            catch
+                            {
+                                MessageBox.Show("User creation has failed.");
+                            }
+                            finally
+                            {
+                                myConn.Close();
+                            }
                     }
                 }
             }
@@ -207,6 +208,8 @@ namespace DG_ScoreCard
             }
             return match;
         }
+
+        //Desc: 
 
         //Desc: Exits app from signup page
         private void exit2_btn_Click(object sender, RoutedEventArgs e)
