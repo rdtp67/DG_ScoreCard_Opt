@@ -25,6 +25,7 @@ namespace DG_ScoreCard
         const string myConnection = "datasource=localhost;port=3306;username=root;password=root; database=discgolf";
         MySqlConnection myConn = new MySqlConnection(myConnection);
 
+
         //Desc: Creates Window
         public SignUp(Login mainWindow)
         {
@@ -50,21 +51,52 @@ namespace DG_ScoreCard
         //Desc: Signup process
         private void submit2_btn_Click(object sender, RoutedEventArgs e)
         {
-            bool blank = submit2_btn_CheckBlanks();
-
-            if(blank == true)
+            
+            //Check for blanks
+            if(submit2_btn_CheckBlanks() == true)
             {
                 MessageBox.Show("Please fill in required fields for Sign Up.");
             }
             else
             {
+                //Check for usernae taken already
                 if (isUsernameTaken(username2_tb.Text) == true)
                 {
                     MessageBox.Show("Username is already in use.");
                 }
                 else
                 {
-                    MessageBox.Show("yall good");
+                    //Password
+                    if(isPasswordMatch(password2_pb.Password, confirm2_pb.Password) == false)
+                    {
+                        MessageBox.Show("Passwords do not match.");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            myConn.Open();
+                            MySqlCommand cmd = new MySqlCommand();
+                            cmd.Connection = myConn;
+                            cmd.CommandText = "INSERT INTO user(user_name, user_password, user_email, user_phone) VALUES(@user_name, @password, @email, @phone)";
+                            cmd.Prepare();
+                            cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
+                            cmd.Parameters.AddWithValue("@password", password2_pb.Password);
+                            cmd.Parameters.AddWithValue("@email", email2_tb.Text);
+                            cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("User has been created!");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("User creation has failed.");
+                        }
+                        finally
+                        {
+                            myConn.Close();
+                        }
+                    }
                 }
             }
       
@@ -115,31 +147,31 @@ namespace DG_ScoreCard
             bool blank = false;
             BrushConverter bc = new BrushConverter();
             Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
-            bool isTaken;
-            myConn.Open();
-            String username = "1";
-            MySqlCommand cmd = new MySqlCommand("Select count(u.user_name) as 'Count' " +
-                                                    "from user u " +
-                                                    "where u.user_name = '" + t + "' ", myConn); //Does not check for active incase account gets re-activated
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                username = rdr["Count"].ToString();
-            }
-            if(username == "0")
-            {
-                isTaken = false;
-                username2_tb.BorderBrush = brush;
-                
-            }
-            else
-            {
-                isTaken = true;
-                username2_tb.BorderBrush = Brushes.Red;
-            }
+            bool isTaken = false;
 
             try
-            {
+            { 
+                myConn.Open();
+                String username = "1";
+                MySqlCommand cmd = new MySqlCommand("Select count(u.user_name) as 'Count' " +
+                                                    "from user u " +
+                                                    "where u.user_name = '" + t + "' ", myConn); //Does not check for active incase account gets re-activated
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    username = rdr["Count"].ToString();
+                }
+                if(username == "0")
+                {
+                    isTaken = false;
+                    username2_tb.BorderBrush = brush;
+                
+                }
+                else
+                {
+                    isTaken = true;
+                    username2_tb.BorderBrush = Brushes.Red;
+                }
 
             }
             catch (Exception ex)
@@ -154,6 +186,32 @@ namespace DG_ScoreCard
             return isTaken;
         }
 
+        //Desc: Checks if password is the same
+        //Post: returns true if password is the same
+        private bool isPasswordMatch(string s1, string s2)
+        {
+            bool match = false;
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
 
+            if (s1 == s2)
+            {
+                match = true;
+                password2_pb.BorderBrush = brush;
+                confirm2_pb.BorderBrush = brush;
+            }
+            else
+            {
+                password2_pb.BorderBrush = Brushes.Red;
+                confirm2_pb.BorderBrush = Brushes.Red;
+            }
+            return match;
+        }
+
+        //Desc: Exits app from signup page
+        private void exit2_btn_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown(); //Shutsdown Application
+        }
     }
 }
