@@ -1,0 +1,28 @@
+create table user(
+user_id int NULL AUTO_INCREMENT,
+loc_id int,
+user_active char(1) DEFAULT 'T',
+user_name varchar(30) NOT NULL,
+user_password varchar(30) NOT NULL,
+user_fname varchar(100),
+user_lname varchar(100),
+user_email varchar(100),
+user_phone varchar(15),
+user_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(user_id),
+UNIQUE(user_name)
+)
+
+create table location(
+loc_id int NULL AUTO_INCREMENT,
+user_id int,
+loc_address varchar(100),
+loc_state varchar(30),
+loc_city varchar(100),
+loc_country varchar(50),
+loc_zip int,
+loc_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+upsrt_user int NOT NULL,
+PRIMARY KEY(loc_id),
+UNIQUE(loc_address, loc_state, loc_city, loc_country, loc_zip)
+)

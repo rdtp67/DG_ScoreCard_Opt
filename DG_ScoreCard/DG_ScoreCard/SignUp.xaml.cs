@@ -56,51 +56,75 @@ namespace DG_ScoreCard
             if(submit2_btn_CheckBlanks() == true)
             {
                 MessageBox.Show("Please fill in required fields for Sign Up.");
+                return;
             }
+           
+            //Check for usernae taken already
+            if (isUsernameTaken(username2_tb.Text) == true)
+            {
+              MessageBox.Show("Username is already in use.");
+                return;
+            }
+               
+            //Password check
+            if(isPasswordMatch(password2_pb.Password, confirm2_pb.Password) == false)
+            {
+                 MessageBox.Show("Passwords do not match.");
+                return;
+            }
+            //Check length of fields done in DB
             else
             {
-                //Check for usernae taken already
-                if (isUsernameTaken(username2_tb.Text) == true)
+            
+                try
                 {
-                    MessageBox.Show("Username is already in use.");
-                }
-                else
-                {
-                    //Password check
-                    if(isPasswordMatch(password2_pb.Password, confirm2_pb.Password) == false)
-                    {
-                        MessageBox.Show("Passwords do not match.");
-                    }
-                    else
-                    {
-                        //Check length of fields
-                            try
-                            {
-                                myConn.Open();
-                                MySqlCommand cmd = new MySqlCommand();
-                                cmd.Connection = myConn;
-                                cmd.CommandText = "INSERT INTO user(user_name, user_password, user_email, phone) VALUES(@user_name, @password, @email, @phone)";
-                                cmd.Prepare();
-                                cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
-                                cmd.Parameters.AddWithValue("@password", password2_pb.Password);
-                                cmd.Parameters.AddWithValue("@email", email2_tb.Text);
-                                cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
-                                cmd.ExecuteNonQuery();
+                    myConn.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = myConn;
+                    cmd.CommandText = "INSERT INTO user(user_name, user_password, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, @password, @fname, @lname, @email, @phone)";
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
+                    cmd.Parameters.AddWithValue("@password", password2_pb.Password);
+                    cmd.Parameters.AddWithValue("@fname", fname2_tb.Text);
+                    cmd.Parameters.AddWithValue("@lname", lname2_tb.Text);
+                    cmd.Parameters.AddWithValue("@email", email2_tb.Text);
+                    cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
+                    cmd.ExecuteNonQuery();
 
-                                MessageBox.Show("User has been created!");
-                            }
-                            catch
-                            {
-                                MessageBox.Show("User creation has failed.");
-                            }
-                            finally
-                            {
-                                myConn.Close();
-                            }
-                    }
-                }
-            }
+                    MessageBox.Show("User has been created!");
+                 }
+                 catch(Exception ex)
+                 {
+                    MessageBox.Show("User creation has failed. " + ex.Message);
+                 }
+                 finally
+                 {
+                    myConn.Close();
+                 }
+             }
+                
+            
       
+        }
+
+        //Desc: Sets textbox borderbrush to #FFABADB3
+        private void setBorderBrushTBDefault(TextBox o)
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
+            o.BorderBrush = brush;
+
+            return;
+        }
+
+        //Desc: Sets textbox borderbrush to #FFABADB3
+        private void setBorderBrushPBDefault(PasswordBox o)
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
+            o.BorderBrush = brush;
+
+            return;
         }
 
         //Desc: Checks for blanks in username2_tb, password2_pb, and email2_tb
@@ -108,8 +132,6 @@ namespace DG_ScoreCard
         private bool submit2_btn_CheckBlanks()
         {
             bool blank = false;
-            BrushConverter bc = new BrushConverter();
-            Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
 
             if (GenLib.isBlank(username2_tb.Text) == true)
             {
@@ -118,7 +140,7 @@ namespace DG_ScoreCard
             }
             else
             {
-                username2_tb.BorderBrush = brush;
+                setBorderBrushTBDefault(username2_tb);
             }
             if (GenLib.isBlank(password2_pb.Password) == true)
             {
@@ -127,7 +149,16 @@ namespace DG_ScoreCard
             }
             else
             {
-                password2_pb.BorderBrush = brush;
+                setBorderBrushPBDefault(password2_pb);
+            }
+            if (GenLib.isBlank(confirm2_pb.Password) == true)
+            {
+                confirm2_pb.BorderBrush = Brushes.Red;
+                blank = true;
+            }
+            else
+            {
+                setBorderBrushPBDefault(confirm2_pb);
             }
             if (GenLib.isBlank(email2_tb.Text) == true)
             {
@@ -135,7 +166,7 @@ namespace DG_ScoreCard
             }
             else
             {
-                email2_tb.BorderBrush = brush;
+                setBorderBrushTBDefault(email2_tb);
             }
 
             return blank;
@@ -145,7 +176,6 @@ namespace DG_ScoreCard
         //Post: returns true if is taken, turn username2_tb border brush red if true
         private bool isUsernameTaken(string t)
         {
-            bool blank = false;
             BrushConverter bc = new BrushConverter();
             Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
             bool isTaken = false;
@@ -209,12 +239,32 @@ namespace DG_ScoreCard
             return match;
         }
 
-        //Desc: 
-
         //Desc: Exits app from signup page
         private void exit2_btn_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown(); //Shutsdown Application
+        }
+
+        //Desc: Check location
+        //Post: Return true if present already
+        private bool isLocationTaken()
+        {
+            bool taken = true;
+            try
+            {
+                myConn.Open();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+            
+            return taken;
+
         }
     }
 }
