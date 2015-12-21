@@ -73,15 +73,44 @@ namespace DG_ScoreCard
                 return;
             }
             //Check length of fields done in DB
+
             else
             {
-            
+                //Loads new location
+                try
+                {
+                    myConn.Open();
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = myConn;
+                    com.CommandText = "INSERT INTO location(loc_address, loc_state, loc_city, loc_country, loc_zip) VALUES(@loc_address, @loc_state, @loc_city, @loc_country, @loc_zip)";
+                    com.Prepare();
+                    com.Parameters.AddWithValue("@loc_address", address2_tb.Text);
+                    com.Parameters.AddWithValue("@loc_state", state2_tb.Text);
+                    com.Parameters.AddWithValue("@loc_city", city2_tb.Text);
+                    com.Parameters.AddWithValue("@loc_country", country2_tb.Text);
+                    com.Parameters.AddWithValue("@loc_zip", zip2_tb.Text);
+                    com.ExecuteNonQuery();
+                           
+                }
+                catch(Exception ext)
+                {
+                    MessageBox.Show(ext.Message);
+                }
+                finally
+                {
+                    myConn.Close();
+                }
+
+                //Loads new user
                 try
                 {
                     myConn.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = myConn;
-                    cmd.CommandText = "INSERT INTO user(user_name, user_password, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, @password, @fname, @lname, @email, @phone)";
+                    cmd.CommandText = "INSERT INTO user(user_name, loc_id, user_password, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, (Select l.loc_id " +
+                                                                                                                                                                "from location l " +
+                                                                                                                                                               "where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = " + zip2_tb.Text + " " +
+                                                                                                                                                                " ), @password, @fname, @lname, @email, @phone)";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
                     cmd.Parameters.AddWithValue("@password", password2_pb.Password);

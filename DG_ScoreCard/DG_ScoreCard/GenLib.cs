@@ -18,10 +18,7 @@ namespace DG_ScoreCard
 
         }
 
-        //public static bool isObStrMatch(object o, object p)
-        //{
-
-        //}
+        
 
     }
 }
