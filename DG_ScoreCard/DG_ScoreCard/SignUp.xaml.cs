@@ -278,21 +278,40 @@ namespace DG_ScoreCard
         //Post: Return true if present already
         private bool isLocationTaken()
         {
-            bool taken = true;
+            bool isTaken = false;
+            
             try
             {
                 myConn.Open();
-            }
-            catch
-            {
+                String loc = "1";
+                MySqlCommand cmd = new MySqlCommand("Select count(l.loc_id) as 'Count' from location l where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = " + zip2_tb.Text + " ");
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    loc = rdr["Count"].ToString();
+                }
+                if (loc == "0")
+                {
+                    isTaken = false;
+                   
 
+                }
+                else
+                {
+                    isTaken = true;
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 myConn.Close();
             }
             
-            return taken;
+            return isTaken;
 
         }
     }
