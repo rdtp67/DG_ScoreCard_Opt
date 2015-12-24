@@ -102,8 +102,7 @@ namespace DG_ScoreCard
             }
             else
             {
-                string salt = CreateSalt(11);
-                string hashpassword = GenerateSHA256Hash(password2_pb.Password, salt);
+               
                 
                 //Loads new user
                 try
@@ -111,17 +110,34 @@ namespace DG_ScoreCard
                     myConn.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = myConn;
-                    cmd.CommandText = "INSERT INTO user(user_name, loc_id, user_password, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, (Select l.loc_id " +
+                    cmd.CommandText = "INSERT INTO user(user_name, loc_id, user_slowhashsalt, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, (Select l.loc_id " +
                                                                                                                                                                 "from location l " +
                                                                                                                                                                "where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = " + zip2_tb.Text + " " +
-                                                                                                                                                                " ), @password, @fname, @lname, @email, @phone)";
+                                                                                                                                                                " ), @slowhash, @fname, @lname, @email, @phone)";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
-                    cmd.Parameters.AddWithValue("@password", hashpassword);
                     cmd.Parameters.AddWithValue("@fname", fname2_tb.Text);
                     cmd.Parameters.AddWithValue("@lname", lname2_tb.Text);
                     cmd.Parameters.AddWithValue("@email", email2_tb.Text);
                     cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
+
+                    String saltHashReturned = PasswordHash.CreateHash(password2_pb.Password);
+                    int commaIndex = saltHashReturned.IndexOf(":");
+                    String extractedString = saltHashReturned.Substring(0, commaIndex);
+                    commaIndex = saltHashReturned.IndexOf(":");
+                    extractedString = saltHashReturned.Substring(commaIndex + 1);
+                    commaIndex = extractedString.IndexOf(":");
+                    String salt = extractedString.Substring(0, commaIndex);
+
+                    commaIndex = extractedString.IndexOf(":");
+                    extractedString = extractedString.Substring(commaIndex + 1);
+                    String hash = extractedString;
+                    //salt : hash
+
+                    cmd.Parameters.AddWithValue("@slowhash", saltHashReturned);
+
+
+
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("User has been created!");
@@ -319,35 +335,35 @@ namespace DG_ScoreCard
 
         }
 
-        
-        //Return byte array as hex string
-        private static string ByteArrayToHexString(byte[] ba)
-        {
-            StringBuilder hex = new StringBuilder(ba.Length * 2);
-            foreach(byte b in ba)
-            {
-                hex.AppendFormat("{0:x2}", b);
-            }
+            
+        ////Return byte array as hex string
+        //private static string ByteArrayToHexString(byte[] ba)
+        //{
+        //    StringBuilder hex = new StringBuilder(ba.Length * 2);
+        //    foreach(byte b in ba)
+        //    {
+        //        hex.AppendFormat("{0:x2}", b);
+        //    }
 
-            return hex.ToString();
-        }
+        //    return hex.ToString();
+        //}
 
-        //Hash
-        private String GenerateSHA256Hash(string input, String salt)
-        {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input + salt);
-            System.Security.Cryptography.SHA256Managed sha256hashstring = new System.Security.Cryptography.SHA256Managed();
-            byte[] hash = sha256hashstring.ComputeHash(bytes);
-            return ByteArrayToHexString(hash);
-        }
+        ////Hash
+        //private String GenerateSHA256Hash(string input, String salt)
+        //{
+        //    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input + salt);
+        //    System.Security.Cryptography.SHA256Managed sha256hashstring = new System.Security.Cryptography.SHA256Managed();
+        //    byte[] hash = sha256hashstring.ComputeHash(bytes);
+        //    return ByteArrayToHexString(hash);
+        //}
 
-        //Salt
-        private string CreateSalt(int size)
-        {
-            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            var buff = new byte[size];
-            rng.GetBytes(buff);
-            return Convert.ToBase64String(buff);
-        }
+        ////Salt
+        //private string CreateSalt(int size)
+        //{
+        //    var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
+        //    var buff = new byte[size];
+        //    rng.GetBytes(buff);
+        //    return Convert.ToBase64String(buff);
+        //}
     }
 }
