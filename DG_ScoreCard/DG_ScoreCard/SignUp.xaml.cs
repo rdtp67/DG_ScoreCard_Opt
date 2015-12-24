@@ -73,7 +73,11 @@ namespace DG_ScoreCard
                 return;
             }
             //Check length of fields done in DB
-            if(isLocationTaken() == false)
+            if (isLengthCorrect() == false)
+            {
+                return;
+            }
+            if (isLocationTaken() == false)
             {
                 // Loads new location
                 try
@@ -93,7 +97,7 @@ namespace DG_ScoreCard
                 }
                 catch (Exception ext)
                 {
-                    MessageBox.Show(ext.Message);
+                    MessageBox.Show(ext.Message + "Location Load");
                 }
                 finally
                 {
@@ -112,7 +116,7 @@ namespace DG_ScoreCard
                     cmd.Connection = myConn;
                     cmd.CommandText = "INSERT INTO user(user_name, loc_id, user_slowhashsalt, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, (Select l.loc_id " +
                                                                                                                                                                 "from location l " +
-                                                                                                                                                               "where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = " + zip2_tb.Text + " " +
+                                                                                                                                                               "where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = '" + zip2_tb.Text + "' " +
                                                                                                                                                                 " ), @slowhash, @fname, @lname, @email, @phone)";
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
@@ -304,7 +308,7 @@ namespace DG_ScoreCard
             {
                 myConn.Open();
                 String loc = "1";
-                MySqlCommand cmd = new MySqlCommand("Select count(l.loc_id) as 'Count' from location l where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = " + zip2_tb.Text + " ", myConn);
+                MySqlCommand cmd = new MySqlCommand("Select count(l.loc_id) as 'Count' from location l where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = '" + zip2_tb.Text + "' ", myConn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -324,7 +328,7 @@ namespace DG_ScoreCard
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "IslocTaken");
             }
             finally
             {
@@ -335,6 +339,132 @@ namespace DG_ScoreCard
 
         }
 
+        //Check Length of Signup TextBoxes & PasswordBoxes
+        private bool isLengthCorrect()
+        {
+            bool lengthCheck = true;
+            string toLongMessage;
+            toLongMessage = "The Following fields have too many characters: ";
+
+            if (username2_tb.Text.Length > 50)
+            {
+                lengthCheck = false;
+                username2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Username is " + username2_tb.Text.Length + " characters. (Max 50)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(username2_tb);
+            }
+            if(password2_pb.Password.Length > 50)
+            {
+                lengthCheck = false;
+                password2_pb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Password is " + password2_pb.Password.Length + " characters. (Max 50)";
+            }
+            else
+            {
+                setBorderBrushPBDefault(password2_pb);
+            }
+            if(fname2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                fname2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n First Name is " + fname2_tb.Text.Length + " characters. (Max 100)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(fname2_tb);
+            }
+            if(lname2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                lname2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Last Name is " + lname2_tb.Text.Length + " characters. (Max 100)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(lname2_tb);
+            }
+            if(email2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                email2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Email is " + email2_tb.Text.Length + " characters. (Max 100)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(email2_tb);
+            }
+            if (phone2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                phone2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Phone Number is " + phone2_tb.Text.Length + " characters. (Max 15)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(phone2_tb);
+            }
+            if (address2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                address2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Address is " + address2_tb.Text.Length + " characters. (Max 100)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(address2_tb);
+            }
+            if (state2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                state2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n State is " + state2_tb.Text.Length + " characters. (Max 100)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(state2_tb);
+            }
+            if (city2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                city2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n City is " + city2_tb.Text.Length + " characters. (Max 100)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(city2_tb);
+            }
+            if (country2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                country2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Country is " + country2_tb.Text.Length + " characters. (Max 50)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(country2_tb);
+            }
+            if (zip2_tb.Text.Length > 100)
+            {
+                lengthCheck = false;
+                zip2_tb.BorderBrush = Brushes.Red;
+                toLongMessage += "\n Zip is " + zip2_tb.Text.Length + " characters. (Max 15)";
+            }
+            else
+            {
+                setBorderBrushTBDefault(zip2_tb);
+            }
+
+            if(lengthCheck == false)
+            {
+                MessageBox.Show(toLongMessage);
+            }
+
+
+            return lengthCheck;
+        }
             
         ////Return byte array as hex string
         //private static string ByteArrayToHexString(byte[] ba)

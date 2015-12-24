@@ -1,13 +1,11 @@
 create table location(
 loc_id int NULL AUTO_INCREMENT,
-user_id int,
 loc_address varchar(100),
 loc_state varchar(30),
 loc_city varchar(100),
 loc_country varchar(50),
-loc_zip int,
+loc_zip varchar(15),
 loc_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 upsrt_user int NOT NULL,
-PRIMARY KEY(loc_id),
-UNIQUE(loc_address, loc_state, loc_city, loc_country, loc_zip)
+PRIMARY KEY(loc_id)
 )

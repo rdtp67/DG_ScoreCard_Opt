@@ -9,6 +9,9 @@ namespace DG_ScoreCard
     public static class GenLib
     {
 
+        //Desc: Checks if String is blank
+        //Pre: String
+        //Post: Return True if string is blank, false otherwise
         public static bool isBlank(String t)
         {
             if (t == "")
@@ -18,6 +21,9 @@ namespace DG_ScoreCard
 
         }
 
+        //Desc: Checks user_active char
+        //Pre: Char 
+        //Post: Return true if T, false otherwise
         public static bool isUserActive(char c)
         {
             if(c == 'T')
