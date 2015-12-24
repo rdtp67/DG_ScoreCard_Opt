@@ -18,6 +18,17 @@ namespace DG_ScoreCard
 
         }
 
+        public static bool isUserActive(char c)
+        {
+            if(c == 'T')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         
 
     }

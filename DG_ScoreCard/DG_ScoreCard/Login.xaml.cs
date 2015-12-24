@@ -57,15 +57,18 @@ namespace DG_ScoreCard
             this.DragMove();
         }
 
+        //Desc: Logs in user to dashboard if username is found, is active, and password is correct
+        //Post: Redirects to dashboard, sends username
         private void submit1_btn_Click(object sender, RoutedEventArgs e)
         {
             List<string> salthashList = null;
-            List<string> emailList = null;
+            List<string> userList = null; //passed to dashboard
+            List<char> activeList = null;
 
             try
             {
                 myConn.Open();
-                string query = "Select user_name, user_email, user_slowhashsalt, user_active from user where user_name = @username";
+                string query = "Select user_active, user_name, user_slowhashsalt from user where user_name = @username";
                 MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(query, myConn);
                 cmd.Parameters.AddWithValue("@username", login1_tb.Text);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -75,14 +78,18 @@ namespace DG_ScoreCard
                     if(salthashList == null)
                     {
                         salthashList = new List<string>();
-                        emailList = new List<string>();
+                        userList = new List<string>();
+                        activeList = new List<Char>();
                     }
 
                     String saltHashes = reader.GetString(reader.GetOrdinal("user_slowhashsalt"));
                     salthashList.Add(saltHashes);
 
-                    String email = reader.GetString(reader.GetOrdinal("user_email"));
-                    emailList.Add(email);
+                    String user = reader.GetString(reader.GetOrdinal("user_name"));
+                    userList.Add(user);
+
+                    Char active = reader.GetChar(reader.GetOrdinal("user_active"));
+                    activeList.Add(active);
                 }
                 reader.Close();
 
@@ -90,11 +97,15 @@ namespace DG_ScoreCard
                 {
                     for(int i = 0; i < salthashList.Count; i++)
                     {
-                        query = "";
+                       
                         bool validuser = PasswordHash.ValidatePassword(password1_pb.Password, salthashList[i]);
                         if(validuser == true)
                         {
-
+                            if (GenLib.isUserActive(activeList[i]) == false)
+                            {
+                                MessageBox.Show("Username is Inactive. Contact ... to reactivate account.");
+                                return;
+                            }
                             //redirect to dashboard
                             MessageBox.Show("you did it");
                         }
