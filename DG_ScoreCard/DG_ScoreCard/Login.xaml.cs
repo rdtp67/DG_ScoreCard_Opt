@@ -67,6 +67,9 @@ namespace DG_ScoreCard
 
             try
             {
+                DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
+                MessageBox.Show(client.Message());
+
                 myConn.Open();
                 string query = "Select user_active, user_name, user_slowhashsalt from user where user_name = @username";
                 MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(query, myConn);

@@ -38,6 +38,8 @@
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +62,11 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="PasswordHash.cs" />
+    <Compile Include="Service References\DGserviceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
@@ -114,6 +121,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\DGserviceReference\DGservice.wsdl" />
+    <None Include="Service References\DGserviceReference\DGservice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DGserviceReference\DGservice1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -122,6 +136,27 @@
     <Resource Include="Media\blue-background.jpg" />
     <Resource Include="Media\brushed-titanium.jpg" />
     <Resource Include="Media\pacman_like_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DGserviceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DGserviceReference\DGservice.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DGserviceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DGserviceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DGserviceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
