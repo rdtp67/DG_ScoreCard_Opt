@@ -13,5 +13,9 @@ namespace WCFwebserviceDG
     {
         [OperationContract]
         string Message();
+
+      
+
+
     }
 }
