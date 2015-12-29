@@ -6,22 +6,98 @@
       <xsd:import schemaLocation="http://localhost:54097/DGservice.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IDGservice_Message_InputMessage">
-    <wsdl:part name="parameters" element="tns:Message" />
+  <wsdl:message name="IDGservice_getUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserID" />
   </wsdl:message>
-  <wsdl:message name="IDGservice_Message_OutputMessage">
-    <wsdl:part name="parameters" element="tns:MessageResponse" />
+  <wsdl:message name="IDGservice_getUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertLocation" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertUser" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_checkUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkUsername" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_checkUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_checkLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkLocation" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_checkLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkLocationResponse" />
   </wsdl:message>
   <wsdl:portType name="IDGservice">
-    <wsdl:operation name="Message">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/Message" message="tns:IDGservice_Message_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/MessageResponse" message="tns:IDGservice_Message_OutputMessage" />
+    <wsdl:operation name="getUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getUserIDResponse" message="tns:IDGservice_getUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertLocation" message="tns:IDGservice_insertLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertLocationResponse" message="tns:IDGservice_insertLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertUser" message="tns:IDGservice_insertUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertUserResponse" message="tns:IDGservice_insertUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/checkUsername" message="tns:IDGservice_checkUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/checkUsernameResponse" message="tns:IDGservice_checkUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/checkLocation" message="tns:IDGservice_checkLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/checkLocationResponse" message="tns:IDGservice_checkLocation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Message">
-      <soap:operation soapAction="http://tempuri.org/IDGservice/Message" style="document" />
+    <wsdl:operation name="getUserID">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertLocation">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertUser">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkUsername">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/checkUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLocation">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/checkLocation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

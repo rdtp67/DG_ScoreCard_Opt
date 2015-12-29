@@ -15,11 +15,35 @@ namespace DG_ScoreCard.DGserviceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
     public interface IDGservice {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Message", ReplyAction="http://tempuri.org/IDGservice/MessageResponse")]
-        string Message();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getUserID", ReplyAction="http://tempuri.org/IDGservice/getUserIDResponse")]
+        string getUserID(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Message", ReplyAction="http://tempuri.org/IDGservice/MessageResponse")]
-        System.Threading.Tasks.Task<string> MessageAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getUserID", ReplyAction="http://tempuri.org/IDGservice/getUserIDResponse")]
+        System.Threading.Tasks.Task<string> getUserIDAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertLocation", ReplyAction="http://tempuri.org/IDGservice/insertLocationResponse")]
+        void insertLocation(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertLocation", ReplyAction="http://tempuri.org/IDGservice/insertLocationResponse")]
+        System.Threading.Tasks.Task insertLocationAsync(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertUser", ReplyAction="http://tempuri.org/IDGservice/insertUserResponse")]
+        void insertUser(string username, string fname, string lname, string email, string phone, string shash, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertUser", ReplyAction="http://tempuri.org/IDGservice/insertUserResponse")]
+        System.Threading.Tasks.Task insertUserAsync(string username, string fname, string lname, string email, string phone, string shash, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkUsername", ReplyAction="http://tempuri.org/IDGservice/checkUsernameResponse")]
+        string checkUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkUsername", ReplyAction="http://tempuri.org/IDGservice/checkUsernameResponse")]
+        System.Threading.Tasks.Task<string> checkUsernameAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkLocation", ReplyAction="http://tempuri.org/IDGservice/checkLocationResponse")]
+        bool checkLocation(string address, string state, string city, string country, string zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkLocation", ReplyAction="http://tempuri.org/IDGservice/checkLocationResponse")]
+        System.Threading.Tasks.Task<bool> checkLocationAsync(string address, string state, string city, string country, string zip);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +73,44 @@ namespace DG_ScoreCard.DGserviceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string Message() {
-            return base.Channel.Message();
+        public string getUserID(string id) {
+            return base.Channel.getUserID(id);
         }
         
-        public System.Threading.Tasks.Task<string> MessageAsync() {
-            return base.Channel.MessageAsync();
+        public System.Threading.Tasks.Task<string> getUserIDAsync(string id) {
+            return base.Channel.getUserIDAsync(id);
+        }
+        
+        public void insertLocation(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip) {
+            base.Channel.insertLocation(loc_address, loc_state, loc_city, loc_country, loc_zip);
+        }
+        
+        public System.Threading.Tasks.Task insertLocationAsync(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip) {
+            return base.Channel.insertLocationAsync(loc_address, loc_state, loc_city, loc_country, loc_zip);
+        }
+        
+        public void insertUser(string username, string fname, string lname, string email, string phone, string shash, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip) {
+            base.Channel.insertUser(username, fname, lname, email, phone, shash, loc_address, loc_state, loc_city, loc_country, loc_zip);
+        }
+        
+        public System.Threading.Tasks.Task insertUserAsync(string username, string fname, string lname, string email, string phone, string shash, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip) {
+            return base.Channel.insertUserAsync(username, fname, lname, email, phone, shash, loc_address, loc_state, loc_city, loc_country, loc_zip);
+        }
+        
+        public string checkUsername(string username) {
+            return base.Channel.checkUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> checkUsernameAsync(string username) {
+            return base.Channel.checkUsernameAsync(username);
+        }
+        
+        public bool checkLocation(string address, string state, string city, string country, string zip) {
+            return base.Channel.checkLocation(address, state, city, country, zip);
+        }
+        
+        public System.Threading.Tasks.Task<bool> checkLocationAsync(string address, string state, string city, string country, string zip) {
+            return base.Channel.checkLocationAsync(address, state, city, country, zip);
         }
     }
 }

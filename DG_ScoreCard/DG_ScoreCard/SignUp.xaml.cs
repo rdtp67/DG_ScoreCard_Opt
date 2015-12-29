@@ -22,9 +22,7 @@ namespace DG_ScoreCard
     {
         //Variables
         private Login mainWindow;
-        const string myConnection = "datasource=localhost;port=3306;username=root;password=root; database=discgolf";
-        MySqlConnection myConn = new MySqlConnection(myConnection);
-
+        DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
 
         //Desc: Creates Window
         public SignUp(Login mainWindow)
@@ -51,9 +49,20 @@ namespace DG_ScoreCard
         //Desc: Signup process
         private void submit2_btn_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            string address = address2_tb.Text;
+            string state = state2_tb.Text;
+            string city = city2_tb.Text;
+            string country = country2_tb.Text;
+            string zip = zip2_tb.Text;
+            string username = username2_tb.Text;
+            string fname = fname2_tb.Text;
+            string lname = lname2_tb.Text;
+            string email = email2_tb.Text;
+            string phone = phone2_tb.Text;
+
             //Check for blanks
-            if(submit2_btn_CheckBlanks() == true)
+            if (submit2_btn_CheckBlanks() == true)
             {
                 MessageBox.Show("Please fill in required fields for Sign Up.");
                 return;
@@ -77,87 +86,35 @@ namespace DG_ScoreCard
             {
                 return;
             }
-            if (isLocationTaken() == false)
+            bool loccheck = client.checkLocation(address, state, city, country, zip);
+            if (loccheck== false)
             {
-                // Loads new location
-                try
-                {
-                    myConn.Open();
-                    MySqlCommand com = new MySqlCommand();
-                    com.Connection = myConn;
-                    com.CommandText = "INSERT INTO location(loc_address, loc_state, loc_city, loc_country, loc_zip) VALUES(@loc_address, @loc_state, @loc_city, @loc_country, @loc_zip)";
-                    com.Prepare();
-                    com.Parameters.AddWithValue("@loc_address", address2_tb.Text);
-                    com.Parameters.AddWithValue("@loc_state", state2_tb.Text);
-                    com.Parameters.AddWithValue("@loc_city", city2_tb.Text);
-                    com.Parameters.AddWithValue("@loc_country", country2_tb.Text);
-                    com.Parameters.AddWithValue("@loc_zip", zip2_tb.Text);
-                    com.ExecuteNonQuery();
 
-                }
-                catch (Exception ext)
-                {
-                    MessageBox.Show(ext.Message + "Location Load");
-                }
-                finally
-                {
-                    myConn.Close();
-                }
+               client.insertLocation(address, state, city, country, zip);
+
+
             }
-            else
-            {
-               
-                
-                //Loads new user
-                try
-                {
-                    myConn.Open();
-                    MySqlCommand cmd = new MySqlCommand();
-                    cmd.Connection = myConn;
-                    cmd.CommandText = "INSERT INTO user(user_name, loc_id, user_slowhashsalt, user_fname, user_lname, user_email, user_phone) VALUES(@user_name, (Select l.loc_id " +
-                                                                                                                                                                "from location l " +
-                                                                                                                                                               "where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = '" + zip2_tb.Text + "' " +
-                                                                                                                                                                " ), @slowhash, @fname, @lname, @email, @phone)";
-                    cmd.Prepare();
-                    cmd.Parameters.AddWithValue("@user_name", username2_tb.Text);
-                    cmd.Parameters.AddWithValue("@fname", fname2_tb.Text);
-                    cmd.Parameters.AddWithValue("@lname", lname2_tb.Text);
-                    cmd.Parameters.AddWithValue("@email", email2_tb.Text);
-                    cmd.Parameters.AddWithValue("@phone", phone2_tb.Text);
 
-                    String saltHashReturned = PasswordHash.CreateHash(password2_pb.Password);
-                    int commaIndex = saltHashReturned.IndexOf(":");
-                    String extractedString = saltHashReturned.Substring(0, commaIndex);
-                    commaIndex = saltHashReturned.IndexOf(":");
-                    extractedString = saltHashReturned.Substring(commaIndex + 1);
-                    commaIndex = extractedString.IndexOf(":");
-                    String salt = extractedString.Substring(0, commaIndex);
+            //salt : hash
+            String saltHashReturned = PasswordHash.CreateHash(password2_pb.Password);
+                int commaIndex = saltHashReturned.IndexOf(":");
+                String extractedString = saltHashReturned.Substring(0, commaIndex);
+                commaIndex = saltHashReturned.IndexOf(":");
+                extractedString = saltHashReturned.Substring(commaIndex + 1);
+                commaIndex = extractedString.IndexOf(":");
+                String salt = extractedString.Substring(0, commaIndex);
 
-                    commaIndex = extractedString.IndexOf(":");
-                    extractedString = extractedString.Substring(commaIndex + 1);
-                    String hash = extractedString;
-                    //salt : hash
+            commaIndex = extractedString.IndexOf(":");
+                extractedString = extractedString.Substring(commaIndex + 1);
+                String hash = extractedString;
 
-                    cmd.Parameters.AddWithValue("@slowhash", saltHashReturned);
+            client.insertUser(username, fname, lname, email, phone, extractedString, address, state, city, country, zip);
+                MessageBox.Show("User has been created!");
 
 
 
-                    cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("User has been created!");
-                 }
-                 catch(Exception ex)
-                 {
-                    MessageBox.Show("User creation has failed. " + ex.Message);
-                 }
-                 finally
-                 {
-                    myConn.Close();
-                 }
-             }
-                
-            
-      
+
         }
 
         //Desc: Sets textbox borderbrush to #FFABADB3
@@ -216,6 +173,7 @@ namespace DG_ScoreCard
             if (GenLib.isBlank(email2_tb.Text) == true)
             {
                 email2_tb.BorderBrush = Brushes.Red;
+                blank = true;
             }
             else
             {
@@ -233,18 +191,7 @@ namespace DG_ScoreCard
             Brush brush = (Brush)bc.ConvertFrom("#FFABADB3");
             bool isTaken = false;
 
-            try
-            { 
-                myConn.Open();
-                String username = "1";
-                MySqlCommand cmd = new MySqlCommand("Select count(u.user_name) as 'Count' " +
-                                                    "from user u " +
-                                                    "where u.user_name = '" + t + "' ", myConn); //Does not check for active incase account gets re-activated
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    username = rdr["Count"].ToString();
-                }
+                string username = client.checkUsername(username2_tb.Text);
                 if(username == "0")
                 {
                     isTaken = false;
@@ -256,16 +203,6 @@ namespace DG_ScoreCard
                     isTaken = true;
                     username2_tb.BorderBrush = Brushes.Red;
                 }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                myConn.Close();
-            }
 
             return isTaken;
         }
@@ -298,46 +235,6 @@ namespace DG_ScoreCard
             App.Current.Shutdown(); //Shutsdown Application
         }
 
-        //Desc: Check location
-        //Post: Return true if present already
-        private bool isLocationTaken()
-        {
-            bool isTaken = false;
-            
-            try
-            {
-                myConn.Open();
-                String loc = "1";
-                MySqlCommand cmd = new MySqlCommand("Select count(l.loc_id) as 'Count' from location l where l.loc_address = '" + address2_tb.Text + "' and l.loc_state = '" + state2_tb.Text + "' and l.loc_city = '" + city2_tb.Text + "' and l.loc_country = '" + country2_tb.Text + "' and l.loc_zip = '" + zip2_tb.Text + "' ", myConn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    loc = rdr["Count"].ToString();
-                }
-                if (loc == "0")
-                {
-                    isTaken = false;
-                   
-
-                }
-                else
-                {
-                    isTaken = true;
-                   
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "IslocTaken");
-            }
-            finally
-            {
-                myConn.Close();
-            }
-            
-            return isTaken;
-
-        }
 
         //Check Length of Signup TextBoxes & PasswordBoxes
         private bool isLengthCorrect()

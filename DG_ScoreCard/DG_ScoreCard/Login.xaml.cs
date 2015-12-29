@@ -68,7 +68,7 @@ namespace DG_ScoreCard
             try
             {
                 DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
-                MessageBox.Show(client.Message());
+                MessageBox.Show(client.getUserID(login1_tb.Text));
 
                 myConn.Open();
                 string query = "Select user_active, user_name, user_slowhashsalt from user where user_name = @username";
