@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:54097/DGservice.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:54097/DGservice.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54097/DGservice.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IDGservice_getUserID_InputMessage">
@@ -36,6 +37,12 @@
   <wsdl:message name="IDGservice_checkLocation_OutputMessage">
     <wsdl:part name="parameters" element="tns:checkLocationResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_returnCstringLists_InputMessage">
+    <wsdl:part name="parameters" element="tns:returnCstringLists" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_returnCstringLists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:returnCstringListsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
@@ -56,6 +63,10 @@
     <wsdl:operation name="checkLocation">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/checkLocation" message="tns:IDGservice_checkLocation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/checkLocationResponse" message="tns:IDGservice_checkLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="returnCstringLists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/returnCstringLists" message="tns:IDGservice_returnCstringLists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/returnCstringListsResponse" message="tns:IDGservice_returnCstringLists_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -98,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="checkLocation">
       <soap:operation soapAction="http://tempuri.org/IDGservice/checkLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returnCstringLists">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/returnCstringLists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

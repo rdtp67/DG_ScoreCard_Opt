@@ -25,5 +25,45 @@ namespace WCFwebserviceDG
 
         [OperationContract]
         bool checkLocation(string address, string state, string city, string country, string zip);
+
+        [OperationContract]
+        List<login> returnCstringLists(string username);
+        
     }
+
+    [DataContract]
+    public class login
+    {
+        string cstring;
+        string user;
+        char active;
+
+        public login()
+        {
+            cstring = "";
+            user = "";
+            active = 'F';
+        }
+
+        [DataMember]
+        public string user_cstring
+        {
+            get { return cstring; }
+            set { cstring = value; }
+        }
+        [DataMember]
+        public string user_username
+        {
+            get { return user; }
+            set { user = value; }
+        }
+        [DataMember]
+        public char user_active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+           
+    }
+
 }

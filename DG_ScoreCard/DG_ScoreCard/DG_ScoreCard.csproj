@@ -153,6 +153,12 @@
     <None Include="Service References\DGserviceReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\DGserviceReference\DGservice2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.login.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DGserviceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

@@ -19,7 +19,6 @@ namespace WCFwebserviceDG
         const string myConnection = "server=198.71.227.92; username=rdtp67; password=sT7uq0^6; database=rdtp67_DG_Scorecard_PROD";
         MySqlConnection myConn = new MySqlConnection(myConnection);
 
-
         //Desc: Gets ID of one user
         //Pre: String
         //Post: String
@@ -184,6 +183,45 @@ namespace WCFwebserviceDG
             }
 
             return check;
+        }
+
+        //Desc: Returns lists for cstrings
+        //Pre: string username
+        //Post: cstring lists
+        public List<login> returnCstringLists(string username)
+        {
+
+
+            List<login> cstring = new List<login>();
+
+            try
+            {
+                myConn.Open();
+                string query = "Select user_active, user_name, user_slowhashsalt from user where user_name = @username";
+                MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(query, myConn);
+                cmd.Parameters.AddWithValue("@username", username);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(reader.HasRows && reader.Read())
+                {
+                    login data = new login();
+                    data.user_active = reader.GetChar(reader.GetOrdinal("user_active"));
+                    data.user_cstring = reader.GetString(reader.GetOrdinal("user_slowhashsalt"));
+                    data.user_username = reader.GetString(reader.GetOrdinal("user_name"));
+                    cstring.Add(data);
+                }
+                reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+
+            return cstring.ToList();
         }
 
 

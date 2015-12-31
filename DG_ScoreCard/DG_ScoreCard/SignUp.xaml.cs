@@ -10,8 +10,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Windows.Shapes;
 
 namespace DG_ScoreCard
 {
@@ -108,7 +108,7 @@ namespace DG_ScoreCard
                 extractedString = extractedString.Substring(commaIndex + 1);
                 String hash = extractedString;
 
-            client.insertUser(username, fname, lname, email, phone, extractedString, address, state, city, country, zip);
+            client.insertUser(username, fname, lname, email, phone, saltHashReturned, address, state, city, country, zip);
                 MessageBox.Show("User has been created!");
 
 

@@ -9,7 +9,86 @@
 //------------------------------------------------------------------------------
 
 namespace DG_ScoreCard.DGserviceReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="login", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class login : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private char user_activeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string user_cstringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string user_usernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char user_active {
+            get {
+                return this.user_activeField;
+            }
+            set {
+                if ((this.user_activeField.Equals(value) != true)) {
+                    this.user_activeField = value;
+                    this.RaisePropertyChanged("user_active");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string user_cstring {
+            get {
+                return this.user_cstringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.user_cstringField, value) != true)) {
+                    this.user_cstringField = value;
+                    this.RaisePropertyChanged("user_cstring");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string user_username {
+            get {
+                return this.user_usernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.user_usernameField, value) != true)) {
+                    this.user_usernameField = value;
+                    this.RaisePropertyChanged("user_username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
@@ -44,6 +123,12 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkLocation", ReplyAction="http://tempuri.org/IDGservice/checkLocationResponse")]
         System.Threading.Tasks.Task<bool> checkLocationAsync(string address, string state, string city, string country, string zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/returnCstringLists", ReplyAction="http://tempuri.org/IDGservice/returnCstringListsResponse")]
+        System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.login> returnCstringLists(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/returnCstringLists", ReplyAction="http://tempuri.org/IDGservice/returnCstringListsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.login>> returnCstringListsAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +196,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<bool> checkLocationAsync(string address, string state, string city, string country, string zip) {
             return base.Channel.checkLocationAsync(address, state, city, country, zip);
+        }
+        
+        public System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.login> returnCstringLists(string username) {
+            return base.Channel.returnCstringLists(username);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.login>> returnCstringListsAsync(string username) {
+            return base.Channel.returnCstringListsAsync(username);
         }
     }
 }

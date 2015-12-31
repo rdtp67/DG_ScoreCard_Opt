@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using DG_ScoreCard.DGserviceReference;
+
 
 namespace DG_ScoreCard
 {
@@ -21,10 +23,10 @@ namespace DG_ScoreCard
     public partial class Login : Window
     {
 
-        private SignUp mainWindow;
+
         //Variables
-        const string myConnection = "datasource=localhost;port=3306;username=root;password=root; database=discgolf";
-        MySqlConnection myConn = new MySqlConnection(myConnection);
+        private SignUp mainWindow;
+        DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
 
 
         public Login()
@@ -61,75 +63,48 @@ namespace DG_ScoreCard
         //Post: Redirects to dashboard, sends username
         private void submit1_btn_Click(object sender, RoutedEventArgs e)
         {
-            List<string> salthashList = null;
-            List<string> userList = null; //passed to dashboard
-            List<char> activeList = null;
 
-            try
+            string checkUsername = client.checkUsername(login1_tb.Text);
+            if(checkUsername == "0")
             {
-                DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
-                MessageBox.Show(client.getUserID(login1_tb.Text));
+                login1_tb.BorderBrush = Brushes.Red;
+                MessageBox.Show("Username does not exist! Please enter different username.");
+            }
 
-                myConn.Open();
-                string query = "Select user_active, user_name, user_slowhashsalt from user where user_name = @username";
-                MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(query, myConn);
-                cmd.Parameters.AddWithValue("@username", login1_tb.Text);
-                MySqlDataReader reader = cmd.ExecuteReader();
+            List<login> loginList = new List<login>();
+            loginList = client.returnCstringLists(login1_tb.Text);
 
-                while(reader.HasRows && reader.Read())
+            if (loginList != null)
+            {
+                for (int i = 0; i < loginList.Count; i++)
                 {
-                    if(salthashList == null)
+                   
+                    bool validuser = PasswordHash.ValidatePassword(password1_pb.Password, loginList[i].user_cstring);
+                    if (validuser == true)
                     {
-                        salthashList = new List<string>();
-                        userList = new List<string>();
-                        activeList = new List<Char>();
+                        if (GenLib.isUserActive(loginList[i].user_active) == false)
+                        {
+                            MessageBox.Show("Username is Inactive. Contact ... to reactivate account.");
+                            return;
+                        }
+                        //redirect to dashboard
+                        MessageBox.Show("you did it");
+                    }
+                    else
+                    {
+                        password1_pb.BorderBrush = Brushes.Red;
+                        MessageBox.Show("Password entered is incorrect. Please try again.");
                     }
 
-                    String saltHashes = reader.GetString(reader.GetOrdinal("user_slowhashsalt"));
-                    salthashList.Add(saltHashes);
-
-                    String user = reader.GetString(reader.GetOrdinal("user_name"));
-                    userList.Add(user);
-
-                    Char active = reader.GetChar(reader.GetOrdinal("user_active"));
-                    activeList.Add(active);
                 }
-                reader.Close();
-
-                if(salthashList != null)
-                {
-                    for(int i = 0; i < salthashList.Count; i++)
-                    {
-                       
-                        bool validuser = PasswordHash.ValidatePassword(password1_pb.Password, salthashList[i]);
-                        if(validuser == true)
-                        {
-                            if (GenLib.isUserActive(activeList[i]) == false)
-                            {
-                                MessageBox.Show("Username is Inactive. Contact ... to reactivate account.");
-                                return;
-                            }
-                            //redirect to dashboard
-                            MessageBox.Show("you did it");
-                        }
-                        else
-                        {
-                            password1_pb.BorderBrush = Brushes.Red;
-                            MessageBox.Show("Password entered is incorrect. Please try again.");
-                        }
-
-                    }
-                }
-
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                password1_pb.BorderBrush = Brushes.Red;
+                MessageBox.Show("Password entered is incorrect. Please try again.");
             }
-            finally
-            {
-                myConn.Close();
-            }
+
+
         }
     }
 }
