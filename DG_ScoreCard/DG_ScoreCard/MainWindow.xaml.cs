@@ -25,19 +25,30 @@ namespace DG_ScoreCard
         /**************************                                          Variables                                              **************************/
         /*****************************************************************************************************************************************************/
 
-        const string myConnection = "datasource=localhost;port=3306;username=root;password=root; database=discgolf";
-        MySqlConnection myConn = new MySqlConnection(myConnection);
+        private Login mainWindow;
+        private string username;
 
 
         public MainWindow()
         {
+            username_l.Content = username;
             InitializeComponent();
-           
+            
+        }
+
+        public MainWindow(Login mainWindow, string user)
+        {
+            InitializeComponent();
+            username = user;
+            username_l.Content = ("Welcome " + username + "!");
+            this.mainWindow = mainWindow;
         }
 
         private void btn_close_loginClick(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown(); //Shutsdown Application
         }
+
+
     }
 }

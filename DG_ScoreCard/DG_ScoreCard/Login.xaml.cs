@@ -88,7 +88,10 @@ namespace DG_ScoreCard
                             return;
                         }
                         //redirect to dashboard
-                        MessageBox.Show("you did it");
+                        this.Hide();
+                        MainWindow mainWindow = new MainWindow(this, login1_tb.Text);
+                        mainWindow.Show();
+                        this.Close();
                     }
                     else
                     {
