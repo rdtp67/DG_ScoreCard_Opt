@@ -49,6 +49,38 @@ namespace DG_ScoreCard
             App.Current.Shutdown(); //Shutsdown Application
         }
 
+        private void move3_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
 
+        private Brush getWindowButtonColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FFD8D8D8");
+            return brush;
+        }
+        private Brush getWindowButtonGenericColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FFC0C0C0");
+            return brush;
+        }
+
+        private void button3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            pageload3_f.Background = getWindowButtonColor();
+            button3_btn.Background = getWindowButtonColor();
+            button23_btn.Background = getWindowButtonGenericColor();
+        }
+
+        private void button23_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            pageload3_f.Background = getWindowButtonColor();
+            button23_btn.Background = getWindowButtonColor();
+            button3_btn.Background = getWindowButtonGenericColor();
+        }
     }
 }
