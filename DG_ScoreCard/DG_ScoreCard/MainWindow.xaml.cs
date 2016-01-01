@@ -67,20 +67,35 @@ namespace DG_ScoreCard
             return brush;
         }
 
-        private void button3_btn_Click(object sender, RoutedEventArgs e)
+
+        private Brush getWindowButtonDarkColor()
         {
-            
-            pageload3_f.Background = getWindowButtonColor();
-            button3_btn.Background = getWindowButtonColor();
-            button23_btn.Background = getWindowButtonGenericColor();
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FF6C6C6C");
+            return brush;
         }
 
-        private void button23_btn_Click(object sender, RoutedEventArgs e)
+        private void round_myround3_Click(object sender, RoutedEventArgs e)
         {
             
             pageload3_f.Background = getWindowButtonColor();
-            button23_btn.Background = getWindowButtonColor();
-            button3_btn.Background = getWindowButtonGenericColor();
+            round_myround3_btn.Background = getWindowButtonColor();
+            round_addround3_btn.Background = getWindowButtonDarkColor();
+        }
+
+        private void round_addround3_Click(object sender, RoutedEventArgs e)
+        {
+            
+            pageload3_f.Background = getWindowButtonColor();
+            round_addround3_btn.Background = getWindowButtonColor();
+            round_myround3_btn.Background = getWindowButtonDarkColor();
+        }
+
+        private void round3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            round_addround3_btn.Visibility = Visibility.Visible;
+            round_myround3_btn.Visibility = Visibility.Visible;
+
         }
     }
 }

@@ -60,6 +60,146 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="WindowsMainButtonv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Margin="0,0,0.449,0.693">
+                            <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Discs" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Stroke" TargetName="rectangle" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MainWindowDiscButtonv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Margin="0,0,0.449,0.693">
+                            <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock x:Name="textBlock" Margin="33.999,0,36.64,10" TextWrapping="Wrap" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"><Run Text="Rounds"/><LineBreak/><Run/></TextBlock>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Stroke" TargetName="rectangle" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MainWindowLocationButtonv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Margin="0,0,0.449,0.693">
+                            <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock x:Name="textBlock" Margin="31.499,0,28.64,10" TextWrapping="Wrap" Text="Locations" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Stroke" TargetName="rectangle" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MainWindowStatsButtonv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Margin="0,0,0.449,0.693">
+                            <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Stats" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Stroke" TargetName="rectangle" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid Height="85.5" VerticalAlignment="Top">
@@ -68,10 +208,34 @@
             <Rectangle x:Name="move3_r" Fill="#FF6E5CAE" Height="19" Margin="10,5,236,0" VerticalAlignment="Top" MouseDown="move3_r_MouseDown" Cursor="SizeAll"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Margin="10,189,0,0" Width="198.5">
-            <Button x:Name="button3_btn" Content="Button" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="button3_btn_Click" Background="Silver" RenderTransformOrigin="0.686,0.292"/>
-            <Button x:Name="button23_btn" Content="Button" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="button23_btn_Click" Background="Silver" Margin="0,64.96,0,0"/>
+            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" Visibility="Hidden"/>
+            <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" Visibility="Hidden"/>
         </Grid>
-        <Frame x:Name="pageload3_f" Content="Frame" Margin="208.5,189,10,10" Background="White"/>
+        <Frame x:Name="pageload3_f" Content="Frame" Margin="203.5,189,0,15" BorderBrush="Black"/>
+        <Grid Height="93.5" Margin="208.5,90.5,10,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51*"/>
+                <ColumnDefinition Width="113*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="114*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="114*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="114*"/>
+                <ColumnDefinition Width="317*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="round3_btn" Content="Rounds" Margin="0,0,0,-0.5" Background="Silver" Grid.Column="1" Height="94" VerticalAlignment="Top" Click="round3_btn_Click" BorderThickness="1" Style="{DynamicResource MainWindowDiscButtonv1}"/>
+            <Button x:Name="course3_btn" Content="Course" Margin="0.026,0,0.004,0" Grid.Column="3" Background="Silver" d:LayoutOverrides="TopMargin, BottomMargin" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource MainWindowLocationButtonv1}"/>
+            <Button x:Name="disc3_btn" Content="Disc" Margin="-0.001,0,-0.028,0" Grid.Column="5" Background="Silver" d:LayoutOverrides="TopMargin, BottomMargin" Style="{DynamicResource WindowsMainButtonv1}"/>
+            <Button x:Name="stats3_btn" Content="Stats" Margin="0.012,0,0.032,0" Grid.Column="7" d:LayoutOverrides="TopMargin, BottomMargin" Foreground="Black" Style="{DynamicResource MainWindowStatsButtonv1}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA4A4A4" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </Grid>
 
     </Grid>
 </Window>
