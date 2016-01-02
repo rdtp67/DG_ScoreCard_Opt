@@ -35,7 +35,10 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Grid x:Name="grid" Margin="-1">
+                                <Rectangle Fill="White" Margin="10,5,10,0" Stroke="White" Height="14.5" VerticalAlignment="Top" RadiusX="5" RadiusY="5" Opacity="0.15"/>
+                                <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="TextBlock" Width="Auto" VerticalAlignment="Center"/>
+                            </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsPressed" Value="False"/>
@@ -43,17 +46,12 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                <Setter Property="Foreground" TargetName="textBlock" Value="White"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -81,7 +79,7 @@
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Discs" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"/>
+                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Discs" Height="20.667" VerticalAlignment="Bottom" Width="Auto" HorizontalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -116,7 +114,7 @@
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="33.999,0,36.64,10" TextWrapping="Wrap" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"><Run Text="Rounds"/><LineBreak/><Run/></TextBlock>
+                            <TextBlock x:Name="textBlock" Margin="33.999,0,36.64,10" TextWrapping="Wrap" Height="20.667" VerticalAlignment="Bottom" Width="Auto" HorizontalAlignment="Center"><Run Text="Rounds"/><LineBreak/><Run/></TextBlock>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -151,7 +149,7 @@
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="31.499,0,28.64,10" TextWrapping="Wrap" Text="Locations" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"/>
+                            <TextBlock x:Name="textBlock" Margin="31.499,0,28.64,10" TextWrapping="Wrap" Text="Course" Height="20.667" VerticalAlignment="Bottom" Width="Auto" HorizontalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -186,7 +184,7 @@
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Stats" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto"/>
+                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Stats" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="Auto"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -200,6 +198,87 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="MainWindowEditRoundv2" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="54.636,22,54.636,25" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="False"/>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MainWindowColapaseSidePanelBtn" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <Grid>
+                                <ed:RegularPolygon x:Name="regularPolygon" Fill="White" Height="Auto" InnerRadius="1" Margin="5,30" PointCount="3" Stretch="Fill" Stroke="White" Width="Auto" RenderTransformOrigin="0.037,0.346">
+                                    <ed:RegularPolygon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="-90"/>
+                                            <TranslateTransform X="4.172" Y="8.332"/>
+                                        </TransformGroup>
+                                    </ed:RegularPolygon.RenderTransform>
+                                </ed:RegularPolygon>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#FF6E5CAE"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid Height="85.5" VerticalAlignment="Top">
@@ -207,12 +286,14 @@
             <Label x:Name="username_l" Content="Unauthorized!" HorizontalAlignment="Right" Background="#FF6E5CAE" Margin="0,29,10,23.04" Width="160.993" FontSize="18.667" Foreground="White"/>
             <Rectangle x:Name="move3_r" Fill="#FF6E5CAE" Height="19" Margin="10,5,236,0" VerticalAlignment="Top" MouseDown="move3_r_MouseDown" Cursor="SizeAll"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Margin="10,189,0,0" Width="198.5">
-            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" Visibility="Hidden"/>
-            <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" Visibility="Hidden"/>
+        <Grid x:Name="sidepanelgrid" HorizontalAlignment="Left" Margin="29.5,189,0,0" Width="182">
+            <Rectangle x:Name="hidensidepanel_r" Fill="Silver" HorizontalAlignment="Left" RadiusY="0" RadiusX="0" Stroke="White" Width="4.25" Margin="5.5,0,0,0" Visibility="Hidden"/>
+            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden"/>
+            <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" BorderBrush="White" Visibility="Hidden"/>
+            <Button x:Name="round_editround3_btn" Content="Edit Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_editround3_Click" Background="Silver" Margin="0,129.92,0,0" BorderBrush="White" Visibility="Hidden"/>
         </Grid>
-        <Frame x:Name="pageload3_f" Content="Frame" Margin="203.5,189,0,15" BorderBrush="Black"/>
-        <Grid Height="93.5" Margin="208.5,90.5,10,0" VerticalAlignment="Top">
+        <Frame x:Name="pageload3_f" Content="" Margin="207.495,190.005,-5,17" BorderBrush="Black"/>
+        <Grid x:Name="toppanelgrid" Height="93.5" Margin="208.5,90.5,10,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="51*"/>
                 <ColumnDefinition Width="113*"/>
@@ -235,6 +316,9 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Margin="0.5,190.005,0,-6.5" Width="29">
+            <Button x:Name="hidesidepanel_btn" Content="Button" Height="78" Margin="3.5,222.995,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.462" Style="{DynamicResource MainWindowColapaseSidePanelBtn}" Visibility="Hidden"/>
         </Grid>
 
     </Grid>

@@ -33,7 +33,7 @@ namespace DG_ScoreCard
         {
             username_l.Content = username;
             InitializeComponent();
-            
+
         }
 
         public MainWindow(Login mainWindow, string user)
@@ -54,12 +54,17 @@ namespace DG_ScoreCard
             this.DragMove();
         }
 
-        private Brush getWindowButtonColor()
+        /************ Button Functions ***********/
+
+        //Sets button light
+        private Brush getWindowButtonLightColor()
         {
             BrushConverter bc = new BrushConverter();
             Brush brush = (Brush)bc.ConvertFrom("#FFD8D8D8");
             return brush;
         }
+
+        //Sets button generic 
         private Brush getWindowButtonGenericColor()
         {
             BrushConverter bc = new BrushConverter();
@@ -67,7 +72,7 @@ namespace DG_ScoreCard
             return brush;
         }
 
-
+        //Sets button dark
         private Brush getWindowButtonDarkColor()
         {
             BrushConverter bc = new BrushConverter();
@@ -75,27 +80,68 @@ namespace DG_ScoreCard
             return brush;
         }
 
-        private void round_myround3_Click(object sender, RoutedEventArgs e)
+        //Desc: sets non clicked side panel buttons dark, sets pushed panel button light, sets page color to light
+        //Pre: array of buttons, button
+        private void setSidePanelButtons(Button[] darkBtns, Button lightBtn)
         {
-            
-            pageload3_f.Background = getWindowButtonColor();
-            round_myround3_btn.Background = getWindowButtonColor();
-            round_addround3_btn.Background = getWindowButtonDarkColor();
+            //sets pages to light backgroud color
+            pageload3_f.Background = getWindowButtonLightColor();
+            for (int i = 0; i < darkBtns.Count(); i++)
+            {
+                darkBtns[i].Background = getWindowButtonDarkColor();
+            }
+            lightBtn.Background = getWindowButtonLightColor();
         }
 
-        private void round_addround3_Click(object sender, RoutedEventArgs e)
+        //Desc: sets side panel buttons to visible coresponding to top panel button pressed
+        //Pre: array of buttons
+        private void setSidePanelButtonsVisible(Button[] btns)
         {
-            
-            pageload3_f.Background = getWindowButtonColor();
-            round_addround3_btn.Background = getWindowButtonColor();
-            round_myround3_btn.Background = getWindowButtonDarkColor();
+            for(int i = 0; i<btns.Count(); i++)
+            {
+                btns[i].Visibility = Visibility.Visible;
+            }
         }
 
+        /**************************************/
+
+        /********** TOP Panel Clicked Buttons **********/
+
+        //Desc: Top Panel round button clicked
         private void round3_btn_Click(object sender, RoutedEventArgs e)
         {
-            round_addround3_btn.Visibility = Visibility.Visible;
-            round_myround3_btn.Visibility = Visibility.Visible;
-
+            Button[] panel_btns = { round_addround3_btn, round_myround3_btn, round_editround3_btn };
+            setSidePanelButtonsVisible(panel_btns);
         }
+
+        /***********************************************/
+
+        /********** Side Panel Clicked Buttons ********/
+
+        //Desc: Round my round button clicked
+        private void round_myround3_Click(object sender, RoutedEventArgs e)
+        {
+              Button[] dark = { round_addround3_btn, round_editround3_btn };
+             setSidePanelButtons(dark, round_myround3_btn);
+            
+        }
+
+        //Desc: Round add round button clicked
+        private void round_addround3_Click(object sender, RoutedEventArgs e)
+        {
+
+            Button[] dark = { round_myround3_btn, round_editround3_btn };
+            setSidePanelButtons(dark, round_addround3_btn);
+          
+        }
+
+        private void round_editround3_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { round_myround3_btn, round_addround3_btn };
+            setSidePanelButtons(dark, round_editround3_btn);
+        }
+
+        /***********************************************/
+
     }
 }
