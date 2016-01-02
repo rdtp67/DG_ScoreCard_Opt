@@ -27,6 +27,7 @@ namespace DG_ScoreCard
 
         private Login mainWindow;
         private string username;
+        private string sidepanelclosedon = "none";
 
 
         public MainWindow()
@@ -72,6 +73,16 @@ namespace DG_ScoreCard
             return brush;
         }
 
+        //Sets array of buttons generic
+        //Pre: array of buttons
+        private void setSidePanelButtonsGenericColor(Button[] btns)
+        {
+            for(int i = 0; i<btns.Count(); i++)
+            {
+                btns[i].Background = getWindowButtonGenericColor();
+            }
+        }
+
         //Sets button dark
         private Brush getWindowButtonDarkColor()
         {
@@ -103,6 +114,37 @@ namespace DG_ScoreCard
             }
         }
 
+        //Desc: sets side panel buttons to not visible
+        //Pre: array of buttons
+        private void setSidePanelButtonsNotVisible(Button[] btns)
+        {
+            for(int i = 0; i<btns.Count(); i++)
+            {
+                btns[i].Visibility = Visibility.Hidden;
+            }
+        }
+
+        //Desc: Sets all automatic objects after top panel button is pressed
+        private void setTopPanelObjects()
+        {
+            Button[] round_btns = { round_addround3_btn, round_myround3_btn, round_editround3_btn };
+            Button[] course_btns = { course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            hidesidepanel_btn.Visibility = Visibility.Visible;
+            hidensidepanel_r.Visibility = Visibility.Hidden;
+            opensidepanel_btn.Visibility = Visibility.Hidden;
+            if(sidepanelclosedon != "round")
+            {
+                setSidePanelButtonsNotVisible(round_btns);
+                setSidePanelButtonsGenericColor(round_btns);
+                
+            }
+            if (sidepanelclosedon != "course")
+            {
+                setSidePanelButtonsNotVisible(course_btns);
+                setSidePanelButtonsGenericColor(course_btns);
+            }
+        }
+
         /**************************************/
 
         /********** TOP Panel Clicked Buttons **********/
@@ -110,8 +152,20 @@ namespace DG_ScoreCard
         //Desc: Top Panel round button clicked
         private void round3_btn_Click(object sender, RoutedEventArgs e)
         {
-            Button[] panel_btns = { round_addround3_btn, round_myround3_btn, round_editround3_btn };
-            setSidePanelButtonsVisible(panel_btns);
+            sidepanelclosedon = "round";
+            Button[] round_btns = { round_addround3_btn, round_myround3_btn, round_editround3_btn };
+            setSidePanelButtonsVisible(round_btns);
+            setTopPanelObjects();
+           
+        }
+
+        private void course3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            sidepanelclosedon = "course";
+            Button[] course_btns = { course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            setSidePanelButtonsVisible(course_btns);
+            setTopPanelObjects();
+           
         }
 
         /***********************************************/
@@ -135,13 +189,88 @@ namespace DG_ScoreCard
           
         }
 
+        //Desc: Round edit round button clicked
         private void round_editround3_Click(object sender, RoutedEventArgs e)
         {
             Button[] dark = { round_myround3_btn, round_addround3_btn };
             setSidePanelButtons(dark, round_editround3_btn);
         }
 
+        //Desc: Course my course clicked
+        private void course_mycourse3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            setSidePanelButtons(dark, course_mycourse3_btn);
+        }
+        //Desc: Course add course clicked
+        private void course_addcourse3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { course_mycourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            setSidePanelButtons(dark, course_addcourse3_btn);
+        }
+        //Desc: Course edit course clicked
+        private void course_editcourse3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { course_addcourse3_btn, course_mycourse3_btn, course_searchcourse3_btn };
+            setSidePanelButtons(dark, course_editcourse3_btn);
+        }
+        //Desc: Course search course clicked
+        private void course_searchcourse3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { course_addcourse3_btn, course_editcourse3_btn, course_mycourse3_btn };
+            setSidePanelButtons(dark, course_searchcourse3_btn);
+        }
+
+
+
         /***********************************************/
+
+        /************* Hide/Open Button and Fuctions ********/
+
+        //Desc: Hide Side Pandel Button Functions, Closes side panel, Makes Open Side panel visible, Makes hide side panel not visible
+        private void hidesidepanel_btn_Click(object sender, RoutedEventArgs e)
+        {
+            //All side panel buttons
+            Button[] btns = { round_myround3_btn, round_addround3_btn, round_editround3_btn, course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            setSidePanelButtonsNotVisible(btns);
+            hidensidepanel_r.Visibility = Visibility.Visible;
+            hidesidepanel_btn.Visibility = Visibility.Hidden;
+            opensidepanel_btn.Visibility = Visibility.Visible;
+            //Thickness m = pageload3_f.Margin;
+            //m.Left = 10;
+            //pageload3_f.Margin = m;
+
+        }
+
+        //Desc: Open Side Panel button Fuctions, Opens last open side panel buttons, Makes Open side panel not visible, makes hide side panel visible
+        private void opensidepanel_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] round_btns = { round_myround3_btn, round_addround3_btn, round_editround3_btn }; //round buttons
+            Button[] course_btns = { course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn }; //course buttons
+            hidensidepanel_r.Visibility = Visibility.Hidden;
+            //Thickness m = pageload3_f.Margin;
+            //m.Left = 10;
+            //pageload3_f.Margin = m;
+            if (sidepanelclosedon == "round")
+            {
+                setSidePanelButtonsVisible(round_btns);
+            }
+            else if (sidepanelclosedon == "course")
+            {
+                setSidePanelButtonsVisible(course_btns);
+            }
+            else
+            {
+                opensidepanel_btn.Visibility = Visibility.Hidden;
+            }
+            opensidepanel_btn.Visibility = Visibility.Hidden;
+            hidesidepanel_btn.Visibility = Visibility.Visible;
+
+        }
+
+     
+
+        /**********************************************/
 
     }
 }

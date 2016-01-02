@@ -279,6 +279,49 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="MainWindowOpenSidePanelBtn" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <Grid>
+                                <ed:RegularPolygon x:Name="regularPolygon" Fill="White" Height="Auto" InnerRadius="1" Margin="5,30" PointCount="3" Stretch="Fill" Stroke="White" Width="Auto" RenderTransformOrigin="0.5,0.5">
+                                    <ed:RegularPolygon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="90"/>
+                                            <TranslateTransform X="0.3825" Y="-0.3835"/>
+                                        </TransformGroup>
+                                    </ed:RegularPolygon.RenderTransform>
+                                </ed:RegularPolygon>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#FF6E5CAE"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid Height="85.5" VerticalAlignment="Top">
@@ -291,6 +334,10 @@
             <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="round_editround3_btn" Content="Edit Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}" Click="round_editround3_Click" Background="Silver" Margin="0,129.92,0,0" BorderBrush="White" Visibility="Hidden"/>
+            <Button x:Name="course_mycourse3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden" Click="course_mycourse3_btn_Click"/>
+            <Button x:Name="course_addcourse3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Margin="0,64.96,0,0" Visibility="Hidden" Click="course_addcourse3_btn_Click"/>
+            <Button x:Name="course_editcourse3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Margin="0,129.92,0,0" Visibility="Hidden" Click="course_editcourse3_btn_Click"/>
+            <Button x:Name="course_searchcourse3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource main3_btn}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Margin="0,194.88,0,0" Visibility="Hidden" Click="course_searchcourse3_btn_Click"/>
         </Grid>
         <Frame x:Name="pageload3_f" Content="" Margin="207.495,190.005,-5,17" BorderBrush="Black"/>
         <Grid x:Name="toppanelgrid" Height="93.5" Margin="208.5,90.5,10,0" VerticalAlignment="Top">
@@ -306,7 +353,7 @@
                 <ColumnDefinition Width="317*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="round3_btn" Content="Rounds" Margin="0,0,0,-0.5" Background="Silver" Grid.Column="1" Height="94" VerticalAlignment="Top" Click="round3_btn_Click" BorderThickness="1" Style="{DynamicResource MainWindowDiscButtonv1}"/>
-            <Button x:Name="course3_btn" Content="Course" Margin="0.026,0,0.004,0" Grid.Column="3" Background="Silver" d:LayoutOverrides="TopMargin, BottomMargin" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource MainWindowLocationButtonv1}"/>
+            <Button x:Name="course3_btn" Content="Course" Margin="0,0,0,-0.5" Grid.Column="3" Background="Silver" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource MainWindowLocationButtonv1}" HorizontalAlignment="Left" Width="114" Click="course3_btn_Click"/>
             <Button x:Name="disc3_btn" Content="Disc" Margin="-0.001,0,-0.028,0" Grid.Column="5" Background="Silver" d:LayoutOverrides="TopMargin, BottomMargin" Style="{DynamicResource WindowsMainButtonv1}"/>
             <Button x:Name="stats3_btn" Content="Stats" Margin="0.012,0,0.032,0" Grid.Column="7" d:LayoutOverrides="TopMargin, BottomMargin" Foreground="Black" Style="{DynamicResource MainWindowStatsButtonv1}">
                 <Button.Background>
@@ -317,8 +364,9 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <Grid HorizontalAlignment="Left" Margin="0.5,190.005,0,-6.5" Width="29">
-            <Button x:Name="hidesidepanel_btn" Content="Button" Height="78" Margin="3.5,222.995,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.462" Style="{DynamicResource MainWindowColapaseSidePanelBtn}" Visibility="Hidden"/>
+        <Grid x:Name="hidebuttonpanel" HorizontalAlignment="Left" Margin="0.5,190.005,0,-6.5" Width="29">
+            <Button x:Name="hidesidepanel_btn" Content="Button" Height="78" Margin="3.5,222.995,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.462" Style="{DynamicResource MainWindowColapaseSidePanelBtn}" Click="hidesidepanel_btn_Click" Visibility="Hidden"/>
+            <Button x:Name="opensidepanel_btn" Content="Button" Height="78" Margin="3.5,222.995,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.462" Style="{DynamicResource MainWindowOpenSidePanelBtn}" Click="opensidepanel_btn_Click" Visibility="Hidden"/>
         </Grid>
 
     </Grid>
