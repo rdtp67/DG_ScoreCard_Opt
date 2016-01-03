@@ -55,6 +55,8 @@ namespace DG_ScoreCard
             this.DragMove();
         }
 
+
+
         /************ Button Functions ***********/
 
         //Sets button light
@@ -129,9 +131,12 @@ namespace DG_ScoreCard
         {
             Button[] round_btns = { round_addround3_btn, round_myround3_btn, round_editround3_btn };
             Button[] course_btns = { course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            Button[] disc_btns = { disc_mydiscs3_btn, disc_adddisc3_btn, disc_searchdisc3_btn };
+            Button[] stats_btns = { stats_mystats3_btn, stats_searchstats3_btn };
             hidesidepanel_btn.Visibility = Visibility.Visible;
             hidensidepanel_r.Visibility = Visibility.Hidden;
             opensidepanel_btn.Visibility = Visibility.Hidden;
+            pageload3_f.Background = null;
             if(sidepanelclosedon != "round")
             {
                 setSidePanelButtonsNotVisible(round_btns);
@@ -143,9 +148,21 @@ namespace DG_ScoreCard
                 setSidePanelButtonsNotVisible(course_btns);
                 setSidePanelButtonsGenericColor(course_btns);
             }
+            if(sidepanelclosedon != "disc")
+            {
+                setSidePanelButtonsNotVisible(disc_btns);
+                setSidePanelButtonsGenericColor(disc_btns);
+            }
+            if(sidepanelclosedon != "stats")
+            {
+                setSidePanelButtonsNotVisible(stats_btns);
+                setSidePanelButtonsGenericColor(stats_btns);
+            }
         }
 
         /**************************************/
+
+
 
         /********** TOP Panel Clicked Buttons **********/
 
@@ -158,7 +175,7 @@ namespace DG_ScoreCard
             setTopPanelObjects();
            
         }
-
+        //Desc: Top Panel course button clicked
         private void course3_btn_Click(object sender, RoutedEventArgs e)
         {
             sidepanelclosedon = "course";
@@ -167,8 +184,26 @@ namespace DG_ScoreCard
             setTopPanelObjects();
            
         }
+        //Desc: Top Panel disc button clicked
+        private void disc3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            sidepanelclosedon = "disc";
+            Button[] disc_btns = { disc_mydiscs3_btn, disc_adddisc3_btn, disc_searchdisc3_btn };
+            setSidePanelButtonsVisible(disc_btns);
+            setTopPanelObjects();
+        }
+        //Desc: Top Panel stats button clicked
+        private void stats3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            sidepanelclosedon = "stats";
+            Button[] stats_btns = { stats_mystats3_btn, stats_searchstats3_btn };
+            setSidePanelButtonsVisible(stats_btns);
+            setTopPanelObjects();
+        }
 
         /***********************************************/
+
+
 
         /********** Side Panel Clicked Buttons ********/
 
@@ -220,10 +255,40 @@ namespace DG_ScoreCard
             Button[] dark = { course_addcourse3_btn, course_editcourse3_btn, course_mycourse3_btn };
             setSidePanelButtons(dark, course_searchcourse3_btn);
         }
-
-
+        //Desc: Disc my disc clicked
+        private void disc_mydiscs3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { disc_adddisc3_btn, disc_searchdisc3_btn };
+            setSidePanelButtons(dark, disc_mydiscs3_btn);
+        }
+        //Desc: Disc add disc clicked
+        private void disc_adddisc3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { disc_mydiscs3_btn, disc_searchdisc3_btn };
+            setSidePanelButtons(dark, disc_adddisc3_btn);
+        }
+        //Desc: Disc search disc clicked
+        private void disc_searchdisc3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { disc_mydiscs3_btn, disc_adddisc3_btn };
+            setSidePanelButtons(dark, disc_searchdisc3_btn);
+        }
+        //Desc: Stats my stats clicked
+        private void stats_mystats3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { stats_searchstats3_btn };
+            setSidePanelButtons(dark, stats_mystats3_btn);
+        }
+        //Desc: Stats search stats clicked
+        private void stats_searchstats3_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button[] dark = { stats_mystats3_btn };
+            setSidePanelButtons(dark, stats_searchstats3_btn);
+        }
 
         /***********************************************/
+
+
 
         /************* Hide/Open Button and Fuctions ********/
 
@@ -231,7 +296,7 @@ namespace DG_ScoreCard
         private void hidesidepanel_btn_Click(object sender, RoutedEventArgs e)
         {
             //All side panel buttons
-            Button[] btns = { round_myround3_btn, round_addround3_btn, round_editround3_btn, course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+            Button[] btns = { round_myround3_btn, round_addround3_btn, round_editround3_btn, course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn, disc_mydiscs3_btn, disc_adddisc3_btn, disc_searchdisc3_btn, stats_mystats3_btn, stats_searchstats3_btn };
             setSidePanelButtonsNotVisible(btns);
             hidensidepanel_r.Visibility = Visibility.Visible;
             hidesidepanel_btn.Visibility = Visibility.Hidden;
@@ -247,6 +312,8 @@ namespace DG_ScoreCard
         {
             Button[] round_btns = { round_myround3_btn, round_addround3_btn, round_editround3_btn }; //round buttons
             Button[] course_btns = { course_mycourse3_btn, course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn }; //course buttons
+            Button[] disc_btns = { disc_mydiscs3_btn, disc_adddisc3_btn, disc_searchdisc3_btn }; //disc buttons
+            Button[] stats_btns = { stats_mystats3_btn, stats_searchstats3_btn }; //stats buttons
             hidensidepanel_r.Visibility = Visibility.Hidden;
             //Thickness m = pageload3_f.Margin;
             //m.Left = 10;
@@ -259,6 +326,14 @@ namespace DG_ScoreCard
             {
                 setSidePanelButtonsVisible(course_btns);
             }
+            else if (sidepanelclosedon == "disc")
+            {
+                setSidePanelButtonsVisible(disc_btns);
+            }
+            else if (sidepanelclosedon == "stats")
+            {
+                setSidePanelButtonsVisible(stats_btns);
+            }
             else
             {
                 opensidepanel_btn.Visibility = Visibility.Hidden;
@@ -268,7 +343,11 @@ namespace DG_ScoreCard
 
         }
 
-     
+        private void usersettings3_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         /**********************************************/
 
