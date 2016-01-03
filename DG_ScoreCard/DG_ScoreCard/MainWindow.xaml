@@ -74,12 +74,12 @@
                             <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
-                                        <GradientStop Color="White" Offset="1"/>
+                                        <GradientStop Color="#FFCB0000" Offset="0"/>
+                                        <GradientStop Color="#FFEAEAEA" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Discs" Height="20.667" VerticalAlignment="Bottom" Width="Auto" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="textBlock" Margin="30,45,30,35" TextWrapping="Wrap" Text="DISC" Height="Auto" VerticalAlignment="Center" Width="Auto" HorizontalAlignment="Center" FontFamily="High Tower Text" FontWeight="Bold" Foreground="White"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -109,12 +109,12 @@
                             <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
-                                        <GradientStop Color="White" Offset="1"/>
+                                        <GradientStop Color="#FF7A00B4" Offset="0"/>
+                                        <GradientStop Color="#FFEAEAEA" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="33.999,0,36.64,10" TextWrapping="Wrap" Height="20.667" VerticalAlignment="Bottom" Width="Auto" HorizontalAlignment="Center"><Run Text="Rounds"/><LineBreak/><Run/></TextBlock>
+                            <TextBlock x:Name="textBlock" Margin="30,45,30,35" TextWrapping="Wrap" FontWeight="Bold" FontFamily="High Tower Text" Text="ROUND" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="White" Width="Auto" d:LayoutOverrides="Height"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -144,12 +144,12 @@
                             <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
-                                        <GradientStop Color="White" Offset="1"/>
+                                        <GradientStop Color="#FF007836" Offset="0"/>
+                                        <GradientStop Color="#FFEAEAEA" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="31.499,0,28.64,10" TextWrapping="Wrap" Text="Course" Height="20.667" VerticalAlignment="Bottom" Width="Auto" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="textBlock" Margin="30,45,30,35" TextWrapping="Wrap" Text="COURSE" Height="Auto" VerticalAlignment="Stretch" Width="Auto" HorizontalAlignment="Stretch" Foreground="White" FontWeight="Bold" FontFamily="High Tower Text" d:LayoutOverrides="Width, Height"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -179,12 +179,12 @@
                             <Rectangle x:Name="rectangle" RadiusY="5" RadiusX="5" Stroke="White">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
-                                        <GradientStop Color="White" Offset="1"/>
+                                        <GradientStop Color="#FF005687" Offset="0"/>
+                                        <GradientStop Color="#FFEAEAEA" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" Margin="39.999,0,38.64,10" TextWrapping="Wrap" Text="Stats" Height="20.667" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="Auto"/>
+                            <TextBlock x:Name="textBlock" Margin="30,45,30,35" TextWrapping="Wrap" Text="STATS" Height="Auto" VerticalAlignment="Center" Width="Auto" FontFamily="High Tower Text" RenderTransformOrigin="0.688,-1.241" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true"/>
@@ -874,7 +874,7 @@
     <Grid>
         <Grid x:Name="sidepanelgrid" HorizontalAlignment="Left" Margin="29.5,189,0,0" Width="182">
             <Rectangle x:Name="hidensidepanel_r" Fill="Silver" HorizontalAlignment="Left" RadiusY="0" RadiusX="0" Stroke="White" Width="4.25" Margin="5.5,0,0,0" Visibility="Hidden"/>
-            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelMyRoundBtnv1}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden"/>
+            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelMyRoundBtnv1}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden" Foreground="Black"/>
             <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePaneladdroundv1}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="round_editround3_btn" Content="Edit Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePaneleditroundv1}" Click="round_editround3_Click" Background="Silver" Margin="0,129.92,0,0" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="course_mycourse3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelmycoursev1}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden" Click="course_mycourse3_btn_Click"/>
@@ -902,7 +902,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="round3_btn" Content="Rounds" Margin="0,0,0,-0.5" Background="Silver" Grid.Column="1" Height="94" VerticalAlignment="Top" Click="round3_btn_Click" BorderThickness="1" Style="{DynamicResource MainWindowDiscButtonv1}"/>
             <Button x:Name="course3_btn" Content="Course" Margin="0,0,0,-0.5" Grid.Column="3" Background="Silver" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource MainWindowLocationButtonv1}" HorizontalAlignment="Left" Width="114" Click="course3_btn_Click"/>
-            <Button x:Name="disc3_btn" Content="Disc" Margin="-0.001,0,-0.028,0" Grid.Column="5" Background="Silver" d:LayoutOverrides="TopMargin, BottomMargin" Style="{DynamicResource WindowsMainButtonv1}" Click="disc3_btn_Click"/>
+            <Button x:Name="disc3_btn" Content="Disc" Margin="-0.029,0.5,0,-0.5" Grid.Column="5" Background="Silver" Style="{DynamicResource WindowsMainButtonv1}" Click="disc3_btn_Click"/>
             <Button x:Name="stats3_btn" Content="Stats" Margin="0.012,0,0.032,0" Grid.Column="7" d:LayoutOverrides="TopMargin, BottomMargin" Foreground="Black" Style="{DynamicResource MainWindowStatsButtonv1}" Click="stats3_btn_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -918,9 +918,19 @@
         </Grid>
         <Grid Height="85.5" VerticalAlignment="Top">
             <Rectangle Stroke="Black" Fill="#FF6E5CAE"/>
-            <Label x:Name="username_l" Content="Unauthorized!" HorizontalAlignment="Right" Background="#FF6E5CAE" Margin="0,16.667,0,35.373" Width="186.667" FontSize="18.667" Foreground="White" RenderTransformOrigin="0.501,-0.1" d:LayoutOverrides="Height"/>
+            <Label x:Name="username_l" Content="Unauthorized!" HorizontalAlignment="Right" Background="#FF6E5CAE" Margin="0,16.667,2,35.373" Width="184.667" FontSize="18.667" Foreground="White" RenderTransformOrigin="0.501,-0.1" d:LayoutOverrides="Height"/>
             <Rectangle x:Name="move3_r" Fill="#FF6E5CAE" Height="19" Margin="10,5,236,0" VerticalAlignment="Top" MouseDown="move3_r_MouseDown" Cursor="SizeAll"/>
-            <Button x:Name="usersettings3_btn" Content="Button" HorizontalAlignment="Right" Height="35.373" Margin="0,0,32,0" VerticalAlignment="Bottom" Width="160.993" Style="{DynamicResource MainWindowuserssettingsv1}"/>
+            <Button x:Name="usersettings3_btn" Content="Button" HorizontalAlignment="Right" Height="35.373" Margin="0,0,-314,-12" VerticalAlignment="Bottom" Width="160.993" Style="{DynamicResource MainWindowuserssettingsv1}"/>
+            <Menu x:Name="menu" HorizontalAlignment="Right" Height="29.873" Margin="0,0,25.333,5.5" VerticalAlignment="Bottom" Width="174" Background="#FF6E5CAE">
+                <Grid Height="29.873" Width="164">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Path Data="M20.3335,38.313644 L40.167,28.207637 40.167,36.25025 20.3335,48.167 0.50000009,36.25025 0.50000009,28.207637 z" Fill="#FF616161" Margin="50.166,5,73.667,6" Stretch="Fill" Stroke="White" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="2"/>
+                </Grid>
+            </Menu>
+            <MenuItem Header="MenuItem" HorizontalAlignment="Right" Height="35" Margin="0,0,52,-29.5" VerticalAlignment="Bottom" Width="128.833" Background="White"/>
         </Grid>
 
     </Grid>

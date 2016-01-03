@@ -60,11 +60,93 @@ namespace DG_ScoreCard
         /************ Button Functions ***********/
 
         //Sets button light
-        private Brush getWindowButtonLightColor()
+        private Brush getindowButtonLightColor()
         {
             BrushConverter bc = new BrushConverter();
             Brush brush = (Brush)bc.ConvertFrom("#FFD8D8D8");
             return brush;
+        }
+        //Get Round top panel solid color
+        private Brush getRoundTopPanelSolidColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FF7A00B4");
+            return brush;
+        }
+        //Get Course top panel solid color
+        private Brush getCourseTopPanelSolidColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FF007836");
+            return brush;
+        }
+        //Get Disc top panel solid color
+        private Brush getDiscTopPanelSolidColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FFCB0000");
+            return brush;
+        }
+        //Get Stats top panel solid color
+        private Brush getStatsTopPanelSolidColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#FF005687");
+            return brush;
+        }
+
+        //Desc: Sets side panel buttons to match top panel color
+        //Pre: array of buttons
+        private void setSidePaneltoTopPanelColor(Button[] btn)
+        {
+            for(int i = 0; i<btn.Count(); i++)
+            {
+                if(sidepanelclosedon == "round")
+                {
+                    btn[i].Background = getRoundTopPanelSolidColor();
+                }
+                else if(sidepanelclosedon == "course")
+                {
+                    btn[i].Background = getCourseTopPanelSolidColor();
+                }
+                else if(sidepanelclosedon == "disc")
+                {
+                    btn[i].Background = getDiscTopPanelSolidColor();
+                }
+                else if(sidepanelclosedon == "stats")
+                {
+                    btn[i].Background = getStatsTopPanelSolidColor();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        //Desc: Gets Current Top Panel Button Solid Color
+        private Brush getCurrentTopPanelButtonSolidColor()
+        {
+            if (sidepanelclosedon == "round")
+            {
+               return getRoundTopPanelSolidColor();
+            }
+            else if (sidepanelclosedon == "course")
+            {
+                return getCourseTopPanelSolidColor();
+            }
+            else if (sidepanelclosedon == "disc")
+            {
+                return getDiscTopPanelSolidColor();
+            }
+            else if (sidepanelclosedon == "stats")
+            {
+               return getStatsTopPanelSolidColor();
+            }
+            else
+            {
+                return Brushes.Black;
+            }
         }
 
         //Sets button generic 
@@ -93,17 +175,19 @@ namespace DG_ScoreCard
             return brush;
         }
 
-        //Desc: sets non clicked side panel buttons dark, sets pushed panel button light, sets page color to light
+        //Desc: sets non clicked side panel buttons dark, sets pushed panel button light, sets page color to light, sets foregrounds
         //Pre: array of buttons, button
         private void setSidePanelButtons(Button[] darkBtns, Button lightBtn)
         {
             //sets pages to light backgroud color
-            pageload3_f.Background = getWindowButtonLightColor();
+            pageload3_f.Background = getCurrentTopPanelButtonSolidColor();
             for (int i = 0; i < darkBtns.Count(); i++)
             {
                 darkBtns[i].Background = getWindowButtonDarkColor();
+                darkBtns[i].Foreground = Brushes.Black;
             }
-            lightBtn.Background = getWindowButtonLightColor();
+            lightBtn.Background = getCurrentTopPanelButtonSolidColor();
+            lightBtn.Foreground = Brushes.White;
         }
 
         //Desc: sets side panel buttons to visible coresponding to top panel button pressed
@@ -125,6 +209,15 @@ namespace DG_ScoreCard
                 btns[i].Visibility = Visibility.Hidden;
             }
         }
+        //Descs: sets forground black
+        //Pre: array of buttons
+        private void setSidePanelButtonForegroundBlack(Button[] black)
+        {
+            for(int i = 0; i<black.Count(); i++)
+            {
+                black[i].Foreground = Brushes.Black;
+            }
+        }
 
         //Desc: Sets all automatic objects after top panel button is pressed
         private void setTopPanelObjects()
@@ -141,22 +234,26 @@ namespace DG_ScoreCard
             {
                 setSidePanelButtonsNotVisible(round_btns);
                 setSidePanelButtonsGenericColor(round_btns);
+                setSidePanelButtonForegroundBlack(round_btns);
                 
             }
             if (sidepanelclosedon != "course")
             {
                 setSidePanelButtonsNotVisible(course_btns);
                 setSidePanelButtonsGenericColor(course_btns);
+                setSidePanelButtonForegroundBlack(course_btns);
             }
             if(sidepanelclosedon != "disc")
             {
                 setSidePanelButtonsNotVisible(disc_btns);
                 setSidePanelButtonsGenericColor(disc_btns);
+                setSidePanelButtonForegroundBlack(disc_btns);
             }
             if(sidepanelclosedon != "stats")
             {
                 setSidePanelButtonsNotVisible(stats_btns);
                 setSidePanelButtonsGenericColor(stats_btns);
+                setSidePanelButtonForegroundBlack(stats_btns);
             }
         }
 
@@ -343,13 +440,15 @@ namespace DG_ScoreCard
 
         }
 
-        private void usersettings3_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
         /**********************************************/
+
+        /************** Settings Buttons Fuctions *****/
+        private void usersettings3_btn_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
 
     }
 }
