@@ -28,6 +28,7 @@ namespace DG_ScoreCard
         private Login mainWindow;
         private string username;
         private string sidepanelclosedon = "none";
+        private AddCourse addcourse;
 
 
         public MainWindow()
@@ -337,8 +338,9 @@ namespace DG_ScoreCard
         //Desc: Course add course clicked
         private void course_addcourse3_btn_Click(object sender, RoutedEventArgs e)
         {
-            Button[] dark = { course_mycourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
-            setSidePanelButtons(dark, course_addcourse3_btn);
+          //  Button[] dark = { course_mycourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+           // setSidePanelButtons(dark, course_addcourse3_btn);
+            pageload3_f.Navigate(addcourse);
         }
         //Desc: Course edit course clicked
         private void course_editcourse3_btn_Click(object sender, RoutedEventArgs e)
@@ -449,6 +451,18 @@ namespace DG_ScoreCard
            
         }
 
+        private void settings3_mi_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void signout3_mi_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Login loginWindow = new Login(this);
+            loginWindow.Show();
+            this.Close();
+        }
+        /***************************************************/
     }
 }

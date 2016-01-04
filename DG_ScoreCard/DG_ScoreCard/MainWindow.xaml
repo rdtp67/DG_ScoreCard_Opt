@@ -870,6 +870,92 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="Menu.Static.Background" Color="#FFF0F0F0"/>
+        <Style x:Key="MainWindowMenuv1" TargetType="{x:Type Menu}">
+            <Setter Property="Background" Value="{StaticResource Menu.Static.Background}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.MenuFontFamilyKey}}"/>
+            <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.MenuFontSizeKey}}"/>
+            <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.MenuFontStyleKey}}"/>
+            <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.MenuFontWeightKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Menu}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <Grid>
+                                <Path Data="M20.3335,38.313644 L40.167,28.207637 40.167,36.25025 20.3335,48.167 0.50000009,36.25025 0.50000009,28.207637 z" Fill="#FF616161" Margin="10,10,14.833,1" Stretch="Fill" Stroke="White" Grid.RowSpan="1" d:LayoutOverrides="VerticalAlignment"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MenuStyle1" TargetType="{x:Type Menu}">
+            <Setter Property="Background" Value="{StaticResource Menu.Static.Background}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.MenuFontFamilyKey}}"/>
+            <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.MenuFontSizeKey}}"/>
+            <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.MenuFontStyleKey}}"/>
+            <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.MenuFontWeightKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Menu}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="MainWindowMainMenuItemv1" TargetType="{x:Type MenuItem}">
+            <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Margin="0,0,0,-27">
+                <Grid x:Name="Grid" VerticalAlignment="Center" Height="27.5" Margin="0,0,0,24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Path x:Name="GlyphPanel" Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="3" Visibility="Collapsed" VerticalAlignment="Center"/>
+                    <Grid Grid.Column="0" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,-50,0" VerticalAlignment="Stretch" Width="Auto" Grid.ColumnSpan="2">
+                        <Path x:Name="path" Data="M20.3335,38.313644 L40.167,28.207637 40.167,36.25025 20.3335,48.167 0.50000009,36.25025 0.50000009,28.207637 z" Fill="#FF616161" Stretch="Fill" Stroke="White" Height="Auto" Width="38" Margin="15.042,0,-3.042,0" Grid.ColumnSpan="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom">
+                        <Border x:Name="SubMenuBorder" BorderBrush="#FF999999" BorderThickness="1" Background="#FFF0F0F0" Padding="2">
+                            <ScrollViewer x:Name="SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                <Grid x:Name="Grid1" RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas x:Name="Canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                        <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=SubMenuBorder}" Height="{Binding ActualHeight, ElementName=SubMenuBorder}" Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
+                                    </Canvas>
+                                    <Rectangle x:Name="Rectangle" Fill="#FFD7D7D7" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
+                                    <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsSuspendingPopupAnimation" Value="True">
+                    <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
+                </Trigger>
+                <Trigger Property="Icon" Value="{x:Null}"/>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Fill" TargetName="path" Value="#FFA0A0A0"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="#FF707070"/>
+                    <Setter Property="Fill" TargetName="GlyphPanel" Value="#FF707070"/>
+                </Trigger>
+                <Trigger Property="CanContentScroll" SourceName="SubMenuScrollViewer" Value="False">
+                    <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}"/>
+                    <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Window.Resources>
     <Grid>
         <Grid x:Name="sidepanelgrid" HorizontalAlignment="Left" Margin="29.5,189,0,0" Width="182">
@@ -921,16 +1007,12 @@
             <Label x:Name="username_l" Content="Unauthorized!" HorizontalAlignment="Right" Background="#FF6E5CAE" Margin="0,16.667,2,35.373" Width="184.667" FontSize="18.667" Foreground="White" RenderTransformOrigin="0.501,-0.1" d:LayoutOverrides="Height"/>
             <Rectangle x:Name="move3_r" Fill="#FF6E5CAE" Height="19" Margin="10,5,236,0" VerticalAlignment="Top" MouseDown="move3_r_MouseDown" Cursor="SizeAll"/>
             <Button x:Name="usersettings3_btn" Content="Button" HorizontalAlignment="Right" Height="35.373" Margin="0,0,-314,-12" VerticalAlignment="Bottom" Width="160.993" Style="{DynamicResource MainWindowuserssettingsv1}"/>
-            <Menu x:Name="menu" HorizontalAlignment="Right" Height="29.873" Margin="0,0,25.333,5.5" VerticalAlignment="Bottom" Width="174" Background="#FF6E5CAE">
-                <Grid Height="29.873" Width="164">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5*"/>
-                        <RowDefinition Height="4*"/>
-                    </Grid.RowDefinitions>
-                    <Path Data="M20.3335,38.313644 L40.167,28.207637 40.167,36.25025 20.3335,48.167 0.50000009,36.25025 0.50000009,28.207637 z" Fill="#FF616161" Margin="50.166,5,73.667,6" Stretch="Fill" Stroke="White" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="2"/>
-                </Grid>
+            <Menu x:Name="menu" HorizontalAlignment="Right" Height="35.373" Margin="0,0,83,0" VerticalAlignment="Bottom" Width="74" Background="{x:Null}" Style="{DynamicResource MenuStyle1}">
+                <MenuItem Header="MenuItem" Background="{x:Null}" Height="32.04" Width="74" Template="{DynamicResource MainWindowMainMenuItemv1}">
+                    <MenuItem x:Name="settings3_mi" Header="Settings" Click="settings3_mi_Click"/>
+                    <MenuItem x:Name="signout3_mi" Header="Sign Out" Click="signout3_mi_Click"/>
+                </MenuItem>
             </Menu>
-            <MenuItem Header="MenuItem" HorizontalAlignment="Right" Height="35" Margin="0,0,52,-29.5" VerticalAlignment="Bottom" Width="128.833" Background="White"/>
         </Grid>
 
     </Grid>

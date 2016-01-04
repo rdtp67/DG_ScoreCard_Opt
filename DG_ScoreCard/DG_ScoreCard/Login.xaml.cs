@@ -25,7 +25,8 @@ namespace DG_ScoreCard
 
 
         //Variables
-        private SignUp mainWindow;
+        private SignUp signupWindow;
+        private MainWindow mainWindow;
         DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
 
 
@@ -35,7 +36,13 @@ namespace DG_ScoreCard
         }
 
 
-        public Login(SignUp mainWindow)
+        public Login(SignUp signupWindow)
+        {
+            InitializeComponent();
+            this.signupWindow = signupWindow;
+        }
+
+        public Login(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
