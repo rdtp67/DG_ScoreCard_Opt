@@ -1,0 +1,21 @@
+create table course(
+course_id int NULL AUTO_INCREMENT,
+user_id int,
+loc_id int,
+hole_id int,
+course_name varchar(50),
+course_website varchar(50),
+course_phone_number varchar(15),
+course_basket_type varchar(50),
+course_year_established date,
+course_tee_type varchar(50),
+course_type varchar(50),
+course_terrain varchar(50),
+course_basket_manufacturer varchar(50),
+course_private char(1),
+course_pay char(1),
+course_has_guides char(1),
+course_designer varchar(50),
+course_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(course_id)
+)
