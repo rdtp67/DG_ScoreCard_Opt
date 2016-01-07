@@ -28,7 +28,8 @@ namespace DG_ScoreCard
         private Login mainWindow;
         private string username;
         private string sidepanelclosedon = "none";
-        private AddCourse addcourse;
+        private string currentbutton = "none";
+        
 
 
         public MainWindow()
@@ -338,15 +339,28 @@ namespace DG_ScoreCard
         //Desc: Course add course clicked
         private void course_addcourse3_btn_Click(object sender, RoutedEventArgs e)
         {
-          //  Button[] dark = { course_mycourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
-           // setSidePanelButtons(dark, course_addcourse3_btn);
-            pageload3_f.Navigate(addcourse);
+            if(currentbutton != "addcourse")
+            {
+                Button[] dark = { course_mycourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+                setSidePanelButtons(dark, course_addcourse3_btn);
+                AddCourse addcourse = new AddCourse();
+                pageload3_f.NavigationService.Navigate(addcourse);
+                currentbutton = "addcourse";
+            }
+          
         }
         //Desc: Course edit course clicked
         private void course_editcourse3_btn_Click(object sender, RoutedEventArgs e)
         {
-            Button[] dark = { course_addcourse3_btn, course_mycourse3_btn, course_searchcourse3_btn };
-            setSidePanelButtons(dark, course_editcourse3_btn);
+            if(currentbutton != "editcourse")
+            {
+                Button[] dark = { course_addcourse3_btn, course_mycourse3_btn, course_searchcourse3_btn };
+                setSidePanelButtons(dark, course_editcourse3_btn);
+                EditCourse editcourse = new EditCourse();
+                pageload3_f.NavigationService.Navigate(editcourse);
+                currentbutton = "editcourse";
+            }
+            
         }
         //Desc: Course search course clicked
         private void course_searchcourse3_btn_Click(object sender, RoutedEventArgs e)

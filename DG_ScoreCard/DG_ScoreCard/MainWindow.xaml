@@ -958,9 +958,9 @@
         </ControlTemplate>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="sidepanelgrid" HorizontalAlignment="Left" Margin="29.5,189,0,0" Width="182">
+        <Grid x:Name="sidepanelgrid" HorizontalAlignment="Left" Margin="29.5,209.503,0,0" Width="182">
             <Rectangle x:Name="hidensidepanel_r" Fill="Silver" HorizontalAlignment="Left" RadiusY="0" RadiusX="0" Stroke="White" Width="4.25" Margin="5.5,0,0,0" Visibility="Hidden"/>
-            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelMyRoundBtnv1}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden" Foreground="Black"/>
+            <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelMyRoundBtnv1}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Foreground="Black" Visibility="Hidden"/>
             <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePaneladdroundv1}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="round_editround3_btn" Content="Edit Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePaneleditroundv1}" Click="round_editround3_Click" Background="Silver" Margin="0,129.92,0,0" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="course_mycourse3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelmycoursev1}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Visibility="Hidden" Click="course_mycourse3_btn_Click"/>
@@ -973,7 +973,7 @@
             <Button x:Name="stats_mystats3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelmystatsv1}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Click="stats_mystats3_btn_Click" Visibility="Hidden" />
             <Button x:Name="stats_searchstats3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelsearchstatsv1}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Click="stats_searchstats3_btn_Click" Margin="0,64.96,0,0" Visibility="Hidden" />
         </Grid>
-        <Frame x:Name="pageload3_f" Content="" Margin="207.495,190.005,10,17" BorderBrush="Black"/>
+        <Frame x:Name="pageload3_f" Content="" Margin="195.281,210.649,46.718,31.351" BorderBrush="Black" NavigationUIVisibility="Hidden" Width="950" Height="550"/>
         <Grid x:Name="toppanelgrid" Height="93.5" Margin="208.5,91.505,10,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="51*"/>

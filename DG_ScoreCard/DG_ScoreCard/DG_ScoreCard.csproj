@@ -60,6 +60,9 @@
     <Compile Include="AddCourse.xaml.cs">
       <DependentUpon>AddCourse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditCourse.xaml.cs">
+      <DependentUpon>EditCourse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenLib.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -77,6 +80,10 @@
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
     <Page Include="AddCourse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

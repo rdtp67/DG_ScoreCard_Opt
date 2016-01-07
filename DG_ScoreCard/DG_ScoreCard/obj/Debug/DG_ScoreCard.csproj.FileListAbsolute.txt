@@ -31,3 +31,5 @@ C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.csprojResolveAssemblyReference.cache
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\AddCourse.g.cs
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\AddCourse.baml
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\EditCourse.g.cs
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\EditCourse.baml
