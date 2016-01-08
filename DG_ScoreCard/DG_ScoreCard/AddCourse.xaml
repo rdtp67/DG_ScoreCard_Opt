@@ -28,8 +28,8 @@
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Grid.RowSpan="2" Width="330"/>
                 <Grid Height="60.038" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
                     <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3" HorizontalAlignment="Left" Width="326"/>
-                    <Rectangle Fill="White" Margin="10,5,0,10" RadiusY="5" RadiusX="5" Stroke="White" Opacity="0.42" HorizontalAlignment="Left" Width="306"/>
-                    <TextBlock x:Name="maindeatils_tbl1" Margin="98.953,15.17,0,0" TextWrapping="Wrap" FontSize="18.667" TextDecorations="Underline" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="110.594" VerticalAlignment="Top"><Run Text="Main Details"/></TextBlock>
+                    <Rectangle Fill="#FF007836" Margin="10,5,0,10" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.42" HorizontalAlignment="Left" Width="306"/>
+                    <TextBlock x:Name="maindeatils_tbl1" Margin="98.953,15.17,0,0" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="110.594" VerticalAlignment="Top" Foreground="White" Text="Main Details"/>
                 </Grid>
                 <TextBlock x:Name="coursename_tbl1" Margin="10,0,0,48.107" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107" d:LayoutOverrides="LeftMargin, RightMargin" Height="25" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="coursename_tb1" Margin="10,0,24,24.607" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" d:LayoutOverrides="LeftMargin, RightMargin" Height="23.5" VerticalAlignment="Bottom"/>
@@ -40,6 +40,7 @@
                 <TextBox x:Name="website_tb1" Margin="10,58.854,24,67.501" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin"/>
                 <TextBlock x:Name="phonenumber_tbl1" Margin="10,0,0,38.5" TextWrapping="Wrap" Text="Phone Number" FontSize="16" Grid.Row="1" HorizontalAlignment="Left" Width="111.5" d:LayoutOverrides="LeftMargin, RightMargin" Height="24.001" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="phonenumber_tb1" Margin="10,0,24,10" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Bottom" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin"/>
+                <TextBox x:Name="coursename_tb1_Copy" Margin="10,0,24,24.607" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin"/>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -48,9 +49,9 @@
                 <Rectangle
             		d:IsLocked="True" d:LayoutOverrides="TopMargin, BottomMargin" VerticalAlignment="Top" Stroke="White" RadiusX="0" RadiusY="0" Height="186" Fill="White"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
-                <Rectangle Fill="White" Margin="10,11.5,0,0" RadiusY="5" RadiusX="5" Stroke="White" Height="31.114" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.42"/>
+                <Rectangle Fill="#FF007836" Margin="10,11.5,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="31.114" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.42"/>
                 <TextBlock
-            		VerticalAlignment="Top" TextDecorations="Underline" Text="Locations Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1" Margin="24.454,15.614,0,0" Height="27" HorizontalAlignment="Left" FontSize="18.667"/>
+            		VerticalAlignment="Top" TextDecorations="{x:Null}" Text="Locations Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1" Margin="24.454,15.614,0,0" Height="27" HorizontalAlignment="Left" FontSize="18.667" Foreground="White"/>
                 <TextBlock
             		Width="63" VerticalAlignment="Top" Text="Address: " TextWrapping="Wrap" RenderTransformOrigin="0.506,-0.617" x:Name="address_tbl1" Margin="13,61,0,0" Height="25" HorizontalAlignment="Left" FontSize="16"/>
                 <TextBox
@@ -80,33 +81,64 @@
                 </Grid.RowDefinitions>
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Grid.RowSpan="3" Width="330"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3" HorizontalAlignment="Left" Width="330" Margin="1.25,0,0,0" Height="60.038" VerticalAlignment="Top"/>
-                <Rectangle Fill="White" Margin="10,7.273,0,0" RadiusY="5" RadiusX="5" Stroke="White" Opacity="0.42" HorizontalAlignment="Left" Width="312.496" Height="45.038" VerticalAlignment="Top"/>
-                <TextBlock x:Name="maindeatils_tbl1_Copy" Margin="96.953,17.441,0,0" TextWrapping="Wrap" FontSize="18.667" TextDecorations="Underline" HorizontalAlignment="Left" Width="121.594" VerticalAlignment="Top" Text="Course Details"/>
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,0,0,37.04" TextWrapping="Wrap" Text="Basket Type" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="Year Established" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="7.593,-5.96,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Course Type" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="10.716,72.88,0,58.16" Grid.Row="2" TextWrapping="Wrap" Text="Private" d:LayoutOverrides="Height"/>
-                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="10,30.96,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Terrain" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock10" Margin="10.716,0,0,36.96" Grid.Row="2" TextWrapping="Wrap" Text="Pay" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBlock x:Name="textBlock11" Margin="0,0,21.953,37.04" TextWrapping="Wrap" Text="Disctance" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="68.047"/>
-                <TextBlock x:Name="textBlock12" HorizontalAlignment="Right" Margin="0,-5,21.953,10.04" Grid.Row="1" TextWrapping="Wrap" Text="Number of holes" d:LayoutOverrides="HorizontalAlignment, Height"/>
-                <TextBlock x:Name="textBlock14" Margin="0,0,39.54,10" TextWrapping="Wrap" Text="Rating" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                <TextBlock x:Name="textBlock15" HorizontalAlignment="Left" Margin="10.716,-5.92,0,0" TextWrapping="Wrap" Text="Tee Type" VerticalAlignment="Top" Grid.Row="1"/>
-                <TextBlock x:Name="textBlock16" HorizontalAlignment="Left" Margin="8.83,0,0,5.04" Grid.Row="2" TextWrapping="Wrap" Text="Course Designer" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock17" HorizontalAlignment="Left" Margin="10.716,0,0,21" Grid.Row="2" TextWrapping="Wrap" Text="Course Has Guides" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock18" Margin="10,51.92,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Backet Maker" VerticalAlignment="Top" HorizontalAlignment="Left" Width="78.46"/>
+                <Rectangle Fill="#FF007836" Margin="10,7.273,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.42" HorizontalAlignment="Left" Width="312.496" Height="45.038" VerticalAlignment="Top"/>
+                <TextBlock x:Name="maindeatils_tbl1_Copy" Margin="96.953,17.441,0,0" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" HorizontalAlignment="Left" Width="121.594" VerticalAlignment="Top" Foreground="White"><Run Text="Course "/><Run Text="Details"/></TextBlock>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="33.522,63.614,0,48.426" TextWrapping="Wrap" Text="Basket Type: " FontSize="13.333"/>
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="8.182,0,0,25.692" TextWrapping="Wrap" Text="Year Established: " VerticalAlignment="Bottom" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="30.838,2.041,0,-2.001" Grid.Row="1" TextWrapping="Wrap" Text="Course Type: " FontSize="13.333"/>
+                <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="63.632,53.534,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Private: " FontSize="13.333" VerticalAlignment="Top"/>
+                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="62.831,7.001,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Terrain: " VerticalAlignment="Top" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock10" Margin="39.357,0,0,53.336" Grid.Row="2" TextWrapping="Wrap" Text="Pay to Play: " VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock15" HorizontalAlignment="Left" Margin="50.788,110.308,0,0" TextWrapping="Wrap" Text="Tee Type: " VerticalAlignment="Top" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock16" HorizontalAlignment="Left" Margin="11.329,0,0,7.531" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom"><Run Text="Course "/><Run FontSize="13.333" Text="Designer: "/></TextBlock>
+                <TextBlock x:Name="textBlock17" HorizontalAlignment="Left" Margin="2.435,0,0,30.265" Grid.Row="2" TextWrapping="Wrap" Text="Course Has Guide:" VerticalAlignment="Bottom" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock18" Margin="24.977,29.734,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Basket Maker:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85.191" FontSize="13.333" d:LayoutOverrides="VerticalAlignment" Height="18.8"/>
+                <TextBox x:Name="basket_tb" Margin="115.169,63.614,10,48.426" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black"/>
+                <TextBox x:Name="year_established_tb" Margin="115.169,0,10,24.465" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="basket_maker_tb" Margin="115.165,29.574,10.004,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Row="2"/>
+                <TextBox x:Name="course_designer_tb" Margin="115.169,0,10,6.304" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Bottom" Grid.Row="2"/>
+                <ComboBox x:Name="tee_type_cb" Margin="115.163,0,10.004,-2.041" Height="21.506" VerticalAlignment="Bottom" >
+                    <ComboBoxItem Name="tti1">Grass</ComboBoxItem>
+                    <ComboBoxItem Name="tti2">Concrete</ComboBoxItem>
+                    <ComboBoxItem Name="tti3">Rubber</ComboBoxItem>
+                    <ComboBoxItem Name="tti4">Mix</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="course_type_cb" Margin="115.169,4,9.998,-4.506" Grid.Row="1" Height="21.506">
+                    <ComboBoxItem Name="cci1">Permanent</ComboBoxItem>
+                    <ComboBoxItem Name="cci2">Temporary</ComboBoxItem>
+                    <ComboBoxItem Name="cci3">Seasonal</ComboBoxItem>
+                    <ComboBoxItem Name="cci4">Practice</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="terrain_cb" Margin="115.163,6.501,10.004,0" Grid.Row="2" Height="21.506" VerticalAlignment="Top">
+                    <ComboBoxItem Name="ti1">Open</ComboBoxItem>
+                    <ComboBoxItem Name="ti2">Wooded</ComboBoxItem>
+                    <ComboBoxItem Name="ti3">Rocky</ComboBoxItem>
+                </ComboBox>
+                <RadioButton x:Name="radioButton" Content="Yes" Margin="115.169,55.97,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46.911" GroupName="course_private_r"/>
+                <RadioButton x:Name="radioButton_Copy" Content="Yes" Margin="115.169,0,0,56.11" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="p2p_r"/>
+                <RadioButton x:Name="radioButton_Copy1" Content="No" Margin="0,55.97,119.842,0" Grid.Row="2" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Top" GroupName="course_private_r"/>
+                <RadioButton x:Name="radioButton_Copy2" Content="No" Margin="0,0,113.953,55.772" Grid.Row="2" HorizontalAlignment="Right" Width="51.467" VerticalAlignment="Bottom" GroupName="p2p_r"/>
+                <RadioButton x:Name="radioButton_Copy3" Content="Yes" Margin="115.169,0,0,33.376" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="courseguide_r"/>
+                <RadioButton x:Name="radioButton_Copy4" Content="No" Margin="0,0,113.953,33.038" Grid.Row="2" HorizontalAlignment="Right" Width="51.467" VerticalAlignment="Bottom" GroupName="courseguide_r"/>
             </Grid>
             <Grid Height="186" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="455">
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
-                <Rectangle Fill="White" Margin="10,11.386,0,0" RadiusY="5" RadiusX="5" Stroke="White" Height="31.114" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.42"/>
-                <TextBlock TextDecorations="Underline" Text="Park Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1_Copy" Margin="44,15.5,0,0" HorizontalAlignment="Left" FontSize="18.667" Height="27" VerticalAlignment="Top" RenderTransformOrigin="0.394,0.463"/>
-                <TextBlock x:Name="textBlock5" HorizontalAlignment="Right" Margin="0,70.07,140.863,0" TextWrapping="Wrap" Text="Pet Friendly" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="10,0,0,38.97" TextWrapping="Wrap" Text="Private" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock8" Margin="164,0,193.54,35.96" TextWrapping="Wrap" Text="Park Has Guide" VerticalAlignment="Bottom" RenderTransformOrigin="-0.103,1.312"/>
-                <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="10,64.05,0,0" TextWrapping="Wrap" Text="Park Name" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock19" Margin="123,67.06,0,0" TextWrapping="Wrap" Text="Park Hours" VerticalAlignment="Top" HorizontalAlignment="Left" Width="61.46"/>
+                <Rectangle Fill="#FF007836" Margin="10,11.386,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="31.114" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.42"/>
+                <TextBlock TextDecorations="{x:Null}" Text="Park Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1_Copy" Margin="44,15.5,0,0" HorizontalAlignment="Left" FontSize="18.667" Height="27" VerticalAlignment="Top" RenderTransformOrigin="0.394,0.463" Foreground="White"/>
+                <TextBlock x:Name="textBlock5" HorizontalAlignment="Right" Margin="0,56.612,28.422,0" TextWrapping="Wrap" Text="Pet Friendly" VerticalAlignment="Top" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,0,50.922,50.92" TextWrapping="Wrap" Text="Private: " VerticalAlignment="Bottom" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock8" Margin="25,0,0,29.96" TextWrapping="Wrap" Text="Park Has Guide:" VerticalAlignment="Bottom" RenderTransformOrigin="-0.103,1.312" HorizontalAlignment="Left" Width="97.46" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="23.741,65.276,0,0" TextWrapping="Wrap" Text="Park Name: " VerticalAlignment="Top" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock19" Margin="23.742,0,0,70.979" TextWrapping="Wrap" Text="Park Hours: " VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70.923" FontSize="13.333"/>
+                <RadioButton x:Name="radioButton_Copy5" Content="Yes" Margin="124.669,0,0,30.96" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="parkguide_r"/>
+                <RadioButton x:Name="radioButton_Copy6" Content="No" Margin="176.58,0,0,30.96" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45.578" GroupName="parkguide_r"/>
+                <RadioButton x:Name="radioButton_Copy7" Content="Yes" Margin="0,0,60.578,29.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="park_private_r"/>
+                <RadioButton x:Name="radioButton_Copy8" Content="No" Margin="0,0,10,30.96" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="park_private_r"/>
+                <RadioButton x:Name="radioButton_Copy9" Content="Yes" Margin="0,79.346,60.578,91.694" HorizontalAlignment="Right" Width="46.911" d:LayoutOverrides="Height" GroupName="pet_r"/>
+                <RadioButton x:Name="radioButton_Copy10" Content="No" Margin="0,79.346,10,91.694" HorizontalAlignment="Right" Width="45.578" d:LayoutOverrides="Height" GroupName="pet_r"/>
+                <TextBox x:Name="basket_maker_tb_Copy" Margin="99.665,64.05,148.004,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top"/>
+                <TextBox x:Name="basket_maker_tb_Copy1" Margin="99.665,0,148.004,69.753" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Bottom"/>
             </Grid>
             <Button x:Name="addholes_btn_Copy" Content="Main Page" HorizontalAlignment="Left" Height="31" Margin="0,0,0,-36" VerticalAlignment="Bottom" Width="87"/>
         </Grid>
