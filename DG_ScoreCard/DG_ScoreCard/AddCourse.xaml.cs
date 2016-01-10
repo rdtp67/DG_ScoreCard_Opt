@@ -24,5 +24,26 @@ namespace DG_ScoreCard
         {
             InitializeComponent();
         }
+        //Desc: Changes to Holes Grid
+        private void addholes_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Main_g.Visibility = Visibility.Hidden;
+            Simple_g.Visibility = Visibility.Visible;
+        }
+        //Desc: Changes to Main Grid
+        private void main_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Simple_g.Visibility = Visibility.Hidden;
+            Main_g.Visibility = Visibility.Visible;
+        }
+        //Submits Course
+        private void submit_btn_Click(object sender, RoutedEventArgs e)
+        {
+            //Check for main fields entered
+
+            //Verify field lengths
+
+
+        }
     }
 }

@@ -1004,10 +1004,10 @@
         </Grid>
         <Grid Height="85.5" VerticalAlignment="Top">
             <Rectangle Stroke="Black" Fill="#FF6E5CAE"/>
-            <Label x:Name="username_l" Content="Unauthorized!" HorizontalAlignment="Right" Background="#FF6E5CAE" Margin="0,16.667,2,35.373" Width="184.667" FontSize="18.667" Foreground="White" RenderTransformOrigin="0.501,-0.1" d:LayoutOverrides="Height"/>
+            <Label x:Name="username_l" Content="Unauthorized!" Background="#FF6E5CAE" Margin="381.333,16.667,10,35.373" FontSize="18.667" Foreground="White" RenderTransformOrigin="0.501,-0.1" d:LayoutOverrides="Height" HorizontalContentAlignment="Right"/>
             <Rectangle x:Name="move3_r" Fill="#FF6E5CAE" Height="19" Margin="10,5,236,0" VerticalAlignment="Top" MouseDown="move3_r_MouseDown" Cursor="SizeAll"/>
             <Button x:Name="usersettings3_btn" Content="Button" HorizontalAlignment="Right" Height="35.373" Margin="0,0,-314,-12" VerticalAlignment="Bottom" Width="160.993" Style="{DynamicResource MainWindowuserssettingsv1}"/>
-            <Menu x:Name="menu" HorizontalAlignment="Right" Height="35.373" Margin="0,0,83,0" VerticalAlignment="Bottom" Width="74" Background="{x:Null}" Style="{DynamicResource MenuStyle1}">
+            <Menu x:Name="menu" HorizontalAlignment="Right" Height="35.373" Margin="0,0,10,0" VerticalAlignment="Bottom" Width="74" Background="{x:Null}" Style="{DynamicResource MenuStyle1}">
                 <MenuItem Header="MenuItem" Background="{x:Null}" Height="32.04" Width="74" Template="{DynamicResource MainWindowMainMenuItemv1}">
                     <MenuItem x:Name="settings3_mi" Header="Settings" Click="settings3_mi_Click"/>
                     <MenuItem x:Name="signout3_mi" Header="Sign Out" Click="signout3_mi_Click"/>
