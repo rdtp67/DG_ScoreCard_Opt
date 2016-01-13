@@ -43,6 +43,18 @@
   <wsdl:message name="IDGservice_returnCstringLists_OutputMessage">
     <wsdl:part name="parameters" element="tns:returnCstringListsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_insertCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertCourse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertPark_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertPark" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertPark_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertParkResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
@@ -67,6 +79,14 @@
     <wsdl:operation name="returnCstringLists">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/returnCstringLists" message="tns:IDGservice_returnCstringLists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/returnCstringListsResponse" message="tns:IDGservice_returnCstringLists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertCourse" message="tns:IDGservice_insertCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertCourseResponse" message="tns:IDGservice_insertCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertPark">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertPark" message="tns:IDGservice_insertPark_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertParkResponse" message="tns:IDGservice_insertPark_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -118,6 +138,24 @@
     </wsdl:operation>
     <wsdl:operation name="returnCstringLists">
       <soap:operation soapAction="http://tempuri.org/IDGservice/returnCstringLists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCourse">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertPark">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertPark" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

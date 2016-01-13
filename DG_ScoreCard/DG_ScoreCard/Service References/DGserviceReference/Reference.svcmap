@@ -24,11 +24,11 @@
     <MetadataSource Address="http://localhost:54097/DGservice.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DGservice.disco" MetadataType="Disco" ID="856e1a0c-fb81-437b-9e28-8ce1efb5cd38" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?disco" />
-    <MetadataFile FileName="DGservice1.xsd" MetadataType="Schema" ID="bdc3c811-a7a2-4398-8db6-b946876ee395" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?xsd=xsd1" />
-    <MetadataFile FileName="DGservice.xsd" MetadataType="Schema" ID="a7a2ac8e-a609-449e-b922-815e5dcab6a9" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?xsd=xsd0" />
     <MetadataFile FileName="DGservice2.xsd" MetadataType="Schema" ID="c708fde8-2cd4-452c-843b-3ee97eeea31e" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?xsd=xsd2" />
+    <MetadataFile FileName="DGservice1.xsd" MetadataType="Schema" ID="bdc3c811-a7a2-4398-8db6-b946876ee395" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?xsd=xsd1" />
     <MetadataFile FileName="DGservice.wsdl" MetadataType="Wsdl" ID="95376af7-8f23-496d-a36e-4ce0c3d26202" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?wsdl" />
+    <MetadataFile FileName="DGservice.xsd" MetadataType="Schema" ID="a7a2ac8e-a609-449e-b922-815e5dcab6a9" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?xsd=xsd0" />
+    <MetadataFile FileName="DGservice.disco" MetadataType="Disco" ID="856e1a0c-fb81-437b-9e28-8ce1efb5cd38" SourceId="1" SourceUrl="http://localhost:54097/DGservice.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

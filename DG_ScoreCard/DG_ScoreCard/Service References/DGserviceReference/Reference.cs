@@ -129,6 +129,56 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/returnCstringLists", ReplyAction="http://tempuri.org/IDGservice/returnCstringListsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.login>> returnCstringListsAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertCourse", ReplyAction="http://tempuri.org/IDGservice/insertCourseResponse")]
+        void insertCourse(
+                    string name, 
+                    string website, 
+                    string phone, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> guide, 
+                    string course_designer, 
+                    string user, 
+                    string address, 
+                    string state, 
+                    string city, 
+                    string country, 
+                    string zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertCourse", ReplyAction="http://tempuri.org/IDGservice/insertCourseResponse")]
+        System.Threading.Tasks.Task insertCourseAsync(
+                    string name, 
+                    string website, 
+                    string phone, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> guide, 
+                    string course_designer, 
+                    string user, 
+                    string address, 
+                    string state, 
+                    string city, 
+                    string country, 
+                    string zip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertPark", ReplyAction="http://tempuri.org/IDGservice/insertParkResponse")]
+        void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertPark", ReplyAction="http://tempuri.org/IDGservice/insertParkResponse")]
+        System.Threading.Tasks.Task insertParkAsync(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -204,6 +254,60 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.login>> returnCstringListsAsync(string username) {
             return base.Channel.returnCstringListsAsync(username);
+        }
+        
+        public void insertCourse(
+                    string name, 
+                    string website, 
+                    string phone, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> guide, 
+                    string course_designer, 
+                    string user, 
+                    string address, 
+                    string state, 
+                    string city, 
+                    string country, 
+                    string zip) {
+            base.Channel.insertCourse(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user, address, state, city, country, zip);
+        }
+        
+        public System.Threading.Tasks.Task insertCourseAsync(
+                    string name, 
+                    string website, 
+                    string phone, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> guide, 
+                    string course_designer, 
+                    string user, 
+                    string address, 
+                    string state, 
+                    string city, 
+                    string country, 
+                    string zip) {
+            return base.Channel.insertCourseAsync(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user, address, state, city, country, zip);
+        }
+        
+        public void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name) {
+            base.Channel.insertPark(name, hour_h, hour_l, guide, pet, pri, user_id, course_name);
+        }
+        
+        public System.Threading.Tasks.Task insertParkAsync(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name) {
+            return base.Channel.insertParkAsync(name, hour_h, hour_l, guide, pet, pri, user_id, course_name);
         }
     }
 }

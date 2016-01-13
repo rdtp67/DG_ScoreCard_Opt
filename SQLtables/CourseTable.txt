@@ -2,7 +2,6 @@ create table course(
 course_id int NULL AUTO_INCREMENT,
 user_id int,
 loc_id int,
-hole_id int,
 course_name varchar(50),
 course_website varchar(50),
 course_phone_number varchar(15),
@@ -17,5 +16,6 @@ course_pay char(1),
 course_has_guides char(1),
 course_designer varchar(50),
 course_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+Unique(course_name, user_id),
 PRIMARY KEY(course_id)
 )

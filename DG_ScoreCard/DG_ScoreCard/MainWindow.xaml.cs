@@ -343,7 +343,7 @@ namespace DG_ScoreCard
             {
                 Button[] dark = { course_mycourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
                 setSidePanelButtons(dark, course_addcourse3_btn);
-                AddCourse addcourse = new AddCourse();
+                AddCourse addcourse = new AddCourse(username);
                 pageload3_f.NavigationService.Navigate(addcourse);
                 currentbutton = "addcourse";
             }
