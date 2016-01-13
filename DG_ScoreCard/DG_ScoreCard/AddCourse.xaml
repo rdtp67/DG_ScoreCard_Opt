@@ -129,7 +129,6 @@
                 <TextBlock x:Name="textBlock5" HorizontalAlignment="Right" Margin="0,56.612,28.422,0" TextWrapping="Wrap" Text="Pet Friendly" VerticalAlignment="Top" FontSize="13.333"/>
                 <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,0,50.922,50.92" TextWrapping="Wrap" Text="Private: " VerticalAlignment="Bottom" FontSize="13.333"/>
                 <TextBlock x:Name="textBlock8" Margin="25,0,0,29.96" TextWrapping="Wrap" Text="Park Has Guide:" VerticalAlignment="Bottom" RenderTransformOrigin="-0.103,1.312" HorizontalAlignment="Left" Width="97.46" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="23.741,65.276,0,0" TextWrapping="Wrap" Text="Park Name: " VerticalAlignment="Top" FontSize="13.333"/>
                 <TextBlock x:Name="textBlock19" Margin="23.742,0,0,70.979" TextWrapping="Wrap" Text="Park Hours: " VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70.923" FontSize="13.333"/>
                 <RadioButton x:Name="park_guide_y_r" Content="Yes" Margin="124.669,0,0,30.96" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="parkguide_r"/>
                 <RadioButton x:Name="park_guide_n_r" Content="No" Margin="176.58,0,0,30.96" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45.578" GroupName="parkguide_r"/>
@@ -137,7 +136,6 @@
                 <RadioButton x:Name="park_private_n_r" Content="No" Margin="0,0,10,30.96" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="park_private_r"/>
                 <RadioButton x:Name="park_pet_y_r" Content="Yes" Margin="0,79.346,60.578,91.694" HorizontalAlignment="Right" Width="46.911" d:LayoutOverrides="Height" GroupName="pet_r"/>
                 <RadioButton x:Name="park_pet_n_r" Content="No" Margin="0,79.346,10,91.694" HorizontalAlignment="Right" Width="45.578" d:LayoutOverrides="Height" GroupName="pet_r"/>
-                <TextBox x:Name="park_name_tb" Margin="99.665,64.05,148.004,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top"/>
                 <Grid HorizontalAlignment="Left" Height="29.5" Margin="14,13,0,0" VerticalAlignment="Top" Width="157.58">
                     <TextBlock TextDecorations="{x:Null}" Text="Park Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1_Copy" FontSize="18.667" RenderTransformOrigin="0.394,0.463" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>

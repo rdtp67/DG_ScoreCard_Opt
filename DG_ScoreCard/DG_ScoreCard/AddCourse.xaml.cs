@@ -49,64 +49,41 @@ namespace DG_ScoreCard
             char? c_private = null;
             char? c_p2p = null;
             char? c_guide = null;
-            if(private_yes_r.IsChecked == true)
-            {
-                c_private = 'T';
-            }
-            if(private_no_r.IsChecked == true)
-            {
-                c_private = 'F';
-            }
-            if(p2p_yes_r.IsChecked == true)
-            {
-                c_p2p = 'T';
-            }
-            if(p2p_no_r.IsChecked == true)
-            {
-                c_p2p = 'F';
-            }
-            if(course_guide_yes_r.IsChecked == true)
-            {
-                c_guide = 'T';
-            }
-            if(course_guide_no_r.IsChecked == true)
-            {
-                c_guide = 'F';
-            }
             char? p_private = null;
             char? p_pet = null;
             char? p_guide = null;
-            if (park_pet_y_r.IsChecked == true)
-            {
-                p_private = 'T';
-            }
-            if (park_pet_n_r.IsChecked == true)
-            {
-                p_private = 'F';
-            }
-            if (park_pet_y_r.IsChecked == true)
-            {
-                p_pet = 'T';
-            }
-            if (park_pet_n_r.IsChecked == true)
-            {
-                p_pet = 'F';
-            }
-            if (park_guide_y_r.IsChecked == true)
-            {
-                p_guide = 'T';
-            }
-            if (park_guide_n_r.IsChecked == true)
-            {
-                p_guide = 'F';
-            }
+
+            c_private = getRadioButton(private_yes_r, private_no_r);
+            c_p2p = getRadioButton(p2p_yes_r, p2p_no_r);
+            c_guide = getRadioButton(course_guide_yes_r, course_guide_no_r);
+            p_private = getRadioButton(park_private_y_r, park_private_n_r);
+            p_pet = getRadioButton(park_pet_y_r, park_pet_n_r);
+            p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
+          
 
             //Check for main fields entered
 
             //Verify field lengths
-            MessageBox.Show(park_name_tb.Text);
+            MessageBox.Show(parkname_tb.Text);
             client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            client.insertPark(park_name_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, username, coursename_tb1.Text);
+            client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, username, coursename_tb1.Text);
+        }
+
+        //Desc: Gets Radio button current state
+        //Pre: radio buttons
+        //Post: ischecked returns T or F, nothing returns NULL
+        private char? getRadioButton(RadioButton yes, RadioButton no)
+        {
+            if(yes.IsChecked == true)
+            {
+                return 'T';
+            }
+            if(no.IsChecked == true)
+            {
+                return 'F';
+            }
+
+            return null;
         }
     }
 }

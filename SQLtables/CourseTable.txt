@@ -2,6 +2,7 @@ create table course(
 course_id int NULL AUTO_INCREMENT,
 user_id int,
 loc_id int,
+park_id int,
 course_name varchar(50),
 course_website varchar(50),
 course_phone_number varchar(15),
