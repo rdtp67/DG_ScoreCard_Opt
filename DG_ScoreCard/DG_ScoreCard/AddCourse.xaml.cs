@@ -59,14 +59,14 @@ namespace DG_ScoreCard
             p_private = getRadioButton(park_private_y_r, park_private_n_r);
             p_pet = getRadioButton(park_pet_y_r, park_pet_n_r);
             p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
-          
 
             //Check for main fields entered
 
             //Verify field lengths
             MessageBox.Show(parkname_tb.Text);
-            client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, username, coursename_tb1.Text);
+            client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private);
+            client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text, client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet));
+            
         }
 
         //Desc: Gets Radio button current state
@@ -83,7 +83,7 @@ namespace DG_ScoreCard
                 return 'F';
             }
 
-            return null;
+            return 'N';
         }
     }
 }

@@ -225,17 +225,17 @@ namespace WCFwebserviceDG
         }
 
         //Desc: Inserts Course
-        public void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, string user, string address, string state, string city, string country, string zip)
+        public void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, string user, string address, string state, string city, string country, string zip, int park_id)
         {
             try
             {
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "INSERT into course(user_id, loc_id, course_name, course_website, course_phone_number, course_basket_type, course_year_established, course_tee_type, course_type, course_terrain, course_basket_manufacturer, course_private, course_pay, course_has_guides, course_designer) " +
+                cmd.CommandText = "INSERT into course(user_id, loc_id, park_id, course_name, course_website, course_phone_number, course_basket_type, course_year_established, course_tee_type, course_type, course_terrain, course_basket_manufacturer, course_private, course_pay, course_has_guides, course_designer) " +
                     "VALUES((Select user_id from user where user_name = @user ), " +
                     " (Select loc_id from location where loc_address = @address and loc_state = @state and loc_city = @city and loc_country = @country and loc_zip = @zip), " + 
-                    " @name, @website, @phone, @basket_type, @year_established, @tee_type, @course_type, @terrain, @basket_maker, @course_private, @p2p, @guide, @course_designer)";
+                    " @park_id, @name, @website, @phone, @basket_type, @year_established, @tee_type, @course_type, @terrain, @basket_maker, @course_private, @p2p, @guide, @course_designer)";
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@user", user);
                 cmd.Parameters.AddWithValue("@address", address);
@@ -243,6 +243,7 @@ namespace WCFwebserviceDG
                 cmd.Parameters.AddWithValue("@city", city);
                 cmd.Parameters.AddWithValue("@country", country);
                 cmd.Parameters.AddWithValue("@zip", zip);
+                cmd.Parameters.AddWithValue("@park_id", park_id);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@website", website);
                 cmd.Parameters.AddWithValue("@phone", phone);
@@ -271,17 +272,16 @@ namespace WCFwebserviceDG
         }
 
         //Desc: Inserts Park
-        public void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string user_name, string course_name)
+        public void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri)
         {
             try
             {
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "Insert into park(course_id, park_name, park_private, park_hours_high, park_hours_low, park_has_guides, park_pet_friendly) " +
-                    "Values( (select c.course_id from course c join user u on u.user_id = c.user_id where u.user_name = @user_name and c.course_name = @course_name), @name, @pri, @hour_h, @hour_l, @guide, @pet) ";
-                cmd.Parameters.AddWithValue("@user_name", user_name);
-                cmd.Parameters.AddWithValue("@course_name", course_name);
+                cmd.CommandText = "Insert into park(park_name, park_private, park_hours_high, park_hours_low, park_has_guides, park_pet_friendly) " +
+                    "Values(@name, @pri, @hour_h, @hour_l, @guide, @pet) ";
+                
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@pri", pri);
                 cmd.Parameters.AddWithValue("@hour_h", hour_h);
@@ -299,6 +299,46 @@ namespace WCFwebserviceDG
             {
                 myConn.Close();
             }
+        }
+
+        //Desc: Returns park_id
+        //Pre: park database parameters
+        //Post: int
+        public int getParkId(string park_name, char? park_private, string park_hours_high, string park_hours_low, char? park_has_guides, char? park_pet_friendly)
+        {
+            int park_id = 666;
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = myConn;
+                com.CommandText = "select park_id from park where park_name = @park_name and park_private = @park_private and park_hours_high = @park_hours_high and park_hours_low = @park_hours_low and park_has_guides = @park_has_guides and park_pet_friendly = @park_pet_friendly";
+                com.Parameters.AddWithValue("@park_name", park_name);
+                com.Parameters.AddWithValue("@park_private", park_private);
+                com.Parameters.AddWithValue("@park_hours_high", park_hours_high);
+                com.Parameters.AddWithValue("@park_hours_low", park_hours_low);
+                com.Parameters.AddWithValue("@park_has_guides", park_has_guides);
+                com.Parameters.AddWithValue("@park_pet_friendly", park_pet_friendly);
+
+                MySqlDataReader read = com.ExecuteReader();
+                while(read.Read())
+                {
+                    park_id = Convert.ToInt32(read["park_id"]);
+                }
+                
+                
+            }
+            catch
+            {
+                
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return park_id;
         }
 
 

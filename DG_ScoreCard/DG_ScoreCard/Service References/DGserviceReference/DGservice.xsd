@@ -122,6 +122,7 @@
         <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="park_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -139,14 +140,31 @@
         <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guide" nillable="true" type="q5:char" />
         <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="pet" nillable="true" type="q6:char" />
         <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="pri" nillable="true" type="q7:char" />
-        <xs:element minOccurs="0" name="user_id" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="course_name" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="insertParkResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getParkId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="park_name" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="park_private" nillable="true" type="q8:char" />
+        <xs:element minOccurs="0" name="park_hours_high" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="park_hours_low" nillable="true" type="xs:string" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="park_has_guides" nillable="true" type="q9:char" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="park_pet_friendly" nillable="true" type="q10:char" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getParkIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getParkIdResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

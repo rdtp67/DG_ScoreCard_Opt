@@ -150,7 +150,8 @@ namespace DG_ScoreCard.DGserviceReference {
                     string state, 
                     string city, 
                     string country, 
-                    string zip);
+                    string zip, 
+                    int park_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertCourse", ReplyAction="http://tempuri.org/IDGservice/insertCourseResponse")]
         System.Threading.Tasks.Task insertCourseAsync(
@@ -172,13 +173,20 @@ namespace DG_ScoreCard.DGserviceReference {
                     string state, 
                     string city, 
                     string country, 
-                    string zip);
+                    string zip, 
+                    int park_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertPark", ReplyAction="http://tempuri.org/IDGservice/insertParkResponse")]
-        void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name);
+        void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertPark", ReplyAction="http://tempuri.org/IDGservice/insertParkResponse")]
-        System.Threading.Tasks.Task insertParkAsync(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name);
+        System.Threading.Tasks.Task insertParkAsync(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getParkId", ReplyAction="http://tempuri.org/IDGservice/getParkIdResponse")]
+        int getParkId(string park_name, System.Nullable<char> park_private, string park_hours_high, string park_hours_low, System.Nullable<char> park_has_guides, System.Nullable<char> park_pet_friendly);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getParkId", ReplyAction="http://tempuri.org/IDGservice/getParkIdResponse")]
+        System.Threading.Tasks.Task<int> getParkIdAsync(string park_name, System.Nullable<char> park_private, string park_hours_high, string park_hours_low, System.Nullable<char> park_has_guides, System.Nullable<char> park_pet_friendly);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -275,8 +283,9 @@ namespace DG_ScoreCard.DGserviceReference {
                     string state, 
                     string city, 
                     string country, 
-                    string zip) {
-            base.Channel.insertCourse(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user, address, state, city, country, zip);
+                    string zip, 
+                    int park_id) {
+            base.Channel.insertCourse(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user, address, state, city, country, zip, park_id);
         }
         
         public System.Threading.Tasks.Task insertCourseAsync(
@@ -298,16 +307,25 @@ namespace DG_ScoreCard.DGserviceReference {
                     string state, 
                     string city, 
                     string country, 
-                    string zip) {
-            return base.Channel.insertCourseAsync(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user, address, state, city, country, zip);
+                    string zip, 
+                    int park_id) {
+            return base.Channel.insertCourseAsync(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user, address, state, city, country, zip, park_id);
         }
         
-        public void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name) {
-            base.Channel.insertPark(name, hour_h, hour_l, guide, pet, pri, user_id, course_name);
+        public void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri) {
+            base.Channel.insertPark(name, hour_h, hour_l, guide, pet, pri);
         }
         
-        public System.Threading.Tasks.Task insertParkAsync(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri, string user_id, string course_name) {
-            return base.Channel.insertParkAsync(name, hour_h, hour_l, guide, pet, pri, user_id, course_name);
+        public System.Threading.Tasks.Task insertParkAsync(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri) {
+            return base.Channel.insertParkAsync(name, hour_h, hour_l, guide, pet, pri);
+        }
+        
+        public int getParkId(string park_name, System.Nullable<char> park_private, string park_hours_high, string park_hours_low, System.Nullable<char> park_has_guides, System.Nullable<char> park_pet_friendly) {
+            return base.Channel.getParkId(park_name, park_private, park_hours_high, park_hours_low, park_has_guides, park_pet_friendly);
+        }
+        
+        public System.Threading.Tasks.Task<int> getParkIdAsync(string park_name, System.Nullable<char> park_private, string park_hours_high, string park_hours_low, System.Nullable<char> park_has_guides, System.Nullable<char> park_pet_friendly) {
+            return base.Channel.getParkIdAsync(park_name, park_private, park_hours_high, park_hours_low, park_has_guides, park_pet_friendly);
         }
     }
 }

@@ -30,10 +30,13 @@ namespace WCFwebserviceDG
         List<login> returnCstringLists(string username);
 
         [OperationContract]
-        void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, string user, string address, string state, string city, string country, string zip);
+        void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, string user, string address, string state, string city, string country, string zip, int park_id);
 
         [OperationContract]
-        void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string user_id, string course_name);
+        void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri);
+
+        [OperationContract]
+        int getParkId(string park_name, char? park_private, string park_hours_high, string park_hours_low, char? park_has_guides, char? park_pet_friendly);
         
     }
 
