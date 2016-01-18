@@ -116,5 +116,10 @@ namespace DG_ScoreCard
 
 
         }
+
+        private void mini_btn_Click(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
+        }
     }
 }

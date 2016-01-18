@@ -168,13 +168,41 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="mini_btnv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle x:Name="rectangle" Fill="#FF898989" RadiusY="5" RadiusX="5" Stroke="White"/>
+                            <Rectangle Fill="White" Margin="2.875,2.75,2.75,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" Opacity="0.2" Height="11.25" VerticalAlignment="Top"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Fill" TargetName="rectangle" Value="#FFBDBDBD"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="rectangle"/>
     </Window.Triggers>
     <Grid>
         <Rectangle x:Name="rectangle" Fill="#FF5CC8E0" Stroke="Black"/>
-        <Grid Margin="10,10,0,10">
+        <Grid Margin="10,10,0,0" Height="772" VerticalAlignment="Top" HorizontalAlignment="Left" Width="782">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="759*"/>
                 <ColumnDefinition Width="14*"/>
@@ -191,7 +219,7 @@
                     <ColumnDefinition Width="16*"/>
                     <ColumnDefinition Width="155*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Fill="#FFDDF7FD" Stroke="#FF5CC8E0" Margin="0.443,10,0,-10"/>
+                <Rectangle Fill="#FFDDF7FD" Stroke="#FF5CC8E0" Margin="0.443,10,0,0"/>
                 <Rectangle Fill="#FFDDF7FD" Stroke="#FF5CC8E0" Grid.Column="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
                 <Rectangle Fill="#FFDDF7FD" Margin="0.443,0,0,0" Stroke="#FF5CC8E0" Height="44" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
                 <Rectangle Fill="#FFDDF7FD" Margin="0.443,0,0,0" Stroke="#FF5CC8E0" Height="44" VerticalAlignment="Top" Grid.Column="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
@@ -220,7 +248,7 @@
                 <PasswordBox x:Name="confirm2_pb" Height="31" Margin="12.09,221.936,7.91,0" VerticalAlignment="Top" FontSize="18.667"/>
                 <TextBox x:Name="address2_tb" Margin="10,0,10,311.012" TextWrapping="Wrap" Grid.Column="2" FontSize="18.667" Height="31" VerticalAlignment="Bottom"/>
                 <Label x:Name="label1_Copy8" Content="City" HorizontalAlignment="Left" Margin="15,257.936,0,256.962" Width="70" Grid.Column="2"/>
-                <TextBox x:Name="city2_tb" Margin="15,0,133.439,244.962" TextWrapping="Wrap" Grid.Column="2" FontSize="18.667" Height="31" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
+                <TextBox x:Name="city2_tb" Margin="15,0,138.439,244.962" TextWrapping="Wrap" Grid.Column="2" FontSize="18.667" Height="31" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
                 <Label x:Name="label1_Copy9" Content="Country" HorizontalAlignment="Left" Margin="10,0,0,129.962" Width="70" Grid.Column="2" d:LayoutOverrides="LeftMargin, RightMargin" Height="30" VerticalAlignment="Bottom"/>
                 <TextBox x:Name="country2_tb" Margin="10,0,10,96.407" TextWrapping="Wrap" Grid.Column="2" FontSize="18.667" Height="31" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
                 <Label x:Name="label1_Copy10" Content="Zip" HorizontalAlignment="Right" Margin="0,257.936,51.439,276.012" Width="70" Grid.Column="2"/>
@@ -229,10 +257,10 @@
                 <TextBox x:Name="state2_tb" Margin="10,0,10,170.789" TextWrapping="Wrap" Grid.Column="2" FontSize="18.667" Height="31" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
                 <TextBlock x:Name="textBlock1" Margin="127,0,152.439,256.962" TextWrapping="Wrap" Text="Type" Height="19" VerticalAlignment="Bottom" RenderTransformOrigin="1.032,0.472"/>
             </Grid>
-            <Button x:Name="submit2_btn" Content="Submit" HorizontalAlignment="Right" Height="21" Margin="0,0,22.5,4" VerticalAlignment="Bottom" Width="57" Background="White" Click="submit2_btn_Click"/>
+            <Button x:Name="submit2_btn" Content="Submit" HorizontalAlignment="Right" Margin="0,747,22.5,0" Width="57" Background="White" Click="submit2_btn_Click" Height="21" VerticalAlignment="Top"/>
         </Grid>
-        <Rectangle x:Name="movebar2_r" Height="18.667" Stroke="#FF5CC8E0" VerticalAlignment="Top" MouseDown="movebar_r_MouseDown" Cursor="SizeAll" Fill="#FF5CC8E0" Margin="10,10,66.667,0"/>
-        <ed:BlockArrow x:Name="backarrow2_BA" HorizontalAlignment="Left" Height="18" Margin="23,0,0,16" Orientation="Right" VerticalAlignment="Bottom" Width="39" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="backarrow2_BA_MouseLeftButtonDown" Style="{DynamicResource backarrow_BA}">
+        <Rectangle x:Name="movebar2_r" Height="18.667" Stroke="#FF5CC8E0" VerticalAlignment="Top" MouseDown="movebar_r_MouseDown" Cursor="SizeAll" Fill="#FF5CC8E0" Margin="10,10,77.5,0"/>
+        <ed:BlockArrow x:Name="backarrow2_BA" Margin="23,758,0,0" Orientation="Right" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="backarrow2_BA_MouseLeftButtonDown" Style="{DynamicResource backarrow_BA}" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39">
             <ed:BlockArrow.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -242,7 +270,8 @@
                 </TransformGroup>
             </ed:BlockArrow.RenderTransform>
         </ed:BlockArrow>
-        <Button x:Name="exit2_btn" Content="Button" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.967,0.283" Margin="752,10,0,0" Click="exit2_btn_Click">
+        <Button x:Name="mini_btn" Content="Button" Click="mini_btn_Click" Margin="719.5,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.391,0.167" Height="30" Style="{DynamicResource mini_btnv1}" HorizontalAlignment="Left" Width="30"/>
+        <Button x:Name="exit2_btn" Content="Button" Height="30" VerticalAlignment="Top" RenderTransformOrigin="0.967,0.283" Margin="752,10,0,0" Click="exit2_btn_Click" Width="30" HorizontalAlignment="Left" d:LayoutOverrides="Width">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Grid/>

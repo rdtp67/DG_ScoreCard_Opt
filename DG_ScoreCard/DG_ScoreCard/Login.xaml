@@ -76,12 +76,86 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="mini_btnv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle x:Name="rectangle" Fill="#FF898989" RadiusY="5" RadiusX="5" Stroke="White"/>
+                            <Rectangle Fill="White" Margin="2.875,2.75,2.75,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" Opacity="0.2" Height="11.25" VerticalAlignment="Top"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Fill" TargetName="rectangle" Value="#FFBDBDBD"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="login_exit_btnv1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{x:Null}">
+                            <Rectangle x:Name="rectangle" Fill="#FFAA1212" RadiusY="5" RadiusX="5" Stroke="White"/>
+                            <Rectangle Fill="White" Margin="1.941,1.902,1.356,0" RadiusY="5" RadiusX="5" Stroke="White" StrokeThickness="0" Opacity="0.2" Height="7.781" VerticalAlignment="Top"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Fill" TargetName="rectangle" Value="#FFE82222"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="rectangle"/>
     </Window.Triggers>
-    <Grid>
+    <Grid HorizontalAlignment="Left" Width="392" Height="592" VerticalAlignment="Top">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.04,0.021" StartPoint="0.705,0.832">
                 <GradientStop Color="#FF193E7E" Offset="0.008"/>
@@ -107,7 +181,8 @@
             <PasswordBox x:Name="password1_pb" Margin="20,58.5,20,0" Grid.Row="1" Height="35" VerticalAlignment="Top" FontSize="21.333" Background="#FF191478" SelectionBrush="White" Foreground="White" PasswordChar="*"/>
         </Grid>
         <Button x:Name="submit1_btn" Content="Submit" HorizontalAlignment="Right" Height="40.5" Margin="0,0,45,146" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="submit1_btn_Click"/>
-        <Button x:Name="exit1_btn" Content="Exit" HorizontalAlignment="Right" Height="40.5" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="142.5" FontSize="18.667" Background="White" Click="exit1_btn_Click"/>
+        <Button x:Name="mini_btn" Content="Button" HorizontalAlignment="Right" Height="30" Margin="0,10,45,0" VerticalAlignment="Top" Width="30" Click="mini_btn_Click" Style="{DynamicResource mini_btnv1}" RenderTransformOrigin="-0.242,0.318"/>
+        <Button x:Name="exit1_btn" Content="Exit" HorizontalAlignment="Right" Height="30" Margin="0,10,10,0" VerticalAlignment="Top" Width="30" FontSize="18.667" Background="White" Click="exit1_btn_Click" Style="{DynamicResource login_exit_btnv1}"/>
         <Grid HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" VerticalAlignment="Top" Width="72.334">
             <Rectangle x:Name="rectangle" Fill="#FFAAA8BD" Stroke="#FF221F42"/>
             <Rectangle Fill="White" Margin="5.333,2.75,4,10" Stroke="White" Opacity="0.3"/>

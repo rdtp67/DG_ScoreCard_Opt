@@ -973,8 +973,7 @@
             <Button x:Name="stats_mystats3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelmystatsv1}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Click="stats_mystats3_btn_Click" Visibility="Hidden" />
             <Button x:Name="stats_searchstats3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelsearchstatsv1}"  Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Click="stats_searchstats3_btn_Click" Margin="0,64.96,0,0" Visibility="Hidden" />
         </Grid>
-        <Frame x:Name="pageload3_f" Content="" Margin="195.281,210.649,46.718,31.351" BorderBrush="Black" NavigationUIVisibility="Hidden" Width="950" Height="550"/>
-        <Grid x:Name="toppanelgrid" Height="93.5" Margin="208.5,91.505,10,0" VerticalAlignment="Top">
+        <Grid x:Name="toppanelgrid" Height="93.5" Margin="208.5,91.505,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="936.782">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="51*"/>
                 <ColumnDefinition Width="113*"/>
@@ -987,7 +986,7 @@
                 <ColumnDefinition Width="317*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="round3_btn" Content="Rounds" Margin="0,0,0,-0.5" Background="Silver" Grid.Column="1" Height="94" VerticalAlignment="Top" Click="round3_btn_Click" BorderThickness="1" Style="{DynamicResource MainWindowDiscButtonv1}"/>
-            <Button x:Name="course3_btn" Content="Course" Margin="0,0,0,-0.5" Grid.Column="3" Background="Silver" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource MainWindowLocationButtonv1}" HorizontalAlignment="Left" Width="114" Click="course3_btn_Click"/>
+            <Button x:Name="course3_btn" Content="Course" Margin="0,0,0,-0.5" Grid.Column="3" Background="Silver" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource MainWindowLocationButtonv1}" HorizontalAlignment="Left" Width="109.757" Click="course3_btn_Click" d:LayoutOverrides="LeftMargin, RightMargin"/>
             <Button x:Name="disc3_btn" Content="Disc" Margin="-0.029,0.5,0,-0.5" Grid.Column="5" Background="Silver" Style="{DynamicResource WindowsMainButtonv1}" Click="disc3_btn_Click"/>
             <Button x:Name="stats3_btn" Content="Stats" Margin="0.012,0,0.032,0" Grid.Column="7" d:LayoutOverrides="TopMargin, BottomMargin" Foreground="Black" Style="{DynamicResource MainWindowStatsButtonv1}" Click="stats3_btn_Click">
                 <Button.Background>
@@ -1013,6 +1012,9 @@
                     <MenuItem x:Name="signout3_mi" Header="Sign Out" Click="signout3_mi_Click"/>
                 </MenuItem>
             </Menu>
+        </Grid>
+        <Grid Margin="208.5,210.649,10,10">
+            <Frame x:Name="pageload3_f" Content="" BorderBrush="Black" NavigationUIVisibility="Hidden" d:LayoutOverrides="HorizontalAlignment"/>
         </Grid>
 
     </Grid>

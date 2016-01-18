@@ -362,7 +362,12 @@ namespace DG_ScoreCard
 
             return lengthCheck;
         }
-            
+
+        private void mini_btn_Click(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
+        }
+
         ////Return byte array as hex string
         //private static string ByteArrayToHexString(byte[] ba)
         //{
