@@ -1,249 +1,275 @@
-﻿<Page x:Class="DG_ScoreCard.AddCourse"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DG_ScoreCard"
+      xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="DG_ScoreCard.AddCourse"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="900"
       Title="AddCourse" Width="Auto" Height="Auto">
 
-    <Grid>
+    <Grid x:Name="course_designer_g">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <RadioButton x:Name="simple_rb" Content="Simple" HorizontalAlignment="Left" Margin="286,0,0,17.52" VerticalAlignment="Bottom" IsChecked="True" GroupName="holemode_rbg"/>
+        <RadioButton x:Name="complex_rb" Content="Complex" Margin="345.853,0,0,17.52" VerticalAlignment="Bottom" HorizontalAlignment="Left" GroupName="holemode_rbg"/>
+        <RadioButton x:Name="custom_rb" Content="Custom" Margin="416.393,0,423.86,17.52" VerticalAlignment="Bottom" d:LayoutOverrides="Width" GroupName="holemode_rbg"/>
         <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Right" Height="38" Margin="0,0,10,5" TextWrapping="Wrap" Text="Course Creator" VerticalAlignment="Bottom" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
-        <Grid x:Name="Main_g" Margin="20,10,20,50">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid x:Name="picturedetails_g" HorizontalAlignment="Left" Width="241.5" Background="Black" Margin="0,0,0,191" d:IsLocked="True">
+        <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,10" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,10" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,10" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Grid x:Name="Main_g" Margin="20,10,20,50" Visibility="Hidden">
+            <Grid x:Name="parkdeatils_g" Margin="440,254.818,0,0">
+                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
+                <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
+                <Rectangle Fill="#FF007836" Margin="10,15.5,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.7"/>
+                <TextBlock x:Name="textBlock5" HorizontalAlignment="Right" Margin="0,71.276,28.422,0" TextWrapping="Wrap" Text="Pet Friendly" VerticalAlignment="Top" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,0,50.922,50.92" TextWrapping="Wrap" Text="Private: " VerticalAlignment="Bottom" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock8" Margin="10,0,0,10" TextWrapping="Wrap" Text="Park Has Guide:" RenderTransformOrigin="-0.103,1.312" HorizontalAlignment="Left" Width="97.46" FontSize="13.333" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock19" Margin="10,0,339.077,47.147" TextWrapping="Wrap" Text="Park Hours: " VerticalAlignment="Bottom" FontSize="13.333"/>
+                <RadioButton x:Name="park_guide_y_r" Content="Yes" Margin="112.46,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="parkguide_r"/>
+                <RadioButton x:Name="park_guide_n_r" Content="No" Margin="159.371,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45.578" GroupName="parkguide_r" d:LayoutOverrides="HorizontalAlignment"/>
+                <RadioButton x:Name="park_private_y_r" Content="Yes" Margin="0,0,60.578,29.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="park_private_r"/>
+                <RadioButton x:Name="park_private_n_r" Content="No" Margin="0,0,10,30.96" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="park_private_r"/>
+                <RadioButton x:Name="park_pet_y_r" Content="Yes" Margin="0,94.01,60.578,0" HorizontalAlignment="Right" Width="46.911" GroupName="pet_r" VerticalAlignment="Top"/>
+                <RadioButton x:Name="park_pet_n_r" Content="No" Margin="0,94.01,10,0" HorizontalAlignment="Right" Width="45.578" GroupName="pet_r" VerticalAlignment="Top"/>
+                <Grid HorizontalAlignment="Left" Height="29.5" Margin="14,13,0,0" VerticalAlignment="Top" Width="157.58">
+                    <TextBlock TextDecorations="{x:Null}" Text="Park Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1_Copy" FontSize="18.667" RenderTransformOrigin="0.394,0.463" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <ComboBox x:Name="lowtime_cb" Margin="88.998,0,254.807,47.147" Height="21.506" VerticalAlignment="Bottom">
+                    <ComboBoxItem x:Name="li1" Content="12:00AM"/>
+                    <ComboBoxItem x:Name="li2" Content="12:30AM"/>
+                    <ComboBoxItem x:Name="li3" Content="1:00AM"/>
+                    <ComboBoxItem x:Name="li4" Content="1:30AM"/>
+                    <ComboBoxItem x:Name="li5" Content="2:00AM"/>
+                    <ComboBoxItem x:Name="li55" Content="2:30AM"/>
+                    <ComboBoxItem x:Name="li6" Content="3:00AM"/>
+                    <ComboBoxItem x:Name="li7" Content="3:30AM"/>
+                    <ComboBoxItem x:Name="li8" Content="4:00AM"/>
+                    <ComboBoxItem x:Name="li9" Content="4:30AM"/>
+                    <ComboBoxItem x:Name="li10" Content="5:00AM"/>
+                    <ComboBoxItem x:Name="li11" Content="5:30AM"/>
+                    <ComboBoxItem x:Name="li12" Content="6:00AM"/>
+                    <ComboBoxItem x:Name="li13" Content="6:30AM"/>
+                    <ComboBoxItem x:Name="li14" Content="7:00AM"/>
+                    <ComboBoxItem x:Name="li15" Content="7:30AM"/>
+                    <ComboBoxItem x:Name="li16" Content="8:00AM"/>
+                    <ComboBoxItem x:Name="li17" Content="8:30AM"/>
+                    <ComboBoxItem x:Name="li18" Content="9:00AM"/>
+                    <ComboBoxItem x:Name="li19" Content="9:30AM"/>
+                    <ComboBoxItem x:Name="li20" Content="10:00AM"/>
+                    <ComboBoxItem x:Name="li21" Content="10:30AM"/>
+                    <ComboBoxItem x:Name="li22" Content="11:00AM"/>
+                    <ComboBoxItem x:Name="li23" Content="11:30AM"/>
+                    <ComboBoxItem x:Name="li25" Content="12:00PM"/>
+                    <ComboBoxItem x:Name="li26" Content="12:30PM"/>
+                    <ComboBoxItem x:Name="li27" Content="1:00PM"/>
+                    <ComboBoxItem x:Name="li28" Content="1:30PM"/>
+                    <ComboBoxItem x:Name="li285" Content="2:00PM"/>
+                    <ComboBoxItem x:Name="li29" Content="2:30PM"/>
+                    <ComboBoxItem x:Name="li30" Content="3:00PM"/>
+                    <ComboBoxItem x:Name="li31" Content="3:30PM"/>
+                    <ComboBoxItem x:Name="li32" Content="4:00PM"/>
+                    <ComboBoxItem x:Name="li33" Content="4:30PM"/>
+                    <ComboBoxItem x:Name="li34" Content="5:00PM"/>
+                    <ComboBoxItem x:Name="li35" Content="5:30PM"/>
+                    <ComboBoxItem x:Name="li36" Content="6:00PM"/>
+                    <ComboBoxItem x:Name="li37" Content="6:30PM"/>
+                    <ComboBoxItem x:Name="li38" Content="7:00PM"/>
+                    <ComboBoxItem x:Name="li39" Content="7:30PM"/>
+                    <ComboBoxItem x:Name="li40" Content="8:00PM"/>
+                    <ComboBoxItem x:Name="li41" Content="8:30PM"/>
+                    <ComboBoxItem x:Name="li42" Content="9:00PM"/>
+                    <ComboBoxItem x:Name="li43" Content="9:30PM"/>
+                    <ComboBoxItem x:Name="li44" Content="10:00PM"/>
+                    <ComboBoxItem x:Name="li45" Content="10:30PM"/>
+                    <ComboBoxItem x:Name="li46" Content="11:00PM"/>
+                    <ComboBoxItem x:Name="li47" Content="11:30PM"/>
+                </ComboBox>
+                <ComboBox x:Name="hightime_cb" Margin="198.972,0,144.833,47.147" Height="21.506" VerticalAlignment="Bottom">
+                    <System:String xml:space="preserve">s </System:String>
+                    <ComboBoxItem x:Name="hi1" Content="12:00AM"/>
+                    <ComboBoxItem x:Name="hi2" Content="12:30AM"/>
+                    <ComboBoxItem x:Name="hi3" Content="1:00AM"/>
+                    <ComboBoxItem x:Name="hi4" Content="1:30AM"/>
+                    <ComboBoxItem x:Name="hi455" Content="2:00AM"/>
+                    <ComboBoxItem x:Name="hi5" Content="2:30AM"/>
+                    <ComboBoxItem x:Name="hi6" Content="3:00AM"/>
+                    <ComboBoxItem x:Name="hi7" Content="3:30AM"/>
+                    <ComboBoxItem x:Name="hi8" Content="4:00AM"/>
+                    <ComboBoxItem x:Name="hi9" Content="4:30AM"/>
+                    <ComboBoxItem x:Name="hi10" Content="5:00AM"/>
+                    <ComboBoxItem x:Name="hi11" Content="5:30AM"/>
+                    <ComboBoxItem x:Name="hi12" Content="6:00AM"/>
+                    <ComboBoxItem x:Name="hi13" Content="6:30AM"/>
+                    <ComboBoxItem x:Name="hi14" Content="7:00AM"/>
+                    <ComboBoxItem x:Name="hi15" Content="7:30AM"/>
+                    <ComboBoxItem x:Name="hi16" Content="8:00AM"/>
+                    <ComboBoxItem x:Name="hi17" Content="8:30AM"/>
+                    <ComboBoxItem x:Name="hi18" Content="9:00AM"/>
+                    <ComboBoxItem x:Name="hi19" Content="9:30AM"/>
+                    <ComboBoxItem x:Name="hi20" Content="10:00AM"/>
+                    <ComboBoxItem x:Name="hi21" Content="10:30AM"/>
+                    <ComboBoxItem x:Name="hi22" Content="11:00AM"/>
+                    <ComboBoxItem x:Name="hi23" Content="11:30AM"/>
+                    <ComboBoxItem x:Name="hi25" Content="12:00PM"/>
+                    <ComboBoxItem x:Name="hi26" Content="12:30PM"/>
+                    <ComboBoxItem x:Name="hi27" Content="1:00PM"/>
+                    <ComboBoxItem x:Name="hi28" Content="1:30PM"/>
+                    <ComboBoxItem x:Name="hi285" Content="2:00PM"/>
+                    <ComboBoxItem x:Name="hi29" Content="2:30PM"/>
+                    <ComboBoxItem x:Name="hi30" Content="3:00PM"/>
+                    <ComboBoxItem x:Name="hi31" Content="3:30PM"/>
+                    <ComboBoxItem x:Name="hi32" Content="4:00PM"/>
+                    <ComboBoxItem x:Name="hi33" Content="4:30PM"/>
+                    <ComboBoxItem x:Name="hi34" Content="5:00PM"/>
+                    <ComboBoxItem x:Name="hi35" Content="5:30PM"/>
+                    <ComboBoxItem x:Name="hi36" Content="6:00PM"/>
+                    <ComboBoxItem x:Name="hi37" Content="6:30PM"/>
+                    <ComboBoxItem x:Name="hi38" Content="7:00PM"/>
+                    <ComboBoxItem x:Name="hi39" Content="7:30PM"/>
+                    <ComboBoxItem x:Name="hi40" Content="8:00PM"/>
+                    <ComboBoxItem x:Name="hi41" Content="8:30PM"/>
+                    <ComboBoxItem x:Name="hi42" Content="9:00PM"/>
+                    <ComboBoxItem x:Name="hi43" Content="9:30PM"/>
+                    <ComboBoxItem x:Name="hi44" Content="10:00PM"/>
+                    <ComboBoxItem x:Name="hi45" Content="10:30PM"/>
+                    <ComboBoxItem x:Name="hi46" Content="11:00PM"/>
+                    <ComboBoxItem x:Name="hi47" Content="11:30PM"/>
+                </ComboBox>
+                <Label x:Name="label" Content="to" Margin="170.193,117.601,227.006,0" RenderTransformOrigin="1.228,0.518" Height="30.829" VerticalAlignment="Top"/>
+                <TextBlock Text="Park Name" TextWrapping="Wrap" x:Name="parkname_tbl" Margin="10,58.386,0,0" HorizontalAlignment="Left" FontSize="16" Width="77.257" Height="21.28" VerticalAlignment="Top"/>
+                <TextBox x:Name="parkname_tb" Margin="10,84.666,144.833,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid x:Name="locationdetails_g" Margin="0,0,430,-4.818" Height="190" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="57*"/>
+                    <RowDefinition Height="29*"/>
+                    <RowDefinition Height="31*"/>
+                    <RowDefinition Height="31*"/>
+                    <RowDefinition Height="42*"/>
+                </Grid.RowDefinitions>
+                <Rectangle Stroke="White" RadiusX="0" RadiusY="0" Fill="White" Grid.RowSpan="5"/>
+                <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Margin="0,0,0,3.281"/>
+                <Rectangle Fill="#FF007836" Margin="10,11.5,0,14.053" RadiusY="5" RadiusX="5" Stroke="#FF007836" HorizontalAlignment="Left" Width="165.86" Opacity="0.7"/>
+                <TextBlock
+        			Width="63" Text="Address: " TextWrapping="Wrap" RenderTransformOrigin="0.506,-0.617" x:Name="address_tbl1" Margin="13,4.666,0,-0.333" HorizontalAlignment="Left" FontSize="16" Grid.Row="1"/>
+                <TextBox VerticalContentAlignment="Center" TextWrapping="Wrap" SelectionBrush="Black" x:Name="address_tb1" Margin="76,2.052,10,0" FontSize="14.667" BorderBrush="Black" Grid.Row="1" Height="24.667" VerticalAlignment="Top"/>
+                <TextBlock
+        			d:LayoutOverrides="HorizontalAlignment" Width="30.5" VerticalAlignment="Top" Text="City: " TextWrapping="Wrap" RenderTransformOrigin="1.324,0.648" x:Name="city_tbl1" Margin="40.5,5,0,0" Height="25" HorizontalAlignment="Left" FontSize="16" Grid.Row="2"/>
+                <TextBox
+        			Width="165" VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="city_tb1" Margin="76,2.386,0,0" Height="25" HorizontalAlignment="Left" FontSize="14.667" BorderBrush="Black" Grid.Row="2"/>
+                <TextBlock
+        			Width="30.5" VerticalAlignment="Top" Text="Zip:" TextWrapping="Wrap" x:Name="zip_tbl1" Margin="246,3.693,0,0" Height="23.693" HorizontalAlignment="Left" FontSize="16" Grid.Row="2"/>
+                <TextBox VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="zip_tb1" Margin="276.5,3.693,10,0" Height="23.693" FontSize="14.667" BorderBrush="Black" Grid.Row="2"/>
+                <TextBlock
+        			d:LayoutOverrides="HorizontalAlignment" Width="41.546" VerticalAlignment="Top" Text="State: " TextWrapping="Wrap" x:Name="state_tbl1" Margin="29.454,4.333,0,0" Height="25" HorizontalAlignment="Left" FontSize="16" Grid.Row="3"/>
+                <TextBox
+        			VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="state_tb1" Margin="76,4.333,10,0" Height="25" FontSize="14.667" BorderBrush="Black" Grid.Row="3"/>
+                <TextBlock
+        			d:LayoutOverrides="HorizontalAlignment" Width="63" VerticalAlignment="Top" Text="Country: " TextWrapping="Wrap" RenderTransformOrigin="0.456,0.271" x:Name="country_tbl1" Margin="10,3,0,0" Height="25" HorizontalAlignment="Left" FontSize="16" Grid.Row="4"/>
+                <TextBox VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="country_tb1" Margin="73,3,10,0" Height="25" FontSize="14.667" BorderBrush="Black" Grid.Row="4"/>
+                <Grid HorizontalAlignment="Left" Margin="13,13,0,14.053" Width="162.86">
+                    <TextBlock TextDecorations="{x:Null}" Text="Locations Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1" FontSize="18.667" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="coursedetails_g" HorizontalAlignment="Right" Margin="0,0,0,189.959" Width="309">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="56*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="308.667"/>
+                </Grid.RowDefinitions>
+                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Margin="0,0,0,58.626" Grid.ColumnSpan="2"/>
+                <Grid Grid.ColumnSpan="2" Margin="0,0,0,248.629"
+           >
+                    <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3"/>
+                    <Rectangle Fill="#FF007836" Margin="10,7.273,10,7.727" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7"/>
+                    <TextBlock x:Name="course_details_tb" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="121.594"><Run Text="Course "/><Run Text="Details"/></TextBlock>
+                </Grid>
+                <TextBlock x:Name="textBlock" Margin="10,70.038,0,0" TextWrapping="Wrap" Text="Basket Type: " FontSize="13.333" Height="18.96" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="textBlock1" Margin="10,88.997,0,0" TextWrapping="Wrap" Text="Year Established: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="textBlock3" Margin="0,171.988,51.67,0" TextWrapping="Wrap" Text="Course Type: " FontSize="13.333" Height="22.168" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <TextBlock x:Name="textBlock6" Margin="0,201.76,85.033,0" TextWrapping="Wrap" Text="Private: " FontSize="13.333" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="10,148.106,0,0" TextWrapping="Wrap" Text="Terrain: " FontSize="13.333" RenderTransformOrigin="0.5,-0.807" VerticalAlignment="Top"/>
+                <TextBlock x:Name="textBlock10" Margin="0,201.761,57.785,0" TextWrapping="Wrap" Text="Pay to Play: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Right" Width="73.215"/>
+                <TextBlock x:Name="textBlock15" Margin="18.587,148.266,0,0" TextWrapping="Wrap" Text="Tee Type: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Left" Grid.Column="1"/>
+                <TextBlock x:Name="textBlock16" Margin="10,106.732,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left"><Run Text="Course "/><Run FontSize="13.333" Text="Designer: "/></TextBlock>
+                <TextBlock x:Name="textBlock17" Margin="0,222.644,-12.1,0" TextWrapping="Wrap" Text="Course Has Guide:" FontSize="13.333" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <TextBlock x:Name="textBlock18" Margin="10,124.306,0,0" TextWrapping="Wrap" Text="Basket Maker:" VerticalAlignment="Top" FontSize="13.333" Height="18.8" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="85.191"/>
+                <TextBox x:Name="basket_tb" Margin="-25.831,70.038,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="year_established_tb" Margin="-25.831,88.998,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="basket_maker_tb" Margin="-25.831,124.306,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="course_designer_tb" Margin="-25.831,106.732,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="tee_type_cb" Margin="82.967,149.051,10.033,0" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" Height="22" VerticalAlignment="Top" >
+                    <ComboBoxItem x:Name="tti1" Content="Grass"/>
+                    <ComboBoxItem x:Name="tti2" Content="Concrete"/>
+                    <ComboBoxItem x:Name="tti3" Content="Rubber"/>
+                    <ComboBoxItem x:Name="tti4" Content="Mix"/>
+                </ComboBox>
+                <ComboBox x:Name="course_type_cb" Margin="-46.67,174.525,10,0" Height="22" VerticalAlignment="Top" Grid.Column="1">
+                    <ComboBoxItem x:Name="cci1" Content="Permanent"/>
+                    <ComboBoxItem x:Name="cci2" Content="Temporary"/>
+                    <ComboBoxItem x:Name="cci3" Content="Seasonal"/>
+                    <ComboBoxItem x:Name="cci4" Content="Practice"/>
+                </ComboBox>
+                <ComboBox x:Name="terrain_cb" Margin="62.337,149.051,3.663,0" Height="22" VerticalAlignment="Top">
+                    <ComboBoxItem x:Name="ti1" Content="Open"/>
+                    <ComboBoxItem x:Name="ti2" Content="Wooded"/>
+                    <ComboBoxItem x:Name="ti3" Content="Rocky"/>
+                </ComboBox>
+                <RadioButton x:Name="private_yes_r" Content="Yes" Margin="0,204.534,38.122,0" GroupName="course_private_r" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="46.911"/>
+                <RadioButton x:Name="p2p_yes_r" Content="Yes" Margin="83.215,204.534,10.874,0" GroupName="p2p_r" RenderTransformOrigin="0.478,0.929" VerticalAlignment="Top"/>
+                <RadioButton x:Name="private_no_r" Content="No" Margin="0,204.197,0,0" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Top" GroupName="course_private_r" Grid.Column="1"/>
+                <RadioButton x:Name="p2p_no_r" Content="No" Margin="-15.037,204.534,0,0" GroupName="p2p_r" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51.467" Grid.Column="1"/>
+                <RadioButton x:Name="course_guide_yes_r" Content="Yes" Margin="0,225.081,107.489,0" VerticalAlignment="Top" GroupName="courseguide_r" Grid.Column="1" HorizontalAlignment="Right" Width="43.411"/>
+                <RadioButton x:Name="course_guide_no_r" Content="No" Margin="65.511,225.081,63.022,0" VerticalAlignment="Top" GroupName="courseguide_r" RenderTransformOrigin="0.657,0.54" Grid.Column="1"/>
+            </Grid>
+            <Grid x:Name="maindetails_g" Margin="246.833,0.118,314,189.842">
+                <Grid.RenderTransform>
+                    <TranslateTransform x:Name="tt1"/>
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
+                <Grid x:Name="maindetails_top_g" Margin="0,0,0,190.238">
+
+                    <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3" d:LayoutOverrides="LeftMargin, RightMargin"/>
+                    <Rectangle Fill="#FF007836" Margin="10,10,0,10" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7" HorizontalAlignment="Left" Width="125.093"/>
+                    <TextBlock x:Name="maindeatils_tbl1" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" Foreground="White" Text="Main Details" Margin="19,17.486,0,17.486" HorizontalAlignment="Left" VerticalAlignment="Center" d:LayoutOverrides="TopMargin, BottomMargin"/>
+                    <Grid x:Name="move_maindetails_g" Background="#FFC3C3C3" Margin="230.074,0,0,26" MouseDown="move_maindetails_g_MouseDown" MouseMove="move_maindetails_g_MouseMove" MouseUp="move_maindetails_g_MouseUp">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="29*"/>
+                            <RowDefinition Height="31*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.RenderTransform>
+                            <TranslateTransform x:Name="tt2"/>
+                        </Grid.RenderTransform>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="maindetails_bottom_g" Margin="0,59.803,0,0">
+                    <TextBlock x:Name="coursename_tbl1" Margin="10,8.745,0,154.942" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox x:Name="coursename_tb1" Margin="10,33.745,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="19.333" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBlock x:Name="website_tbl1" Margin="10,64.447,0,99.28" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5"/>
+                    <TextBox x:Name="website_tb1" Margin="10,93.591,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="phonenumber_tbl1" Margin="10,121.738,0,41.223" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5"/>
+                    <TextBox x:Name="phonenumber_tb1" Margin="10,150.739,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="picturedetails_g" Background="Black" HorizontalAlignment="Left" Width="241.833" Margin="0,0,0,190.182">
                 <TextBlock x:Name="textBlock2" Margin="31.5,37,28.04,18.04" TextWrapping="Wrap" Text="Add Picure Area. Defaul pic otherwise" Foreground="White"/>
                 <TextBox x:Name="textBox" Height="31.35" Margin="0,0,71.5,0" TextWrapping="Wrap" Text="File Name" VerticalAlignment="Bottom"/>
                 <Button x:Name="button" Content="Browse" HorizontalAlignment="Right" Height="31.35" VerticalAlignment="Bottom" Width="71.5" RenderTransformOrigin="0.308,-0.921"/>
             </Grid>
-            <Grid x:Name="maindetails_g" Margin="246.5,0,337.5,191">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="210*"/>
-                    <RowDefinition Height="211*"/>
-                </Grid.RowDefinitions>
-                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Grid.RowSpan="2" Margin="0,0,10,0"/>
-                <Grid Height="60.038" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
-                    <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3" HorizontalAlignment="Left" Width="326"/>
-                    <Rectangle Fill="#FF007836" Margin="10,10,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7" HorizontalAlignment="Left" Width="256" Height="40.038" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                    <TextBlock x:Name="maindeatils_tbl1" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" HorizontalAlignment="Center" Width="110.594" VerticalAlignment="Center" Foreground="White" Text="Main Details"/>
-                </Grid>
-                <TextBlock x:Name="coursename_tbl1" Margin="10,0,0,48.107" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107" d:LayoutOverrides="LeftMargin, RightMargin" Height="25" VerticalAlignment="Bottom"/>
-                <TextBox x:Name="coursename_tb1" Margin="10,0,24,24.607" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" d:LayoutOverrides="LeftMargin, RightMargin" Height="23.5" VerticalAlignment="Bottom"/>
-                <TextBlock
-            VerticalAlignment="Bottom" Text="Park Name" TextWrapping="Wrap" x:Name="parkname_tbl" Margin="10,0,0,-1.353" HorizontalAlignment="Left" FontSize="16" Height="21.28" Width="77.257" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <TextBox x:Name="parkname_tb" Margin="10,6.353,24,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" d:LayoutOverrides="LeftMargin, RightMargin" Height="23.5" VerticalAlignment="Top" Grid.Row="1"/>
-                <TextBlock x:Name="website_tbl1" Height="24.001" Margin="10,34.853,0,0" TextWrapping="Wrap" Text="Website" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" Width="72.5" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <TextBox x:Name="website_tb1" Margin="10,58.854,24,67.501" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <TextBlock x:Name="phonenumber_tbl1" Margin="10,0,0,33.5" TextWrapping="Wrap" Text="Phone Number" FontSize="16" Grid.Row="1" HorizontalAlignment="Left" Width="111.5" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin" Height="24.001" VerticalAlignment="Bottom"/>
-                <TextBox x:Name="phonenumber_tb1" Margin="10,0,24,10" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Bottom" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-            </Grid>
-            <Grid Width="400" VerticalAlignment="Bottom" x:Name="locationdetails_g" Height="186" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment">
-                <Rectangle
-            		d:IsLocked="True" d:LayoutOverrides="TopMargin, BottomMargin" VerticalAlignment="Top" Stroke="White" RadiusX="0" RadiusY="0" Height="186" Fill="White"/>
-                <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
-                <Rectangle Fill="#FF007836" Margin="10,11.5,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="31.114" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.7"/>
-                <TextBlock
-            		Width="63" VerticalAlignment="Top" Text="Address: " TextWrapping="Wrap" RenderTransformOrigin="0.506,-0.617" x:Name="address_tbl1" Margin="13,61,0,0" Height="25" HorizontalAlignment="Left" FontSize="16"/>
-                <TextBox
-            		Width="314" VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="address_tb1" Margin="76,58.386,0,0" Height="25" HorizontalAlignment="Left" FontSize="14.667" BorderBrush="Black" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <TextBlock
-            		d:LayoutOverrides="HorizontalAlignment" Width="30.5" VerticalAlignment="Top" Text="City: " TextWrapping="Wrap" RenderTransformOrigin="1.324,0.648" x:Name="city_tbl1" Margin="40.5,91,0,0" Height="25" HorizontalAlignment="Left" FontSize="16"/>
-                <TextBox
-            		Width="165" VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="city_tb1" Margin="76,88.386,0,0" Height="25" HorizontalAlignment="Left" FontSize="14.667" BorderBrush="Black"/>
-                <TextBlock
-            		Width="30.5" VerticalAlignment="Top" Text="Zip:" TextWrapping="Wrap" x:Name="zip_tbl1" Margin="246,89.693,0,0" Height="23.693" HorizontalAlignment="Left" FontSize="16"/>
-                <TextBox
-            		Width="113.5" VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="zip_tb1" Margin="276.5,89.693,0,0" Height="23.693" HorizontalAlignment="Left" FontSize="14.667" BorderBrush="Black"/>
-                <TextBlock
-            		d:LayoutOverrides="HorizontalAlignment" Width="41.546" VerticalAlignment="Top" Text="State: " TextWrapping="Wrap" x:Name="state_tbl1" Margin="29.454,121,0,0" Height="25" HorizontalAlignment="Left" FontSize="16"/>
-                <TextBox
-            		VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="state_tb1" Margin="76,121,10,0" Height="25" FontSize="14.667" BorderBrush="Black"/>
-                <TextBlock
-            		d:LayoutOverrides="HorizontalAlignment" Width="63" VerticalAlignment="Top" Text="Country: " TextWrapping="Wrap" RenderTransformOrigin="0.456,0.271" x:Name="country_tbl1" Margin="10,151,0,0" Height="25" HorizontalAlignment="Left" FontSize="16"/>
-                <TextBox
-            		Width="317" VerticalContentAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" SelectionBrush="Black" x:Name="country_tb1" Margin="73,151,0,0" Height="25" HorizontalAlignment="Left" FontSize="14.667" BorderBrush="Black"/>
-                <Grid HorizontalAlignment="Left" Height="29.614" Margin="13,13,0,0" VerticalAlignment="Top" Width="162.86">
-                    <TextBlock TextDecorations="{x:Null}" Text="Locations Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1" FontSize="18.667" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Grid>
-            </Grid>
-            <Grid HorizontalAlignment="Right" Width="332.5" Margin="0,0,0,191">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="308.667"/>
-                </Grid.RowDefinitions>
-                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Width="330" Margin="2.5,0,0,64"/>
-                <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3" HorizontalAlignment="Left" Width="332.5" Height="60.038" VerticalAlignment="Top"/>
-                <Rectangle Fill="#FF007836" Margin="10,7.273,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7" HorizontalAlignment="Left" Width="312.496" Height="45.038" VerticalAlignment="Top"/>
-                <Grid Height="60.038" VerticalAlignment="Top">
-                    <TextBlock x:Name="maindeatils_tbl1_Copy" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="121.594"><Run Text="Course "/><Run Text="Details"/></TextBlock>
-                </Grid>
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="33.522,60.038,0,0" TextWrapping="Wrap" Text="Basket Type: " FontSize="13.333" Height="18.96" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="8.182,87.574,0,0" TextWrapping="Wrap" Text="Year Established: " VerticalAlignment="Top" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="9.998,119.707,0,0" TextWrapping="Wrap" Text="Course Type: " FontSize="13.333" Height="22.168" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock6" HorizontalAlignment="Right" Margin="0,0,113.159,95.293" TextWrapping="Wrap" Text="Private: " FontSize="13.333" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="6.658,0,0,121.956" TextWrapping="Wrap" Text="Terrain: " VerticalAlignment="Bottom" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock10" Margin="165.407,0,96.282,122.294" TextWrapping="Wrap" Text="Pay to Play: " VerticalAlignment="Bottom" FontSize="13.333" d:LayoutOverrides="Width"/>
-                <TextBlock x:Name="textBlock15" HorizontalAlignment="Left" Margin="10.419,195.639,0,0" TextWrapping="Wrap" Text="Tee Type: " VerticalAlignment="Top" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock16" HorizontalAlignment="Left" Margin="-4.512,0,0,185.815" TextWrapping="Wrap" VerticalAlignment="Bottom"><Run Text="Course "/><Run FontSize="13.333" Text="Designer: "/></TextBlock>
-                <TextBlock x:Name="textBlock17" HorizontalAlignment="Left" Margin="26.435,0,0,74.996" TextWrapping="Wrap" Text="Course Has Guide:" FontSize="13.333" VerticalAlignment="Bottom"/>
-                <TextBlock x:Name="textBlock18" Margin="10.004,147.791,0,0" TextWrapping="Wrap" Text="Basket Maker:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85.191" FontSize="13.333" Height="18.8"/>
-                <TextBox x:Name="basket_tb" Margin="115.169,63.614,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top"/>
-                <TextBox x:Name="year_established_tb" Margin="115.169,87.575,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top"/>
-                <TextBox x:Name="basket_maker_tb" Margin="115.169,147.791,10,141.916" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black"/>
-                <TextBox x:Name="course_designer_tb" Margin="94.328,110.307,30.841,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="12.544" VerticalAlignment="Top"/>
-                <ComboBox x:Name="tee_type_cb" Margin="74.799,0,0,97.729" Height="16.949" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="87.7" >
-                    <ComboBoxItem Name="tti1">Grass</ComboBoxItem>
-                    <ComboBoxItem Name="tti2">Concrete</ComboBoxItem>
-                    <ComboBoxItem Name="tti3">Rubber</ComboBoxItem>
-                    <ComboBoxItem Name="tti4">Mix</ComboBoxItem>
-                </ComboBox>
-                <ComboBox x:Name="course_type_cb" Margin="89.328,121.285,10,0" Height="21.506" VerticalAlignment="Top">
-                    <ComboBoxItem Name="cci1">Permanent</ComboBoxItem>
-                    <ComboBoxItem Name="cci2">Temporary</ComboBoxItem>
-                    <ComboBoxItem Name="cci3">Seasonal</ComboBoxItem>
-                    <ComboBoxItem Name="cci4">Practice</ComboBoxItem>
-                </ComboBox>
-                <ComboBox x:Name="terrain_cb" Margin="58.995,0,0,122.294" Height="17.395" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="103.085">
-                    <ComboBoxItem Name="ti1">Open</ComboBoxItem>
-                    <ComboBoxItem Name="ti2">Wooded</ComboBoxItem>
-                    <ComboBoxItem Name="ti3">Rocky</ComboBoxItem>
-                </ComboBox>
-                <RadioButton x:Name="private_yes_r" Content="Yes" Margin="0,0,66.249,95.63" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="course_private_r"/>
-                <RadioButton x:Name="p2p_yes_r" Content="Yes" Margin="0,0,56.467,122.294" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="p2p_r"/>
-                <RadioButton x:Name="private_no_r" Content="No" Margin="0,0,20.671,95.63" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="course_private_r"/>
-                <RadioButton x:Name="p2p_no_r" Content="No" Margin="0,0,0,121.956" HorizontalAlignment="Right" Width="51.467" VerticalAlignment="Bottom" GroupName="p2p_r"/>
-                <RadioButton x:Name="course_guide_yes_r" Content="Yes" Margin="139.169,0,146.42,75.671" VerticalAlignment="Bottom" GroupName="courseguide_r"/>
-                <RadioButton x:Name="course_guide_no_r" Content="No" Margin="0,0,89.953,75.333" HorizontalAlignment="Right" Width="51.467" VerticalAlignment="Bottom" GroupName="courseguide_r"/>
-            </Grid>
-            <Grid Height="186" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="455">
-                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
-                <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
-                <Rectangle Fill="#FF007836" Margin="10,15.5,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.7"/>
-                <TextBlock x:Name="textBlock5" HorizontalAlignment="Right" Margin="0,56.612,28.422,0" TextWrapping="Wrap" Text="Pet Friendly" VerticalAlignment="Top" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,0,50.922,50.92" TextWrapping="Wrap" Text="Private: " VerticalAlignment="Bottom" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock8" Margin="25,0,0,29.96" TextWrapping="Wrap" Text="Park Has Guide:" VerticalAlignment="Bottom" RenderTransformOrigin="-0.103,1.312" HorizontalAlignment="Left" Width="97.46" FontSize="13.333"/>
-                <TextBlock x:Name="textBlock19" Margin="23.742,0,0,70.979" TextWrapping="Wrap" Text="Park Hours: " VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70.923" FontSize="13.333"/>
-                <RadioButton x:Name="park_guide_y_r" Content="Yes" Margin="124.669,0,0,30.96" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="parkguide_r"/>
-                <RadioButton x:Name="park_guide_n_r" Content="No" Margin="176.58,0,0,30.96" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45.578" GroupName="parkguide_r"/>
-                <RadioButton x:Name="park_private_y_r" Content="Yes" Margin="0,0,60.578,29.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="park_private_r"/>
-                <RadioButton x:Name="park_private_n_r" Content="No" Margin="0,0,10,30.96" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="park_private_r"/>
-                <RadioButton x:Name="park_pet_y_r" Content="Yes" Margin="0,79.346,60.578,91.694" HorizontalAlignment="Right" Width="46.911" d:LayoutOverrides="Height" GroupName="pet_r"/>
-                <RadioButton x:Name="park_pet_n_r" Content="No" Margin="0,79.346,10,91.694" HorizontalAlignment="Right" Width="45.578" d:LayoutOverrides="Height" GroupName="pet_r"/>
-                <Grid HorizontalAlignment="Left" Height="29.5" Margin="14,13,0,0" VerticalAlignment="Top" Width="157.58">
-                    <TextBlock TextDecorations="{x:Null}" Text="Park Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1_Copy" FontSize="18.667" RenderTransformOrigin="0.394,0.463" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Grid>
-                <ComboBox x:Name="lowtime_cb" HorizontalAlignment="Left" Margin="99.665,88.01,0,70.979" Width="76.195" Height="21.506">
-                    <ComboBoxItem Name="li1">12:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li2">12:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li3">1:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li4">1:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li5">2:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li55">2:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li6">3:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li7">3:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li8">4:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li9">4:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li10">5:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li11">5:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li12">6:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li13">6:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li14">7:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li15">7:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li16">8:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li17">8:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li18">9:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li19">9:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li20">10:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li21">10:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li22">11:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="li23">11:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="li25">12:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li26">12:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li27">1:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li28">1:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li285">2:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li29">2:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li30">3:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li31">3:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li32">4:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li33">4:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li34">5:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li35">5:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li36">6:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li37">6:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li38">7:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li39">7:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li40">8:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li41">8:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li42">9:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li43">9:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li44">10:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li45">10:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="li46">11:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="li47">11:30PM</ComboBoxItem>
-                </ComboBox>
-                <ComboBox x:Name="hightime_cb" HorizontalAlignment="Right" Margin="0,88.01,148.004,70.979" Width="76.195" Height="21.506">
-                    s
-                    <ComboBoxItem Name="hi1">12:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi2">12:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi3">1:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi4">1:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi455">2:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi5">2:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi6">3:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi7">3:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi8">4:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi9">4:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi10">5:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi11">5:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi12">6:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi13">6:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi14">7:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi15">7:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi16">8:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi17">8:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi18">9:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi19">9:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi20">10:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi21">10:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi22">11:00AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi23">11:30AM</ComboBoxItem>
-                    <ComboBoxItem Name="hi25">12:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi26">12:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi27">1:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi28">1:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi285">2:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi29">2:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi30">3:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi31">3:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi32">4:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi33">4:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi34">5:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi35">5:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi36">6:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi37">6:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi38">7:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi39">7:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi40">8:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi41">8:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi42">9:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi43">9:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi44">10:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi45">10:30PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi46">11:00PM</ComboBoxItem>
-                    <ComboBoxItem Name="hi47">11:30PM</ComboBoxItem>
-                </ComboBox>
-                <Label x:Name="label" Content="to" HorizontalAlignment="Left" Margin="191,88.01,0,70.979" Width="22.801" RenderTransformOrigin="1.228,0.518"/>
-            </Grid>
         </Grid>
-        <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Height="31" Margin="26,0,0,10" VerticalAlignment="Bottom" Width="87" Click="main_btn_Click"/>
-        <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Height="31" Margin="118,0,0,10" VerticalAlignment="Bottom" Width="87" Click="addholes_btn_Click"/>
-        <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Height="31" Margin="210,0,0,10" VerticalAlignment="Bottom" Width="87" Click="submit_btn_Click"/>
         <Grid x:Name="Custom_g" Margin="20,10,20,50" Visibility="Hidden">
             <Grid x:Name="customsidepanel_g" HorizontalAlignment="Left" Width="200" Background="#FFDADADA">
                 <TextBlock x:Name="textBlock23" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" RenderTransformOrigin="1.962,0.251"><Run Text="TextBlock"/></TextBlock>
@@ -266,58 +292,410 @@
             <Grid Margin="310,50,310,40" Background="White" Height="400" Width="290"/>
             <Grid Margin="0,50,15,40" Background="#FFFDFDFD" Height="400" Width="290" HorizontalAlignment="Right" d:LayoutOverrides="Width"/>
         </Grid>
-        <Grid x:Name="Simple_g" HorizontalAlignment="Left" Margin="20,10,20,50" VerticalAlignment="Top" Visibility="Hidden">
-            <Grid Height="230" VerticalAlignment="Bottom" Background="White" Margin="0,0,0,10"/>
-            <Grid Height="230" VerticalAlignment="Top" Background="White">
-                <Grid HorizontalAlignment="Left" Width="100">
+        <Grid x:Name="Simple_g">
+            <WrapPanel Margin="10,35,10,65" d:LayoutOverrides="Height">
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock24" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock25" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy4" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy4" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem Name="p0" Height="21.96"></ComboBoxItem>
+                        <ComboBoxItem Name="p1">1</ComboBoxItem>
+                        <ComboBoxItem Name="p2">2</ComboBoxItem>
+                        <ComboBoxItem Name="p3">3</ComboBoxItem>
+                        <ComboBoxItem Name="p4">4</ComboBoxItem>
+                        <ComboBoxItem Name="p5">5</ComboBoxItem>
+                        <ComboBoxItem Name="p6">6</ComboBoxItem>
+                        <ComboBoxItem Name="p7">7</ComboBoxItem>
+                        <ComboBoxItem Name="p8">8</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
                     <Grid Height="50" VerticalAlignment="Top">
                         <TextBlock x:Name="textBlock4" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Margin="0,50,0,0"/>
-                    <TextBlock x:Name="textBlock11" Margin="0,73.666,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox1" Margin="0,94.626,10,112.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80"/>
-                    <TextBlock x:Name="textBlock11_Copy" Margin="24.77,0,24.77,78.374" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox1_Copy" Margin="0,0,10,50.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock11" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy1" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy1" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox1" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p9" Height="21.96"/>
+                        <ComboBoxItem x:Name="p10" Content="1"/>
+                        <ComboBoxItem x:Name="p11" Content="2"/>
+                        <ComboBoxItem x:Name="p12" Content="3"/>
+                        <ComboBoxItem x:Name="p13" Content="4"/>
+                        <ComboBoxItem x:Name="p14" Content="5"/>
+                        <ComboBoxItem x:Name="p15" Content="6"/>
+                        <ComboBoxItem x:Name="p16" Content="7"/>
+                        <ComboBoxItem x:Name="p17" Content="8"/>
+                    </ComboBox>
                 </Grid>
-                <Grid HorizontalAlignment="Left" Width="100" Margin="100,0,0,0">
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
                     <Grid Height="50" VerticalAlignment="Top">
                         <TextBlock x:Name="textBlock12" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Margin="0,50,0,0"/>
-                    <TextBlock x:Name="textBlock13" Margin="0,73.666,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox2" Margin="0,94.626,10,112.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80"/>
-                    <TextBlock x:Name="textBlock11_Copy1" Margin="24.77,0,24.77,78.374" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox1_Copy1" Margin="0,0,10,50.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock13" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy2" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy2" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox2" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p18" Height="21.96"/>
+                        <ComboBoxItem x:Name="p19" Content="1"/>
+                        <ComboBoxItem x:Name="p20" Content="2"/>
+                        <ComboBoxItem x:Name="p21" Content="3"/>
+                        <ComboBoxItem x:Name="p22" Content="4"/>
+                        <ComboBoxItem x:Name="p23" Content="5"/>
+                        <ComboBoxItem x:Name="p24" Content="6"/>
+                        <ComboBoxItem x:Name="p25" Content="7"/>
+                        <ComboBoxItem x:Name="p26" Content="8"/>
+                    </ComboBox>
                 </Grid>
-                <Grid HorizontalAlignment="Left" Width="100" Margin="200,0,0,0">
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
                     <Grid Height="50" VerticalAlignment="Top">
                         <TextBlock x:Name="textBlock14" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Margin="0,50,0,0"/>
-                    <TextBlock x:Name="textBlock20" Margin="0,73.666,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox3" Margin="0,94.626,10,112.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80"/>
-                    <TextBlock x:Name="textBlock11_Copy2" Margin="24.77,0,24.77,78.374" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox1_Copy2" Margin="0,0,10,50.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock20" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy3" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy3" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox3" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p27" Height="21.96"/>
+                        <ComboBoxItem x:Name="p28" Content="1"/>
+                        <ComboBoxItem x:Name="p29" Content="2"/>
+                        <ComboBoxItem x:Name="p30" Content="3"/>
+                        <ComboBoxItem x:Name="p31" Content="4"/>
+                        <ComboBoxItem x:Name="p32" Content="5"/>
+                        <ComboBoxItem x:Name="p33" Content="6"/>
+                        <ComboBoxItem x:Name="p34" Content="7"/>
+                        <ComboBoxItem x:Name="p35" Content="8"/>
+                    </ComboBox>
                 </Grid>
-                <Grid HorizontalAlignment="Left" Width="100" Margin="300,0,0,0">
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
                     <Grid Height="50" VerticalAlignment="Top">
                         <TextBlock x:Name="textBlock21" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Margin="0,50,0,0"/>
-                    <TextBlock x:Name="textBlock22" Margin="0,73.666,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox4" Margin="0,94.626,10,112.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80"/>
-                    <TextBlock x:Name="textBlock11_Copy3" Margin="24.77,0,24.77,78.374" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox1_Copy3" Margin="0,0,10,50.374" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock22" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy5" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy5" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox4" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p36" Height="21.96"/>
+                        <ComboBoxItem x:Name="p37" Content="1"/>
+                        <ComboBoxItem x:Name="p38" Content="2"/>
+                        <ComboBoxItem x:Name="p39" Content="3"/>
+                        <ComboBoxItem x:Name="p40" Content="4"/>
+                        <ComboBoxItem x:Name="p41" Content="5"/>
+                        <ComboBoxItem x:Name="p42" Content="6"/>
+                        <ComboBoxItem x:Name="p43" Content="7"/>
+                        <ComboBoxItem x:Name="p44" Content="8"/>
+                    </ComboBox>
                 </Grid>
-            </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock26" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock27" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy6" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy6" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox5" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p45" Height="21.96"/>
+                        <ComboBoxItem x:Name="p46" Content="1"/>
+                        <ComboBoxItem x:Name="p47" Content="2"/>
+                        <ComboBoxItem x:Name="p48" Content="3"/>
+                        <ComboBoxItem x:Name="p49" Content="4"/>
+                        <ComboBoxItem x:Name="p50" Content="5"/>
+                        <ComboBoxItem x:Name="p51" Content="6"/>
+                        <ComboBoxItem x:Name="p52" Content="7"/>
+                        <ComboBoxItem x:Name="p53" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock28" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock29" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy7" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy7" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox6" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p54" Height="21.96"/>
+                        <ComboBoxItem x:Name="p55" Content="1"/>
+                        <ComboBoxItem x:Name="p56" Content="2"/>
+                        <ComboBoxItem x:Name="p57" Content="3"/>
+                        <ComboBoxItem x:Name="p58" Content="4"/>
+                        <ComboBoxItem x:Name="p59" Content="5"/>
+                        <ComboBoxItem x:Name="p60" Content="6"/>
+                        <ComboBoxItem x:Name="p61" Content="7"/>
+                        <ComboBoxItem x:Name="p62" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock30" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock31" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy8" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy8" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox7" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p63" Height="21.96"/>
+                        <ComboBoxItem x:Name="p64" Content="1"/>
+                        <ComboBoxItem x:Name="p65" Content="2"/>
+                        <ComboBoxItem x:Name="p66" Content="3"/>
+                        <ComboBoxItem x:Name="p67" Content="4"/>
+                        <ComboBoxItem x:Name="p68" Content="5"/>
+                        <ComboBoxItem x:Name="p69" Content="6"/>
+                        <ComboBoxItem x:Name="p70" Content="7"/>
+                        <ComboBoxItem x:Name="p71" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock32" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock33" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy9" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy9" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox8" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p72" Height="21.96"/>
+                        <ComboBoxItem x:Name="p73" Content="1"/>
+                        <ComboBoxItem x:Name="p74" Content="2"/>
+                        <ComboBoxItem x:Name="p75" Content="3"/>
+                        <ComboBoxItem x:Name="p76" Content="4"/>
+                        <ComboBoxItem x:Name="p77" Content="5"/>
+                        <ComboBoxItem x:Name="p78" Content="6"/>
+                        <ComboBoxItem x:Name="p79" Content="7"/>
+                        <ComboBoxItem x:Name="p80" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock34" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock35" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy10" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy10" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox9" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p81" Height="21.96"/>
+                        <ComboBoxItem x:Name="p82" Content="1"/>
+                        <ComboBoxItem x:Name="p83" Content="2"/>
+                        <ComboBoxItem x:Name="p84" Content="3"/>
+                        <ComboBoxItem x:Name="p85" Content="4"/>
+                        <ComboBoxItem x:Name="p86" Content="5"/>
+                        <ComboBoxItem x:Name="p87" Content="6"/>
+                        <ComboBoxItem x:Name="p88" Content="7"/>
+                        <ComboBoxItem x:Name="p89" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock36" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock37" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy11" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy11" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox10" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p90" Height="21.96"/>
+                        <ComboBoxItem x:Name="p91" Content="1"/>
+                        <ComboBoxItem x:Name="p92" Content="2"/>
+                        <ComboBoxItem x:Name="p93" Content="3"/>
+                        <ComboBoxItem x:Name="p94" Content="4"/>
+                        <ComboBoxItem x:Name="p95" Content="5"/>
+                        <ComboBoxItem x:Name="p96" Content="6"/>
+                        <ComboBoxItem x:Name="p97" Content="7"/>
+                        <ComboBoxItem x:Name="p98" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock38" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock39" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy12" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy12" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox11" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p99" Height="21.96"/>
+                        <ComboBoxItem x:Name="p100" Content="1"/>
+                        <ComboBoxItem x:Name="p101" Content="2"/>
+                        <ComboBoxItem x:Name="p102" Content="3"/>
+                        <ComboBoxItem x:Name="p103" Content="4"/>
+                        <ComboBoxItem x:Name="p104" Content="5"/>
+                        <ComboBoxItem x:Name="p105" Content="6"/>
+                        <ComboBoxItem x:Name="p106" Content="7"/>
+                        <ComboBoxItem x:Name="p107" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock40" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock41" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy13" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy13" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox12" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p108" Height="21.96"/>
+                        <ComboBoxItem x:Name="p109" Content="1"/>
+                        <ComboBoxItem x:Name="p110" Content="2"/>
+                        <ComboBoxItem x:Name="p111" Content="3"/>
+                        <ComboBoxItem x:Name="p112" Content="4"/>
+                        <ComboBoxItem x:Name="p113" Content="5"/>
+                        <ComboBoxItem x:Name="p114" Content="6"/>
+                        <ComboBoxItem x:Name="p115" Content="7"/>
+                        <ComboBoxItem x:Name="p116" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock42" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock43" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy14" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy14" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox13" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p117" Height="21.96"/>
+                        <ComboBoxItem x:Name="p118" Content="1"/>
+                        <ComboBoxItem x:Name="p119" Content="2"/>
+                        <ComboBoxItem x:Name="p120" Content="3"/>
+                        <ComboBoxItem x:Name="p121" Content="4"/>
+                        <ComboBoxItem x:Name="p122" Content="5"/>
+                        <ComboBoxItem x:Name="p123" Content="6"/>
+                        <ComboBoxItem x:Name="p124" Content="7"/>
+                        <ComboBoxItem x:Name="p125" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock44" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock45" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy15" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy15" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox14" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p126" Height="21.96"/>
+                        <ComboBoxItem x:Name="p127" Content="1"/>
+                        <ComboBoxItem x:Name="p128" Content="2"/>
+                        <ComboBoxItem x:Name="p129" Content="3"/>
+                        <ComboBoxItem x:Name="p130" Content="4"/>
+                        <ComboBoxItem x:Name="p131" Content="5"/>
+                        <ComboBoxItem x:Name="p132" Content="6"/>
+                        <ComboBoxItem x:Name="p133" Content="7"/>
+                        <ComboBoxItem x:Name="p134" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock46" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock47" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy16" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy16" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox15" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p135" Height="21.96"/>
+                        <ComboBoxItem x:Name="p136" Content="1"/>
+                        <ComboBoxItem x:Name="p137" Content="2"/>
+                        <ComboBoxItem x:Name="p138" Content="3"/>
+                        <ComboBoxItem x:Name="p139" Content="4"/>
+                        <ComboBoxItem x:Name="p140" Content="5"/>
+                        <ComboBoxItem x:Name="p141" Content="6"/>
+                        <ComboBoxItem x:Name="p142" Content="7"/>
+                        <ComboBoxItem x:Name="p143" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock48" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock49" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy17" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy17" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox16" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p144" Height="21.96"/>
+                        <ComboBoxItem x:Name="p145" Content="1"/>
+                        <ComboBoxItem x:Name="p146" Content="2"/>
+                        <ComboBoxItem x:Name="p147" Content="3"/>
+                        <ComboBoxItem x:Name="p148" Content="4"/>
+                        <ComboBoxItem x:Name="p149" Content="5"/>
+                        <ComboBoxItem x:Name="p150" Content="6"/>
+                        <ComboBoxItem x:Name="p151" Content="7"/>
+                        <ComboBoxItem x:Name="p152" Content="8"/>
+                    </ComboBox>
+                </Grid>
+                <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
+                    <Grid Height="50" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock50" HorizontalAlignment="Center" Margin="-8,0,0,0" TextWrapping="Wrap" Text="Hole" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0"/>
+                    <TextBlock x:Name="textBlock51" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="textBlock11_Copy18" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="textBox1_Copy18" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="comboBox17" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
+                        <ComboBoxItem x:Name="p153" Height="21.96"/>
+                        <ComboBoxItem x:Name="p154" Content="1"/>
+                        <ComboBoxItem x:Name="p155" Content="2"/>
+                        <ComboBoxItem x:Name="p156" Content="3"/>
+                        <ComboBoxItem x:Name="p157" Content="4"/>
+                        <ComboBoxItem x:Name="p158" Content="5"/>
+                        <ComboBoxItem x:Name="p159" Content="6"/>
+                        <ComboBoxItem x:Name="p160" Content="7"/>
+                        <ComboBoxItem x:Name="p161" Content="8"/>
+                    </ComboBox>
+                </Grid>
+            </WrapPanel>
+            <RadioButton x:Name="radioButton" Content="9 Holes" HorizontalAlignment="Left" Margin="73,10,0,0" VerticalAlignment="Top" GroupName="simpleholeamounts"/>
+            <RadioButton x:Name="radioButton_Copy" Content="18 Holes" HorizontalAlignment="Left" Margin="136.583,10,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="simpleholeamounts"/>
+            <RadioButton x:Name="radioButton_Copy1" Content="27 Holes" HorizontalAlignment="Left" Margin="206.636,10,0,0" VerticalAlignment="Top" GroupName="simpleholeamounts"/>
+            <Button x:Name="button1" Content="+" HorizontalAlignment="Left" Margin="292,7,0,0" VerticalAlignment="Top" Width="20"/>
+            <Button x:Name="button1_Copy" Content="-" Margin="317,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20"/>
         </Grid>
     </Grid>
 </Page>

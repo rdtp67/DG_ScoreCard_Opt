@@ -1013,7 +1013,7 @@
                 </MenuItem>
             </Menu>
         </Grid>
-        <Grid Margin="208.5,210.649,10,10">
+        <Grid Margin="208.5,223.074,33.5,68.926">
             <Frame x:Name="pageload3_f" Content="" BorderBrush="Black" NavigationUIVisibility="Hidden" d:LayoutOverrides="HorizontalAlignment"/>
         </Grid>
 

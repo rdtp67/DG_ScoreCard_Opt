@@ -89,17 +89,17 @@ namespace DG_ScoreCard
         Vector m_startOffset;
         private void move_g_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            m_start = e.GetPosition(custommain_g);
+            m_start = e.GetPosition(course_designer_g);
             m_startOffset = new Vector(tt.X, tt.Y);
             move_g.CaptureMouse();
 
         }
 
-        private void move_g_MouseMove(object sender, MouseEventArgs e) 
+        private void move_g_MouseMove(object sender, MouseEventArgs e)
         {
-            if(move_g.IsMouseCaptured)
+            if (move_g.IsMouseCaptured)
             {
-                Vector offset = Point.Subtract(e.GetPosition(custommain_g), m_start);
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
                 tt.X = m_startOffset.X + offset.X;
                 tt.Y = m_startOffset.Y + offset.Y;
                 textBlock23.Text = "X: " + tt.X.ToString() + " Y: " + tt.Y.ToString() + " Mstart: " + m_start.X.ToString() + ", " + m_start.Y.ToString();
@@ -109,6 +109,35 @@ namespace DG_ScoreCard
         private void move_g_MouseUp(object sender, MouseButtonEventArgs e)
         {
             move_g.ReleaseMouseCapture();
+        }
+
+        private void move_maindetails_g_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(tt1.X, tt1.Y);
+           // m_startOffset = new Vector(tt1.X, tt1.Y);
+            // maindetails_g.CaptureMouse();
+            move_maindetails_g.CaptureMouse();
+            maindetails_g.BringIntoView();
+        }
+
+        private void move_maindetails_g_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (move_maindetails_g.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+               // tt1.X = m_startOffset.X + offset.X;
+               // tt1.Y = m_startOffset.Y + offset.Y;
+                tt1.X = m_startOffset.X + offset.X;
+                tt1.Y = m_startOffset.Y + offset.Y;
+                textBlock23.Text = "X: " + tt2.X.ToString() + " Y: " + tt2.Y.ToString() + " Mstart: " + m_start.X.ToString() + ", " + m_start.Y.ToString();
+            }
+        }
+
+        private void move_maindetails_g_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            // maindetails_g.ReleaseMouseCapture();
+           move_maindetails_g.ReleaseMouseCapture();
         }
     }
 }
