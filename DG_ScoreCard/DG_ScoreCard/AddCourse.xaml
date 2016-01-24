@@ -9,19 +9,19 @@
       d:DesignHeight="500" d:DesignWidth="900"
       Title="AddCourse" Width="Auto" Height="Auto">
 
-    <Grid x:Name="course_designer_g">
+    <Grid x:Name="course_designer_g" Height="500" VerticalAlignment="Top" HorizontalAlignment="Left" Width="900">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <RadioButton x:Name="simple_rb" Content="Simple" HorizontalAlignment="Left" Margin="286,0,0,17.52" VerticalAlignment="Bottom" IsChecked="True" GroupName="holemode_rbg"/>
-        <RadioButton x:Name="complex_rb" Content="Complex" Margin="345.853,0,0,17.52" VerticalAlignment="Bottom" HorizontalAlignment="Left" GroupName="holemode_rbg"/>
-        <RadioButton x:Name="custom_rb" Content="Custom" Margin="416.393,0,423.86,17.52" VerticalAlignment="Bottom" d:LayoutOverrides="Width" GroupName="holemode_rbg"/>
+        <RadioButton x:Name="simple_rb" Content="Simple" HorizontalAlignment="Left" Margin="286,0,0,17.52" VerticalAlignment="Bottom" IsChecked="True" GroupName="holemode_rbg" Click="simple_rb_Click"/>
+        <RadioButton x:Name="complex_rb" Content="Complex" Margin="345.853,0,0,17.52" VerticalAlignment="Bottom" HorizontalAlignment="Left" GroupName="holemode_rbg" Click="complex_rb_Click"/>
+        <RadioButton x:Name="custom_rb" Content="Custom" Margin="416.393,0,423.86,17.52" VerticalAlignment="Bottom" d:LayoutOverrides="Width" GroupName="holemode_rbg" Click="custom_rb_Click"/>
         <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Right" Height="38" Margin="0,0,10,5" TextWrapping="Wrap" Text="Course Creator" VerticalAlignment="Bottom" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
         <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,10" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,10" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,10" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom"/>
-        <Grid x:Name="Main_g" Margin="20,10,20,50" Visibility="Hidden">
-            <Grid x:Name="parkdeatils_g" Margin="440,254.818,0,0">
+        <Grid x:Name="Main_g" Margin="20,10,20,50">
+            <Grid x:Name="parkdeatils_g" Margin="435,0,0,-4.818" Height="190" VerticalAlignment="Bottom">
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
                 <Rectangle Fill="#FF007836" Margin="10,15.5,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.7"/>
@@ -270,17 +270,64 @@
                 <Button x:Name="button" Content="Browse" HorizontalAlignment="Right" Height="31.35" VerticalAlignment="Bottom" Width="71.5" RenderTransformOrigin="0.308,-0.921"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Custom_g" Margin="20,10,20,50" Visibility="Hidden">
+        <Grid x:Name="Custom_g" Margin="20,10,20,50" d:IsHidden="True">
             <Grid x:Name="customsidepanel_g" HorizontalAlignment="Left" Width="200" Background="#FFDADADA">
                 <TextBlock x:Name="textBlock23" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" RenderTransformOrigin="1.962,0.251"><Run Text="TextBlock"/></TextBlock>
+                <Button x:Name="teeinfo_btn" Content="Tee Info" Margin="10,29,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="basics_btn" Content="Basics" Margin="10,4.04,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="basketloc_btn" Content="Basket Location" Margin="10,53.96,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="holepicture_btn" Content="Hole Picture" Margin="10,78.92,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="holeinfo_btn" Content="Hole Info" Margin="10,103.88,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="holelines_btn" Content="Hole Lines" Margin="10,128.84,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="holelines_btn_Copy" Content="Misc." Margin="10,153.8,94,0" VerticalAlignment="Top"/>
+                <Button x:Name="holelines_btn_Copy1" Content="Misc." Margin="10,178.76,94,0" VerticalAlignment="Top"/>
             </Grid>
 
             <Grid x:Name="custommain_g" Margin="200,0,0,0" Background="White">
-                <Grid x:Name="move_g" Background="Black" MouseDown="move_g_MouseDown" MouseMove="move_g_MouseMove" MouseUp="move_g_MouseUp" Margin="386.96,0,0,164.5" HorizontalAlignment="Left" Width="147" Height="108" VerticalAlignment="Bottom">
+                <Grid x:Name="move_g" Background="Black" MouseDown="move_g_MouseDown" MouseMove="move_g_MouseMove" MouseUp="move_g_MouseUp" Margin="513,0,0,10" HorizontalAlignment="Left" Width="147" Height="108" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment">
                     <Grid.RenderTransform>
                         <TranslateTransform x:Name="tt"/>
                     </Grid.RenderTransform>
                     <Rectangle Fill="#FFF4F4F5" Margin="0,28,0,-2" Stroke="Black" Width="147" Height="82"/>
+                </Grid>
+                <Grid x:Name="basic_g" HorizontalAlignment="Left" Width="150" Background="#FFF4F4F5" Height="150" VerticalAlignment="Top">
+                    <TextBlock x:Name="textBlock52" Margin="10,47,0,0" TextWrapping="Wrap" Text="Yardage" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy" Margin="10,0,0,48.04" TextWrapping="Wrap" Text="Par" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="textBlock52_Copy1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="Basic"/><LineBreak/><Run/></TextBlock>
+                </Grid>
+                <Grid x:Name="teeinfo_g" HorizontalAlignment="Left" Width="150" Background="#FFF4F4F5" Margin="0,155,0,135">
+                    <TextBlock x:Name="textBlock53" Margin="10,40,72.54,0" TextWrapping="Wrap" Text="Tee Color" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy2" Margin="10,74,57.54,60.04" TextWrapping="Wrap" Text="Tee Pad Type" d:LayoutOverrides="Height"/>
+                    <TextBlock x:Name="textBlock52_Copy3" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Tee Info"/>
+                    <TextBlock x:Name="textBlock52_Copy4" Margin="10,0,57.54,28.04" TextWrapping="Wrap" Text="Tee Pad Notes" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid x:Name="basketloc_g" HorizontalAlignment="Left" Width="150" Background="#FFF4F4F5" Margin="155,155,0,135">
+                    <TextBlock x:Name="textBlock54" Margin="10,37,0,0" TextWrapping="Wrap" Text="Basket Letter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy5" Margin="10,68,0,66.04" TextWrapping="Wrap" Text="Basket Note" d:LayoutOverrides="Height" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="textBlock52_Copy6" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Basket Location"/>
+                    <TextBlock x:Name="textBlock52_Copy15" Margin="10,0,0,45.08" TextWrapping="Wrap" Text="+/- Yardage" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid x:Name="basketloc_g_Copy" HorizontalAlignment="Left" Width="150" Background="#FFF4F4F5" Margin="155,0,0,0" Height="150" VerticalAlignment="Top">
+                    <TextBlock x:Name="textBlock52_Copy8" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Hole Picture"/>
+                </Grid>
+                <Grid x:Name="holeinfo_g" Background="#FFF4F4F5" Height="150" VerticalAlignment="Top" Margin="310,0,200,0">
+                    <TextBlock x:Name="textBlock55" Margin="10,38,74.283,0" TextWrapping="Wrap" Text="Hole Name" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy7" Margin="10,58.96,0,0" TextWrapping="Wrap" Text="Mando" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="textBlock52_Copy9" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Hole Info"/>
+                    <TextBlock x:Name="textBlock52_Copy10" Margin="10,74.92,0,59.12" TextWrapping="Wrap" Text="Hazords" HorizontalAlignment="Left" d:LayoutOverrides="Height"/>
+                </Grid>
+                <Grid x:Name="basic_g_Copy1" Background="#FFF4F4F5" Margin="310,155,200,135">
+                    <TextBlock x:Name="textBlock56" Margin="10,33,0,0" TextWrapping="Wrap" Text="Recomendedd Shot" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy11" Margin="10,0,0,56.04" TextWrapping="Wrap" Text="Recomended Disc" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="textBlock52_Copy12" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Hole Lines" Margin="0,0,0,134.04"/>
+                </Grid>
+                <Grid x:Name="basic_g_Copy" HorizontalAlignment="Right" Width="150" Background="#FFF4F4F5" Height="150" VerticalAlignment="Top" Margin="0,0,45,0">
+                    <TextBlock x:Name="textBlock57" Margin="10,46,0,0" TextWrapping="Wrap" Text="Guide to Hole" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy13" Margin="10,66.96,66.323,67.12" TextWrapping="Wrap" Text="Trash Can"/>
+                    <TextBlock x:Name="textBlock52_Copy14" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Misc"/>
+                    <TextBlock x:Name="textBlock57_Copy" Margin="10,0,0,46.16" TextWrapping="Wrap" Text="Trails Nearby" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock57_Copy1" Margin="9.523,0,0,25.2" TextWrapping="Wrap" Text="Roads Nearby" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock57_Copy2" Margin="9.523,0,0,4.24" TextWrapping="Wrap" Text="General comments" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                 </Grid>
             </Grid>
 
@@ -292,7 +339,7 @@
             <Grid Margin="310,50,310,40" Background="White" Height="400" Width="290"/>
             <Grid Margin="0,50,15,40" Background="#FFFDFDFD" Height="400" Width="290" HorizontalAlignment="Right" d:LayoutOverrides="Width"/>
         </Grid>
-        <Grid x:Name="Simple_g">
+        <Grid x:Name="Simple_g" Visibility="Hidden">
             <WrapPanel Margin="10,35,10,65" d:LayoutOverrides="Height">
                 <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>

@@ -31,18 +31,77 @@ namespace DG_ScoreCard
             InitializeComponent();
             username = user;
         }
+
+/********* Move to Different Page *******/
+
         //Desc: Changes to Holes Grid
         private void addholes_btn_Click(object sender, RoutedEventArgs e)
         {
             Main_g.Visibility = Visibility.Hidden;
-            Custom_g.Visibility = Visibility.Visible;
+            if(complex_rb.IsChecked == true)
+            {
+                Complex_g.Visibility = Visibility.Visible;
+                Custom_g.Visibility = Visibility.Hidden;
+                Simple_g.Visibility = Visibility.Hidden;
+               
+            }
+            else if(custom_rb.IsChecked == true)
+            {
+                Custom_g.Visibility = Visibility.Visible;
+                Complex_g.Visibility = Visibility.Hidden;
+                Simple_g.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Simple_g.Visibility = Visibility.Visible;
+                Complex_g.Visibility = Visibility.Hidden;
+                Custom_g.Visibility = Visibility.Hidden;
+            }
+
         }
         //Desc: Changes to Main Grid
         private void main_btn_Click(object sender, RoutedEventArgs e)
         {
             Custom_g.Visibility = Visibility.Hidden;
+            Simple_g.Visibility = Visibility.Hidden;
+            Complex_g.Visibility = Visibility.Hidden;
             Main_g.Visibility = Visibility.Visible;
         }
+
+        private void simple_rb_Click(object sender, RoutedEventArgs e)
+        {
+            if(Main_g.Visibility == Visibility.Hidden && Simple_g.Visibility == Visibility.Hidden)
+            {
+                Custom_g.Visibility = Visibility.Hidden;
+                Complex_g.Visibility = Visibility.Hidden;
+                Simple_g.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void complex_rb_Click(object sender, RoutedEventArgs e)
+        {
+            if (Main_g.Visibility == Visibility.Hidden && Complex_g.Visibility == Visibility.Hidden)
+            {
+                Custom_g.Visibility = Visibility.Hidden;
+                Simple_g.Visibility = Visibility.Hidden;
+                Complex_g.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void custom_rb_Click(object sender, RoutedEventArgs e)
+        {
+            if (Main_g.Visibility == Visibility.Hidden)
+            {
+                Simple_g.Visibility = Visibility.Hidden;
+                Complex_g.Visibility = Visibility.Hidden;
+                Custom_g.Visibility = Visibility.Visible;
+            }
+        }
+
+
+
+        /****************************************/
+
         //Submits Course
         private void submit_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -139,5 +198,7 @@ namespace DG_ScoreCard
             // maindetails_g.ReleaseMouseCapture();
            move_maindetails_g.ReleaseMouseCapture();
         }
+
+        
     }
 }
