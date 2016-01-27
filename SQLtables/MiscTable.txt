@@ -1,0 +1,10 @@
+create table misc(
+misc_id int NULL AUTO_INCREMENT,
+misc_guidetohole varchar(100),
+misc_trashcan char(1),
+misc_trailsnearby char(1),
+misc_roadsnearby char(1),
+misc_generalcomments varchar(100),
+misc_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(misc_id)
+)

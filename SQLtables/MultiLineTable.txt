@@ -1,0 +1,6 @@
+create table multi_lines(
+multi_lines_id int NULL AUTO_INCREMENT,
+hole_id int,
+PRIMARY KEY(multi_lines_id),
+FOREIGN KEY(hole_id) REFERENCES hole(hole_id)
+)

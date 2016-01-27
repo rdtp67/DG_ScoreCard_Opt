@@ -18,5 +18,8 @@ course_has_guides char(1),
 course_designer varchar(50),
 course_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 Unique(course_name, user_id),
-PRIMARY KEY(course_id)
+PRIMARY KEY(course_id),
+FOREIGN KEY(user_id) REFERENCES user(user_id),
+FOREIGN KEY(loc_id) REFERENCES location(loc_id),
+FOREIGN KEY(park_id) REFERENCES park(park_id)
 )

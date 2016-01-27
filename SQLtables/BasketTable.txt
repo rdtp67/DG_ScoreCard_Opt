@@ -1,0 +1,8 @@
+create table basket(
+basket_id int NULL AUTO_INCREMENT,
+basket_letter char(1),
+basket_deduction int,
+basket_note varchar(100),
+basket_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(basket_id)
+)

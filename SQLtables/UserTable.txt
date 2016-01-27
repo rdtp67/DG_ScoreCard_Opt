@@ -10,5 +10,6 @@ user_email varchar(100),
 user_phone varchar(15),
 user_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY(user_id),
-UNIQUE(user_name)
+UNIQUE(user_name),
+FOREIGN KEY(loc_id) REFERENCES location(loc_id)
 )

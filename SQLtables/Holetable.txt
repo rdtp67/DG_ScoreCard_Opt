@@ -1,0 +1,17 @@
+create table hole(
+hole_id int NULL AUTO_INCREMENT,
+course_id int,
+tee_id int,
+basket_id int,
+misc_id int,
+hole_yardage int,
+hole_par int,
+hole_name varchar(30),
+hole_mando char(1),
+hole_hazards char(1),
+PRIMARY KEY(hole_id),
+FOREIGN KEY(course_id) REFERENCES course(course_id),
+FOREIGN KEY(tee_id) REFERENCES tee(tee_id),
+FOREIGN KEY(basket_id) REFERENCES basket(basket_id),
+FOREIGN KEY(misc_id) REFERENCES misc(misc_id)
+)

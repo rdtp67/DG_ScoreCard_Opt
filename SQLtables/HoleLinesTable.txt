@@ -1,0 +1,10 @@
+create table hole_lines(
+hole_lines_id int NULL AUTO_INCREMENT,
+multi_lines_id int,
+hole_lines_num int,
+hole_lines_rec_shot varchar(100),
+hole_lines_rec_disc varchar(30),
+hole_lines_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(hole_lines_id),
+FOREIGN KEY(multi_lines_id) REFERENCES multi_lines(multi_lines_id)
+)
