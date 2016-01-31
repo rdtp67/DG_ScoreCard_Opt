@@ -2,7 +2,7 @@ create table tee(
 tee_id int NULL AUTO_INCREMENT,
 tee_color varchar(15),
 tee_pad_type varchar(15),
-tee_pad_notes varchar(100),
+tee_notes varchar(100),
 tee_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY(tee_id)
 )

@@ -261,7 +261,7 @@
                 <Button x:Name="button" Content="Browse" HorizontalAlignment="Right" Height="31.35" VerticalAlignment="Bottom" Width="71.5" RenderTransformOrigin="0.308,-0.921"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Custom_g" Margin="20,10,0,0" Height="440" VerticalAlignment="Top" HorizontalAlignment="Left" Width="880">
+        <Grid x:Name="Custom_g" Margin="20,10,0,0" Height="440" VerticalAlignment="Top" HorizontalAlignment="Left" Width="880" d:IsHidden="True">
             <Grid x:Name="customsidepanel_g" HorizontalAlignment="Left" Width="126" Background="#FFDADADA" Height="282" VerticalAlignment="Top">
                 <Button x:Name="teeinfo_btn" Content="Tee Info" Margin="0,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Background="White" Height="40" Click="teeinfo_btn_Click"/>
                 <Button x:Name="basics_btn" Content="Basics" VerticalAlignment="Top" Background="White" Height="40" Width="126" HorizontalAlignment="Left" Click="basics_btn_Click"/>
@@ -300,6 +300,7 @@
                         <ComboBoxItem Content=""/>
                         <ComboBoxItem Content="Yrd."/>
                         <ComboBoxItem Content="Ft."/>
+                        <ComboBoxItem Content="m."/>
                     </ComboBox>
                 </Grid>
                 <Grid x:Name="teeinfo_g" Background="White" Margin="360,40,219,182" Height="218">
@@ -308,14 +309,14 @@
                     </Grid.RenderTransform>
                     <TextBlock x:Name="textBlock53" Margin="10,40,72.54,0" TextWrapping="Wrap" Text="Tee Color" VerticalAlignment="Top"/>
                     <TextBlock x:Name="textBlock52_Copy2" Margin="10,87.92,57.54,0" TextWrapping="Wrap" Text="Tee Pad Type" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="textBlock52_Copy4" Margin="10,135.84,57.54,0" TextWrapping="Wrap" Text="Tee Pad Notes" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy4" Margin="10,135.84,57.54,0" TextWrapping="Wrap" Text="Tee Notes" VerticalAlignment="Top"/>
                     <Grid Height="35" VerticalAlignment="Top">
                         <Rectangle Fill="#FF007836" Stroke="White"/>
                         <Label x:Name="label5" Content="Tee Info" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Foreground="White"/>
                         <Rectangle x:Name="teeinfo_r" Fill="White" Height="9.25" Margin="10,2.5,10,0" VerticalAlignment="Top" Opacity="0.155" RadiusX="5" RadiusY="5" MouseDown="teeinfo_r_MouseDown" MouseMove="teeinfo_r_MouseMove" MouseUp="teeinfo_r_MouseUp" Cursor="SizeAll"/>
                     </Grid>
-                    <ComboBox x:Name="teecolor_cb" Margin="10,60.96,10,0" VerticalAlignment="Top">
-                        <ComboBoxItem Content=""/>
+                    <ComboBox x:Name="teecolor_cb" Margin="10,60.96,10,0" VerticalAlignment="Top" DropDownClosed="teecolor_cb_DropDownClosed">
+                        <ComboBoxItem x:Name="none" Content="None" IsSelected="True"/>
                         <ComboBoxItem x:Name="tred" Content="Red" Background="Red" Foreground="White" d:IsHidden="True"/>
                         <ComboBoxItem x:Name="tgold" Content="Gold" Background="#FFDCE60A" Foreground="White"/>
                         <ComboBoxItem x:Name="twhite" Content="White" Foreground="Black"/>
@@ -366,42 +367,46 @@
                         <Rectangle x:Name="holepic_r" Fill="White" Height="9.25" Margin="10,2.5,10,0" VerticalAlignment="Top" Opacity="0.155" RadiusX="5" RadiusY="5" MouseDown="holepic_r_MouseDown" MouseMove="holepic_r_MouseMove" MouseUp="holepic_r_MouseUp" Cursor="SizeAll"/>
                     </Grid>
                 </Grid>
-                <Grid x:Name="holeinfo_g" Background="White" Margin="10,195,0,73" HorizontalAlignment="Left" Width="170">
+                <Grid x:Name="holeinfo_g" Background="White" Margin="0,0,44,5.95" HorizontalAlignment="Right" Width="170" Height="172" VerticalAlignment="Bottom">
                     <Grid.RenderTransform>
                         <TranslateTransform x:Name="holeinfott"/>
                     </Grid.RenderTransform>
                     <TextBlock x:Name="textBlock55" Margin="10,40,74.283,0" TextWrapping="Wrap" Text="Hole Name" VerticalAlignment="Top"/>
                     <TextBlock x:Name="textBlock52_Copy7" Margin="10,88.96,0,0" TextWrapping="Wrap" Text="Mando" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBlock x:Name="textBlock52_Copy10" Margin="10,129.88,0,0" TextWrapping="Wrap" Text="Hazords" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy10" Margin="10,129.88,0,0" TextWrapping="Wrap" Text="Hazards" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Grid Height="35" VerticalAlignment="Top">
                         <Rectangle Fill="#FF007836" Stroke="White"/>
                         <Label x:Name="label3" Content="Hole Info" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Foreground="White"/>
                         <Rectangle x:Name="holeinfomove_r" Fill="White" Height="9.25" Margin="10,2.5,10,0" VerticalAlignment="Top" Opacity="0.155" RadiusX="5" RadiusY="5" MouseDown="holeinfomove_r_MouseDown" MouseMove="holeinfomove_r_MouseMove" MouseUp="holeinfomove_r_MouseUp" Cursor="SizeAll"/>
                     </Grid>
                     <TextBox x:Name="holename_tb" Margin="10,60.96,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-                    <RadioButton x:Name="mandono_rb" Content="No" Margin="57.911,109.92,67.179,0" VerticalAlignment="Top" GroupName="mando"/>
-                    <RadioButton x:Name="mandoyes_rb" Content="Yes" Margin="10,109.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42.911" GroupName="mando"/>
-                    <RadioButton x:Name="hazordno_rb" Content="No" Margin="57.911,150.84,67.179,0" VerticalAlignment="Top" GroupName="hazzord"/>
-                    <RadioButton x:Name="hazordyes_rb" Content="Yes" Margin="10,150.84,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42.911" GroupName="hazzord"/>
+                    <RadioButton x:Name="mandono_rb" Content="No" Margin="0,109.92,36.179,0" VerticalAlignment="Top" GroupName="mando" HorizontalAlignment="Right" Width="44.91"/>
+                    <RadioButton x:Name="mandoyes_rb" Content="Yes" Margin="41,109.92,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42.911" GroupName="mando"/>
+                    <RadioButton x:Name="hazordno_rb" Content="No" Margin="0,147.04,36.179,0" VerticalAlignment="Top" GroupName="hazzord" HorizontalAlignment="Right" Width="44.91"/>
+                    <RadioButton x:Name="hazordyes_rb" Content="Yes" Margin="41,147.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42.911" GroupName="hazzord"/>
                 </Grid>
-                <Grid x:Name="holelines_g" Background="White" Margin="0,0,44,27.95" HorizontalAlignment="Right" Height="150" VerticalAlignment="Bottom" Width="170">
+                <Grid x:Name="holelines_g" Background="White" Margin="10,195,0,0" HorizontalAlignment="Left" Height="198.95" VerticalAlignment="Top" Width="170">
                     <Grid.RenderTransform>
                         <TranslateTransform x:Name="holelinestt"/>
                     </Grid.RenderTransform>
-                    <TextBlock x:Name="textBlock56" Margin="10,68.04,0,66" TextWrapping="Wrap" Text="Recomendedd Shot" HorizontalAlignment="Left" d:LayoutOverrides="Height"/>
-                    <TextBlock x:Name="textBlock52_Copy11" Margin="10,0,0,45.04" TextWrapping="Wrap" Text="Recomended Disc" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="textBlock56" Margin="10,40,0,0" TextWrapping="Wrap" Text="Recomendedd Shot" HorizontalAlignment="Left" Height="14.91" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock52_Copy11" Margin="10,118.91,0,0" TextWrapping="Wrap" Text="Recomended Disc" VerticalAlignment="Top" HorizontalAlignment="Left" Width="104.453"/>
                     <Grid Height="35" VerticalAlignment="Top">
                         <Rectangle Fill="#FF007836" Stroke="White"/>
                         <Label x:Name="label7" Content="Hole Lines" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Foreground="White"/>
                         <Rectangle x:Name="holelines_r" Fill="White" Height="9.25" Margin="10,2.5,10,0" VerticalAlignment="Top" Opacity="0.155" RadiusX="5" RadiusY="5" MouseDown="holelines_r_MouseDown" MouseMove="holelines_r_MouseMove" MouseUp="holelines_r_MouseUp" Cursor="SizeAll"/>
                     </Grid>
-                    <TextBlock x:Name="textBlock56_Copy" Margin="10,40,0,0" TextWrapping="Wrap" Text="Number" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBox18" Margin="80.607,40,42.547,0" VerticalAlignment="Top">
-                        <ComboBoxItem x:Name="holeline1" Content="1" IsSelected="True"/>
-                        <ComboBoxItem Content="2"/>
-                        <ComboBoxItem Content="3"/>
-                        <ComboBoxItem Content="4"/>
-                        <ComboBoxItem Content="5"/>
+                    <TextBox x:Name="holename_tb_Copy2" Margin="10,59.91,10,0" TextWrapping="Wrap" Height="54" VerticalAlignment="Top"/>
+                    <TextBox x:Name="holename_tb_Copy3" Margin="10,139.87,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="basketletter_cb_Copy" Margin="10,167.87,10,0" VerticalAlignment="Top">
+                        <ComboBoxItem Content=""/>
+                        <ComboBoxItem Content="A"/>
+                        <ComboBoxItem Content="B"/>
+                        <ComboBoxItem Content="C"/>
+                        <ComboBoxItem Content="D"/>
+                        <ComboBoxItem Content="E"/>
+                        <ComboBoxItem Content="F"/>
+                        <ComboBoxItem Content="G"/>
                     </ComboBox>
                 </Grid>
                 <Grid x:Name="misc_g" Background="White" Margin="185,40,0,64" HorizontalAlignment="Left" Width="170">
@@ -431,6 +436,7 @@
                     <TextBlock x:Name="textBlock58" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Hole 1" FontSize="24" Margin="0,3.076,0,0" d:LayoutOverrides="Height, LeftMargin, RightMargin" VerticalAlignment="Center"/>
                     <Button x:Name="button2" Content="&lt;" HorizontalAlignment="Right" Margin="0,5,40,5" Width="25" Height="25"/>
                     <Button x:Name="button2_Copy" Content="&gt;" HorizontalAlignment="Right" Margin="0,5,10,5" Width="25" Height="25"/>
+                    <TextBlock x:Name="hole_count_custom_tbl" Margin="0,14.04,86.973,5" TextWrapping="Wrap" Text="Hole Count: 0 " d:LayoutOverrides="VerticalAlignment, Height" HorizontalAlignment="Right"/>
                 </Grid>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="62" VerticalAlignment="Bottom" Width="100">
@@ -443,8 +449,9 @@
             <Grid Margin="0,50,0,0" Width="280" HorizontalAlignment="Left" Background="Black">
                 <Grid Height="70" VerticalAlignment="Top" Background="White"/>
             </Grid>
+            <TextBlock x:Name="hole_count_complex_tbl" Margin="0,14.04,197.973,410" TextWrapping="Wrap" Text="Hole Count: 0 " HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
         </Grid>
-        <Grid x:Name="Simple_g" d:IsHidden="True">
+        <Grid x:Name="Simple_g">
             <WrapPanel Margin="10,35,10,65" d:LayoutOverrides="Height">
                 <Grid Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
@@ -843,13 +850,23 @@
                     </ComboBox>
                 </Grid>
             </WrapPanel>
-            <RadioButton x:Name="radioButton" Content="9 Holes" HorizontalAlignment="Left" Margin="73,10,0,0" VerticalAlignment="Top" GroupName="simpleholeamounts"/>
-            <RadioButton x:Name="radioButton_Copy" Content="18 Holes" HorizontalAlignment="Left" Margin="136.583,10,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="simpleholeamounts"/>
-            <RadioButton x:Name="radioButton_Copy1" Content="27 Holes" HorizontalAlignment="Left" Margin="206.636,10,0,0" VerticalAlignment="Top" GroupName="simpleholeamounts"/>
-            <Button x:Name="button1" Content="+" HorizontalAlignment="Left" Margin="292,7,0,0" VerticalAlignment="Top" Width="20"/>
-            <Button x:Name="button1_Copy" Content="-" Margin="317,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20"/>
-            <Button x:Name="previous9_btn" Content="Previous 9" Height="17.96" Margin="0,7,101,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="65"/>
-            <Button x:Name="next9_btn" Content="Next 9" Height="17.96" Margin="0,7,31,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="65"/>
+            <Button x:Name="previous9_btn" Content="Previous 9" Margin="0,7,101,0" HorizontalAlignment="Right" Width="65" Height="20.96" VerticalAlignment="Top"/>
+            <Button x:Name="next9_btn" Content="Next 9" Height="20.96" Margin="0,7,31,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="65"/>
+            <ComboBox x:Name="yardagetype_cb_Copy" Margin="0,8.04,235,0" HorizontalAlignment="Right" Width="48" VerticalAlignment="Top">
+                <ComboBoxItem Content=""/>
+                <ComboBoxItem Content="Yrd."/>
+                <ComboBoxItem Content="Ft."/>
+                <ComboBoxItem Content="m."/>
+            </ComboBox>
+            <TextBlock x:Name="textBlock23" HorizontalAlignment="Right" Margin="0,10,288,0" TextWrapping="Wrap" Text="Unit of Measurement" VerticalAlignment="Top" Width="115.513"/>
+            <Button x:Name="simple_add1_btn" Content="+1" HorizontalAlignment="Left" Margin="293,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_add1_btn_Click"/>
+            <Button x:Name="simple_sub1_btn" Content="-1" HorizontalAlignment="Left" Margin="338,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub1_btn_Click"/>
+            <TextBlock x:Name="hole_count_simple_tbl" Margin="401.257,10,422.973,0" TextWrapping="Wrap" Text="Hole Count: 0 " d:LayoutOverrides="Width" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock60" HorizontalAlignment="Left" Margin="53.013,10,0,0" TextWrapping="Wrap" Text="Add Holes" VerticalAlignment="Top"/>
+            <Button x:Name="simple_add9_btn" Content="+9" HorizontalAlignment="Left" Margin="203,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_add9_btn_Click"/>
+            <Button x:Name="simple_sub9_btn" Content="-9" HorizontalAlignment="Left" Margin="248,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub9_btn_Click"/>
+            <Button x:Name="simple_add18_btn" Content="+18" HorizontalAlignment="Left" Margin="113,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_add18_btn_Click"/>
+            <Button x:Name="simple_sub18_btn" Content="-18" HorizontalAlignment="Left" Margin="158,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub18_btn_Click"/>
         </Grid>
     </Grid>
 </Page>

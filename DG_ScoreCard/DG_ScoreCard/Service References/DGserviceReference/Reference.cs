@@ -90,6 +90,355 @@ namespace DG_ScoreCard.DGserviceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="holeLib", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class holeLib : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int b_deductionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<char> b_letterField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string b_noteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<char> h_hazzardsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<char> h_mandoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string h_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int h_numField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int h_parField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string h_unitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int h_yardageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string m_general_commentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string m_guideField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<char> m_roadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<char> m_trailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<char> m_trashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string r_discField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string r_shotsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string t_colorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string t_notesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string t_pad_typeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int b_deduction {
+            get {
+                return this.b_deductionField;
+            }
+            set {
+                if ((this.b_deductionField.Equals(value) != true)) {
+                    this.b_deductionField = value;
+                    this.RaisePropertyChanged("b_deduction");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<char> b_letter {
+            get {
+                return this.b_letterField;
+            }
+            set {
+                if ((this.b_letterField.Equals(value) != true)) {
+                    this.b_letterField = value;
+                    this.RaisePropertyChanged("b_letter");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string b_note {
+            get {
+                return this.b_noteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.b_noteField, value) != true)) {
+                    this.b_noteField = value;
+                    this.RaisePropertyChanged("b_note");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<char> h_hazzards {
+            get {
+                return this.h_hazzardsField;
+            }
+            set {
+                if ((this.h_hazzardsField.Equals(value) != true)) {
+                    this.h_hazzardsField = value;
+                    this.RaisePropertyChanged("h_hazzards");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<char> h_mando {
+            get {
+                return this.h_mandoField;
+            }
+            set {
+                if ((this.h_mandoField.Equals(value) != true)) {
+                    this.h_mandoField = value;
+                    this.RaisePropertyChanged("h_mando");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string h_name {
+            get {
+                return this.h_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.h_nameField, value) != true)) {
+                    this.h_nameField = value;
+                    this.RaisePropertyChanged("h_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int h_num {
+            get {
+                return this.h_numField;
+            }
+            set {
+                if ((this.h_numField.Equals(value) != true)) {
+                    this.h_numField = value;
+                    this.RaisePropertyChanged("h_num");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int h_par {
+            get {
+                return this.h_parField;
+            }
+            set {
+                if ((this.h_parField.Equals(value) != true)) {
+                    this.h_parField = value;
+                    this.RaisePropertyChanged("h_par");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string h_unit {
+            get {
+                return this.h_unitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.h_unitField, value) != true)) {
+                    this.h_unitField = value;
+                    this.RaisePropertyChanged("h_unit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int h_yardage {
+            get {
+                return this.h_yardageField;
+            }
+            set {
+                if ((this.h_yardageField.Equals(value) != true)) {
+                    this.h_yardageField = value;
+                    this.RaisePropertyChanged("h_yardage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string m_general_comments {
+            get {
+                return this.m_general_commentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.m_general_commentsField, value) != true)) {
+                    this.m_general_commentsField = value;
+                    this.RaisePropertyChanged("m_general_comments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string m_guide {
+            get {
+                return this.m_guideField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.m_guideField, value) != true)) {
+                    this.m_guideField = value;
+                    this.RaisePropertyChanged("m_guide");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<char> m_road {
+            get {
+                return this.m_roadField;
+            }
+            set {
+                if ((this.m_roadField.Equals(value) != true)) {
+                    this.m_roadField = value;
+                    this.RaisePropertyChanged("m_road");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<char> m_trail {
+            get {
+                return this.m_trailField;
+            }
+            set {
+                if ((this.m_trailField.Equals(value) != true)) {
+                    this.m_trailField = value;
+                    this.RaisePropertyChanged("m_trail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<char> m_trash {
+            get {
+                return this.m_trashField;
+            }
+            set {
+                if ((this.m_trashField.Equals(value) != true)) {
+                    this.m_trashField = value;
+                    this.RaisePropertyChanged("m_trash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string r_disc {
+            get {
+                return this.r_discField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.r_discField, value) != true)) {
+                    this.r_discField = value;
+                    this.RaisePropertyChanged("r_disc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string r_shots {
+            get {
+                return this.r_shotsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.r_shotsField, value) != true)) {
+                    this.r_shotsField = value;
+                    this.RaisePropertyChanged("r_shots");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string t_color {
+            get {
+                return this.t_colorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.t_colorField, value) != true)) {
+                    this.t_colorField = value;
+                    this.RaisePropertyChanged("t_color");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string t_notes {
+            get {
+                return this.t_notesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.t_notesField, value) != true)) {
+                    this.t_notesField = value;
+                    this.RaisePropertyChanged("t_notes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string t_pad_type {
+            get {
+                return this.t_pad_typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.t_pad_typeField, value) != true)) {
+                    this.t_pad_typeField = value;
+                    this.RaisePropertyChanged("t_pad_type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
     public interface IDGservice {
@@ -187,6 +536,12 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getParkId", ReplyAction="http://tempuri.org/IDGservice/getParkIdResponse")]
         System.Threading.Tasks.Task<int> getParkIdAsync(string park_name, System.Nullable<char> park_private, string park_hours_high, string park_hours_low, System.Nullable<char> park_has_guides, System.Nullable<char> park_pet_friendly);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getHole", ReplyAction="http://tempuri.org/IDGservice/getHoleResponse")]
+        DG_ScoreCard.DGserviceReference.holeLib getHole();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getHole", ReplyAction="http://tempuri.org/IDGservice/getHoleResponse")]
+        System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.holeLib> getHoleAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -326,6 +681,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<int> getParkIdAsync(string park_name, System.Nullable<char> park_private, string park_hours_high, string park_hours_low, System.Nullable<char> park_has_guides, System.Nullable<char> park_pet_friendly) {
             return base.Channel.getParkIdAsync(park_name, park_private, park_hours_high, park_hours_low, park_has_guides, park_pet_friendly);
+        }
+        
+        public DG_ScoreCard.DGserviceReference.holeLib getHole() {
+            return base.Channel.getHole();
+        }
+        
+        public System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.holeLib> getHoleAsync() {
+            return base.Channel.getHoleAsync();
         }
     }
 }

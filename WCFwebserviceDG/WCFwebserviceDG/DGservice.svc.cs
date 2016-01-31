@@ -341,6 +341,9 @@ namespace WCFwebserviceDG
             return park_id;
         }
 
+        //DESC: needs work...
+        public holeLib getHole() { holeLib hole = new holeLib(); return hole; }
+
 
     }
 }

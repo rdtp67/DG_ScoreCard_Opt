@@ -15,4 +15,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="login" nillable="true" type="tns:login" />
+  <xs:complexType name="holeLib">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="b_deduction" type="xs:int" />
+      <xs:element minOccurs="0" name="b_letter" nillable="true" type="ser:char" />
+      <xs:element minOccurs="0" name="b_note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_hazzards" nillable="true" type="ser:char" />
+      <xs:element minOccurs="0" name="h_mando" nillable="true" type="ser:char" />
+      <xs:element minOccurs="0" name="h_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_num" type="xs:int" />
+      <xs:element minOccurs="0" name="h_par" type="xs:int" />
+      <xs:element minOccurs="0" name="h_unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_yardage" type="xs:int" />
+      <xs:element minOccurs="0" name="m_general_comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="m_guide" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="m_road" nillable="true" type="ser:char" />
+      <xs:element minOccurs="0" name="m_trail" nillable="true" type="ser:char" />
+      <xs:element minOccurs="0" name="m_trash" nillable="true" type="ser:char" />
+      <xs:element minOccurs="0" name="r_disc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="r_shots" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="t_color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="t_notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="t_pad_type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="holeLib" nillable="true" type="tns:holeLib" />
 </xs:schema>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DG_ScoreCard.DGserviceReference;
 
 namespace DG_ScoreCard
 {
@@ -20,16 +21,22 @@ namespace DG_ScoreCard
     /// </summary>
     public partial class AddCourse : Page
     {
-        DGserviceReference.DGserviceClient client = new DGserviceReference.DGserviceClient();
+
+        DGserviceClient client = new DGserviceClient();
+        List<holeLib> holeList = new List<holeLib>();
+        int hole_count = 18;
         private string username = "NULL";
         public AddCourse()
         {
             InitializeComponent();
+            updateHoleCount();          
+
         }
         public AddCourse(string user)
         {
             InitializeComponent();
             username = user;
+            updateHoleCount();
         }
 
         /********* Move to Different Page *******/
@@ -419,6 +426,144 @@ namespace DG_ScoreCard
         }
 
         /***************************************************************/
+
+        /***** Custom *******/
+
+        private void teecolor_cb_DropDownClosed(object sender, EventArgs e)
+        {
+            bool hole_exists = false;
+            //Steralize Data
+
+
+            if(yardage_tb.Text == "" && par_cb.Text == "")
+            {
+                MessageBox.Show("Basic Criteria not filled out, progress will be lost.");
+                //Create Go/No Go
+            }
+            else
+            {
+                //Check if Update vs Insert
+                //hole_exists = checkHoleExists(holeList, )
+
+                
+                          
+               
+            }
+           
+
+        }
+
+        /****************************************************************/
+
+        /*** holeLib/List<HoleLib> functions*****/
+
+        //Desc: Creates new hole using custom hole values
+        //Post: Returns holeLib
+       private holeLib setHole(int num, int yard, int par, string name, char? mando, char? hazard, char? letter, int deduction, string b_note, string color, string pad_type, string t_note, string guide, char? trash, char? trail, char? road, string comments, string shot, string disc)
+        {
+            holeLib h = new holeLib();
+            h.h_num = num;
+            h.h_yardage = yard;
+            h.h_par = (par);
+            h.h_name = name;
+            h.h_mando = mando;
+            h.h_hazzards = hazard;
+            h.b_letter = letter;
+            h.b_deduction = deduction;
+            h.b_note = b_note;
+            h.t_color = color;
+            h.t_pad_type = pad_type;
+            h.t_notes = t_note;
+            h.m_guide = guide;
+            h.m_trash = trash;
+            h.m_trail = trail;
+            h.m_road = road;
+            h.m_general_comments = comments;
+            h.r_disc = disc;
+            h.r_shots = shot;
+            return h;
+        }
+
+        //Desc: Checks if tee color and placement exist in hole list
+        //Post: return true if exists
+        private bool checkHoleExists(List<holeLib> h, int num, string color, char? letter)
+        {
+            for(int i = 0; i<h.Count(); i++)
+            {
+                if(h[i].h_num == num && h[i].t_color == color && h[i].b_letter == letter)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //Updates hole count lables
+        private void updateHoleCount()
+        {
+            hole_count_complex_tbl.Text = "Hole Count: " + hole_count;
+            hole_count_custom_tbl.Text = "Hole Count: " + hole_count;
+            hole_count_simple_tbl.Text = "Hole Count: " + hole_count;
+        }
+
+        //Desc: Checks if hole count would go below 0 or above 36
+        //Post: Return true if above 36 or below 0
+        private bool checkHoleCount(int delta)
+        {
+            int count = hole_count;
+            count += delta;
+            if(count < 0 || count > 36)
+            {
+                return true;
+            }
+            return false;
+        }
+        /*************************************************************/
+
+        /*** simple add/sub hole btns ****/
+        private void simple_add1_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(1) == true) return;
+            hole_count++;
+            updateHoleCount();
+        }
+
+        private void simple_sub1_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(-1) == true) return;
+            hole_count--;
+            updateHoleCount();
+        }
+
+        private void simple_add9_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(9) == true) return;
+            hole_count += 9;
+            updateHoleCount();
+        }
+
+        private void simple_sub9_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(-9) == true) return;
+            hole_count -= 9;
+            updateHoleCount();
+        }
+
+        private void simple_add18_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(18) == true) return;
+            hole_count += 18;
+            updateHoleCount();
+        }
+
+        private void simple_sub18_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(-18) == true) return;
+            hole_count -= 18;
+            updateHoleCount();
+        }
+        /***************************************************************/
+
 
 
     }

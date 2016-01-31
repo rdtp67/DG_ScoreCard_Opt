@@ -37,7 +37,11 @@ namespace WCFwebserviceDG
 
         [OperationContract]
         int getParkId(string park_name, char? park_private, string park_hours_high, string park_hours_low, char? park_has_guides, char? park_pet_friendly);
-        
+
+        [OperationContract]
+        holeLib getHole();
+
+
     }
 
     [DataContract]
@@ -74,5 +78,176 @@ namespace WCFwebserviceDG
         }
            
     }
+
+    [DataContract]
+    public class holeLib
+    {
+        //hole
+        int hole_num;
+        int hole_yardage;
+        int hole_par;
+        string hole_unit;
+        string hole_name;
+        char? hole_mando;
+        char? hole_hazards;
+        //basket
+        char? basket_letter;
+        int basket_deduction;
+        string basket_note;
+        //tee
+        string tee_color;
+        string tee_pad_type;
+        string tee_notes;
+        //Misc
+        string misc_guide;
+        char? misc_trash;
+        char? misc_trail;
+        char? misc_road;
+        string misc_general_comments;
+        //Hole Lines
+        string recommended_shot;
+        string recommended_disc;
+
+        [DataMember]
+        public int h_num
+        {
+            get { return hole_num; }
+            set { hole_num = value; }
+        }
+        [DataMember]
+        public int h_yardage
+        {
+            get { return hole_yardage; }
+            set { hole_yardage = value; }
+        }
+
+
+        [DataMember]
+        public int h_par
+        {
+            get { return hole_par; }
+            set { hole_par = value; }
+        }
+
+        [DataMember]
+        public string h_unit
+        {
+            get { return hole_unit; }
+            set { hole_unit = value; }
+        }
+
+        [DataMember]
+        public string h_name
+        {
+            get { return hole_name; }
+            set { hole_name = value; }
+        }
+
+        [DataMember]
+        public char? h_mando
+        {
+            get { return hole_mando; }
+            set { hole_mando = value; }
+        }
+
+        [DataMember]
+        public char? h_hazzards
+        {
+            get { return hole_hazards; }
+            set { hole_hazards = value; }
+        }
+
+        [DataMember]
+        public char? b_letter
+        {
+            get { return basket_letter; }
+            set { basket_letter = value; }
+        }
+
+        [DataMember]
+        public int b_deduction
+        {
+            get { return basket_deduction; }
+            set { basket_deduction = value; }
+        }
+        [DataMember]
+        public string b_note
+        {
+            get { return basket_note; }
+            set { basket_note = value; }
+        }
+
+        [DataMember]
+        public string t_color
+        {
+            get { return tee_color; }
+            set { tee_color = value; }
+        }
+
+        [DataMember]
+        public string t_pad_type
+        {
+            get { return tee_pad_type; }
+            set { tee_pad_type = value; }
+        }
+
+        [DataMember]
+        public string t_notes
+        {
+            get { return tee_notes; }
+            set { tee_notes = value; }
+        }
+
+        [DataMember]
+        public string m_guide
+        {
+            get { return misc_guide; }
+            set { misc_guide = value; }
+        }
+
+        [DataMember]
+        public char? m_trash
+        {
+            get { return misc_trash; }
+            set { misc_trash = value; }
+        }
+
+        [DataMember]
+        public char? m_trail
+        {
+            get { return misc_trail; }
+            set { misc_trail = value; }
+        }
+
+        [DataMember]
+        public char? m_road
+        {
+            get { return misc_road; }
+            set { misc_road = value; }
+        }
+
+        [DataMember]
+        public string m_general_comments
+        {
+            get { return misc_general_comments; }
+            set { misc_general_comments = value; }
+        }
+
+        [DataMember]
+        public string r_shots
+        {
+            get { return recommended_shot; }
+            set { recommended_shot = value; }
+        }
+
+        [DataMember]
+        public string r_disc
+        {
+            get { return recommended_disc; }
+            set { recommended_disc = value; }
+        }
+
+    }
+
 
 }

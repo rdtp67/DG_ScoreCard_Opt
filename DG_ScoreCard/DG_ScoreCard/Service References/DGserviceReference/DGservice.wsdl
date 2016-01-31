@@ -61,6 +61,12 @@
   <wsdl:message name="IDGservice_getParkId_OutputMessage">
     <wsdl:part name="parameters" element="tns:getParkIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_getHole_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHole" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getHole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHoleResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
@@ -97,6 +103,10 @@
     <wsdl:operation name="getParkId">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getParkId" message="tns:IDGservice_getParkId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getParkIdResponse" message="tns:IDGservice_getParkId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getHole" message="tns:IDGservice_getHole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getHoleResponse" message="tns:IDGservice_getHole_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -175,6 +185,15 @@
     </wsdl:operation>
     <wsdl:operation name="getParkId">
       <soap:operation soapAction="http://tempuri.org/IDGservice/getParkId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHole">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getHole" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

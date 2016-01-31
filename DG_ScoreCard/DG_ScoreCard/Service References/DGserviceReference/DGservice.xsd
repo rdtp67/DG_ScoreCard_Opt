@@ -167,4 +167,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getHole">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="getHoleResult" nillable="true" type="q11:holeLib" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
