@@ -25,6 +25,8 @@ namespace DG_ScoreCard
         DGserviceClient client = new DGserviceClient();
         List<holeLib> holeList = new List<holeLib>();
         int hole_count = 18;
+        const int min_holes = 1;
+        const int max_holes = 36;
         private string username = "NULL";
         public AddCourse()
         {
@@ -83,6 +85,8 @@ namespace DG_ScoreCard
                 Complex_g.Visibility = Visibility.Hidden;
                 Simple_g.Visibility = Visibility.Visible;
             }
+            simple_end = 18;
+            updateSimpleHoleNumbers();
         }
 
         private void complex_rb_Click(object sender, RoutedEventArgs e)
@@ -93,6 +97,7 @@ namespace DG_ScoreCard
                 Simple_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Visible;
             }
+
         }
 
         private void custom_rb_Click(object sender, RoutedEventArgs e)
@@ -507,12 +512,12 @@ namespace DG_ScoreCard
         }
 
         //Desc: Checks if hole count would go below 0 or above 36
-        //Post: Return true if above 36 or below 0
+        //Post: Return true if above max_holes or below min
         private bool checkHoleCount(int delta)
         {
             int count = hole_count;
             count += delta;
-            if(count < 0 || count > 36)
+            if(count < min_holes || count > max_holes)
             {
                 return true;
             }
@@ -523,48 +528,210 @@ namespace DG_ScoreCard
         /*** simple add/sub hole btns ****/
         private void simple_add1_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkHoleCount(1) == true) return;
-            hole_count++;
+            if (checkHoleCount(1) == false)
+            {
+                hole_count++;
+            }
+            
             updateHoleCount();
+            updateSimpleHoleNumbers();
         }
 
         private void simple_sub1_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkHoleCount(-1) == true) return;
-            hole_count--;
+            if (checkHoleCount(-1) == false)
+            {
+                hole_count--;
+            }
             updateHoleCount();
+            updateSimpleHoleNumbers();
+            checkSimpleHoleGridVisibility();
         }
 
         private void simple_add9_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkHoleCount(9) == true) return;
-            hole_count += 9;
+            if (checkHoleCount(9) == true)
+            {
+                hole_count = max_holes;
+            }
+            else
+            {
+                hole_count += 9;
+            }
             updateHoleCount();
+            updateSimpleHoleNumbers();
         }
 
         private void simple_sub9_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkHoleCount(-9) == true) return;
-            hole_count -= 9;
+            if (checkHoleCount(-9) == true)
+            {
+                hole_count = min_holes;
+            }
+            else
+            {
+                hole_count -= 9;
+            }
+            
             updateHoleCount();
+            updateSimpleHoleNumbers();
+            checkSimpleHoleGridVisibility();
         }
 
         private void simple_add18_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkHoleCount(18) == true) return;
-            hole_count += 18;
+            if (checkHoleCount(18) == true)
+            {
+                hole_count = max_holes;
+            }
+            else
+            {
+                hole_count += 18;
+            }
             updateHoleCount();
+            updateSimpleHoleNumbers();
         }
 
         private void simple_sub18_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkHoleCount(-18) == true) return;
-            hole_count -= 18;
+            if (checkHoleCount(-18) == true)
+            {
+                hole_count = min_holes;
+            }
+            else
+            {
+                hole_count -= 18;
+            }
             updateHoleCount();
+            updateSimpleHoleNumbers();
+            checkSimpleHoleGridVisibility();
         }
+
         /***************************************************************/
 
+        /*** Simple Measurement *****/
+        private void simple_measurement_cb_DropDownClosed(object sender, EventArgs e)
+        {
+            string unit;
+            if(simple_measurement_cb.Text == "Ft.")
+            {
+                unit = "Feet";
+            }
+            else if(simple_measurement_cb.Text == "Yrd.")
+            {
+                unit = "Yard";
+            }
+            else if(simple_measurement_cb.Text == "m.")
+            {
+                unit = "Meter";
+            }
+            else
+            {
+                unit = "Error";
+            }
 
+            su1_tbl.Text = unit;
+            su2_tbl.Text = unit;
+            su3_tbl.Text = unit;
+            su4_tbl.Text = unit;
+            su5_tbl.Text = unit;
+            su6_tbl.Text = unit;
+            su7_tbl.Text = unit;
+            su8_tbl.Text = unit;
+            su9_tbl.Text = unit;
+            su10_tbl.Text = unit;
+            su11_tbl.Text = unit;
+            su12_tbl.Text = unit;
+            su13_tbl.Text = unit;
+            su14_tbl.Text = unit;
+            su15_tbl.Text = unit;
+            su16_tbl.Text = unit;
+            su17_tbl.Text = unit;
+            su18_tbl.Text = unit;
+        }
+
+        /***************************************************************/
+
+        /****** Simple Hole View *****/
+        int simple_end = 18;
+        private void previous9_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (simple_end == 18)
+            {
+                MessageBox.Show("No more holes to view!");
+                return;
+            }
+
+            simple_end -= 9;
+            updateSimpleHoleNumbers();
+        }
+
+        private void next9_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(hole_count <= simple_end)
+            {
+                MessageBox.Show("No more holes to view!");
+                return;
+            }
+
+            simple_end += 9;
+            updateSimpleHoleNumbers();
+        }
+        
+        private void updateSimpleHoleNumbers()
+        {
+            
+            int start = simple_end - 18;
+            for (int i=0; i<18; i++)
+            {
+                int temp = start;
+                temp += i+1;
+                updateSimpleHoleField(i, "Hole " + temp.ToString());
+                if(temp > hole_count)
+                {
+                    updateSimpleHoleGridVisibility(i, 'H');
+                }
+                else
+                {
+                    updateSimpleHoleGridVisibility(i, 'V');
+                }
+            }
+        }
+
+        private void updateSimpleHoleField(int i, string output)
+        {
+            TextBlock[] simple_hole_tbls = new TextBlock[18] { sh1_tbl, sh2_tbl, sh3_tbl, sh4_tbl, sh5_tbl, sh6_tbl, sh7_tbl, sh8_tbl, sh9_tbl, sh10_tbl, sh11_tbl, sh12_tbl, sh13_tbl, sh14_tbl, sh15_tbl, sh16_tbl, sh17_tbl, sh18_tbl };
+            simple_hole_tbls[i].Text = output;
+        }
+
+        private void updateSimpleHoleGridVisibility(int i, char c)
+        {
+            Grid[] simple_hole_grids = new Grid[18]{shole1_g, shole2_g, shole3_g, shole4_g, shole5_g, shole6_g, shole7_g, shole8_g, shole9_g, shole10_g, shole11_g, shole12_g, shole13_g, shole14_g, shole15_g, shole16_g, shole17_g, shole18_g};
+            if (c == 'V')
+            {
+                simple_hole_grids[i].Visibility = Visibility.Visible;
+            }
+            else if (c == 'H')
+            {
+                simple_hole_grids[i].Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MessageBox.Show("We got a problem with updateSimpleHoleGridVisibility Yo ~ ! ~");
+            }
+            return;
+           
+        }
+
+        private void checkSimpleHoleGridVisibility()
+        {
+            if(shole1_g.Visibility == Visibility.Hidden)
+            {
+                simple_end = 18;
+                updateSimpleHoleNumbers();
+            }
+        }
+        /******************************************************************/
 
     }
 }
