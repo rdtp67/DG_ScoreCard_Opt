@@ -19,8 +19,9 @@
         <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Right" Height="38" Margin="0,0,10,5" TextWrapping="Wrap" Text="Course Creator" VerticalAlignment="Bottom" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
         <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,5" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,5" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Button x:Name="displayholes_btn" Content="DisplayHoles" HorizontalAlignment="Right" Margin="0,0,253,18" VerticalAlignment="Bottom" Width="75" Click="displayholes_btn_Click"/>
         <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,5" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom"/>
-        <Grid x:Name="Main_g" Margin="20,10,0,0" HorizontalAlignment="Left" Width="860" Height="440" VerticalAlignment="Top" d:IsHidden="True">
+        <Grid x:Name="Main_g" Margin="20,10,0,0" HorizontalAlignment="Left" Width="860" Height="440" VerticalAlignment="Top" Visibility="Hidden">
             <Grid x:Name="parkdeatils_g" Margin="435,0,0,-4.818" Height="190" VerticalAlignment="Bottom">
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
@@ -261,7 +262,7 @@
                 <Button x:Name="button" Content="Browse" HorizontalAlignment="Right" Height="31.35" VerticalAlignment="Bottom" Width="71.5" RenderTransformOrigin="0.308,-0.921"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Custom_g" Margin="20,10,0,0" Height="440" VerticalAlignment="Top" HorizontalAlignment="Left" Width="880" d:IsHidden="True">
+        <Grid x:Name="Custom_g" Margin="20,10,0,0" Height="440" VerticalAlignment="Top" HorizontalAlignment="Left" Width="880" Visibility="Hidden">
             <Grid x:Name="customsidepanel_g" HorizontalAlignment="Left" Width="126" Background="#FFDADADA" Height="282" VerticalAlignment="Top">
                 <Button x:Name="teeinfo_btn" Content="Tee Info" Margin="0,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Background="White" Height="40" Click="teeinfo_btn_Click"/>
                 <Button x:Name="basics_btn" Content="Basics" VerticalAlignment="Top" Background="White" Height="40" Width="126" HorizontalAlignment="Left" Click="basics_btn_Click"/>
@@ -445,7 +446,7 @@
             </Grid>
 
         </Grid>
-        <Grid x:Name="Complex_g" Margin="20,10,20,0" Height="440" VerticalAlignment="Top" d:IsHidden="True">
+        <Grid x:Name="Complex_g" Margin="20,10,20,0" Height="440" VerticalAlignment="Top" Visibility="Hidden">
             <Grid Margin="0,50,0,0" Width="280" HorizontalAlignment="Left" Background="Black">
                 <Grid Height="70" VerticalAlignment="Top" Background="White"/>
             </Grid>
@@ -462,12 +463,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="sadf" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su1_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy4" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem Name="p0" Height="21.96"></ComboBoxItem>
+                    <TextBox x:Name="sunit1_tb" Margin="0,0,7,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar1_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem Name="p1">1</ComboBoxItem>
                         <ComboBoxItem Name="p2">2</ComboBoxItem>
-                        <ComboBoxItem Name="p3">3</ComboBoxItem>
+                        <ComboBoxItem Name="p3" IsSelected="True">3</ComboBoxItem>
                         <ComboBoxItem Name="p4">4</ComboBoxItem>
                         <ComboBoxItem Name="p5">5</ComboBoxItem>
                         <ComboBoxItem Name="p6">6</ComboBoxItem>
@@ -484,12 +484,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="asdf" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su2_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy1" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox1" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p9" Height="21.96"/>
+                    <TextBox x:Name="sunit2_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar2_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p10" Content="1"/>
                         <ComboBoxItem x:Name="p11" Content="2"/>
-                        <ComboBoxItem x:Name="p12" Content="3"/>
+                        <ComboBoxItem x:Name="p12" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p13" Content="4"/>
                         <ComboBoxItem x:Name="p14" Content="5"/>
                         <ComboBoxItem x:Name="p15" Content="6"/>
@@ -506,12 +505,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="aer" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su3_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy2" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox2" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p18" Height="21.96"/>
+                    <TextBox x:Name="sunit3_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar3_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p19" Content="1"/>
                         <ComboBoxItem x:Name="p20" Content="2"/>
-                        <ComboBoxItem x:Name="p21" Content="3"/>
+                        <ComboBoxItem x:Name="p21" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p22" Content="4"/>
                         <ComboBoxItem x:Name="p23" Content="5"/>
                         <ComboBoxItem x:Name="p24" Content="6"/>
@@ -528,12 +526,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="asdf23" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su4_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy3" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox3" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p27" Height="21.96"/>
+                    <TextBox x:Name="sunit4_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar4_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p28" Content="1"/>
                         <ComboBoxItem x:Name="p29" Content="2"/>
-                        <ComboBoxItem x:Name="p30" Content="3"/>
+                        <ComboBoxItem x:Name="p30" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p31" Content="4"/>
                         <ComboBoxItem x:Name="p32" Content="5"/>
                         <ComboBoxItem x:Name="p33" Content="6"/>
@@ -550,12 +547,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock22" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su5_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy5" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox4" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p36" Height="21.96"/>
+                    <TextBox x:Name="sunit5_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar5_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p37" Content="1"/>
                         <ComboBoxItem x:Name="p38" Content="2"/>
-                        <ComboBoxItem x:Name="p39" Content="3"/>
+                        <ComboBoxItem x:Name="p39" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p40" Content="4"/>
                         <ComboBoxItem x:Name="p41" Content="5"/>
                         <ComboBoxItem x:Name="p42" Content="6"/>
@@ -572,12 +568,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock27" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su6_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy6" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox5" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p45" Height="21.96"/>
+                    <TextBox x:Name="sunit6_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar6_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p46" Content="1"/>
                         <ComboBoxItem x:Name="p47" Content="2"/>
-                        <ComboBoxItem x:Name="p48" Content="3"/>
+                        <ComboBoxItem x:Name="p48" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p49" Content="4"/>
                         <ComboBoxItem x:Name="p50" Content="5"/>
                         <ComboBoxItem x:Name="p51" Content="6"/>
@@ -594,12 +589,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock29" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su7_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy7" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox6" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p54" Height="21.96"/>
+                    <TextBox x:Name="sunit7_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar7_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p55" Content="1"/>
                         <ComboBoxItem x:Name="p56" Content="2"/>
-                        <ComboBoxItem x:Name="p57" Content="3"/>
+                        <ComboBoxItem x:Name="p57" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p58" Content="4"/>
                         <ComboBoxItem x:Name="p59" Content="5"/>
                         <ComboBoxItem x:Name="p60" Content="6"/>
@@ -616,12 +610,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock31" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su8_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy8" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox7" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p63" Height="21.96"/>
+                    <TextBox x:Name="sunit8_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar8_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p64" Content="1"/>
                         <ComboBoxItem x:Name="p65" Content="2"/>
-                        <ComboBoxItem x:Name="p66" Content="3"/>
+                        <ComboBoxItem x:Name="p66" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p67" Content="4"/>
                         <ComboBoxItem x:Name="p68" Content="5"/>
                         <ComboBoxItem x:Name="p69" Content="6"/>
@@ -638,12 +631,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock33" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su9_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy9" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox8" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p72" Height="21.96"/>
+                    <TextBox x:Name="sunit9_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar9_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p73" Content="1"/>
                         <ComboBoxItem x:Name="p74" Content="2"/>
-                        <ComboBoxItem x:Name="p75" Content="3"/>
+                        <ComboBoxItem x:Name="p75" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p76" Content="4"/>
                         <ComboBoxItem x:Name="p77" Content="5"/>
                         <ComboBoxItem x:Name="p78" Content="6"/>
@@ -660,12 +652,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock35" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su10_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy10" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox9" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p81" Height="21.96"/>
+                    <TextBox x:Name="sunit10_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar10_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p82" Content="1"/>
                         <ComboBoxItem x:Name="p83" Content="2"/>
-                        <ComboBoxItem x:Name="p84" Content="3"/>
+                        <ComboBoxItem x:Name="p84" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p85" Content="4"/>
                         <ComboBoxItem x:Name="p86" Content="5"/>
                         <ComboBoxItem x:Name="p87" Content="6"/>
@@ -682,12 +673,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock37" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su11_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy11" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox10" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p90" Height="21.96"/>
+                    <TextBox x:Name="sunit11_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar11_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p91" Content="1"/>
                         <ComboBoxItem x:Name="p92" Content="2"/>
-                        <ComboBoxItem x:Name="p93" Content="3"/>
+                        <ComboBoxItem x:Name="p93" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p94" Content="4"/>
                         <ComboBoxItem x:Name="p95" Content="5"/>
                         <ComboBoxItem x:Name="p96" Content="6"/>
@@ -704,12 +694,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock39" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su12_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy12" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox11" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p99" Height="21.96"/>
+                    <TextBox x:Name="sunit12_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar12_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p100" Content="1"/>
                         <ComboBoxItem x:Name="p101" Content="2"/>
-                        <ComboBoxItem x:Name="p102" Content="3"/>
+                        <ComboBoxItem x:Name="p102" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p103" Content="4"/>
                         <ComboBoxItem x:Name="p104" Content="5"/>
                         <ComboBoxItem x:Name="p105" Content="6"/>
@@ -726,12 +715,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock41" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su13_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy13" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox12" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p108" Height="21.96"/>
+                    <TextBox x:Name="sunit13_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar13_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p109" Content="1"/>
                         <ComboBoxItem x:Name="p110" Content="2"/>
-                        <ComboBoxItem x:Name="p111" Content="3"/>
+                        <ComboBoxItem x:Name="p111" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p112" Content="4"/>
                         <ComboBoxItem x:Name="p113" Content="5"/>
                         <ComboBoxItem x:Name="p114" Content="6"/>
@@ -748,12 +736,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock43" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su14_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy14" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox13" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p117" Height="21.96"/>
+                    <TextBox x:Name="sunit14_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar14_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p118" Content="1"/>
                         <ComboBoxItem x:Name="p119" Content="2"/>
-                        <ComboBoxItem x:Name="p120" Content="3"/>
+                        <ComboBoxItem x:Name="p120" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p121" Content="4"/>
                         <ComboBoxItem x:Name="p122" Content="5"/>
                         <ComboBoxItem x:Name="p123" Content="6"/>
@@ -770,12 +757,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock45" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su15_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy15" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox14" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p126" Height="21.96"/>
+                    <TextBox x:Name="sunit15_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar15_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p127" Content="1"/>
                         <ComboBoxItem x:Name="p128" Content="2"/>
-                        <ComboBoxItem x:Name="p129" Content="3"/>
+                        <ComboBoxItem x:Name="p129" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p130" Content="4"/>
                         <ComboBoxItem x:Name="p131" Content="5"/>
                         <ComboBoxItem x:Name="p132" Content="6"/>
@@ -792,12 +778,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock47" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su16_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy16" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox15" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p135" Height="21.96"/>
+                    <TextBox x:Name="sunit16_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar16_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p136" Content="1"/>
                         <ComboBoxItem x:Name="p137" Content="2"/>
-                        <ComboBoxItem x:Name="p138" Content="3"/>
+                        <ComboBoxItem x:Name="p138" Content="3" Margin="-2,0,2,0" IsSelected="True"/>
                         <ComboBoxItem x:Name="p139" Content="4"/>
                         <ComboBoxItem x:Name="p140" Content="5"/>
                         <ComboBoxItem x:Name="p141" Content="6"/>
@@ -814,12 +799,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock49" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su17_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy17" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox16" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p144" Height="21.96"/>
+                    <TextBox x:Name="sunit17_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar17_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p145" Content="1"/>
                         <ComboBoxItem x:Name="p146" Content="2"/>
-                        <ComboBoxItem x:Name="p147" Content="3"/>
+                        <ComboBoxItem x:Name="p147" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p148" Content="4"/>
                         <ComboBoxItem x:Name="p149" Content="5"/>
                         <ComboBoxItem x:Name="p150" Content="6"/>
@@ -836,12 +820,11 @@
                     <Grid Margin="0,50,0,0"/>
                     <TextBlock x:Name="textBlock51" Margin="12.982,73.666,33.558,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                     <TextBlock x:Name="su18_tbl" Margin="12.982,0,23.27,57.374" TextWrapping="Wrap" Text="Feet" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="textBox1_Copy18" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom"/>
-                    <ComboBox x:Name="comboBox17" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
-                        <ComboBoxItem x:Name="p153" Height="21.96"/>
+                    <TextBox x:Name="sunit18_tb" Margin="0,0,10,29.374" TextWrapping="Wrap" HorizontalAlignment="Right" Width="80" Height="23" VerticalAlignment="Bottom" Text="0"/>
+                    <ComboBox x:Name="spar18_cb" Margin="7,99.706,10,78.334" d:LayoutOverrides="Height">
                         <ComboBoxItem x:Name="p154" Content="1"/>
                         <ComboBoxItem x:Name="p155" Content="2"/>
-                        <ComboBoxItem x:Name="p156" Content="3"/>
+                        <ComboBoxItem x:Name="p156" Content="3" IsSelected="True"/>
                         <ComboBoxItem x:Name="p157" Content="4"/>
                         <ComboBoxItem x:Name="p158" Content="5"/>
                         <ComboBoxItem x:Name="p159" Content="6"/>
@@ -866,6 +849,8 @@
             <Button x:Name="simple_sub9_btn" Content="-9" HorizontalAlignment="Left" Margin="248,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub9_btn_Click"/>
             <Button x:Name="simple_add18_btn" Content="+18" HorizontalAlignment="Left" Margin="113,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_add18_btn_Click"/>
             <Button x:Name="simple_sub18_btn" Content="-18" HorizontalAlignment="Left" Margin="158,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub18_btn_Click"/>
+            <TextBlock x:Name="hole_count_tb" HorizontalAlignment="Right" Margin="0,0,270.54,1.56" TextWrapping="Wrap" Text="holecount" VerticalAlignment="Bottom"/>
         </Grid>
+        <TextBlock x:Name="simpleend_tb" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Simpleend" VerticalAlignment="Bottom" Margin="0,0,347.04,1.99"/>
     </Grid>
 </Page>

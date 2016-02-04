@@ -14,7 +14,7 @@ namespace DG_ScoreCard
         //Post: Return True if string is blank, false otherwise
         public static bool isBlank(String t)
         {
-            if (t == "")
+            if (string.IsNullOrWhiteSpace(t) || string.IsNullOrEmpty(t))
                 return true;
             else
                 return false;

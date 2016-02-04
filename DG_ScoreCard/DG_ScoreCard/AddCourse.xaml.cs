@@ -27,11 +27,15 @@ namespace DG_ScoreCard
         int hole_count = 18;
         const int min_holes = 1;
         const int max_holes = 36;
+        const int par_initial = 3;
+        const int yardage_intitial = 0;
+        const string unit_intitial = "Feet";
         private string username = "NULL";
         public AddCourse()
         {
             InitializeComponent();
-            updateHoleCount();          
+            updateHoleCount();
+            addHole();          
 
         }
         public AddCourse(string user)
@@ -39,6 +43,7 @@ namespace DG_ScoreCard
             InitializeComponent();
             username = user;
             updateHoleCount();
+            addHole();
         }
 
         /********* Move to Different Page *******/
@@ -75,6 +80,7 @@ namespace DG_ScoreCard
             Simple_g.Visibility = Visibility.Hidden;
             Complex_g.Visibility = Visibility.Hidden;
             Main_g.Visibility = Visibility.Visible;
+            setHoleListSimple();
         }
 
         private void simple_rb_Click(object sender, RoutedEventArgs e)
@@ -86,7 +92,8 @@ namespace DG_ScoreCard
                 Simple_g.Visibility = Visibility.Visible;
             }
             simple_end = 18;
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
+            updateSimpleGidValues();
         }
 
         private void complex_rb_Click(object sender, RoutedEventArgs e)
@@ -96,6 +103,7 @@ namespace DG_ScoreCard
                 Custom_g.Visibility = Visibility.Hidden;
                 Simple_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Visible;
+                setHoleListSimple();
             }
 
         }
@@ -107,6 +115,7 @@ namespace DG_ScoreCard
                 Simple_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Hidden;
                 Custom_g.Visibility = Visibility.Visible;
+                setHoleListSimple();
             }
         }
 
@@ -462,9 +471,22 @@ namespace DG_ScoreCard
 
         /*** holeLib/List<HoleLib> functions*****/
 
+        //Displays Holes
+        private void displayholes_btn_Click(object sender, RoutedEventArgs e)
+        {
+            string holes = "";
+            for(int i = 0; i<hole_count; i++)
+            {
+                holes += "Hole: " + holeList[i].h_num + " Par: " + holeList[i].h_par + " Unit: " + holeList[i].h_unit + " Yardage: " + holeList[i].h_yardage + "\n";
+
+            }
+
+            MessageBox.Show(holes);
+        }
+
         //Desc: Creates new hole using custom hole values
         //Post: Returns holeLib
-       private holeLib setHole(int num, int yard, int par, string name, char? mando, char? hazard, char? letter, int deduction, string b_note, string color, string pad_type, string t_note, string guide, char? trash, char? trail, char? road, string comments, string shot, string disc)
+        private holeLib getHoleLibCustom(int num, int yard, int par, string name, char? mando, char? hazard, char? letter, int deduction, string b_note, string color, string pad_type, string t_note, string guide, char? trash, char? trail, char? road, string comments, string shot, string disc)
         {
             holeLib h = new holeLib();
             h.h_num = num;
@@ -488,6 +510,78 @@ namespace DG_ScoreCard
             h.r_shots = shot;
             return h;
         }
+
+        //Desc: Set Hole for simple values
+        private void setHoleListSimple()
+        {
+            ComboBox[] cb = new ComboBox[18] {spar1_cb, spar2_cb, spar3_cb, spar4_cb, spar5_cb, spar6_cb, spar7_cb, spar8_cb, spar9_cb, spar10_cb, spar11_cb, spar12_cb, spar13_cb, spar14_cb, spar15_cb, spar16_cb, spar17_cb, spar18_cb };
+            TextBox[] tb = new TextBox[18] {sunit1_tb, sunit2_tb, sunit3_tb, sunit4_tb, sunit5_tb, sunit6_tb, sunit7_tb, sunit8_tb, sunit9_tb, sunit10_tb, sunit11_tb, sunit12_tb, sunit13_tb, sunit14_tb, sunit15_tb, sunit16_tb, sunit17_tb, sunit18_tb };
+            int start = simple_end - 18;
+            int end;
+            if(simple_end > hole_count)
+            {
+                end = hole_count;
+            }
+            else
+            {
+                end = simple_end;
+            }
+            int i = 0;
+            while(start != end)
+            {
+                holeList[start].h_par = int.Parse(cb[i].Text);
+                updateHoleListYardage(start, tb[i]);
+                i++;
+                start++;
+            }
+        }
+
+        //Desc: Checks for blank, < 0, and > 9999
+        //Pre: start used for holeList hole
+        private void updateHoleListYardage(int start, TextBox tb)
+        {
+            if (GenLib.isBlank(tb.Text) == true)
+            {
+                tb.Text = "0";
+            }
+            else if (int.Parse(tb.Text) < 0)
+            {
+                MessageBox.Show("Yardage cannot be negative!");
+                tb.Text = "0";
+            }
+            else if (int.Parse(tb.Text) > 9999)
+            {
+                MessageBox.Show("Yardage cannot be greater than 9999!");
+                tb.Text = "9999";
+            }
+            else
+            {
+
+            }
+
+            holeList[start].h_yardage = int.Parse(tb.Text);
+        }
+
+        //Desc: Add hole to hole list if new holes are added
+        private void addHole()
+        {
+            int count = hole_count - holeList.Count;
+            if(count < 1)
+            {
+                return;
+            }
+            for(int i = 0; i<count; i++)
+            {
+                holeList.Add(new holeLib());
+                holeList[holeList.Count()-1].h_num = holeList.Count();
+                holeList[holeList.Count()-1].h_par = par_initial;
+                holeList[holeList.Count()-1].h_yardage = yardage_intitial;
+                holeList[holeList.Count() - 1].h_unit = unit_intitial;
+            }
+
+            hole_count_tb.Text = holeList.Count().ToString(); //remove
+        }
+
 
         //Desc: Checks if tee color and placement exist in hole list
         //Post: return true if exists
@@ -534,7 +628,8 @@ namespace DG_ScoreCard
             }
             
             updateHoleCount();
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
+            addHole();
         }
 
         private void simple_sub1_btn_Click(object sender, RoutedEventArgs e)
@@ -544,7 +639,7 @@ namespace DG_ScoreCard
                 hole_count--;
             }
             updateHoleCount();
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
             checkSimpleHoleGridVisibility();
         }
 
@@ -559,7 +654,8 @@ namespace DG_ScoreCard
                 hole_count += 9;
             }
             updateHoleCount();
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
+            addHole();
         }
 
         private void simple_sub9_btn_Click(object sender, RoutedEventArgs e)
@@ -574,7 +670,7 @@ namespace DG_ScoreCard
             }
             
             updateHoleCount();
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
             checkSimpleHoleGridVisibility();
         }
 
@@ -589,7 +685,8 @@ namespace DG_ScoreCard
                 hole_count += 18;
             }
             updateHoleCount();
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
+            addHole();
         }
 
         private void simple_sub18_btn_Click(object sender, RoutedEventArgs e)
@@ -603,7 +700,7 @@ namespace DG_ScoreCard
                 hole_count -= 18;
             }
             updateHoleCount();
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
             checkSimpleHoleGridVisibility();
         }
 
@@ -630,6 +727,8 @@ namespace DG_ScoreCard
                 unit = "Error";
             }
 
+            updateSimpleUnit(unit);
+
             su1_tbl.Text = unit;
             su2_tbl.Text = unit;
             su3_tbl.Text = unit;
@@ -650,6 +749,15 @@ namespace DG_ScoreCard
             su18_tbl.Text = unit;
         }
 
+        //Updates simple unit for full holeList
+        private void updateSimpleUnit(string unit)
+        {
+            for(int i=0; i<holeList.Count(); i++)
+            {
+                holeList[i].h_unit = unit;
+            }
+        }
+
         /***************************************************************/
 
         /****** Simple Hole View *****/
@@ -661,9 +769,11 @@ namespace DG_ScoreCard
                 MessageBox.Show("No more holes to view!");
                 return;
             }
-
+            setHoleListSimple();
             simple_end -= 9;
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
+            updateSimpleGidValues();
+            simpleend_tb.Text = simple_end.ToString();
         }
 
         private void next9_btn_Click(object sender, RoutedEventArgs e)
@@ -673,12 +783,15 @@ namespace DG_ScoreCard
                 MessageBox.Show("No more holes to view!");
                 return;
             }
-
+             setHoleListSimple();
             simple_end += 9;
-            updateSimpleHoleNumbers();
+            updateSimpleHoleVisibility();
+            updateSimpleGidValues();
+            simpleend_tb.Text = simple_end.ToString();
+           
         }
-        
-        private void updateSimpleHoleNumbers()
+        //Consolidate with updatesimplegridvalues()
+        private void updateSimpleHoleVisibility()
         {
             
             int start = simple_end - 18;
@@ -686,7 +799,6 @@ namespace DG_ScoreCard
             {
                 int temp = start;
                 temp += i+1;
-                updateSimpleHoleField(i, "Hole " + temp.ToString());
                 if(temp > hole_count)
                 {
                     updateSimpleHoleGridVisibility(i, 'H');
@@ -728,9 +840,24 @@ namespace DG_ScoreCard
             if(shole1_g.Visibility == Visibility.Hidden)
             {
                 simple_end = 18;
-                updateSimpleHoleNumbers();
+                updateSimpleHoleVisibility();
+                updateSimpleGidValues();
             }
         }
+
+        private void updateSimpleGidValues()
+        {
+            ComboBox[] cb = new ComboBox[18] { spar1_cb, spar2_cb, spar3_cb, spar4_cb, spar5_cb, spar6_cb, spar7_cb, spar8_cb, spar9_cb, spar10_cb, spar11_cb, spar12_cb, spar13_cb, spar14_cb, spar15_cb, spar16_cb, spar17_cb, spar18_cb };
+            TextBox[] tb = new TextBox[18] { sunit1_tb, sunit2_tb, sunit3_tb, sunit4_tb, sunit5_tb, sunit6_tb, sunit7_tb, sunit8_tb, sunit9_tb, sunit10_tb, sunit11_tb, sunit12_tb, sunit13_tb, sunit14_tb, sunit15_tb, sunit16_tb, sunit17_tb, sunit18_tb };
+            int start = simple_end - 18;
+            for(int i=0; i<18; i++)
+            {
+                updateSimpleHoleField(i, ("Hole " + (start + i + 1)).ToString());
+                cb[i].Text = holeList[start + i].h_par.ToString();
+                tb[i].Text = holeList[start + i].h_yardage.ToString();
+            }
+        }
+
         /******************************************************************/
 
     }
