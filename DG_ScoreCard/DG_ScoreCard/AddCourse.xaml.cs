@@ -30,12 +30,15 @@ namespace DG_ScoreCard
         const int par_initial = 3;
         const int yardage_intitial = 0;
         const string unit_intitial = "Feet";
+        const string color_intital = "Red";
+        const char letter_intital = 'A';
+        const int deducation_initial = 0;
         private string username = "NULL";
         public AddCourse()
         {
             InitializeComponent();
             updateHoleCount();
-            addHole();          
+            initializeHoleList();         
 
         }
         public AddCourse(string user)
@@ -43,7 +46,7 @@ namespace DG_ScoreCard
             InitializeComponent();
             username = user;
             updateHoleCount();
-            addHole();
+            initializeHoleList();
         }
 
         /********* Move to Different Page *******/
@@ -76,51 +79,69 @@ namespace DG_ScoreCard
         //Desc: Changes to Main Grid
         private void main_btn_Click(object sender, RoutedEventArgs e)
         {
+            if (Simple_g.Visibility == Visibility.Visible)
+                setHoleListSimple();
+            if (Custom_g.Visibility == Visibility.Visible)
+                setHoleListcustom();
             Custom_g.Visibility = Visibility.Hidden;
             Simple_g.Visibility = Visibility.Hidden;
             Complex_g.Visibility = Visibility.Hidden;
             Main_g.Visibility = Visibility.Visible;
-            setHoleListSimple();
         }
 
         private void simple_rb_Click(object sender, RoutedEventArgs e)
         {
+            if (Custom_g.Visibility == Visibility.Visible)
+            {
+                setHoleListcustom();
+            }
+                
             if (Main_g.Visibility == Visibility.Hidden && Simple_g.Visibility == Visibility.Hidden)
             {
                 Custom_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Hidden;
                 Simple_g.Visibility = Visibility.Visible;
+                simple_end = 18;
+                updateSimpleHoleVisibility();
+                updateSimpleGidValues();
             }
-            simple_end = 18;
-            updateSimpleHoleVisibility();
-            updateSimpleGidValues();
+     
         }
 
         private void complex_rb_Click(object sender, RoutedEventArgs e)
         {
+            if (Simple_g.Visibility == Visibility.Visible)
+            {
+                setHoleListSimple();
+            }
+            if (Custom_g.Visibility == Visibility.Visible)
+            {
+                setHoleListcustom();
+            }
             if (Main_g.Visibility == Visibility.Hidden && Complex_g.Visibility == Visibility.Hidden)
             {
                 Custom_g.Visibility = Visibility.Hidden;
                 Simple_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Visible;
-                setHoleListSimple();
             }
 
         }
 
         private void custom_rb_Click(object sender, RoutedEventArgs e)
         {
-            if (Main_g.Visibility == Visibility.Hidden)
+            if (Simple_g.Visibility == Visibility.Visible)
+            {
+                setHoleListSimple();
+            }      
+            if (Main_g.Visibility == Visibility.Hidden && Custom_g.Visibility == Visibility.Hidden)
             {
                 Simple_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Hidden;
                 Custom_g.Visibility = Visibility.Visible;
-                setHoleListSimple();
+                setCustomFieldsUpdate(getCustumHoleNumberforTeeandColor());
+                simpleend_tb.Text = custom_current_hole.ToString();
             }
         }
-
-
-
         /****************************************/
 
         //Submits Course
@@ -163,308 +184,7 @@ namespace DG_ScoreCard
                 return 'F';
             }
 
-            return 'N';
-        }
-
-        /***** Custom Page Moving *****/
-
-        Point m_start;
-        Vector m_startOffset;
-
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(basictt.X, basictt.Y);
-            basicmove_r.CaptureMouse();
-
-        }
-
-        private void Rectangle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (basicmove_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                basictt.X = m_startOffset.X + offset.X;
-                basictt.Y = m_startOffset.Y + offset.Y;
-            }
-
-        }
-
-        private void Rectangle_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            basicmove_r.ReleaseMouseCapture();
-        }
-
-        private void teeinfo_r_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(teeinfott.X, teeinfott.Y);
-            teeinfo_r.CaptureMouse();
-        }
-
-        private void teeinfo_r_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (teeinfo_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                teeinfott.X = m_startOffset.X + offset.X;
-                teeinfott.Y = m_startOffset.Y + offset.Y;
-            }
-        }
-
-        private void teeinfo_r_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            teeinfo_r.ReleaseMouseCapture();
-        }
-
-        private void basketloc_r_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(basketloctt.X, basketloctt.Y);
-            basketloc_r.CaptureMouse();
-        }
-
-        private void basketloc_r_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (basketloc_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                basketloctt.X = m_startOffset.X + offset.X;
-                basketloctt.Y = m_startOffset.Y + offset.Y;
-            }
-        }
-
-        private void basketloc_r_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            basketloc_r.ReleaseMouseCapture();
-        }
-
-        private void holepic_r_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(holepictt.X, holepictt.Y);
-            holepic_r.CaptureMouse();
-        }
-
-        private void holepic_r_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (holepic_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                holepictt.X = m_startOffset.X + offset.X;
-                holepictt.Y = m_startOffset.Y + offset.Y;
-            }
-        }
-
-        private void holepic_r_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            holepic_r.ReleaseMouseCapture();
-        }
-
-        private void holeinfomove_r_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(holeinfott.X, holeinfott.Y);
-            holeinfomove_r.CaptureMouse();
-        }
-
-        private void holeinfomove_r_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (holeinfomove_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                holeinfott.X = m_startOffset.X + offset.X;
-                holeinfott.Y = m_startOffset.Y + offset.Y;
-            }
-        }
-
-        private void holeinfomove_r_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            holeinfomove_r.ReleaseMouseCapture();
-        }
-
-        private void holelines_r_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(holelinestt.X, holelinestt.Y);
-            holelines_r.CaptureMouse();
-        }
-
-        private void holelines_r_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (holelines_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                holelinestt.X = m_startOffset.X + offset.X;
-                holelinestt.Y = m_startOffset.Y + offset.Y;
-            }
-        }
-
-        private void holelines_r_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            holelines_r.ReleaseMouseCapture();
-        }
-
-        private void misc_r_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_start = e.GetPosition(course_designer_g);
-            m_startOffset = new Vector(misctt.X, misctt.Y);
-            misc_r.CaptureMouse();
-        }
-
-        private void misc_r_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (misc_r.IsMouseCaptured)
-            {
-                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
-                misctt.X = m_startOffset.X + offset.X;
-                misctt.Y = m_startOffset.Y + offset.Y;
-            }
-        }
-
-        private void misc_r_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            misc_r.ReleaseMouseCapture();
-        }
-
-
-        /*****************************************************************************/
-
-
-        /***** Custom Side Panel Buttons *****/
-
-        private void teeinfo_btn_Click(object sender, RoutedEventArgs e)
-        {
-            if(teeinfo_g.Visibility == Visibility.Hidden)
-            {
-                teeinfo_g.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                teeinfo_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void basics_btn_Click(object sender, RoutedEventArgs e)
-        {
-            if(basic_g.Visibility == Visibility.Hidden)
-            {
-                basic_g.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                basic_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void basketloc_btn_Click(object sender, RoutedEventArgs e)
-        {
-           if(basketloc_g.Visibility == Visibility.Hidden)
-            {
-                basketloc_g.Visibility = Visibility.Visible;
-            }
-           else
-            {
-                basketloc_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void holepicture_btn_Click(object sender, RoutedEventArgs e)
-        {
-            if(holepic_g.Visibility == Visibility.Hidden)
-            {
-                holepic_g.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                holepic_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void holeinfo_btn_Click(object sender, RoutedEventArgs e)
-        {
-            if(holeinfo_g.Visibility == Visibility.Hidden)
-            {
-                holeinfo_g.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                holeinfo_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void holelines_btn_Click(object sender, RoutedEventArgs e)
-        {
-            if(holelines_g.Visibility == Visibility.Hidden)
-            {
-                holelines_g.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                holelines_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void misc_btn_Click(object sender, RoutedEventArgs e)
-        {
-            if(misc_g.Visibility == Visibility.Hidden)
-            {
-                misc_g.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                misc_g.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void deselectall_btn_Click(object sender, RoutedEventArgs e)
-        {
-            basic_g.Visibility = Visibility.Hidden;
-            holeinfo_g.Visibility = Visibility.Hidden;
-            teeinfo_g.Visibility = Visibility.Hidden;
-            basketloc_g.Visibility = Visibility.Hidden;
-            holepic_g.Visibility = Visibility.Hidden;
-            holelines_g.Visibility = Visibility.Hidden;
-            misc_g.Visibility = Visibility.Hidden;
-        }
-
-        private void selectall_btn_Click(object sender, RoutedEventArgs e)
-        {
-            basic_g.Visibility = Visibility.Visible;
-            holeinfo_g.Visibility = Visibility.Visible;
-            teeinfo_g.Visibility = Visibility.Visible;
-            basketloc_g.Visibility = Visibility.Visible;
-            holepic_g.Visibility = Visibility.Visible;
-            holelines_g.Visibility = Visibility.Visible;
-            misc_g.Visibility = Visibility.Visible;
-        }
-
-        /***************************************************************/
-
-        /***** Custom *******/
-
-        private void teecolor_cb_DropDownClosed(object sender, EventArgs e)
-        {
-            bool hole_exists = false;
-            //Steralize Data
-
-
-            if(yardage_tb.Text == "" && par_cb.Text == "")
-            {
-                MessageBox.Show("Basic Criteria not filled out, progress will be lost.");
-                //Create Go/No Go
-            }
-            else
-            {
-                //Check if Update vs Insert
-                //hole_exists = checkHoleExists(holeList, )
-
-                
-                          
-               
-            }
-           
-
+            return 'I';
         }
 
         /****************************************************************/
@@ -475,9 +195,9 @@ namespace DG_ScoreCard
         private void displayholes_btn_Click(object sender, RoutedEventArgs e)
         {
             string holes = "";
-            for(int i = 0; i<hole_count; i++)
+            for(int i = 0; i<holeList.Count(); i++)
             {
-                holes += "Hole: " + holeList[i].h_num + " Par: " + holeList[i].h_par + " Unit: " + holeList[i].h_unit + " Yardage: " + holeList[i].h_yardage + "\n";
+                holes += "Hole: " + holeList[i].h_num + " Par: " + holeList[i].h_par + " Unit: " + holeList[i].h_unit + " Yardage: " + holeList[i].h_yardage +  " Hole_name: " + holeList[i].h_name + " Mando: " + holeList[i].h_mando + " Hazzard: " + holeList[i].h_hazzards + " Letter: " + holeList[i].b_letter + " Deduction: " + holeList[i].b_deduction + " Note: " + holeList[i].b_note + "Tee Color: " + holeList[i].t_color + " Pad Type: " + holeList[i].t_pad_type + " Tee Notes: " + holeList[i].t_notes + " Guide: " + holeList[i].m_guide + " Trash: " + holeList[i].m_trash + " Trail: " + holeList[i].m_trail + " Road: " + holeList[i].m_road + " Gen Com: " + holeList[i].m_general_comments + " Shot: " + holeList[i].r_shots + " Disc: " + holeList[i].r_disc + "\n";
 
             }
 
@@ -486,28 +206,29 @@ namespace DG_ScoreCard
 
         //Desc: Creates new hole using custom hole values
         //Post: Returns holeLib
-        private holeLib getHoleLibCustom(int num, int yard, int par, string name, char? mando, char? hazard, char? letter, int deduction, string b_note, string color, string pad_type, string t_note, string guide, char? trash, char? trail, char? road, string comments, string shot, string disc)
+        private holeLib getHoleLibCustom()
         {
             holeLib h = new holeLib();
-            h.h_num = num;
-            h.h_yardage = yard;
-            h.h_par = (par);
-            h.h_name = name;
-            h.h_mando = mando;
-            h.h_hazzards = hazard;
-            h.b_letter = letter;
-            h.b_deduction = deduction;
-            h.b_note = b_note;
-            h.t_color = color;
-            h.t_pad_type = pad_type;
-            h.t_notes = t_note;
-            h.m_guide = guide;
-            h.m_trash = trash;
-            h.m_trail = trail;
-            h.m_road = road;
-            h.m_general_comments = comments;
-            h.r_disc = disc;
-            h.r_shots = shot;
+            h.h_num = custom_current_hole;
+            h.h_yardage = int.Parse(yardage_tb.Text);
+            h.h_par = int.Parse(par_cb.Text);
+            h.h_unit = yardagetype_cb.Text;
+            h.h_name = holename_tb.Text;
+            h.h_mando = getRadioButton(mandoyes_rb, mandono_rb);
+            h.h_hazzards = getRadioButton(hazordyes_rb, hazordno_rb);
+            h.b_letter = char.Parse(basketletter_cb.Text);
+            h.b_deduction = int.Parse(basketyardage_tb.Text);
+            h.b_note = basketnote_tb.Text;
+            h.t_color = teecolor_cb.Text;
+            h.t_pad_type = teepadtype_cb.Text;
+            h.t_notes = teepadtype_cb.Text;
+            h.m_guide = miscguidetohole_tb.Text;
+            h.m_trash = getRadioButton(trashy_rb, trashno_rb);
+            h.m_trail = getRadioButton(traily_rb, trailn_rb);
+            h.m_road = getRadioButton(roady_rb, roadn_rb);
+            h.m_general_comments = gencomments_tb.Text;
+            h.r_disc = recshot_tb.Text;
+            h.r_shots = recdisc_tb.Text;
             return h;
         }
 
@@ -573,19 +294,31 @@ namespace DG_ScoreCard
             for(int i = 0; i<count; i++)
             {
                 holeList.Add(new holeLib());
-                holeList[holeList.Count()-1].h_num = holeList.Count();
-                holeList[holeList.Count()-1].h_par = par_initial;
-                holeList[holeList.Count()-1].h_yardage = yardage_intitial;
-                holeList[holeList.Count() - 1].h_unit = unit_intitial;
             }
 
             hole_count_tb.Text = holeList.Count().ToString(); //remove
         }
 
+        //Desc: Initializes first 36 holes
+        private void initializeHoleList()
+        {
+            for (int i = 0; i < 36; i++)
+            {
+                holeList.Add(new holeLib());
+                holeList[holeList.Count() - 1].h_num = holeList.Count();
+                holeList[holeList.Count() - 1].h_par = par_initial;
+                holeList[holeList.Count() - 1].h_yardage = yardage_intitial;
+                holeList[holeList.Count() - 1].h_unit = unit_intitial;
+                holeList[holeList.Count() - 1].t_color = color_intital;
+                holeList[holeList.Count() - 1].b_letter = letter_intital;
+                holeList[holeList.Count() - 1].b_deduction = deducation_initial;
+            }
+        }
+
 
         //Desc: Checks if tee color and placement exist in hole list
         //Post: return true if exists
-        private bool checkHoleExists(List<holeLib> h, int num, string color, char? letter)
+        private bool checkHoleExists(List<holeLib> h, int num, string color, char letter)
         {
             for(int i = 0; i<h.Count(); i++)
             {
@@ -595,6 +328,20 @@ namespace DG_ScoreCard
                 }
             }
             return false;
+        }
+
+        //Desc: Gets holelist iterator based on hole num, tee color, and basket letter
+        private int getHoleListIterator(List<holeLib> h, int num, string color, char letter)
+        {
+            for (int i = 0; i < h.Count(); i++)
+            {
+                if (h[i].h_num == num && h[i].t_color == color && h[i].b_letter == letter)
+                {
+                    return i;
+                }
+            }
+
+            return 0;
         }
 
         //Updates hole count lables
@@ -619,6 +366,253 @@ namespace DG_ScoreCard
         }
         /*************************************************************/
 
+        //Complex***********************************************************************************************************
+
+        
+        //Complex End*******************************************************************************************************
+
+        //Custum****************************************************************************************************************
+        int custom_current_hole = 1;
+
+        private void teecolor_cb_DropDownOpened(object sender, EventArgs e)
+        {
+            if (checkHoleExists(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text)) == true)
+            {
+                //update hole
+                holeList[getHoleListIterator(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text))] = getHoleLibCustom();
+            }
+            else
+            {
+                //create hole and update
+                holeList.Add(getHoleLibCustom());
+            }
+        }
+        private void teecolor_cb_DropDownClosed(object sender, EventArgs e)
+        {
+            int i = getCustumHoleNumberforTeeandColor();
+
+            if (i == -1)
+            {
+                setCustomFieldsNew(custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text));
+            }
+            else
+            {
+                setCustomFieldsUpdate(i);
+            }
+        }
+
+        //Desc: saves custom hole list
+        private void setHoleListcustom()
+        {
+            if(checkHoleExists(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text)) == true)
+            {
+                //update hole
+                holeList[getHoleListIterator(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text))] = getHoleLibCustom();
+            }
+            else
+            {
+                //create hole and update
+                holeList.Add(getHoleLibCustom());
+            }
+        }
+        
+
+        //Desc: Setss custom hole number heading to current hole
+        private void setCustomHoleNumberHeading()
+        {
+            customholeheading_tb.Text = ("Hole " + custom_current_hole.ToString());
+        }
+
+        /********** Custom Buttoms **********/
+        private void custumback_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(checkCustomBack() == true)
+            {
+                if (checkHoleExists(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text)) == true)
+                {
+                    //update hole
+                    holeList[getHoleListIterator(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text))] = getHoleLibCustom();
+                }
+                else
+                {
+                    //create hole and update
+                    holeList.Add(getHoleLibCustom());
+                }
+                custom_current_hole--;
+                simpleend_tb.Text = custom_current_hole.ToString();
+                updateHoleCountCustom();
+                customHoleLayoutUpdateOnMove();
+            }
+
+        }
+
+        //Desc: Returns true if current hole number is not 1
+        private bool checkCustomBack()
+        {
+            if(custom_current_hole > 1)
+            {
+                return true;
+            }
+
+            return false;
+
+        }
+
+        //Desc: Increments hole count by one if custom current hole > hole count
+        private void updateHoleCountCustom()
+        {
+            if(custom_current_hole>hole_count)
+            {
+                hole_count++;
+            }
+        }
+
+        private void custumforward_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(checkCustomForward() == true)
+            {
+               if(checkHoleExists(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text)) == true)
+                {
+                    //update hole
+                    holeList[getHoleListIterator(holeList, custom_current_hole, teecolor_cb.Text, char.Parse(basketletter_cb.Text))] = getHoleLibCustom();
+                }
+               else
+                {
+                    //create hole and update
+                    holeList.Add(getHoleLibCustom());      
+                }
+                custom_current_hole++;
+                simpleend_tb.Text = custom_current_hole.ToString();
+                updateHoleCountCustom();
+                customHoleLayoutUpdateOnMove();
+            }
+            else
+            {
+                MessageBox.Show("Hole amount exceded!");
+            }
+        }
+
+        //Desc: updates custom page with current hole values
+        private void customHoleLayoutUpdateOnMove()
+        {
+            updateHoleCount();
+            setCustomHoleNumberHeading();
+            setCustomFieldsInitial();
+        }
+
+        //Desc: Sets custum fields to current hole and intial settings
+        private void setCustomFieldsInitial()
+        {
+            int i = custom_current_hole - 1;
+            yardage_tb.Text = holeList[i].h_yardage.ToString();
+            //will not add unit, will pull unit on submit to keep all holes them same
+            par_cb.Text = holeList[i].h_par.ToString();
+            teecolor_cb.Text = color_intital;
+            teepadtype_cb.Text = holeList[i].t_pad_type;
+            teepadnotes_tb.Text = holeList[i].t_notes;
+            basketletter_cb.Text = letter_intital.ToString();
+            basketyardage_tb.Text = holeList[i].b_deduction.ToString();
+            basketnote_tb.Text = holeList[i].b_note;
+            recshot_tb.Text = holeList[i].r_shots;
+            recdisc_tb.Text = holeList[i].r_disc;
+            holename_tb.Text = holeList[i].h_name;
+            if(holeList[i].h_mando == 'T') { mandoyes_rb.IsChecked = true; } if(holeList[i].h_mando == 'F') { mandono_rb.IsChecked = true; }
+            if(holeList[i].h_hazzards == 'T') { hazordyes_rb.IsChecked = true; } if(holeList[i].h_hazzards == 'F') { hazordno_rb.IsChecked = true; }
+            miscguidetohole_tb.Text = holeList[i].m_guide;
+            if(holeList[i].m_trash == 'T') { trashy_rb.IsChecked = true; } if(holeList[i].m_trash == 'F') { trashno_rb.IsChecked = true; }
+            if(holeList[i].m_trail == 'T') { traily_rb.IsChecked = true; } if(holeList[i].m_trail == 'F') { trailn_rb.IsChecked = true; }
+            if(holeList[i].m_road == 'T') { roady_rb.IsChecked = true; } if(holeList[i].m_road == 'F') { roadn_rb.IsChecked = true; }
+            gencomments_tb.Text = holeList[i].m_general_comments;
+
+        }
+
+        private void setCustomFieldsNew(int hole_num, string color, char letter)
+        {
+            yardage_tb.Text = yardage_intitial.ToString();
+            //will not add unit, will pull unit on submit to keep all holes them same
+            par_cb.Text = par_initial.ToString();
+           // teecolor_cb.Text = color_intital; current
+           //  teepadtype_cb.Text = holeList[i].t_pad_type; current
+            teepadnotes_tb.Text = null;
+           // basketletter_cb.Text = letter_intital.ToString(); current
+            basketyardage_tb.Text = deducation_initial.ToString();
+            basketnote_tb.Text = null;
+            recshot_tb.Text = null;
+            recdisc_tb.Text = null;
+          //  holename_tb.Text = null;
+            mandoyes_rb.IsChecked = false;
+            mandono_rb.IsChecked = false;
+            hazordyes_rb.IsChecked = false; 
+            hazordno_rb.IsChecked = false; 
+            miscguidetohole_tb.Text = null;
+            trashy_rb.IsChecked = false; 
+            trashno_rb.IsChecked = false; 
+            traily_rb.IsChecked = false; 
+            trailn_rb.IsChecked = false; 
+            roady_rb.IsChecked = false; 
+            roadn_rb.IsChecked = false; 
+            gencomments_tb.Text = null;
+
+        }
+        //Desc: Updates custom fields when tee color is changed or basket letter is changed
+        private void setCustomFieldsUpdate(int i)
+        {
+           
+            //find current or use new...
+            yardage_tb.Text = holeList[i].h_yardage.ToString();
+            //will not add unit, will pull unit on submit to keep all holes them same
+            par_cb.Text = holeList[i].h_par.ToString();
+           // teecolor_cb.Text = color_intital;
+            teepadtype_cb.Text = holeList[i].t_pad_type;
+            teepadnotes_tb.Text = holeList[i].t_notes;
+           // basketletter_cb.Text = letter_intital.ToString();
+            basketyardage_tb.Text = holeList[i].b_deduction.ToString();
+            basketnote_tb.Text = holeList[i].b_note;
+            recshot_tb.Text = holeList[i].r_shots;
+            recdisc_tb.Text = holeList[i].r_disc;
+           // holename_tb.Text = holeList[i].h_name;
+            if (holeList[i].h_mando == 'T') { mandoyes_rb.IsChecked = true; }
+            if (holeList[i].h_mando == 'F') { mandono_rb.IsChecked = true; }
+            if (holeList[i].h_hazzards == 'T') { hazordyes_rb.IsChecked = true; }
+            if (holeList[i].h_hazzards == 'F') { hazordno_rb.IsChecked = true; }
+            miscguidetohole_tb.Text = holeList[i].m_guide;
+            if (holeList[i].m_trash == 'T') { trashy_rb.IsChecked = true; }
+            if (holeList[i].m_trash == 'F') { trashno_rb.IsChecked = true; }
+            if (holeList[i].m_trail == 'T') { traily_rb.IsChecked = true; }
+            if (holeList[i].m_trail == 'F') { trailn_rb.IsChecked = true; }
+            if (holeList[i].m_road == 'T') { roady_rb.IsChecked = true; }
+            if (holeList[i].m_road == 'F') { roadn_rb.IsChecked = true; }
+            gencomments_tb.Text = holeList[i].m_general_comments; 
+        } 
+
+        //Desc: Returns hole list iterator for custom holes when matches hole number, color, and letter
+        private int getCustumHoleNumberforTeeandColor()
+        {
+            for(int i = 0; i<holeList.Count; i++)
+            {
+                if(holeList[i].h_num == custom_current_hole && holeList[i].t_color == teecolor_cb.Text && holeList[i].b_letter == char.Parse(basketletter_cb.Text))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        //Desc: if current hole heading < max_holes return true
+        private bool checkCustomForward()
+        {
+            if(custom_current_hole < max_holes)
+            {
+                return true;
+            }
+
+            return false;
+
+        }
+        /***********************************/
+
+        //end Custum**********************************************************************************************************************
+        //Simple*****************************************************************************************************************        
+
         /*** simple add/sub hole btns ****/
         private void simple_add1_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -629,7 +623,6 @@ namespace DG_ScoreCard
             
             updateHoleCount();
             updateSimpleHoleVisibility();
-            addHole();
         }
 
         private void simple_sub1_btn_Click(object sender, RoutedEventArgs e)
@@ -655,7 +648,6 @@ namespace DG_ScoreCard
             }
             updateHoleCount();
             updateSimpleHoleVisibility();
-            addHole();
         }
 
         private void simple_sub9_btn_Click(object sender, RoutedEventArgs e)
@@ -686,7 +678,6 @@ namespace DG_ScoreCard
             }
             updateHoleCount();
             updateSimpleHoleVisibility();
-            addHole();
         }
 
         private void simple_sub18_btn_Click(object sender, RoutedEventArgs e)
@@ -858,7 +849,283 @@ namespace DG_ScoreCard
             }
         }
 
+
         /******************************************************************/
 
+        //end Simple************************************************************************************************************************************
+
+        /***** Custom Page Moving *****/
+
+        Point m_start;
+        Vector m_startOffset;
+
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(basictt.X, basictt.Y);
+            basicmove_r.CaptureMouse();
+
+        }
+
+        private void Rectangle_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (basicmove_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                basictt.X = m_startOffset.X + offset.X;
+                basictt.Y = m_startOffset.Y + offset.Y;
+            }
+
+        }
+
+        private void Rectangle_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            basicmove_r.ReleaseMouseCapture();
+        }
+
+        private void teeinfo_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(teeinfott.X, teeinfott.Y);
+            teeinfo_r.CaptureMouse();
+        }
+
+        private void teeinfo_r_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (teeinfo_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                teeinfott.X = m_startOffset.X + offset.X;
+                teeinfott.Y = m_startOffset.Y + offset.Y;
+            }
+        }
+
+        private void teeinfo_r_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            teeinfo_r.ReleaseMouseCapture();
+        }
+
+        private void basketloc_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(basketloctt.X, basketloctt.Y);
+            basketloc_r.CaptureMouse();
+        }
+
+        private void basketloc_r_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (basketloc_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                basketloctt.X = m_startOffset.X + offset.X;
+                basketloctt.Y = m_startOffset.Y + offset.Y;
+            }
+        }
+
+        private void basketloc_r_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            basketloc_r.ReleaseMouseCapture();
+        }
+
+        private void holepic_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(holepictt.X, holepictt.Y);
+            holepic_r.CaptureMouse();
+        }
+
+        private void holepic_r_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (holepic_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                holepictt.X = m_startOffset.X + offset.X;
+                holepictt.Y = m_startOffset.Y + offset.Y;
+            }
+        }
+
+        private void holepic_r_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            holepic_r.ReleaseMouseCapture();
+        }
+
+        private void holeinfomove_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(holeinfott.X, holeinfott.Y);
+            holeinfomove_r.CaptureMouse();
+        }
+
+        private void holeinfomove_r_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (holeinfomove_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                holeinfott.X = m_startOffset.X + offset.X;
+                holeinfott.Y = m_startOffset.Y + offset.Y;
+            }
+        }
+
+        private void holeinfomove_r_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            holeinfomove_r.ReleaseMouseCapture();
+        }
+
+        private void holelines_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(holelinestt.X, holelinestt.Y);
+            holelines_r.CaptureMouse();
+        }
+
+        private void holelines_r_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (holelines_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                holelinestt.X = m_startOffset.X + offset.X;
+                holelinestt.Y = m_startOffset.Y + offset.Y;
+            }
+        }
+
+        private void holelines_r_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            holelines_r.ReleaseMouseCapture();
+        }
+
+        private void misc_r_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_start = e.GetPosition(course_designer_g);
+            m_startOffset = new Vector(misctt.X, misctt.Y);
+            misc_r.CaptureMouse();
+        }
+
+        private void misc_r_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (misc_r.IsMouseCaptured)
+            {
+                Vector offset = Point.Subtract(e.GetPosition(course_designer_g), m_start);
+                misctt.X = m_startOffset.X + offset.X;
+                misctt.Y = m_startOffset.Y + offset.Y;
+            }
+        }
+
+        private void misc_r_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            misc_r.ReleaseMouseCapture();
+        }
+
+
+        /*****************************************************************************/
+
+        /***** Custom Side Panel Buttons *****/
+
+        private void teeinfo_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (teeinfo_g.Visibility == Visibility.Hidden)
+            {
+                teeinfo_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                teeinfo_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void basics_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (basic_g.Visibility == Visibility.Hidden)
+            {
+                basic_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                basic_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void basketloc_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (basketloc_g.Visibility == Visibility.Hidden)
+            {
+                basketloc_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                basketloc_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void holepicture_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (holepic_g.Visibility == Visibility.Hidden)
+            {
+                holepic_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                holepic_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void holeinfo_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (holeinfo_g.Visibility == Visibility.Hidden)
+            {
+                holeinfo_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                holeinfo_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void holelines_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (holelines_g.Visibility == Visibility.Hidden)
+            {
+                holelines_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                holelines_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void misc_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (misc_g.Visibility == Visibility.Hidden)
+            {
+                misc_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                misc_g.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void deselectall_btn_Click(object sender, RoutedEventArgs e)
+        {
+            basic_g.Visibility = Visibility.Hidden;
+            holeinfo_g.Visibility = Visibility.Hidden;
+            teeinfo_g.Visibility = Visibility.Hidden;
+            basketloc_g.Visibility = Visibility.Hidden;
+            holepic_g.Visibility = Visibility.Hidden;
+            holelines_g.Visibility = Visibility.Hidden;
+            misc_g.Visibility = Visibility.Hidden;
+        }
+
+        private void selectall_btn_Click(object sender, RoutedEventArgs e)
+        {
+            basic_g.Visibility = Visibility.Visible;
+            holeinfo_g.Visibility = Visibility.Visible;
+            teeinfo_g.Visibility = Visibility.Visible;
+            basketloc_g.Visibility = Visibility.Visible;
+            holepic_g.Visibility = Visibility.Visible;
+            holelines_g.Visibility = Visibility.Visible;
+            misc_g.Visibility = Visibility.Visible;
+        }
+
+        /***************************************************************/
     }
 }
