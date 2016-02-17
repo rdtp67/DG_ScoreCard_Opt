@@ -364,11 +364,172 @@ namespace DG_ScoreCard
             }
             return false;
         }
+
+        //Updates simple unit for full holeList
+        private void updateUnit(string unit)
+        {
+            for (int i = 0; i < holeList.Count(); i++)
+            {
+                holeList[i].h_unit = unit;
+            }
+        }
         /*************************************************************/
 
         //Complex***********************************************************************************************************
 
-        
+        int complex_current_hole = 3;
+        //Complex Buttons
+        private void complex9hole_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hole_count = 9;
+            updateHoleCount();
+        }
+
+        private void complex18hole_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hole_count = 18;
+            updateHoleCount();
+        }
+
+        private void complex27hole_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hole_count = 27;
+            updateHoleCount();
+        }
+
+        private void complexx36hole_btn_Click(object sender, RoutedEventArgs e)
+        {
+            hole_count = 36;
+            updateHoleCount();
+        }
+
+        private void complexaddhole_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(1) == false)
+            {
+                hole_count++;
+            }
+
+            updateHoleCount();
+        }
+
+        private void complexxremovehole_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkHoleCount(-1) == false)
+            {
+                hole_count--;
+            }
+            updateHoleCount();
+        }
+
+        private void complexprv_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(complex_current_hole > 3)
+            {
+                complex_current_hole -= 3;
+            }
+            //Save Current Holes
+            //Set Knew Holes
+
+        }
+
+        private void complexnxt_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (complex_current_hole < 36)
+            {
+                complex_current_hole += 3;
+            }
+            //Save Current Holes
+            //Set Knew Holes
+
+        }
+
+        //Desc: Complex hole 1 tee color
+        string getComplexHole1TeeColor()
+        {
+            if()
+        }
+
+        //Desc: Complex hole 2 tee color
+        string getComplexHole2TeeColor()
+        {
+
+        }
+
+        //Desc: Complex hole 3 tee color
+        string getComplexHole3TeeColor()
+        {
+
+        }
+
+        //Desc: Saves Complex Holes
+        void updateComplexHoles()
+        {
+            //if hole exists update for 3 current holes
+            if(checkHoleExists(holeList[complex_current_hole-3], complex_current_hole-2, c))
+            {
+
+            }
+            
+
+            //if does not exists, create and update
+        }
+
+        //Desc: Set Complex Holes
+        void setComplexHoles()
+        {
+            //set holes based on complex current hole
+        }
+
+        //RB Buttons
+        private void complexfeet_rb_Checked(object sender, RoutedEventArgs e)
+        {
+            updateUnit("Feet");
+            complex1uf_rb.IsChecked = true;
+            complex1uy_rb.IsChecked = false;
+            complex1um_rm.IsChecked = false;
+
+            complex2uf_rb.IsChecked = true;
+            complex2uy_rb.IsChecked = false;
+            complex2um_rb.IsChecked = false;
+
+            complex3uf_rb.IsChecked = true;
+            complex3uy_rb.IsChecked = false;
+            complex3um_rb.IsChecked = false;
+            
+        }
+        private void complexyards_rb_Checked(object sender, RoutedEventArgs e)
+        {
+            updateUnit("Yards");
+            complex1um_rm.IsChecked = false;
+            complex1uf_rb.IsChecked = false;
+            complex1uy_rb.IsChecked = true;
+
+            complex2uf_rb.IsChecked = false;
+            complex2um_rb.IsChecked = false;
+            complex2uy_rb.IsChecked = true;
+
+            complex3um_rb.IsChecked = false;
+            complex3uf_rb.IsChecked = false;
+            complex3uy_rb.IsChecked = true;
+        }
+        private void complexmeters_rb_Checked(object sender, RoutedEventArgs e)
+        {
+            updateUnit("Meters");
+            complex1uy_rb.IsChecked = false;
+            complex1uf_rb.IsChecked = false;
+            complex1um_rm.IsChecked = true;
+
+            complex2uf_rb.IsChecked = false;
+            complex2uy_rb.IsChecked = false;
+            complex2um_rb.IsChecked = true;
+
+            complex3uy_rb.IsChecked = false;
+            complex3uf_rb.IsChecked = false;
+            complex3um_rb.IsChecked = true;
+        }
+        //End Complex Buttons
+
         //Complex End*******************************************************************************************************
 
         //Custum****************************************************************************************************************
@@ -707,18 +868,18 @@ namespace DG_ScoreCard
             }
             else if(simple_measurement_cb.Text == "Yrd.")
             {
-                unit = "Yard";
+                unit = "Yards";
             }
             else if(simple_measurement_cb.Text == "m.")
             {
-                unit = "Meter";
+                unit = "Meters";
             }
             else
             {
                 unit = "Error";
             }
 
-            updateSimpleUnit(unit);
+            updateUnit(unit);
 
             su1_tbl.Text = unit;
             su2_tbl.Text = unit;
@@ -740,16 +901,7 @@ namespace DG_ScoreCard
             su18_tbl.Text = unit;
         }
 
-        //Updates simple unit for full holeList
-        private void updateSimpleUnit(string unit)
-        {
-            for(int i=0; i<holeList.Count(); i++)
-            {
-                holeList[i].h_unit = unit;
-            }
-        }
-
-        /***************************************************************/
+       /***************************************************************/
 
         /****** Simple Hole View *****/
         int simple_end = 18;

@@ -86,13 +86,10 @@ namespace DG_ScoreCard
             {
                 return;
             }
-            bool loccheck = client.checkLocation(address, state, city, country, zip);
-            if (loccheck== false)
+            if (client.checkLocation(address, state, city, country, zip)  == false)
             {
 
                client.insertLocation(address, state, city, country, zip);
-
-
             }
 
             //salt : hash

@@ -96,6 +96,7 @@ namespace WCFwebserviceDG
                                                                                                                                                             "from location l " +
                                                                                                                                                            "where l.loc_address = '" + loc_address + "' and l.loc_state = '" + loc_state + "' and l.loc_city = '" + loc_city + "' and l.loc_country = '" + loc_country + "' and l.loc_zip = '" + loc_zip + "' " +
                                                                                                                                                             " ), @slowhash, @fname, @lname, @email, @phone)";
+                
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@user_name", username);
                 cmd.Parameters.AddWithValue("@fname", fname);
@@ -126,7 +127,7 @@ namespace WCFwebserviceDG
         //Post: string
         public string checkUsername(string username)
         {
-            String check = "1";
+            String check = "0";
 
             try
             {

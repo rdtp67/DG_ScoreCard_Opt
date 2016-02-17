@@ -448,7 +448,7 @@
                 <Grid x:Name="hole1header_g" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
                     <Rectangle Fill="#FF007836" RadiusY="5" RadiusX="5" Stroke="White" Margin="12,0,8,10.167" StrokeThickness="3" Height="55.5" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="textBlock4" Margin="73.023,0,69.023,0" TextWrapping="Wrap" Text="Hole 1" FontSize="48" Foreground="White" Height="70" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="complexhole1_tbl" Margin="73.023,0,69.023,0" TextWrapping="Wrap" Text="Hole 1" FontSize="48" Foreground="White" Height="70" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
                 </Grid>
                 <Grid x:Name="hole1body_g" Margin="0,80,0,0">
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
@@ -459,12 +459,12 @@
                         <RadioButton x:Name="tee_white" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee1"/>
                         <RadioButton x:Name="tee_black" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee1"/>
                         <RadioButton x:Name="tee_blue" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee1"/>
-                        <Rectangle Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
-                        <Rectangle Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
-                        <Rectangle Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+                        <Rectangle x:Name="complex1tred_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
+                        <Rectangle x:Name="complex1gold_rb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
+                        <Rectangle x:Name="complex1white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
                         <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Tee Color" VerticalAlignment="Top" FontSize="16"/>
-                        <Rectangle Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
-                        <Rectangle Fill="Black" HorizontalAlignment="Right" Height="20" Margin="0,0,23,10" Stroke="Black" VerticalAlignment="Bottom" Width="80"/>
+                        <Rectangle x:Name="complex1blue_rb" Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
+                        <Rectangle x:Name="complex1black_rb" Fill="Black" HorizontalAlignment="Right" Height="20" Margin="0,0,23,10" Stroke="Black" VerticalAlignment="Bottom" Width="80"/>
                     </Grid>
                     <Grid x:Name="hole1basket_g" HorizontalAlignment="Right" Margin="0,90,0,0" Width="85">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
@@ -494,9 +494,9 @@
                             <ComboBoxItem x:Name="p72" Content="8"/>
                         </ComboBox>
                         <TextBox x:Name="yardage_tb_Copy" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
-                        <RadioButton x:Name="radioButton1" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit1" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton1_Copy" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit1"/>
-                        <RadioButton x:Name="radioButton1_Copy1" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit1"/>
+                        <RadioButton x:Name="complex1uf_rb" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit1" IsChecked="True" Click="complexfeet_rb_Checked"/>
+                        <RadioButton x:Name="complex1uy_rb" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit1" Click="complexyards_rb_Checked"/>
+                        <RadioButton x:Name="complex1um_rm" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit1" Click="complexmeters_rb_Checked"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -504,7 +504,7 @@
                 <Grid x:Name="hole1header_g1" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
                     <Rectangle Fill="#FF007836" RadiusY="5" RadiusX="5" Stroke="White" Margin="10,0,10,10" StrokeThickness="3" Height="55.5" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="textBlock14" Margin="71.023,0,71.023,-0.167" TextWrapping="Wrap" Text="Hole 2" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="complexhole2_tbl" Margin="71.023,0,71.023,-0.167" TextWrapping="Wrap" Text="Hole 2" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
                 </Grid>
                 <Grid x:Name="hole1body_g1" Margin="0,80,0,0">
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
@@ -515,12 +515,12 @@
                         <RadioButton x:Name="tee_white1" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee2"/>
                         <RadioButton x:Name="tee_black1" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee2"/>
                         <RadioButton x:Name="tee_blue1" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee2"/>
-                        <Rectangle Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
-                        <Rectangle Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
-                        <Rectangle Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+                        <Rectangle x:Name="complex2red_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
+                        <Rectangle x:Name="complex2gold_rb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
+                        <Rectangle x:Name="complex2white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
                         <TextBlock x:Name="textBlock20" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Tee Color" VerticalAlignment="Top" FontSize="16"/>
-                        <Rectangle Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
-                        <Rectangle Fill="Black" HorizontalAlignment="Right" Height="20" Margin="0,0,23,10" Stroke="Black" VerticalAlignment="Bottom" Width="80"/>
+                        <Rectangle x:Name="complex2blue_rb" Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
+                        <Rectangle x:Name="complex2black_rb" Fill="Black" HorizontalAlignment="Right" Height="20" Margin="0,0,23,10" Stroke="Black" VerticalAlignment="Bottom" Width="80"/>
                     </Grid>
                     <Grid x:Name="hole1basket_g1" HorizontalAlignment="Right" Margin="0,90,0,0" Width="85">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
@@ -550,9 +550,9 @@
                             <ComboBoxItem x:Name="p144" Content="8"/>
                         </ComboBox>
                         <TextBox x:Name="yardage_tb_Copy1" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
-                        <RadioButton x:Name="radioButton3" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit2" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton1_Copy2" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit2"/>
-                        <RadioButton x:Name="radioButton1_Copy3" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit2"/>
+                        <RadioButton x:Name="complex2uf_rb" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit2" IsChecked="True" Click="complexfeet_rb_Checked"/>
+                        <RadioButton x:Name="complex2uy_rb" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit2" Click="complexyards_rb_Checked"/>
+                        <RadioButton x:Name="complex2um_rb" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit2" Click="complexmeters_rb_Checked"/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -560,7 +560,7 @@
                 <Grid x:Name="hole1header_g2" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
                     <Rectangle Fill="#FF007836" RadiusY="5" RadiusX="5" Stroke="White" Margin="10,0,10,10" StrokeThickness="3" Height="55.5" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="textBlock25" Margin="71.023,0,71.023,-0.167" TextWrapping="Wrap" Text="Hole 3" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="complexhole3_tbl" Margin="71.023,0,71.023,-0.167" TextWrapping="Wrap" Text="Hole 3" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
                 </Grid>
                 <Grid x:Name="hole1body_g2" Margin="0,80,0,0">
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
@@ -571,12 +571,12 @@
                         <RadioButton x:Name="tee_white2" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee3"/>
                         <RadioButton x:Name="tee_black2" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee3"/>
                         <RadioButton x:Name="tee_blue2" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee3"/>
-                        <Rectangle Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
-                        <Rectangle Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
-                        <Rectangle Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+                        <Rectangle x:Name="complex3red_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
+                        <Rectangle x:Name="complex3goldrb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
+                        <Rectangle x:Name="complex3white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
                         <TextBlock x:Name="textBlock26" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Tee Color" VerticalAlignment="Top" FontSize="16"/>
-                        <Rectangle Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
-                        <Rectangle Fill="Black" HorizontalAlignment="Right" Height="20" Margin="0,0,23,10" Stroke="Black" VerticalAlignment="Bottom" Width="80"/>
+                        <Rectangle x:Name="complex3blue_rb" Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
+                        <Rectangle x:Name="complex3black_rb" Fill="Black" HorizontalAlignment="Right" Height="20" Margin="0,0,23,10" Stroke="Black" VerticalAlignment="Bottom" Width="80"/>
                     </Grid>
                     <Grid x:Name="hole1basket_g2" HorizontalAlignment="Right" Margin="0,90,0,0" Width="85">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
@@ -606,26 +606,24 @@
                             <ComboBoxItem x:Name="p176" Content="8"/>
                         </ComboBox>
                         <TextBox x:Name="yardage_tb_Copy2" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
-                        <RadioButton x:Name="radioButton5" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit3" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton1_Copy4" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit3"/>
-                        <RadioButton x:Name="radioButton1_Copy5" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit3"/>
+                        <RadioButton x:Name="complex3uf_rb" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit3" IsChecked="True" Click="complexfeet_rb_Checked"/>
+                        <RadioButton x:Name="complex3uy_rb" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit3" Click="complexyards_rb_Checked"/>
+                        <RadioButton x:Name="complex3um_rb" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit3" Click="complexmeters_rb_Checked"/>
                     </Grid>
                 </Grid>
             </Grid>
             <Grid x:Name="topcomplex_g" Height="47.9" Margin="0,2.1,10,0" VerticalAlignment="Top">
                 <Rectangle Fill="#FFF1F1F1" Margin="0,0,0,-2.1" Stroke="#FFF1F1F1" StrokeThickness="3" HorizontalAlignment="Left" Width="850"/>
                 <TextBlock x:Name="hole_count_complex_tbl" Margin="570.257,17.05,0,14.89" TextWrapping="Wrap" Text="Hole Count: 0 " HorizontalAlignment="Left" d:LayoutOverrides="Height"/>
-                <Button x:Name="button1" Content="Previous 3" HorizontalAlignment="Left" Margin="683,15.05,0,12.89" Width="75" d:LayoutOverrides="Height" Background="White"/>
-                <Button x:Name="button1_Copy" Content="Next 3" HorizontalAlignment="Left" Margin="765,15.05,0,12.89" Width="75" d:LayoutOverrides="Height" Background="White"/>
+                <Button x:Name="complexprv_btn" Content="Previous 3" HorizontalAlignment="Left" Margin="683,15.05,0,12.89" Width="75" d:LayoutOverrides="Height" Background="White" Click="complexprv_btn_Click"/>
+                <Button x:Name="complexnxt_btn" Content="Next 3" HorizontalAlignment="Left" Margin="765,15.05,0,12.89" Width="75" d:LayoutOverrides="Height" Background="White" Click="complexnxt_btn_Click"/>
                 <TextBlock x:Name="textBlock32" HorizontalAlignment="Left" Margin="10,17.05,0,14.89" TextWrapping="Wrap" Text="Preset Holes" d:LayoutOverrides="Height"/>
-                <Button x:Name="button2" Content="9 Holes" HorizontalAlignment="Left" Margin="80.72,2.1,0,0" VerticalAlignment="Top" Width="75" Background="White"/>
-                <Button x:Name="button2_Copy" Content="18 Holes" HorizontalAlignment="Left" Margin="80.72,0,0,0.88" VerticalAlignment="Bottom" Width="75" Background="White"/>
-                <Button x:Name="button2_Copy1" Content="27 Holes" HorizontalAlignment="Left" Margin="160.72,2.1,0,0" VerticalAlignment="Top" Width="75" Background="White"/>
-                <Button x:Name="button2_Copy2" Content="36 Holes" HorizontalAlignment="Left" Margin="160.72,0,0,0.88" VerticalAlignment="Bottom" Width="75" Background="White"/>
-                <Button x:Name="button3" Content="Add Hole" HorizontalAlignment="Left" Margin="337,2.1,0,0" VerticalAlignment="Top" Width="75" Background="White"/>
-                <Button x:Name="button3_Copy" Content="Remove Hole" Margin="337,0,0,0.88" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Background="White"/>
-                <Button x:Name="button4" Content="Reset Hole" Margin="417,2.1,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Background="White"/>
-                <Button x:Name="button4_Copy" Content="Reset All" Margin="417,0,0,0.88" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Background="White"/>
+                <Button x:Name="complex9hole_btn" Content="9 Holes" HorizontalAlignment="Left" Margin="80.72,2.1,0,0" VerticalAlignment="Top" Width="75" Background="White" Click="complex9hole_btn_Click"/>
+                <Button x:Name="complex18hole_btn" Content="18 Holes" HorizontalAlignment="Left" Margin="80.72,0,0,0.88" VerticalAlignment="Bottom" Width="75" Background="White" Click="complex18hole_btn_Click"/>
+                <Button x:Name="complex27hole_btn" Content="27 Holes" HorizontalAlignment="Left" Margin="160.72,2.1,0,0" VerticalAlignment="Top" Width="75" Background="White" Click="complex27hole_btn_Click"/>
+                <Button x:Name="complexx36hole_btn" Content="36 Holes" HorizontalAlignment="Left" Margin="160.72,0,0,0.88" VerticalAlignment="Bottom" Width="75" Background="White" Click="complexx36hole_btn_Click"/>
+                <Button x:Name="complexaddhole_btn" Content="Add Hole" HorizontalAlignment="Left" Margin="337,2.1,0,0" VerticalAlignment="Top" Width="75" Background="White" Click="complexaddhole_btn_Click"/>
+                <Button x:Name="complexxremovehole_btn" Content="Remove Hole" Margin="337,0,0,0.88" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Background="White" Click="complexxremovehole_btn_Click"/>
                 <TextBlock x:Name="textBlock34" HorizontalAlignment="Left" Margin="281.54,17.05,0,14.89" TextWrapping="Wrap" Text="Options" d:LayoutOverrides="Height"/>
             </Grid>
         </Grid>
