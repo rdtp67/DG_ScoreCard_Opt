@@ -21,7 +21,7 @@
         <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,5" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="displayholes_btn" Content="DisplayHoles" HorizontalAlignment="Right" Margin="0,0,253,18" VerticalAlignment="Bottom" Width="75" Click="displayholes_btn_Click"/>
         <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,5" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom"/>
-        <Grid x:Name="Main_g" Margin="20,10,0,0" HorizontalAlignment="Left" Width="860" Height="440" VerticalAlignment="Top" Visibility="Hidden">
+        <Grid x:Name="Main_g" Margin="20,10,0,0" HorizontalAlignment="Left" Width="860" Height="440" VerticalAlignment="Top">
             <Grid x:Name="parkdeatils_g" Margin="435,0,0,-4.818" Height="190" VerticalAlignment="Bottom">
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
@@ -249,12 +249,18 @@
                 </Grid>
                 <Grid x:Name="maindetails_bottom_g" Margin="0,59.803,0,0">
                     <TextBlock x:Name="coursename_tbl1" Margin="10,8.745,0,154.942" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107"/>
-                    <TextBox x:Name="coursename_tb1" Margin="10,33.745,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="19.333" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBox x:Name="coursename_tb1" Margin="10,33.745,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="19.333" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
                     <TextBlock x:Name="website_tbl1" Margin="10,64.447,0,99.28" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5"/>
-                    <TextBox x:Name="website_tb1" Margin="10,93.591,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top"/>
+                    <TextBox x:Name="website_tb1" Margin="10,93.591,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top"/>
                     <TextBlock x:Name="phonenumber_tbl1" Margin="10,121.738,0,41.223" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5"/>
-                    <TextBox x:Name="phonenumber_tb1" Margin="10,150.739,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
+                    <TextBox x:Name="phonenumber_tb1" Margin="10,150.739,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="coursename_tbl1_Copy" Margin="0,8.745,10,154.942" TextWrapping="Wrap" Text="Tee Colors" FontSize="16" HorizontalAlignment="Right" Width="85"/>
                 </Grid>
+                <CheckBox x:Name="maintred_chb" Content="Red" HorizontalAlignment="Right" Margin="0,94.881,45.315,0" VerticalAlignment="Top" IsChecked="True"/>
+                <CheckBox x:Name="maintgold_chb" Content="Gold" HorizontalAlignment="Right" Margin="0,114.979,40.598,119.962" d:LayoutOverrides="Height"/>
+                <CheckBox x:Name="maintwhite_chb" Content="White" HorizontalAlignment="Right" Margin="0,0,34.585,99.863" VerticalAlignment="Bottom"/>
+                <CheckBox x:Name="maintblue_chb" Content="Blue" HorizontalAlignment="Right" Margin="0,0,42.981,79.764" VerticalAlignment="Bottom"/>
+                <CheckBox x:Name="maintblack_chb" Content="Black" HorizontalAlignment="Right" Margin="0,0,38.434,59.665" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="picturedetails_g" Background="Black" HorizontalAlignment="Left" Width="241.833" Margin="0,0,0,190.182">
                 <TextBlock x:Name="textBlock2" Margin="31.5,37,28.04,18.04" TextWrapping="Wrap" Text="Add Picure Area. Defaul pic otherwise" Foreground="White"/>
@@ -443,12 +449,12 @@
             </Grid>
 
         </Grid>
-        <Grid x:Name="Complex_g" Margin="20,10,20,0" Height="440" VerticalAlignment="Top">
+        <Grid x:Name="Complex_g" Margin="20,10,20,0" Height="440" VerticalAlignment="Top" Visibility="Hidden">
             <Grid x:Name="hole1_g" Width="280" HorizontalAlignment="Left" Height="390" VerticalAlignment="Bottom">
                 <Grid x:Name="hole1header_g" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
                     <Rectangle Fill="#FF007836" RadiusY="5" RadiusX="5" Stroke="White" Margin="12,0,8,10.167" StrokeThickness="3" Height="55.5" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="complexhole1_tbl" Margin="73.023,0,69.023,0" TextWrapping="Wrap" Text="Hole 1" FontSize="48" Foreground="White" Height="70" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                    <TextBlock x:Name="complexhole1_tbl" Margin="73.023,0,8,0" TextWrapping="Wrap" Text="Hole 1" FontSize="48" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
                 </Grid>
                 <Grid x:Name="hole1body_g" Margin="0,80,0,0">
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
@@ -504,7 +510,7 @@
                 <Grid x:Name="hole1header_g1" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
                     <Rectangle Fill="#FF007836" RadiusY="5" RadiusX="5" Stroke="White" Margin="10,0,10,10" StrokeThickness="3" Height="55.5" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="complexhole2_tbl" Margin="71.023,0,71.023,-0.167" TextWrapping="Wrap" Text="Hole 2" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="complexhole2_tbl" Margin="71.023,0,10,-0.167" TextWrapping="Wrap" Text="Hole 2" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom" Width="198.977"/>
                 </Grid>
                 <Grid x:Name="hole1body_g1" Margin="0,80,0,0">
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
@@ -560,7 +566,7 @@
                 <Grid x:Name="hole1header_g2" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
                     <Rectangle Fill="#FF007836" RadiusY="5" RadiusX="5" Stroke="White" Margin="10,0,10,10" StrokeThickness="3" Height="55.5" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="complexhole3_tbl" Margin="71.023,0,71.023,-0.167" TextWrapping="Wrap" Text="Hole 3" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="complexhole3_tbl" Margin="71.023,0,10,-0.167" TextWrapping="Wrap" Text="Hole 3" FontSize="48" HorizontalAlignment="Center" Foreground="White" Height="70" VerticalAlignment="Bottom" Width="198.977"/>
                 </Grid>
                 <Grid x:Name="hole1body_g2" Margin="0,80,0,0">
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
@@ -1010,12 +1016,11 @@
             </WrapPanel>
             <Button x:Name="previous9_btn" Content="Previous 9" Margin="0,7,101,0" HorizontalAlignment="Right" Width="65" Height="20.96" VerticalAlignment="Top" Click="previous9_btn_Click"/>
             <Button x:Name="next9_btn" Content="Next 9" Height="20.96" Margin="0,7,31,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="65" Click="next9_btn_Click"/>
-            <ComboBox x:Name="simple_measurement_cb" Margin="0,8.04,235,0" HorizontalAlignment="Right" Width="48" VerticalAlignment="Top" DropDownClosed="simple_measurement_cb_DropDownClosed">
+            <ComboBox x:Name="simple_measurement_cb" Margin="0,6,295,0" HorizontalAlignment="Right" Width="48" VerticalAlignment="Top" DropDownClosed="simple_measurement_cb_DropDownClosed">
                 <ComboBoxItem Content="Yrd."/>
                 <ComboBoxItem Content="Ft." IsSelected="True"/>
                 <ComboBoxItem Content="m."/>
             </ComboBox>
-            <TextBlock x:Name="textBlock23" HorizontalAlignment="Right" Margin="0,10,288,0" TextWrapping="Wrap" Text="Unit of Measurement" VerticalAlignment="Top" Width="115.513"/>
             <Button x:Name="simple_add1_btn" Content="+1" HorizontalAlignment="Left" Margin="293,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_add1_btn_Click"/>
             <Button x:Name="simple_sub1_btn" Content="-1" HorizontalAlignment="Left" Margin="338,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub1_btn_Click"/>
             <TextBlock x:Name="hole_count_simple_tbl" Margin="401.257,10,422.973,0" TextWrapping="Wrap" Text="Hole Count: 0 " d:LayoutOverrides="Width" VerticalAlignment="Top"/>
@@ -1025,6 +1030,13 @@
             <Button x:Name="simple_add18_btn" Content="+18" HorizontalAlignment="Left" Margin="113,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_add18_btn_Click"/>
             <Button x:Name="simple_sub18_btn" Content="-18" HorizontalAlignment="Left" Margin="158,8,0,0" VerticalAlignment="Top" Width="40" Click="simple_sub18_btn_Click"/>
             <TextBlock x:Name="hole_count_tb" HorizontalAlignment="Right" Margin="0,0,270.54,1.56" TextWrapping="Wrap" Text="holecount" VerticalAlignment="Bottom"/>
+            <ComboBox x:Name="simpletcolor_cb" Margin="0,6,231,0" VerticalAlignment="Top" DropDownClosed="simpletcolor_cb_DropDownClosed" DropDownOpened="simpletcolor_cb_DropDownOpened" HorizontalAlignment="Right" Width="59">
+                <ComboBoxItem x:Name="tred1" Content="Red" Background="Red" Foreground="White" d:IsHidden="True" IsSelected="True"/>
+                <ComboBoxItem x:Name="tgold1" Content="Gold" Background="#FFDCE60A" Foreground="White"/>
+                <ComboBoxItem x:Name="twhite1" Content="White" Foreground="Black"/>
+                <ComboBoxItem x:Name="tblue1" Content="Blue" Background="#FF004FC1" Foreground="White"/>
+                <ComboBoxItem x:Name="tblack1" Content="Black" Background="Black" Foreground="White"/>
+            </ComboBox>
         </Grid>
         <TextBlock x:Name="simpleend_tb" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Simpleend" VerticalAlignment="Bottom" Margin="0,0,347.04,1.99"/>
     </Grid>
