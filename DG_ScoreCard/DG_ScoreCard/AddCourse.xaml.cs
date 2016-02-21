@@ -435,44 +435,187 @@ namespace DG_ScoreCard
 
         private void complexnxt_btn_Click(object sender, RoutedEventArgs e)
         {
+            //Save Current Holes
+            updateComplexHoles();
             if (complex_current_hole < 36)
             {
                 complex_current_hole += 3;
             }
-            //Save Current Holes
+            
             //Set Knew Holes
 
         }
 
-        //Desc: Complex hole 1 tee color
-        string getComplexHole1TeeColor()
+        //Desc: Gets Coresponding Tee Color
+        string getComplexTeeColorArrayColor(int i)
         {
-            if()
+            if(i == 0)
+            {
+                return "Red";
+            }
+            else if(i == 1)
+            {
+                return "Gold";
+            }
+            else if(i == 2)
+            {
+                return "White";
+            }
+            else if(i == 3)
+            {
+                return "Blue";
+            }
+            else
+            {
+                return "Black";
+            }
         }
 
-        //Desc: Complex hole 2 tee color
-        string getComplexHole2TeeColor()
+        //Desc: Complex hole tee color
+        string getComplexTeeColor(int i)
         {
+            RadioButton[] t1 = {tee_red, tee_gold, tee_white, tee_blue, tee_black};
+            RadioButton[] t2 = { tee_red1, tee_gold1, tee_white1, tee_blue1, tee_black1 };
+            RadioButton[] t3 = { tee_red2, tee_gold2, tee_white2, tee_blue2, tee_black2 };
+            List<RadioButton[]> t = new List<RadioButton[]>();
+            t.Add(t1); t.Add(t2);t.Add(t3);
 
+            for(int k=0; k<t[i].Count();k++)
+            {
+                if(t[i][k].IsChecked == true)
+                {
+                    return getComplexTeeColorArrayColor(k);
+                }
+            }
+
+           return "Panic";
         }
 
-        //Desc: Complex hole 3 tee color
-        string getComplexHole3TeeColor()
+        //Desc: Gets Corresponding Basket Letter
+        char getComplexLetterArrayColor(int i)
         {
+            if (i == 0)
+            {
+                return 'A';
+            }
+            else if (i == 1)
+            {
+                return 'B';
+            }
+            else if (i == 2)
+            {
+                return 'C';
+            }
+            else if (i == 3)
+            {
+                return 'D';
+            }
+            else if (i == 4)
+            {
+                return 'E';
+            }
+            else if (i == 5)
+            {
+                return 'F';
+            }
+            else if (i == 6)
+            {
+                return 'G';
+            }
+            else
+            {
+                return 'Z';
+            }
+        }
 
+        //Desc: Get Complex Basket Letter
+        char getComplexLetter(int i)
+        {
+            RadioButton[] l1 = { complex1a_rb, complex1b_rb, complex1c_rb, complex1d_rb, complex1e_rb, complex1f_rb, complex1g_rb };
+            RadioButton[] l2 = { complex2a_rb, complex2b_rb, complex2c_rb, complex2d_rb, complex2e_rb, complex2f_rb, complex2g_rb };
+            RadioButton[] l3 = { complex3a_rb, complex3b_rb, complex3c_rb, complex3d_rb, complex3e_rb, complex3f_rb, complex3g_rb };
+            List<RadioButton[]> l = new List<RadioButton[]>();
+            l.Add(l1); l.Add(l2); l.Add(l3);
+
+            for(int k=0; k<l[i].Count(); k++)
+            {
+                if(l[i][k].IsChecked == true)
+                {
+                    return getComplexLetterArrayColor(k);
+                }
+            }
+
+            return 'Z';
+        }
+
+        int getComplexPar(int i)
+        {
+            if(i == 0)
+            {
+                return int.Parse(complexpar1_cb.Text);
+            }
+            else if(i == 1)
+            {
+                return int.Parse(complexpar2_cb.Text);
+            }
+            else
+            {
+                return int.Parse(complexpar3_cb.Text);
+            }
+        }
+
+        int getComplexYard(int i)
+        {
+            if(i == 0)
+            {
+                return int.Parse(complexyard1_tb.Text);
+            }
+            else if(i == 1)
+            {
+                return int.Parse(complexyard2_tb.Text);
+            }
+            else
+            {
+                return int.Parse(complexyard3_tb.Text);
+            }
+        }
+
+        void saveComplexHoles(int c_current_hole, int p)
+        {
+            holeList[c_current_hole].t_color = getComplexTeeColor(p);
+            holeList[c_current_hole].b_letter = getComplexLetter(p);
+            holeList[c_current_hole].h_par = getComplexPar(p);
+            holeList[c_current_hole].h_yardage = getComplexYard(p);
         }
 
         //Desc: Saves Complex Holes
         void updateComplexHoles()
         {
             //if hole exists update for 3 current holes
-            if(checkHoleExists(holeList[complex_current_hole-3], complex_current_hole-2, c))
+            if (checkHoleExists(holeList, complex_current_hole - 2, getComplexTeeColor(0), getComplexLetter(0)))
+            {
+                saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole - 2), getComplexTeeColor(0), getComplexLetter(0)), 0);
+            }
+            else
             {
 
             }
-            
+            if (checkHoleExists(holeList, complex_current_hole - 1, getComplexTeeColor(1), getComplexLetter(1)))
+            {
+                saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole - 1), getComplexTeeColor(1), getComplexLetter(1)), 1);
+            }
+            else
+            {
 
-            //if does not exists, create and update
+            }
+            if (checkHoleExists(holeList, complex_current_hole, getComplexTeeColor(2), getComplexLetter(2)))
+            {
+                saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole), getComplexTeeColor(2), getComplexLetter(2)), 2);
+            }
+            else
+            {
+
+            }
         }
 
         //Desc: Set Complex Holes

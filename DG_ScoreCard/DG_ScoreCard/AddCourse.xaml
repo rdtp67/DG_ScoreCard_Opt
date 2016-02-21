@@ -468,13 +468,13 @@
                     </Grid>
                     <Grid x:Name="hole1basket_g" HorizontalAlignment="Right" Margin="0,90,0,0" Width="85">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
-                        <RadioButton x:Name="radioButton" Content="A" Margin="19.578,65.28,37.422,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton_Copy" Content="B" Margin="19.576,85.24,13.422,0" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="radioButton_Copy1" Content="C" Margin="19.576,105.2,13.422,99.84" d:LayoutOverrides="Width, Height"/>
-                        <RadioButton x:Name="radioButton_Copy2" Content="D" Margin="19.576,0,13.422,79.88" d:LayoutOverrides="Width" VerticalAlignment="Bottom"/>
-                        <RadioButton x:Name="radioButton_Copy3" Content="E" Margin="19.576,0,13.422,59.92" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
-                        <RadioButton x:Name="radioButton_Copy4" Content="F" Margin="19.576,0,13.422,39.96" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
-                        <RadioButton x:Name="radioButton_Copy5" Content="G" Margin="19.576,0,13.422,20" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex1a_rb" Content="A" Margin="19.578,65.28,37.422,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" IsChecked="True"/>
+                        <RadioButton x:Name="complex1b_rb" Content="B" Margin="19.576,85.24,13.422,0" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="complex1c_rb" Content="C" Margin="19.576,105.2,13.422,99.84" d:LayoutOverrides="Width, Height"/>
+                        <RadioButton x:Name="complex1d_rb" Content="D" Margin="19.576,0,13.422,79.88" d:LayoutOverrides="Width" VerticalAlignment="Bottom"/>
+                        <RadioButton x:Name="complex1e_rb" Content="E" Margin="19.576,0,13.422,59.92" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex1f_rb" Content="F" Margin="19.576,0,13.422,39.96" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex1g_rb" Content="G" Margin="19.576,0,13.422,20" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
                         <TextBlock x:Name="textBlock12" TextWrapping="Wrap" Text="Basket" VerticalAlignment="Top" FontSize="16" Margin="0,10,0,0" Height="22.28" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="textBlock12_Copy" TextWrapping="Wrap" Text="Letter" VerticalAlignment="Top" FontSize="16" Margin="19.576,32.28,19.576,0" Height="22.28" HorizontalAlignment="Center" d:LayoutOverrides="LeftMargin, RightMargin"/>
                     </Grid>
@@ -483,7 +483,7 @@
                         <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="37.168,34.409,0,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" FontSize="16"/>
                         <TextBlock x:Name="textBlock13_Copy" HorizontalAlignment="Left" Margin="10,89.68,0,109.04" TextWrapping="Wrap" Text="Yaradage" FontSize="16" d:LayoutOverrides="Height"/>
                         <TextBlock x:Name="textBlock13_Copy1" HorizontalAlignment="Right" Margin="0,89.68,45.136,109.04" TextWrapping="Wrap" Text="Unit" FontSize="16" d:LayoutOverrides="Height"/>
-                        <ComboBox x:Name="spar1_cb_Copy" Margin="82,33.729,33,0" VerticalAlignment="Top">
+                        <ComboBox x:Name="complexpar1_cb" Margin="82,33.729,33,0" VerticalAlignment="Top">
                             <ComboBoxItem x:Name="p9" Content="1"/>
                             <ComboBoxItem x:Name="p18" Content="2"/>
                             <ComboBoxItem x:Name="p27" IsSelected="True" Content="3"/>
@@ -493,7 +493,7 @@
                             <ComboBoxItem x:Name="p63" Content="7"/>
                             <ComboBoxItem x:Name="p72" Content="8"/>
                         </ComboBox>
-                        <TextBox x:Name="yardage_tb_Copy" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="complexyard1_tb" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
                         <RadioButton x:Name="complex1uf_rb" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit1" IsChecked="True" Click="complexfeet_rb_Checked"/>
                         <RadioButton x:Name="complex1uy_rb" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit1" Click="complexyards_rb_Checked"/>
                         <RadioButton x:Name="complex1um_rm" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit1" Click="complexmeters_rb_Checked"/>
@@ -524,13 +524,13 @@
                     </Grid>
                     <Grid x:Name="hole1basket_g1" HorizontalAlignment="Right" Margin="0,90,0,0" Width="85">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
-                        <RadioButton x:Name="radioButton2" Content="A" Margin="19.578,65.28,37.422,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton_Copy6" Content="B" Margin="19.576,85.24,13.422,0" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="radioButton_Copy7" Content="C" Margin="19.576,105.2,13.422,99.84" d:LayoutOverrides="Width, Height"/>
-                        <RadioButton x:Name="radioButton_Copy8" Content="D" Margin="19.576,0,13.422,79.88" d:LayoutOverrides="Width" VerticalAlignment="Bottom"/>
-                        <RadioButton x:Name="radioButton_Copy9" Content="E" Margin="19.576,0,13.422,59.92" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
-                        <RadioButton x:Name="radioButton_Copy10" Content="F" Margin="19.576,0,13.422,39.96" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
-                        <RadioButton x:Name="radioButton_Copy11" Content="G" Margin="19.576,0,13.422,20" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex2a_rb" Content="A" Margin="19.578,65.28,37.422,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" IsChecked="True"/>
+                        <RadioButton x:Name="complex2b_rb" Content="B" Margin="19.576,85.24,13.422,0" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="complex2c_rb" Content="C" Margin="19.576,105.2,13.422,99.84" d:LayoutOverrides="Width, Height"/>
+                        <RadioButton x:Name="complex2d_rb" Content="D" Margin="19.576,0,13.422,79.88" d:LayoutOverrides="Width" VerticalAlignment="Bottom"/>
+                        <RadioButton x:Name="complex2e_rb" Content="E" Margin="19.576,0,13.422,59.92" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex2f_rb" Content="F" Margin="19.576,0,13.422,39.96" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex2g_rb" Content="G" Margin="19.576,0,13.422,20" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
                         <TextBlock x:Name="textBlock21" TextWrapping="Wrap" Text="Basket" VerticalAlignment="Top" FontSize="16" Margin="0,10,0,0" Height="22.28" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="textBlock12_Copy1" TextWrapping="Wrap" Text="Letter" VerticalAlignment="Top" FontSize="16" Margin="19.576,32.28,19.576,0" Height="22.28" HorizontalAlignment="Center" d:LayoutOverrides="LeftMargin, RightMargin"/>
                     </Grid>
@@ -539,7 +539,7 @@
                         <TextBlock x:Name="textBlock24" HorizontalAlignment="Left" Margin="37.168,34.409,0,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" FontSize="16"/>
                         <TextBlock x:Name="textBlock13_Copy2" HorizontalAlignment="Left" Margin="10,89.68,0,109.04" TextWrapping="Wrap" Text="Yaradage" FontSize="16" d:LayoutOverrides="Height"/>
                         <TextBlock x:Name="textBlock13_Copy3" HorizontalAlignment="Right" Margin="0,89.68,45.136,109.04" TextWrapping="Wrap" Text="Unit" FontSize="16" d:LayoutOverrides="Height"/>
-                        <ComboBox x:Name="spar1_cb_Copy1" Margin="82,33.729,33,0" VerticalAlignment="Top">
+                        <ComboBox x:Name="complexpar2_cb" Margin="82,33.729,33,0" VerticalAlignment="Top">
                             <ComboBoxItem x:Name="p81" Content="1"/>
                             <ComboBoxItem x:Name="p90" Content="2"/>
                             <ComboBoxItem x:Name="p99" IsSelected="True" Content="3"/>
@@ -549,7 +549,7 @@
                             <ComboBoxItem x:Name="p135" Content="7"/>
                             <ComboBoxItem x:Name="p144" Content="8"/>
                         </ComboBox>
-                        <TextBox x:Name="yardage_tb_Copy1" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="complexyard2_tb" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
                         <RadioButton x:Name="complex2uf_rb" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit2" IsChecked="True" Click="complexfeet_rb_Checked"/>
                         <RadioButton x:Name="complex2uy_rb" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit2" Click="complexyards_rb_Checked"/>
                         <RadioButton x:Name="complex2um_rb" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit2" Click="complexmeters_rb_Checked"/>
@@ -572,7 +572,7 @@
                         <RadioButton x:Name="tee_black2" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee3"/>
                         <RadioButton x:Name="tee_blue2" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee3"/>
                         <Rectangle x:Name="complex3red_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
-                        <Rectangle x:Name="complex3goldrb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
+                        <Rectangle x:Name="complex3gold_rb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
                         <Rectangle x:Name="complex3white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
                         <TextBlock x:Name="textBlock26" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Tee Color" VerticalAlignment="Top" FontSize="16"/>
                         <Rectangle x:Name="complex3blue_rb" Fill="#FF004FC1" HorizontalAlignment="Right" Margin="0,35,23,35" Stroke="Black" Width="80"/>
@@ -580,13 +580,13 @@
                     </Grid>
                     <Grid x:Name="hole1basket_g2" HorizontalAlignment="Right" Margin="0,90,0,0" Width="85">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
-                        <RadioButton x:Name="radioButton4" Content="A" Margin="19.578,65.28,37.422,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" IsChecked="True"/>
-                        <RadioButton x:Name="radioButton_Copy12" Content="B" Margin="19.576,85.24,13.422,0" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="radioButton_Copy13" Content="C" Margin="19.576,105.2,13.422,99.84" d:LayoutOverrides="Width, Height"/>
-                        <RadioButton x:Name="radioButton_Copy14" Content="D" Margin="19.576,0,13.422,79.88" d:LayoutOverrides="Width" VerticalAlignment="Bottom"/>
-                        <RadioButton x:Name="radioButton_Copy15" Content="E" Margin="19.576,0,13.422,59.92" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
-                        <RadioButton x:Name="radioButton_Copy16" Content="F" Margin="19.576,0,13.422,39.96" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
-                        <RadioButton x:Name="radioButton_Copy17" Content="G" Margin="19.576,0,13.422,20" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex3a_rb" Content="A" Margin="19.578,65.28,37.422,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" IsChecked="True"/>
+                        <RadioButton x:Name="complex3b_rb" Content="B" Margin="19.576,85.24,13.422,0" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="complex3c_rb" Content="C" Margin="19.576,105.2,13.422,99.84" d:LayoutOverrides="Width, Height"/>
+                        <RadioButton x:Name="complex3d_rb" Content="D" Margin="19.576,0,13.422,79.88" d:LayoutOverrides="Width" VerticalAlignment="Bottom"/>
+                        <RadioButton x:Name="complex3e_rb" Content="E" Margin="19.576,0,13.422,59.92" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex3f_rb" Content="F" Margin="19.576,0,13.422,39.96" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+                        <RadioButton x:Name="complex3g_rb" Content="G" Margin="19.576,0,13.422,20" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
                         <TextBlock x:Name="textBlock28" TextWrapping="Wrap" Text="Basket" VerticalAlignment="Top" FontSize="16" Margin="0,10,0,0" Height="22.28" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="textBlock12_Copy2" TextWrapping="Wrap" Text="Letter" VerticalAlignment="Top" FontSize="16" Margin="19.576,32.28,19.576,0" Height="22.28" HorizontalAlignment="Center" d:LayoutOverrides="LeftMargin, RightMargin"/>
                     </Grid>
@@ -595,7 +595,7 @@
                         <TextBlock x:Name="textBlock30" HorizontalAlignment="Left" Margin="37.168,34.409,0,0" TextWrapping="Wrap" Text="Par" VerticalAlignment="Top" FontSize="16"/>
                         <TextBlock x:Name="textBlock13_Copy4" HorizontalAlignment="Left" Margin="10,89.68,0,109.04" TextWrapping="Wrap" Text="Yaradage" FontSize="16" d:LayoutOverrides="Height"/>
                         <TextBlock x:Name="textBlock13_Copy5" HorizontalAlignment="Right" Margin="0,89.68,45.136,109.04" TextWrapping="Wrap" Text="Unit" FontSize="16" d:LayoutOverrides="Height"/>
-                        <ComboBox x:Name="spar1_cb_Copy2" Margin="82,33.729,33,0" VerticalAlignment="Top">
+                        <ComboBox x:Name="complexpar3_cb" Margin="82,33.729,33,0" VerticalAlignment="Top">
                             <ComboBoxItem x:Name="p153" Content="1"/>
                             <ComboBoxItem x:Name="p162" Content="2"/>
                             <ComboBoxItem x:Name="p171" IsSelected="True" Content="3"/>
@@ -605,7 +605,7 @@
                             <ComboBoxItem x:Name="p175" Content="7"/>
                             <ComboBoxItem x:Name="p176" Content="8"/>
                         </ComboBox>
-                        <TextBox x:Name="yardage_tb_Copy2" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="complexyard3_tb" TextWrapping="Wrap" Margin="10,0,88,81.04" Text="0" Height="23" VerticalAlignment="Bottom"/>
                         <RadioButton x:Name="complex3uf_rb" Content="Feet" HorizontalAlignment="Right" Margin="0,0,33,87.08" VerticalAlignment="Bottom" GroupName="unit3" IsChecked="True" Click="complexfeet_rb_Checked"/>
                         <RadioButton x:Name="complex3uy_rb" Content="Yards" HorizontalAlignment="Right" Margin="0,0,26.406,67.12" VerticalAlignment="Bottom" GroupName="unit3" Click="complexyards_rb_Checked"/>
                         <RadioButton x:Name="complex3um_rb" Content="Meters" HorizontalAlignment="Right" Margin="0,0,18.816,47.16" VerticalAlignment="Bottom" GroupName="unit3" Click="complexmeters_rb_Checked"/>
