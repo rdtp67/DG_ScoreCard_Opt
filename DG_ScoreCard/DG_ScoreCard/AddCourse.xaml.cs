@@ -133,6 +133,7 @@ namespace DG_ScoreCard
                 Custom_g.Visibility = Visibility.Hidden;
                 Simple_g.Visibility = Visibility.Hidden;
                 Complex_g.Visibility = Visibility.Visible;
+                setComplexHoles();
             }
 
         }
@@ -360,6 +361,9 @@ namespace DG_ScoreCard
                 {
                     initializeHoleList("Red");
                     ischeck = true;
+                    last1_color = "Red";
+                    last2_color = "Red";
+                    last3_color = "Red";
                 }
                 else
                 {
@@ -381,6 +385,9 @@ namespace DG_ScoreCard
                         tee_gold2.IsChecked = true;
                         tgold.IsSelected = true;
                         ischeck = true;
+                        last1_color = "Gold";
+                        last2_color = "Gold";
+                        last3_color = "Gold";
                     }
 
                 }
@@ -398,6 +405,9 @@ namespace DG_ScoreCard
                         tee_white1.IsChecked = true;
                         tee_white2.IsChecked = true;
                         twhite.IsSelected = true;
+                        last1_color = "White";
+                        last2_color = "White";
+                        last3_color = "White";
                         ischeck = true;
                     }
                 }
@@ -415,6 +425,9 @@ namespace DG_ScoreCard
                         tee_blue1.IsChecked = true;
                         tee_blue2.IsChecked = true;
                         tblue.IsSelected = true;
+                        last1_color = "Blue";
+                        last2_color = "Blue";
+                        last3_color = "Blue";
                         ischeck = true;
                     }
                 }
@@ -432,6 +445,9 @@ namespace DG_ScoreCard
                         tee_black1.IsChecked = true;
                         tee_black2.IsChecked = true;
                         tblack.IsSelected = true;
+                        last1_color = "Black";
+                        last2_color = "Black";
+                        last3_color = "Black";
                         ischeck = true;
                     }
                 }
@@ -502,7 +518,9 @@ namespace DG_ScoreCard
         /*************************************************************/
 
         //Complex***********************************************************************************************************
-
+        string last1_color;
+        string last2_color;
+        string last3_color;
         int complex_current_hole = 3;
         //Complex Buttons
         private void complex9hole_btn_Click(object sender, RoutedEventArgs e)
@@ -771,6 +789,29 @@ namespace DG_ScoreCard
             }
         }
 
+        private void setComplexHoles(int p, int l)
+        {
+            if (checkHoleExists(holeList, complex_current_hole - p, getComplexTeeColor(l), getComplexLetter(l)) == false)
+            {
+                setComplexColorRadio(p);
+            }
+            setComplexFields(p, l);
+
+        }
+
+        private void setComplexFields(int p, int l)
+        {
+            TextBlock[] tbl = {complexhole1_tbl, complexhole2_tbl, complexhole3_tbl};
+            tbl[l].Text = "Hole " + (complex_current_hole - p).ToString();
+            RadioButton[] rb = { complex1a_rb, complex2a_rb, complex3a_rb };
+            rb[l].IsChecked = true;
+            ComboBox[] cb = { complexpar1_cb, complexpar2_cb, complexpar3_cb };
+            cb[l].Text = holeList[getHoleListIterator(holeList, (complex_current_hole - p), getComplexTeeColor(l), getComplexLetter(l))].h_par.ToString();
+            TextBox[] tb = {complexyard1_tb, complexyard2_tb, complexyard3_tb };
+            tb[l].Text = holeList[getHoleListIterator(holeList, (complex_current_hole - p), getComplexTeeColor(l), getComplexLetter(l))].h_yardage.ToString();
+           
+        }
+
         //Desc: saves current complex hole to array
         private void saveComplexHoles(int c_current_hole, int p)
         {
@@ -779,6 +820,40 @@ namespace DG_ScoreCard
             holeList[c_current_hole].h_par = getComplexPar(p);
             holeList[c_current_hole].h_yardage = getComplexYard(p);
         }
+        //Desc: Saves holes with past hole color
+        private void saveComplexHoles(int c_current_hole, int p, string last_color)
+        {
+            holeList[c_current_hole].t_color = last_color;
+            holeList[c_current_hole].b_letter = getComplexLetter(p);
+            holeList[c_current_hole].h_par = getComplexPar(p);
+            holeList[c_current_hole].h_yardage = getComplexYard(p);
+        }
+
+        private void ComplexTee1_Click(object sender, RoutedEventArgs e)
+        {
+
+            updateComplexHoles(2, last1_color, 0);
+            setComplexHoles(2, 0);
+            last1_color = getComplexTeeColor(0);
+        }
+
+        private void ComplexTee2_Click(object sender, RoutedEventArgs e)
+        {
+
+            updateComplexHoles(1, last2_color, 1);
+            setComplexHoles(1, 1);
+            last2_color = getComplexTeeColor(1);
+        }
+
+        private void ComplexTee3_Click(object sender, RoutedEventArgs e)
+        {
+
+            updateComplexHoles(0, last3_color, 2);
+            setComplexHoles(0, 2);
+            last3_color = getComplexTeeColor(2);
+        }
+
+
 
         //Desc: adds hole of complex hole number to end of array
         private void addComplexHole(int c_current_hole, int p)
@@ -812,6 +887,16 @@ namespace DG_ScoreCard
             saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole - 2), getComplexTeeColor(0), getComplexLetter(0)), 0);
             saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole - 1), getComplexTeeColor(1), getComplexLetter(1)), 1);
             saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole), getComplexTeeColor(2), getComplexLetter(2)), 2);
+        }
+
+        private void updateComplexHoles(int p, string c, int l)
+        {
+            //if hole exists update for 3 current holes
+            if (checkHoleExists(holeList, complex_current_hole - p, c, getComplexLetter(l)) == false)
+            {
+                addComplexHole(complex_current_hole - p, l);
+            }
+            saveComplexHoles(getHoleListIterator(holeList, (complex_current_hole - p), c, getComplexLetter(l)), l, c);
         }
 
         //RB Buttons
@@ -1001,7 +1086,7 @@ namespace DG_ScoreCard
             yardage_tb.Text = holeList[i].h_yardage.ToString();
             //will not add unit, will pull unit on submit to keep all holes them same
             par_cb.Text = holeList[i].h_par.ToString();
-            teecolor_cb.Text = color_intital;
+            //teecolor_cb.Text = color_intital;
             teepadtype_cb.Text = holeList[i].t_pad_type;
             teepadnotes_tb.Text = holeList[i].t_notes;
             basketletter_cb.Text = letter_intital.ToString();

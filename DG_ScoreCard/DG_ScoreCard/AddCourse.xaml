@@ -460,11 +460,11 @@
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
                     <Grid x:Name="hole1tee_g" Height="90" VerticalAlignment="Top">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
-                        <RadioButton x:Name="tee_red" Content="" HorizontalAlignment="Left" Margin="10,40.04,0,35" d:LayoutOverrides="Height" GroupName="tee1" IsChecked="True"/>
-                        <RadioButton x:Name="tee_gold" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" GroupName="tee1"/>
-                        <RadioButton x:Name="tee_white" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee1"/>
-                        <RadioButton x:Name="tee_black" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee1"/>
-                        <RadioButton x:Name="tee_blue" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee1"/>
+                        <RadioButton x:Name="tee_red" Content="" HorizontalAlignment="Left" Margin="10,40.04,0,35" d:LayoutOverrides="Height" GroupName="tee1" IsChecked="True" Click="ComplexTee1_Click"/>
+                        <RadioButton x:Name="tee_gold" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" GroupName="tee1" Click="ComplexTee1_Click"/>
+                        <RadioButton x:Name="tee_white" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee1" Click="ComplexTee1_Click"/>
+                        <RadioButton x:Name="tee_black" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee1" Click="ComplexTee1_Click"/>
+                        <RadioButton x:Name="tee_blue" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee1" Click="ComplexTee1_Click"/>
                         <Rectangle x:Name="complex1tred_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
                         <Rectangle x:Name="complex1gold_rb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
                         <Rectangle x:Name="complex1white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
@@ -516,11 +516,11 @@
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
                     <Grid x:Name="hole1tee_g1" Height="90" VerticalAlignment="Top">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
-                        <RadioButton x:Name="tee_red1" Content="" HorizontalAlignment="Left" Margin="10,40.04,0,35" d:LayoutOverrides="Height" GroupName="tee2" IsChecked="True"/>
-                        <RadioButton x:Name="tee_gold1" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" GroupName="tee2"/>
-                        <RadioButton x:Name="tee_white1" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee2"/>
-                        <RadioButton x:Name="tee_black1" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee2"/>
-                        <RadioButton x:Name="tee_blue1" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee2"/>
+                        <RadioButton x:Name="tee_red1" Content="" HorizontalAlignment="Left" Margin="10,40.04,0,35" d:LayoutOverrides="Height" GroupName="tee2" IsChecked="True" Click="ComplexTee2_Click"/>
+                        <RadioButton x:Name="tee_gold1" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" GroupName="tee2" Click="ComplexTee2_Click"/>
+                        <RadioButton x:Name="tee_white1" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee2" Click="ComplexTee2_Click"/>
+                        <RadioButton x:Name="tee_black1" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee2" Click="ComplexTee2_Click"/>
+                        <RadioButton x:Name="tee_blue1" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee2" Click="ComplexTee2_Click"/>
                         <Rectangle x:Name="complex2red_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
                         <Rectangle x:Name="complex2gold_rb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
                         <Rectangle x:Name="complex2white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
@@ -572,11 +572,11 @@
                     <Rectangle Fill="White" Stroke="White" Height="310"/>
                     <Grid x:Name="hole1tee_g2" Height="90" VerticalAlignment="Top">
                         <Rectangle Fill="#FFF1F1F1" Stroke="White"/>
-                        <RadioButton x:Name="tee_red2" Content="" HorizontalAlignment="Left" Margin="10,40.04,0,35" d:LayoutOverrides="Height" GroupName="tee3" IsChecked="True"/>
-                        <RadioButton x:Name="tee_gold2" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" GroupName="tee3"/>
-                        <RadioButton x:Name="tee_white2" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee3"/>
-                        <RadioButton x:Name="tee_black2" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee3"/>
-                        <RadioButton x:Name="tee_blue2" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee3"/>
+                        <RadioButton x:Name="tee_red2" Content="" HorizontalAlignment="Left" Margin="10,40.04,0,35" d:LayoutOverrides="Height" GroupName="tee3" IsChecked="True" Click="ComplexTee3_Click"/>
+                        <RadioButton x:Name="tee_gold2" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" GroupName="tee3" Click="ComplexTee3_Click"/>
+                        <RadioButton x:Name="tee_white2" Content="" HorizontalAlignment="Right" Margin="0,15.04,108,0" VerticalAlignment="Top" GroupName="tee3" Click="ComplexTee3_Click"/>
+                        <RadioButton x:Name="tee_black2" Content="" Margin="0,0,108,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" GroupName="tee3" Click="ComplexTee3_Click"/>
+                        <RadioButton x:Name="tee_blue2" Content="" HorizontalAlignment="Right" Margin="0,40.04,108,35" d:LayoutOverrides="Height" GroupName="tee3" Click="ComplexTee3_Click"/>
                         <Rectangle x:Name="complex3red_rb" Fill="Red" HorizontalAlignment="Left" Margin="34,35,0,35" Stroke="Black" Width="80"/>
                         <Rectangle x:Name="complex3gold_rb" Fill="#FFDCE60A" HorizontalAlignment="Left" Margin="34,0,0,10" Stroke="Black" Width="80" Height="20" VerticalAlignment="Bottom"/>
                         <Rectangle x:Name="complex3white_rb" Fill="White" HorizontalAlignment="Right" Height="20" Margin="0,10,23,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
