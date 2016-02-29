@@ -82,6 +82,43 @@ namespace WCFwebserviceDG
 
         }
 
+        //Desc: Gets Location ID
+        public int getLocID(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip)
+        {
+            int loc_id = 666;
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = myConn;
+                com.CommandText = "Select loc_id From location Where loc_address = @loc_address and loc_state = @loc_state and loc_city = @loc_city and loc_country = @loc_country and loc_zip = @loc_zip";
+                com.Parameters.AddWithValue("@loc_address", loc_address);
+                com.Parameters.AddWithValue("@loc_state", loc_state);
+                com.Parameters.AddWithValue("@loc_city", loc_city);
+                com.Parameters.AddWithValue("@loc_country", loc_country);
+                com.Parameters.AddWithValue("@loc_zip", loc_zip);
+
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    loc_id = Convert.ToInt32(read["loc_id"]);
+                }
+                read.Close();
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return loc_id;
+        }
+
         //Desc: Inserts new user
         //Pre: Strings for user parameters, Strings for location parameters
         public void insertUser(string username, string fname, string lname, string email, string phone, string shash, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip)
@@ -226,7 +263,7 @@ namespace WCFwebserviceDG
         }
 
         //Desc: Inserts Course
-        public void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, string user, string address, string state, string city, string country, string zip, int park_id)
+        public void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, int user_id, int loc_id, int park_id)
         {
             try
             {
@@ -234,17 +271,13 @@ namespace WCFwebserviceDG
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
                 cmd.CommandText = "INSERT into course(user_id, loc_id, park_id, course_name, course_website, course_phone_number, course_basket_type, course_year_established, course_tee_type, course_type, course_terrain, course_basket_manufacturer, course_private, course_pay, course_has_guides, course_designer) " +
-                    "VALUES((Select user_id from user where user_name = @user ), " +
-                    " (Select loc_id from location where loc_address = @address and loc_state = @state and loc_city = @city and loc_country = @country and loc_zip = @zip), " + 
+                    "VALUES(@user, " +
+                    " @loc_id, " + 
                     " @park_id, @name, @website, @phone, @basket_type, @year_established, @tee_type, @course_type, @terrain, @basket_maker, @course_private, @p2p, @guide, @course_designer)";
                 cmd.Prepare();
-                cmd.Parameters.AddWithValue("@user", user);
-                cmd.Parameters.AddWithValue("@address", address);
-                cmd.Parameters.AddWithValue("@state", state);
-                cmd.Parameters.AddWithValue("@city", city);
-                cmd.Parameters.AddWithValue("@country", country);
-                cmd.Parameters.AddWithValue("@zip", zip);
+                cmd.Parameters.AddWithValue("@user", user_id);
                 cmd.Parameters.AddWithValue("@park_id", park_id);
+                cmd.Parameters.AddWithValue("@loc_id", loc_id);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@website", website);
                 cmd.Parameters.AddWithValue("@phone", phone);
@@ -270,6 +303,58 @@ namespace WCFwebserviceDG
             {
                 myConn.Close();
             }
+        }
+
+        //Desc: Gets Course ID
+        public int getCourseID(int user_id, int park_id, int loc_id, string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer)
+        {
+            int c_id = 666;
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = myConn;
+                com.CommandText = "Select course_id From course Where user_id = @user_id and loc_id = @loc_id and park_id = @park_id and course_name = @cname " +
+                    " and course_website = @c_web and course_phone_number = @phone and course_basket_type = @btype and course_year_established = @year_est and " +
+                    " course_tee_type = @ttype and course_type = @ctype and course_terrain = @terr and course_basket_manufacturer = @manu and course_private = @pri " +
+                    " and course_pay = @pay and course_has_guides = @guide and course_designer = @des";
+
+                com.Parameters.AddWithValue("@user_id", user_id);
+                com.Parameters.AddWithValue("@loc_id", loc_id);
+                com.Parameters.AddWithValue("@park_id", park_id);
+                com.Parameters.AddWithValue("@cname", name);
+                com.Parameters.AddWithValue("@c_web", website);
+                com.Parameters.AddWithValue("@phone", phone);
+                com.Parameters.AddWithValue("@btype", basket_type);
+                com.Parameters.AddWithValue("@year_est", year_established);
+                com.Parameters.AddWithValue("@ttype", tee_type);
+                com.Parameters.AddWithValue("@ctype", course_type);
+                com.Parameters.AddWithValue("@terr", terrain);
+                com.Parameters.AddWithValue("@manu", basket_maker);
+                com.Parameters.AddWithValue("@pri", course_private);
+                com.Parameters.AddWithValue("@pay", p2p);
+                com.Parameters.AddWithValue("@guide", guide);
+                com.Parameters.AddWithValue("@des", course_designer);
+
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    c_id = Convert.ToInt32(read["course_id"]);
+                }
+                read.Close();
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return c_id;
         }
 
         //Desc: Inserts Park
@@ -302,6 +387,46 @@ namespace WCFwebserviceDG
             }
         }
 
+        public bool parkExist(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri)
+        {
+            int count = 1;
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select count(park_id) AS Count From park Where park_name = @name and park_private = @pri and park_hours_high = @hour_h and park_hours_low = @hour_l and park_has_guides = @guide and park_pet_friendly = @pet";
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@hour_h", hour_h);
+                cmd.Parameters.AddWithValue("@hour_l", hour_l);
+                cmd.Parameters.AddWithValue("@pri", pri);
+                cmd.Parameters.AddWithValue("@guide", guide);
+                cmd.Parameters.AddWithValue("@pet", pet);
+                MySqlDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    count = Convert.ToInt32(read["Count"]);
+                }
+
+                read.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+
+            }
+
+            if (count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         //Desc: Returns park_id
         //Pre: park database parameters
         //Post: int
@@ -327,7 +452,7 @@ namespace WCFwebserviceDG
                 {
                     park_id = Convert.ToInt32(read["park_id"]);
                 }
-                
+                read.Close();
                 
             }
             catch
@@ -344,6 +469,336 @@ namespace WCFwebserviceDG
 
         //DESC: needs work...
         public holeLib getHole() { holeLib hole = new holeLib(); return hole; }
+
+        //Desc: Submits all course
+        public void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip)
+        {
+            //Check if user already has course of this name, if so directs them to edit course
+
+            //location
+
+            //park
+              if(parkExist(p_name, hour_h, hour_l, guide, pet, pri)==false)
+              {
+                insertPark(p_name, hour_h, hour_l, guide, pet, pri);
+              }
+
+              if(checkLocation(loc_address, loc_state, loc_city, loc_country, loc_zip) == false)
+              {
+                insertLocation(loc_address, loc_state, loc_city, loc_country, loc_zip);
+              }
+
+            int park_id = getParkId(p_name, pri, hour_h, hour_l, guide, pet);
+            int user_id = int.Parse(getUserID(username));
+            int loc_id = getLocID(loc_address, loc_state, loc_city, loc_country, loc_zip);
+            //course
+            insertCourse(c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, user_id, loc_id, park_id);
+            //get course id
+            getCourseID(user_id, park_id, loc_id, c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer);
+            for (int i = 0; i < h.Count(); i++)
+            {
+                if(h[i].h_num < hole_count)
+                {
+                    //basket
+                    if (basketExists(h[i]) == false)
+                    {
+                        // insertBasket(h[i]);
+                    }
+                    //tee
+                    if (teeExists(h[i]) == false)
+                    {
+                        //insertTee(h[i]);
+                    }
+                    //misc
+                    if (miscExists(h[i]) == false)
+                    {
+                        insertMisc(h[i]);
+                    }
+                    //holelines
+                    if (holelinesExists(h[i]) == false)
+                    {
+                        insertHoleLines(h[i]);
+                    }
+                    //hole
+                }
+
+            }
+
+        }
+
+        //Desc: Submits Course to DB
+        public void insertHole(holeLib h)
+        {
+            try
+            {
+                //Get tee id
+                //Get basket id
+                //Get misc id
+                //Get hole lines id
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "INSERT INTO hole(course_id, tee_id, basket_id, misc_id, hole_lines_id, hole_num, hole_yardage, hole_par, hole_unit, hole_name, hole_mando, hole_hazards) " + 
+                    " VALUES()";
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public void insertBasket(holeLib h)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into basket(basket_letter, basket_deduction, basket_note) values(@letter, @deduction, @note)";
+                cmd.Parameters.AddWithValue("@letter", h.b_letter);
+                cmd.Parameters.AddWithValue("@deduction", h.b_deduction);
+                cmd.Parameters.AddWithValue("@note", h.b_note);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public bool basketExists(holeLib h)
+        {
+            int count = -1;
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select count(basket_id) AS Count From basket where basket_letter = @letter and basket_deduction = @de and basket_note = @note";
+                cmd.Parameters.AddWithValue("@letter", h.b_letter);
+                cmd.Parameters.AddWithValue("@de", h.b_deduction);
+                cmd.Parameters.AddWithValue("@note", h.b_note);
+                MySqlDataReader read = cmd.ExecuteReader();
+                while(read.Read())
+                {
+                    count = Convert.ToInt32(read["Count"]);
+                }
+
+                read.Close();
+            }
+            catch
+            {
+               
+            }
+            finally
+            {
+                myConn.Close();
+
+            }
+
+             if(count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void insertTee(holeLib h)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into tee(tee_color, tee_pad_type, tee_notes) Values(@color, @type, @notes)";
+                cmd.Parameters.AddWithValue("@color", h.t_color);
+                cmd.Parameters.AddWithValue("@type", h.t_pad_type);
+                cmd.Parameters.AddWithValue("@notes", h.t_notes);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public bool teeExists(holeLib h)
+        {
+            int count = -1;
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select count(tee_id) AS Count from tee where tee_color = @color and tee_pad_type = @type and tee_notes = @notes";
+                cmd.Parameters.AddWithValue("@color", h.t_color);
+                cmd.Parameters.AddWithValue("@type", h.t_pad_type);
+                cmd.Parameters.AddWithValue("@notes", h.t_notes);
+                MySqlDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    count = Convert.ToInt32(read["Count"]);
+                }
+
+                read.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+
+            }
+
+            if (count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void insertMisc(holeLib h)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into misc(misc_guidetohole, misc_trashcan, misc_trailsnearby, misc_roadsnearby, misc_generalcomments) Values(@guide, @trash, @trail, @road, @comment)";
+                cmd.Parameters.AddWithValue("@guide", h.m_guide);
+                cmd.Parameters.AddWithValue("@trash", h.m_trash);
+                cmd.Parameters.AddWithValue("@trail", h.m_trail);
+                cmd.Parameters.AddWithValue("@road", h.m_road);
+                cmd.Parameters.AddWithValue("@comment", h.m_general_comments);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+               
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public bool miscExists(holeLib h)
+        {
+            int count = -1;
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select count(misc_id) as Count From misc Where misc_guidetohole = @guide and misc_trashcan = @trash and misc_trailsnearby = @trail and misc_roadsnearby = @road and misc_generalcomments = @comment";
+                cmd.Parameters.AddWithValue("@guide", h.m_guide);
+                cmd.Parameters.AddWithValue("@trash", h.m_trash);
+                cmd.Parameters.AddWithValue("@trail", h.m_trail);
+                cmd.Parameters.AddWithValue("@road", h.m_road);
+                cmd.Parameters.AddWithValue("@comment", h.m_general_comments);
+                MySqlDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    count = Convert.ToInt32(read["Count"]);
+                }
+
+                read.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+
+            }
+
+            if (count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void insertHoleLines(holeLib h)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into hole_lines(hole_lines_rec_shot, hole_lines_rec_disc) Values(@shot, @disc)";
+                cmd.Parameters.AddWithValue("@shot", h.r_shots);
+                cmd.Parameters.AddWithValue("@disc", h.r_disc);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public bool holelinesExists(holeLib h)
+        {
+            int count = -1;
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select count(hole_lines_id) AS Count From hole_lines Where hole_lines_rec_shot = @shot and hole_lines_rec_disc = @disc";
+                cmd.Parameters.AddWithValue("@shot", h.r_shots);
+                cmd.Parameters.AddWithValue("@disc", h.r_disc);
+                MySqlDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    count = Convert.ToInt32(read["Count"]);
+                }
+
+                read.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+
+            }
+
+            if (count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
 
 
     }

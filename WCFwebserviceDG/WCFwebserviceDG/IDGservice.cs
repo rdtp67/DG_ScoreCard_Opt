@@ -18,6 +18,9 @@ namespace WCFwebserviceDG
         void insertLocation(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
 
         [OperationContract]
+        int getLocID(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+
+        [OperationContract]
         void insertUser(string username, string fname, string lname, string email, string phone, string shash, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
 
         [OperationContract]
@@ -30,16 +33,52 @@ namespace WCFwebserviceDG
         List<login> returnCstringLists(string username);
 
         [OperationContract]
-        void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, string user, string address, string state, string city, string country, string zip, int park_id);
+        void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, int user_id, int loc_id, int park_id);
+
+        [OperationContract]
+        int getCourseID (int user_id, int park_id, int loc_id, string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer);
 
         [OperationContract]
         void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri);
+
+        [OperationContract]
+        bool parkExist(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri);
 
         [OperationContract]
         int getParkId(string park_name, char? park_private, string park_hours_high, string park_hours_low, char? park_has_guides, char? park_pet_friendly);
 
         [OperationContract]
         holeLib getHole();
+
+        [OperationContract]
+        void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+
+        [OperationContract]
+        void insertHole(holeLib h);
+
+        [OperationContract]
+        void insertBasket(holeLib h);
+
+        [OperationContract]
+        bool basketExists(holeLib h);
+
+        [OperationContract]
+        void insertTee(holeLib h);
+
+        [OperationContract]
+        bool teeExists(holeLib h);
+
+        [OperationContract]
+        void insertMisc(holeLib h);
+
+        [OperationContract]
+        bool miscExists(holeLib h);
+
+        [OperationContract]
+        void insertHoleLines(holeLib h);
+
+        [OperationContract]
+        bool holelinesExists(holeLib h);
 
 
     }

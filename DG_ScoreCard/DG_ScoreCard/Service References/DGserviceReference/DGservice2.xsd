@@ -40,4 +40,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="holeLib" nillable="true" type="tns:holeLib" />
+  <xs:complexType name="ArrayOfholeLib">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="holeLib" nillable="true" type="tns:holeLib" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfholeLib" nillable="true" type="tns:ArrayOfholeLib" />
 </xs:schema>

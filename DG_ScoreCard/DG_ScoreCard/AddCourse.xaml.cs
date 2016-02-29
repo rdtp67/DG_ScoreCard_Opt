@@ -179,10 +179,16 @@ namespace DG_ScoreCard
             //Check for main fields entered
 
             //Verify field lengths
-            client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private);
-            client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text, client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet));
 
+            //  client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            //  client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text, client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet));
+
+            client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            int user_id = int.Parse(client.getUserID(username));
+            int park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
+            int loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            int course_id = client.getCourseID(user_id, park_id, loc_id, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text);
+            MessageBox.Show(("User: " + user_id + " Park: " + park_id + " Loc: " + loc_id + " Course: " + course_id).ToString());
         }
 
         //Desc: Gets Radio button current state
@@ -327,6 +333,17 @@ namespace DG_ScoreCard
                 holeList[holeList.Count() - 1].t_color = color_intital;
                 holeList[holeList.Count() - 1].b_letter = letter_intital;
                 holeList[holeList.Count() - 1].b_deduction = deducation_initial;
+                holeList[holeList.Count() - 1].b_note = "";
+                holeList[holeList.Count() - 1].t_pad_type = "";
+                holeList[holeList.Count() - 1].t_notes = "";
+                holeList[holeList.Count() - 1].m_guide = "";
+                holeList[holeList.Count() - 1].m_trash = 'I';
+                holeList[holeList.Count() - 1].m_trail = 'I';
+                holeList[holeList.Count() - 1].m_road = 'I';
+                holeList[holeList.Count() - 1].m_general_comments = "";
+                holeList[holeList.Count() - 1].r_disc = "";
+                holeList[holeList.Count() - 1].r_shots = "";
+
             }
         }
 
@@ -343,6 +360,16 @@ namespace DG_ScoreCard
                 holeList[holeList.Count() - 1].t_color = color;
                 holeList[holeList.Count() - 1].b_letter = letter_intital;
                 holeList[holeList.Count() - 1].b_deduction = deducation_initial;
+                holeList[holeList.Count() - 1].b_note = "";
+                holeList[holeList.Count() - 1].t_pad_type = "";
+                holeList[holeList.Count() - 1].t_notes = "";
+                holeList[holeList.Count() - 1].m_guide = "";
+                holeList[holeList.Count() - 1].m_trash = 'I';
+                holeList[holeList.Count() - 1].m_trail = 'I';
+                holeList[holeList.Count() - 1].m_road = 'I';
+                holeList[holeList.Count() - 1].m_general_comments = "";
+                holeList[holeList.Count() - 1].r_disc = "";
+                holeList[holeList.Count() - 1].r_shots = "";
             }
         }
 
