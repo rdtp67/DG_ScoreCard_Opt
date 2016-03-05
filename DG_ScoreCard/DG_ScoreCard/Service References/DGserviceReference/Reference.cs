@@ -561,6 +561,18 @@ namespace DG_ScoreCard.DGserviceReference {
                     System.Nullable<char> guide, 
                     string course_designer);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseID2", ReplyAction="http://tempuri.org/IDGservice/getCourseID2Response")]
+        int getCourseID2(int usr_id, string course_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseID2", ReplyAction="http://tempuri.org/IDGservice/getCourseID2Response")]
+        System.Threading.Tasks.Task<int> getCourseID2Async(int usr_id, string course_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkCourseUserExists", ReplyAction="http://tempuri.org/IDGservice/checkCourseUserExistsResponse")]
+        bool checkCourseUserExists(int usr_id, string course_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/checkCourseUserExists", ReplyAction="http://tempuri.org/IDGservice/checkCourseUserExistsResponse")]
+        System.Threading.Tasks.Task<bool> checkCourseUserExistsAsync(int usr_id, string course_name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertPark", ReplyAction="http://tempuri.org/IDGservice/insertParkResponse")]
         void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri);
         
@@ -646,10 +658,10 @@ namespace DG_ScoreCard.DGserviceReference {
                     string loc_zip);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHole", ReplyAction="http://tempuri.org/IDGservice/insertHoleResponse")]
-        void insertHole(DG_ScoreCard.DGserviceReference.holeLib h);
+        void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHole", ReplyAction="http://tempuri.org/IDGservice/insertHoleResponse")]
-        System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h, int course_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertBasket", ReplyAction="http://tempuri.org/IDGservice/insertBasketResponse")]
         void insertBasket(DG_ScoreCard.DGserviceReference.holeLib h);
@@ -663,6 +675,12 @@ namespace DG_ScoreCard.DGserviceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/basketExists", ReplyAction="http://tempuri.org/IDGservice/basketExistsResponse")]
         System.Threading.Tasks.Task<bool> basketExistsAsync(DG_ScoreCard.DGserviceReference.holeLib h);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getBasketID", ReplyAction="http://tempuri.org/IDGservice/getBasketIDResponse")]
+        int getBasketID(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getBasketID", ReplyAction="http://tempuri.org/IDGservice/getBasketIDResponse")]
+        System.Threading.Tasks.Task<int> getBasketIDAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertTee", ReplyAction="http://tempuri.org/IDGservice/insertTeeResponse")]
         void insertTee(DG_ScoreCard.DGserviceReference.holeLib h);
         
@@ -674,6 +692,12 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/teeExists", ReplyAction="http://tempuri.org/IDGservice/teeExistsResponse")]
         System.Threading.Tasks.Task<bool> teeExistsAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getTeeID", ReplyAction="http://tempuri.org/IDGservice/getTeeIDResponse")]
+        int getTeeID(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getTeeID", ReplyAction="http://tempuri.org/IDGservice/getTeeIDResponse")]
+        System.Threading.Tasks.Task<int> getTeeIDAsync(DG_ScoreCard.DGserviceReference.holeLib h);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertMisc", ReplyAction="http://tempuri.org/IDGservice/insertMiscResponse")]
         void insertMisc(DG_ScoreCard.DGserviceReference.holeLib h);
@@ -687,6 +711,12 @@ namespace DG_ScoreCard.DGserviceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/miscExists", ReplyAction="http://tempuri.org/IDGservice/miscExistsResponse")]
         System.Threading.Tasks.Task<bool> miscExistsAsync(DG_ScoreCard.DGserviceReference.holeLib h);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getMiscID", ReplyAction="http://tempuri.org/IDGservice/getMiscIDResponse")]
+        int getMiscID(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getMiscID", ReplyAction="http://tempuri.org/IDGservice/getMiscIDResponse")]
+        System.Threading.Tasks.Task<int> getMiscIDAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHoleLines", ReplyAction="http://tempuri.org/IDGservice/insertHoleLinesResponse")]
         void insertHoleLines(DG_ScoreCard.DGserviceReference.holeLib h);
         
@@ -698,6 +728,12 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/holelinesExists", ReplyAction="http://tempuri.org/IDGservice/holelinesExistsResponse")]
         System.Threading.Tasks.Task<bool> holelinesExistsAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getHoleLinesID", ReplyAction="http://tempuri.org/IDGservice/getHoleLinesIDResponse")]
+        int getHoleLinesID(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getHoleLinesID", ReplyAction="http://tempuri.org/IDGservice/getHoleLinesIDResponse")]
+        System.Threading.Tasks.Task<int> getHoleLinesIDAsync(DG_ScoreCard.DGserviceReference.holeLib h);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -863,6 +899,22 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.getCourseIDAsync(user_id, park_id, loc_id, name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer);
         }
         
+        public int getCourseID2(int usr_id, string course_name) {
+            return base.Channel.getCourseID2(usr_id, course_name);
+        }
+        
+        public System.Threading.Tasks.Task<int> getCourseID2Async(int usr_id, string course_name) {
+            return base.Channel.getCourseID2Async(usr_id, course_name);
+        }
+        
+        public bool checkCourseUserExists(int usr_id, string course_name) {
+            return base.Channel.checkCourseUserExists(usr_id, course_name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> checkCourseUserExistsAsync(int usr_id, string course_name) {
+            return base.Channel.checkCourseUserExistsAsync(usr_id, course_name);
+        }
+        
         public void insertPark(string name, string hour_h, string hour_l, System.Nullable<char> guide, System.Nullable<char> pet, System.Nullable<char> pri) {
             base.Channel.insertPark(name, hour_h, hour_l, guide, pet, pri);
         }
@@ -957,12 +1009,12 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.submitCourseAsync(h, hole_count, username, c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
         }
         
-        public void insertHole(DG_ScoreCard.DGserviceReference.holeLib h) {
-            base.Channel.insertHole(h);
+        public void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id) {
+            base.Channel.insertHole(h, course_id);
         }
         
-        public System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
-            return base.Channel.insertHoleAsync(h);
+        public System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h, int course_id) {
+            return base.Channel.insertHoleAsync(h, course_id);
         }
         
         public void insertBasket(DG_ScoreCard.DGserviceReference.holeLib h) {
@@ -981,6 +1033,14 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.basketExistsAsync(h);
         }
         
+        public int getBasketID(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getBasketID(h);
+        }
+        
+        public System.Threading.Tasks.Task<int> getBasketIDAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getBasketIDAsync(h);
+        }
+        
         public void insertTee(DG_ScoreCard.DGserviceReference.holeLib h) {
             base.Channel.insertTee(h);
         }
@@ -995,6 +1055,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<bool> teeExistsAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.teeExistsAsync(h);
+        }
+        
+        public int getTeeID(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getTeeID(h);
+        }
+        
+        public System.Threading.Tasks.Task<int> getTeeIDAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getTeeIDAsync(h);
         }
         
         public void insertMisc(DG_ScoreCard.DGserviceReference.holeLib h) {
@@ -1013,6 +1081,14 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.miscExistsAsync(h);
         }
         
+        public int getMiscID(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getMiscID(h);
+        }
+        
+        public System.Threading.Tasks.Task<int> getMiscIDAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getMiscIDAsync(h);
+        }
+        
         public void insertHoleLines(DG_ScoreCard.DGserviceReference.holeLib h) {
             base.Channel.insertHoleLines(h);
         }
@@ -1027,6 +1103,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<bool> holelinesExistsAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.holelinesExistsAsync(h);
+        }
+        
+        public int getHoleLinesID(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getHoleLinesID(h);
+        }
+        
+        public System.Threading.Tasks.Task<int> getHoleLinesIDAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
+            return base.Channel.getHoleLinesIDAsync(h);
         }
     }
 }

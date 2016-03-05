@@ -20,7 +20,7 @@
         <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,5" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,5" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="displayholes_btn" Content="DisplayHoles" HorizontalAlignment="Right" Margin="0,0,253,18" VerticalAlignment="Bottom" Width="75" Click="displayholes_btn_Click"/>
-        <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,5" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,5" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Grid x:Name="Main_g" Margin="20,10,0,0" HorizontalAlignment="Left" Width="860" Height="440" VerticalAlignment="Top">
             <Grid x:Name="parkdeatils_g" Margin="435,0,0,-4.818" Height="190" VerticalAlignment="Bottom">
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>

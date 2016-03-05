@@ -174,6 +174,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getCourseID2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usr_id" type="xs:int" />
+        <xs:element minOccurs="0" name="course_name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCourseID2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getCourseID2Result" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="checkCourseUserExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usr_id" type="xs:int" />
+        <xs:element minOccurs="0" name="course_name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="checkCourseUserExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="checkCourseUserExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="insertPark">
     <xs:complexType>
       <xs:sequence>
@@ -283,6 +313,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q25:holeLib" />
+        <xs:element minOccurs="0" name="course_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -317,10 +348,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="insertTee">
+  <xs:element name="getBasketID">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q28:holeLib" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getBasketIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getBasketIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="insertTee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q29:holeLib" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -332,7 +377,7 @@
   <xs:element name="teeExists">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q29:holeLib" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q30:holeLib" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -343,10 +388,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getTeeID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q31:holeLib" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getTeeIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getTeeIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="insertMisc">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q30:holeLib" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q32:holeLib" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -358,7 +417,7 @@
   <xs:element name="miscExists">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q31:holeLib" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q33:holeLib" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -369,10 +428,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getMiscID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q34:holeLib" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMiscIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getMiscIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="insertHoleLines">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q32:holeLib" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q35:holeLib" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -384,7 +457,7 @@
   <xs:element name="holelinesExists">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q33:holeLib" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q36:holeLib" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -392,6 +465,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="holelinesExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHoleLinesID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="h" nillable="true" type="q37:holeLib" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHoleLinesIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getHoleLinesIDResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

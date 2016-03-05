@@ -53,6 +53,7 @@ namespace DG_ScoreCard
         private void addholes_btn_Click(object sender, RoutedEventArgs e)
         {
             Main_g.Visibility = Visibility.Hidden;
+            submit_btn.Visibility = Visibility.Visible;
             if (complex_rb.IsChecked == true)
             {
                 Complex_g.Visibility = Visibility.Visible;
@@ -162,6 +163,23 @@ namespace DG_ScoreCard
         //Submits Course
         private void submit_btn_Click(object sender, RoutedEventArgs e)
         {
+            /* Checks if user has already created a course of the name and directs them to edit the course instead 
+               The function will return here if call is true                                                        */
+            string u = client.getUserID(username);
+            bool cnuexist = client.checkCourseUserExists(int.Parse(u), coursename_tb1.Text);
+            if(cnuexist == true)
+            {
+                MessageBox.Show("You have already created a course of this name. Please Edit Course to make changes!");
+                coursename_tb1.BorderBrush = Brushes.Red;
+                //send to edit page in the future?
+                return;
+            }
+            else
+            {
+                coursename_tb1.BorderBrush = Brushes.Black;
+            }
+            /*******************************************************************************************************/
+
             char? c_private = null;
             char? c_p2p = null;
             char? c_guide = null;
@@ -176,19 +194,35 @@ namespace DG_ScoreCard
             p_pet = getRadioButton(park_pet_y_r, park_pet_n_r);
             p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
 
-            //Check for main fields entered
-
             //Verify field lengths
 
+            //Check if user has submited course of same name before
+
+            string errors_found = checkSubmitButtonErrors();
+            if (errors_found != "")
+            {
+                MessageBox.Show(errors_found);
+            }
+            else
+            {
+                client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            }
+
+            int b = client.getBasketID(holeList[0]);
+            int t = client.getTeeID(holeList[0]);
+            int m = client.getMiscID(holeList[0]);
+            int r = client.getHoleLinesID(holeList[0]);
+            
+            int c = client.getCourseID2(int.Parse(u), coursename_tb1.Text);
+            MessageBox.Show(b.ToString() + "," + t.ToString() + "," + m.ToString() + "," + r.ToString() + " , " + u + " , " + c.ToString());
+
+            //int user_id = int.Parse(client.getUserID(username));
+            // int park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
+            // int loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            // int course_id = client.getCourseID(user_id, park_id, loc_id, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text);
+            // MessageBox.Show(("User: " + user_id + " Park: " + park_id + " Loc: " + loc_id + " Course: " + course_id).ToString());
             //  client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
             //  client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text, client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet));
-
-            client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            int user_id = int.Parse(client.getUserID(username));
-            int park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
-            int loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            int course_id = client.getCourseID(user_id, park_id, loc_id, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text);
-            MessageBox.Show(("User: " + user_id + " Park: " + park_id + " Loc: " + loc_id + " Course: " + course_id).ToString());
         }
 
         //Desc: Gets Radio button current state
@@ -209,6 +243,73 @@ namespace DG_ScoreCard
         }
 
         /****************************************************************/
+
+        /*** Submit button funcitons ***/
+
+        //Desc: Checks mandatory button fields for errors
+        //Post: Return string errors
+        private string checkSubmitButtonErrors()
+        {
+            if (checkSubmitButtonMandatoryFieldsIsBlank() == true)
+            {
+                return ("Error ~ Fill in red fields before submiting!");
+            }
+
+            if(checkSubmitButtonFieldsNumberic() == false)
+            {
+                return ("Error ~ Fill in red fields with numeric values before submiting!");
+            }
+
+            return "";
+        }
+
+        //Desc: Checks submit buttons mandatory fields for blank values
+        //Post: returns true if there are blank fields
+        private bool checkSubmitButtonMandatoryFieldsIsBlank()
+        {
+            bool blank = false;
+            if(GenLib.isBlank(coursename_tb1.Text) == true)
+            {
+                coursename_tb1.BorderBrush = Brushes.Red;
+                blank = true;
+            }
+            else
+            {
+                coursename_tb1.BorderBrush = Brushes.Black;
+            }
+
+            return blank;
+        }
+
+        //Desc: Checks Submit button fields for numberic values for those that apply
+        //Post: returns false if the fields are not numberic
+        private bool checkSubmitButtonFieldsNumberic()
+        {
+            bool isnum = true;
+            if(GenLib.isFieldNumberic(zip_tb1.Text) == false && GenLib.isBlank(zip_tb1.Text) == false)
+            {
+                isnum = false;
+                zip_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                zip_tb1.BorderBrush = Brushes.Black;
+            }
+            if (GenLib.isFieldNumberic(phonenumber_tb1.Text) == false && GenLib.isBlank(phonenumber_tb1.Text) == false)
+            {
+                isnum = false;
+                phonenumber_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                phonenumber_tb1.BorderBrush = Brushes.Black;
+            }
+
+                return isnum;
+        }
+
+
+        /**End submit btn*****************************/
 
         /*** holeLib/List<HoleLib> functions*****/
 
@@ -233,7 +334,18 @@ namespace DG_ScoreCard
             h.h_num = custom_current_hole;
             h.h_yardage = int.Parse(yardage_tb.Text);
             h.h_par = int.Parse(par_cb.Text);
-            h.h_unit = yardagetype_cb.Text;
+            if(yardagetype_cb.Text == "Ft.")
+            {
+                h.h_unit = "Feet";
+            }
+            else if(yardagetype_cb.Text == "Yrd.")
+            {
+                h.h_unit = "Yard";
+            }
+            else
+            {
+                h.h_unit = "Meter";
+            }
             h.h_name = holename_tb.Text;
             h.h_mando = getRadioButton(mandoyes_rb, mandono_rb);
             h.h_hazzards = getRadioButton(hazordyes_rb, hazordno_rb);
@@ -330,6 +442,9 @@ namespace DG_ScoreCard
                 holeList[holeList.Count() - 1].h_par = par_initial;
                 holeList[holeList.Count() - 1].h_yardage = yardage_intitial;
                 holeList[holeList.Count() - 1].h_unit = unit_intitial;
+                holeList[holeList.Count() - 1].h_name = "";
+                holeList[holeList.Count() - 1].h_mando = 'I';
+                holeList[holeList.Count() - 1].h_hazzards = 'I';
                 holeList[holeList.Count() - 1].t_color = color_intital;
                 holeList[holeList.Count() - 1].b_letter = letter_intital;
                 holeList[holeList.Count() - 1].b_deduction = deducation_initial;
@@ -357,6 +472,9 @@ namespace DG_ScoreCard
                 holeList[holeList.Count() - 1].h_par = par_initial;
                 holeList[holeList.Count() - 1].h_yardage = yardage_intitial;
                 holeList[holeList.Count() - 1].h_unit = unit_intitial;
+                holeList[holeList.Count() - 1].h_name = "";
+                holeList[holeList.Count() - 1].h_mando = 'I';
+                holeList[holeList.Count() - 1].h_hazzards = 'I';
                 holeList[holeList.Count() - 1].t_color = color;
                 holeList[holeList.Count() - 1].b_letter = letter_intital;
                 holeList[holeList.Count() - 1].b_deduction = deducation_initial;

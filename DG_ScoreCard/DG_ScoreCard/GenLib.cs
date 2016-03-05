@@ -36,6 +36,14 @@ namespace DG_ScoreCard
             }
         }
 
+        //Desc: Checks if Field is number
+        //Pre: string
+        //Post: Return true if field is number
+        public static bool isFieldNumberic(string s)
+        {
+            int n;
+            return int.TryParse(s, out n);
+        }
 
         
 

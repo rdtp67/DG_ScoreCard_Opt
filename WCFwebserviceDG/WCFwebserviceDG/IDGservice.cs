@@ -39,6 +39,12 @@ namespace WCFwebserviceDG
         int getCourseID (int user_id, int park_id, int loc_id, string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer);
 
         [OperationContract]
+        int getCourseID2(int usr_id, string course_name);
+
+        [OperationContract]
+        bool checkCourseUserExists(int usr_id, string course_name);
+
+        [OperationContract]
         void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri);
 
         [OperationContract]
@@ -54,7 +60,7 @@ namespace WCFwebserviceDG
         void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
 
         [OperationContract]
-        void insertHole(holeLib h);
+        void insertHole(holeLib h, int course_id);
 
         [OperationContract]
         void insertBasket(holeLib h);
@@ -63,10 +69,16 @@ namespace WCFwebserviceDG
         bool basketExists(holeLib h);
 
         [OperationContract]
+        int getBasketID(holeLib h);
+
+        [OperationContract]
         void insertTee(holeLib h);
 
         [OperationContract]
         bool teeExists(holeLib h);
+
+        [OperationContract]
+        int getTeeID(holeLib h);
 
         [OperationContract]
         void insertMisc(holeLib h);
@@ -75,10 +87,16 @@ namespace WCFwebserviceDG
         bool miscExists(holeLib h);
 
         [OperationContract]
+        int getMiscID(holeLib h);
+
+        [OperationContract]
         void insertHoleLines(holeLib h);
 
         [OperationContract]
         bool holelinesExists(holeLib h);
+
+        [OperationContract]
+        int getHoleLinesID(holeLib h);
 
 
     }
