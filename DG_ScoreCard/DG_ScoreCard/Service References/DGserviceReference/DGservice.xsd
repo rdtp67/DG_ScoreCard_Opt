@@ -12,7 +12,7 @@
   <xs:element name="getUserIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="getUserIDResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="getUserIDResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -479,6 +479,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="getHoleLinesIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMyCourseList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMyCourseListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="getMyCourseListResult" nillable="true" type="q38:ArrayOfcourselist" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

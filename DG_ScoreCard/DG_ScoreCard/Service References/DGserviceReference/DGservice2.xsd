@@ -46,4 +46,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfholeLib" nillable="true" type="tns:ArrayOfholeLib" />
+  <xs:complexType name="ArrayOfcourselist">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="courselist" nillable="true" type="tns:courselist" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcourselist" nillable="true" type="tns:ArrayOfcourselist" />
+  <xs:complexType name="courselist">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="c_id" type="xs:int" />
+      <xs:element minOccurs="0" name="c_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="courselist" nillable="true" type="tns:courselist" />
 </xs:schema>

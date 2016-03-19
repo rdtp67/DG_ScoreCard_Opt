@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using DG_ScoreCard.DGserviceReference;
 
 
 
@@ -29,7 +30,8 @@ namespace DG_ScoreCard
         private string username;
         private string sidepanelclosedon = "none";
         private string currentbutton = "none";
-        
+        private int user_id;
+        DGserviceClient client = new DGserviceClient();
 
 
         public MainWindow()
@@ -44,6 +46,7 @@ namespace DG_ScoreCard
             InitializeComponent();
             username = user;
             username_l.Content = ("Welcome " + username + "!");
+            user_id = client.getUserID(username);
             this.mainWindow = mainWindow;
         }
 
@@ -333,8 +336,15 @@ namespace DG_ScoreCard
         //Desc: Course my course clicked
         private void course_mycourse3_btn_Click(object sender, RoutedEventArgs e)
         {
-            Button[] dark = { course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
-            setSidePanelButtons(dark, course_mycourse3_btn);
+            if(currentbutton != "mycourse")
+            {
+                Button[] dark = { course_addcourse3_btn, course_editcourse3_btn, course_searchcourse3_btn };
+                setSidePanelButtons(dark, course_mycourse3_btn);
+                ViewCourse view = new ViewCourse(user_id);//need overload for username
+                pageload3_f.NavigationService.Navigate(view);
+                currentbutton = "mycourse";
+            }
+            
         }
         //Desc: Course add course clicked
         private void course_addcourse3_btn_Click(object sender, RoutedEventArgs e)
@@ -414,9 +424,9 @@ namespace DG_ScoreCard
             hidensidepanel_r.Visibility = Visibility.Visible;
             hidesidepanel_btn.Visibility = Visibility.Hidden;
             opensidepanel_btn.Visibility = Visibility.Visible;
-            //Thickness m = pageload3_f.Margin;
-            //m.Left = 10;
-            //pageload3_f.Margin = m;
+            Thickness m = pagegrid.Margin;
+            m.Left = 40;
+            pagegrid.Margin = m;
 
         }
 
@@ -453,6 +463,11 @@ namespace DG_ScoreCard
             }
             opensidepanel_btn.Visibility = Visibility.Hidden;
             hidesidepanel_btn.Visibility = Visibility.Visible;
+
+            Thickness m = pagegrid.Margin;
+            m.Left = 208.5;
+            pagegrid.Margin = m;
+
 
         }
 

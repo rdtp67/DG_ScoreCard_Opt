@@ -959,7 +959,7 @@
     </Window.Resources>
     <Grid>
         <Grid x:Name="sidepanelgrid" HorizontalAlignment="Left" Margin="29.5,209.503,0,0" Width="182">
-            <Rectangle x:Name="hidensidepanel_r" Fill="Silver" HorizontalAlignment="Left" RadiusY="0" RadiusX="0" Stroke="White" Width="4.25" Margin="5.5,0,0,0" Visibility="Hidden"/>
+            <Rectangle x:Name="hidensidepanel_r" Fill="Silver" HorizontalAlignment="Left" RadiusY="0" RadiusX="0" Stroke="White" Width="4.25" Margin="5.5,0,0,20" Visibility="Hidden"/>
             <Button x:Name="round_myround3_btn" Content="My Rounds" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePanelMyRoundBtnv1}" Click="round_myround3_Click" Background="Silver" RenderTransformOrigin="0.686,0.292" BorderBrush="White" Foreground="Black" Visibility="Hidden"/>
             <Button x:Name="round_addround3_btn" Content="Add New Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePaneladdroundv1}" Click="round_addround3_Click" Background="Silver" Margin="0,64.96,0,0" BorderBrush="White" Visibility="Hidden"/>
             <Button x:Name="round_editround3_btn" Content="Edit Round" VerticalAlignment="Top" Height="64.96" Style="{DynamicResource MainWindowSidePaneleditroundv1}" Click="round_editround3_Click" Background="Silver" Margin="0,129.92,0,0" BorderBrush="White" Visibility="Hidden"/>
@@ -997,7 +997,7 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <Grid x:Name="hidebuttonpanel" HorizontalAlignment="Left" Margin="0.5,190.005,0,-6.5" Width="29">
+        <Grid x:Name="hidebuttonpanel" HorizontalAlignment="Left" Margin="0.5,190.005,0,20" Width="29">
             <Button x:Name="hidesidepanel_btn" Content="Button" Height="78" Margin="3.5,222.995,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.462" Style="{DynamicResource MainWindowColapaseSidePanelBtn}" Click="hidesidepanel_btn_Click" Visibility="Hidden"/>
             <Button x:Name="opensidepanel_btn" Content="Button" Height="78" Margin="3.5,222.995,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.333,0.462" Style="{DynamicResource MainWindowOpenSidePanelBtn}" Click="opensidepanel_btn_Click" Visibility="Hidden"/>
         </Grid>
@@ -1013,8 +1013,8 @@
                 </MenuItem>
             </Menu>
         </Grid>
-        <Grid Margin="208.5,219.741,33.5,72.259">
-            <Frame x:Name="pageload3_f" Content="" BorderBrush="Black" NavigationUIVisibility="Hidden" d:LayoutOverrides="HorizontalAlignment" Margin="-10,-10.171,10,10.172"/>
+        <Grid x:Name="pagegrid" Margin="208.5,209.503,20,20">
+            <Frame x:Name="pageload3_f" Content="" BorderBrush="Black" NavigationUIVisibility="Hidden" d:LayoutOverrides="HorizontalAlignment"/>
         </Grid>
 
     </Grid>

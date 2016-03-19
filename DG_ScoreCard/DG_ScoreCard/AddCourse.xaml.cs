@@ -165,11 +165,11 @@ namespace DG_ScoreCard
         {
             /* Checks if user has already created a course of the name and directs them to edit the course instead 
                The function will return here if call is true                                                        */
-            string u = client.getUserID(username);
-            bool cnuexist = client.checkCourseUserExists(int.Parse(u), coursename_tb1.Text);
+            int u = client.getUserID(username);
+            bool cnuexist = client.checkCourseUserExists(u, coursename_tb1.Text);
             if(cnuexist == true)
             {
-                MessageBox.Show("You have already created a course of this name. Please Edit Course to make changes!");
+                MessageBox.Show("You have already created a course of this name.\nPlease Edit Course to make changes!");
                 coursename_tb1.BorderBrush = Brushes.Red;
                 //send to edit page in the future?
                 return;
@@ -179,6 +179,31 @@ namespace DG_ScoreCard
                 coursename_tb1.BorderBrush = Brushes.Black;
             }
             /*******************************************************************************************************/
+
+
+            /* Verify field lengths, will display an error message if field length(s) are too long, highlight in 
+                red the field, then return                                                                          */
+            string length_error_message = checkSubmitButtonLengths();
+            if (length_error_message != "")
+            {
+                MessageBox.Show(length_error_message);
+                return;
+            }
+
+            /******************************************************************************************************/
+
+            /* Checks specified erros, returns if they are true */
+            string errors_found = checkSubmitButtonErrors();
+
+            if (errors_found != "")
+            {
+                MessageBox.Show(errors_found);
+                return;
+            }
+
+            /******************************************************************************************************/
+
+
 
             char? c_private = null;
             char? c_p2p = null;
@@ -194,35 +219,22 @@ namespace DG_ScoreCard
             p_pet = getRadioButton(park_pet_y_r, park_pet_n_r);
             p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
 
-            //Verify field lengths
+           
 
-            //Check if user has submited course of same name before
 
-            string errors_found = checkSubmitButtonErrors();
-            if (errors_found != "")
-            {
-                MessageBox.Show(errors_found);
-            }
-            else
-            {
-                client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            }
+                  
+            client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            
 
-            int b = client.getBasketID(holeList[0]);
+            /*int b = client.getBasketID(holeList[0]);
             int t = client.getTeeID(holeList[0]);
             int m = client.getMiscID(holeList[0]);
             int r = client.getHoleLinesID(holeList[0]);
             
             int c = client.getCourseID2(int.Parse(u), coursename_tb1.Text);
             MessageBox.Show(b.ToString() + "," + t.ToString() + "," + m.ToString() + "," + r.ToString() + " , " + u + " , " + c.ToString());
-
-            //int user_id = int.Parse(client.getUserID(username));
-            // int park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
-            // int loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            // int course_id = client.getCourseID(user_id, park_id, loc_id, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text);
-            // MessageBox.Show(("User: " + user_id + " Park: " + park_id + " Loc: " + loc_id + " Course: " + course_id).ToString());
-            //  client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            //  client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, username, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text, client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet));
+            */
+            
         }
 
         //Desc: Gets Radio button current state
@@ -245,6 +257,135 @@ namespace DG_ScoreCard
         /****************************************************************/
 
         /*** Submit button funcitons ***/
+
+        //Desc: Verifies field lenghs of Submit button fields
+        //Post: Returns string errors
+        private string checkSubmitButtonLengths()
+        {
+            string errormessage = "";
+
+            if(GenLib.isField50Chars(coursename_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Course Name field must be 50 characters or less!\n";
+                coursename_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                coursename_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField50Chars(website_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Website field must be 50 characters or less!\n";
+                website_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                website_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if(GenLib.isField15Chars(phonenumber_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Phone number field must be 15 characters or less!\n";
+                phonenumber_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                phonenumber_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField50Chars(basket_tb.Text) == false)
+            {
+                errormessage += "Error ~ Basket Type field must be 50 characters or less!\n";
+                basket_tb.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                basket_tb.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField50Chars(course_designer_tb.Text) == false)
+            {
+                errormessage += "Error ~ Course Designer field must be 50 characters or less!\n";
+                course_designer_tb.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                course_designer_tb.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField50Chars(basket_maker_tb.Text) == false)
+            {
+                errormessage += "Error ~ Basket Maker field must be 50 characters or less!\n";
+                basket_maker_tb.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                basket_maker_tb.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField100Chars(address_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Location Address field must be 100 characters or less!\n";
+                address_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                address_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField100Chars(city_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Location City field must be 100 characters or less!\n";
+                city_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                city_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField15Chars(zip_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Location Zip field must be 15 characters or less!\n";
+                zip_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                zip_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField30Chars(state_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Location State field must be 30 characters or less!\n";
+                state_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                state_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField50Chars(country_tb1.Text) == false)
+            {
+                errormessage += "Error ~ Location Country field must be 50 characters or less!\n";
+                country_tb1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                country_tb1.BorderBrush = Brushes.Black;
+            }
+
+            if (GenLib.isField50Chars(parkname_tb.Text) == false)
+            {
+                errormessage += "Error ~ Park Name field must be 50 characters or less!\n";
+                parkname_tb.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                parkname_tb.BorderBrush = Brushes.Black;
+            }
+
+            return errormessage;
+        }
 
         //Desc: Checks mandatory button fields for errors
         //Post: Return string errors

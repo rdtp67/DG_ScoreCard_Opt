@@ -22,10 +22,10 @@ namespace WCFwebserviceDG
         //Desc: Gets ID of one user
         //Pre: String
         //Post: String
-        public string getUserID(string id)
+        public int getUserID(string id)
         {
            
-            string name = "name";
+            int name = 0;
             
             try
             {
@@ -37,7 +37,7 @@ namespace WCFwebserviceDG
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    name = reader.GetString(reader.GetOrdinal("user_id"));
+                    name = reader.GetInt32(reader.GetOrdinal("user_id"));
                 }
                 reader.Close();
             }
@@ -556,7 +556,7 @@ namespace WCFwebserviceDG
               
 
             int park_id = getParkId(p_name, pri, hour_h, hour_l, guide, pet);
-            int user_id = int.Parse(getUserID(username));
+            int user_id = getUserID(username);
             int loc_id = getLocID(loc_address, loc_state, loc_city, loc_country, loc_zip);
             insertCourse(c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, user_id, loc_id, park_id);
             int course = getCourseID2(user_id, c_name);
@@ -1008,6 +1008,39 @@ namespace WCFwebserviceDG
             }
 
             return count;
+        }
+
+        public List<courselist> getMyCourseList(int user_id)
+        {
+            List<courselist> c = new List<courselist>();
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select c.course_id, c.course_name From course c Join user u on u.user_id = c.user_id Where u.user_id = @user_id";
+                cmd.Parameters.AddWithValue("@user_id", user_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    courselist l = new courselist();
+                    l.c_id = rdr.GetInt32(rdr.GetOrdinal("c.course_id"));
+                    l.c_name = rdr.GetString(rdr.GetOrdinal("c.course_name"));
+                    c.Add(l);
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+
+            return c;
         }
 
 

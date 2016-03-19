@@ -7,7 +7,7 @@
       xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="DG_ScoreCard.AddCourse"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="900"
-      Title="AddCourse" Width="Auto" Height="Auto">
+      Title="AddCourse" Width="963.5" Height="562.497">
 
     <Grid x:Name="course_designer_g" d:LayoutOverrides="Width, Height">
         <Grid.RowDefinitions>
@@ -16,13 +16,13 @@
         <RadioButton x:Name="simple_rb" Content="Simple" HorizontalAlignment="Left" Margin="286,0,0,17.52" VerticalAlignment="Bottom" IsChecked="True" GroupName="holemode_rbg" Click="simple_rb_Click"/>
         <RadioButton x:Name="complex_rb" Content="Complex" Margin="345.853,0,0,17.52" VerticalAlignment="Bottom" HorizontalAlignment="Left" GroupName="holemode_rbg" Click="complex_rb_Click"/>
         <RadioButton x:Name="custom_rb" Content="Custom" Margin="416.393,0,423.86,17.52" VerticalAlignment="Bottom" d:LayoutOverrides="Width" GroupName="holemode_rbg" Click="custom_rb_Click"/>
-        <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Right" Height="38" Margin="0,0,10,5" TextWrapping="Wrap" Text="Course Creator" VerticalAlignment="Bottom" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
-        <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,5" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
-        <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,5" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Left" Height="38" Margin="10,10,0,0" TextWrapping="Wrap" Text="Course Creator" VerticalAlignment="Top" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
+        <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,12" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,12" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="displayholes_btn" Content="DisplayHoles" HorizontalAlignment="Right" Margin="0,0,253,18" VerticalAlignment="Bottom" Width="75" Click="displayholes_btn_Click"/>
-        <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,5" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom" Visibility="Hidden"/>
-        <Grid x:Name="Main_g" Margin="20,10,0,0" HorizontalAlignment="Left" Width="860" Height="440" VerticalAlignment="Top">
-            <Grid x:Name="parkdeatils_g" Margin="435,0,0,-4.818" Height="190" VerticalAlignment="Bottom">
+        <Button x:Name="submit_btn" Content="Submit" HorizontalAlignment="Left" Margin="194,0,0,12" Width="87" Click="submit_btn_Click" Height="31" VerticalAlignment="Bottom" Visibility="Hidden"/>
+        <Grid x:Name="Main_g" Margin="20,10,0,0" Height="485.497" VerticalAlignment="Top" HorizontalAlignment="Left" Width="923.5">
+            <Grid x:Name="parkdeatils_g" Margin="0,0,0,-0.224" Height="190" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="425" d:LayoutOverrides="HorizontalAlignment">
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
                 <Rectangle Fill="#FFC3C3C3" RadiusY="0" RadiusX="0" Stroke="#FFC3C3C3" Height="53.386" VerticalAlignment="Top"/>
                 <Rectangle Fill="#FF007836" Margin="10,15.5,0,0" RadiusY="5" RadiusX="5" Stroke="#FF007836" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165.86" Opacity="0.7"/>
@@ -144,7 +144,7 @@
                 <TextBlock Text="Park Name" TextWrapping="Wrap" x:Name="parkname_tbl" Margin="10,58.386,0,0" HorizontalAlignment="Left" FontSize="16" Width="77.257" Height="21.28" VerticalAlignment="Top"/>
                 <TextBox x:Name="parkname_tb" Margin="10,84.666,144.833,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Top"/>
             </Grid>
-            <Grid x:Name="locationdetails_g" Margin="0,0,430,-4.818" Height="190" VerticalAlignment="Bottom">
+            <Grid x:Name="locationdetails_g" Height="190" VerticalAlignment="Bottom" Margin="430,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="57*"/>
                     <RowDefinition Height="29*"/>
@@ -176,7 +176,7 @@
                     <TextBlock TextDecorations="{x:Null}" Text="Locations Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1" FontSize="18.667" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
-            <Grid x:Name="coursedetails_g" HorizontalAlignment="Right" Margin="0,0,0,189.959" Width="309">
+            <Grid x:Name="coursedetails_g" HorizontalAlignment="Right" Width="339.5" Margin="0,0,0,195" Height="283.497" VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="47*"/>
                     <ColumnDefinition Width="56*"/>
@@ -184,52 +184,52 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="308.667"/>
                 </Grid.RowDefinitions>
-                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Margin="0,0,0,58.626" Grid.ColumnSpan="2"/>
+                <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White" Margin="0,0,0,-5.871" Grid.ColumnSpan="2"/>
                 <Grid Grid.ColumnSpan="2" Margin="0,0,0,248.629"
            >
                     <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3"/>
-                    <Rectangle Fill="#FF007836" Margin="10,7.273,10,7.727" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7"/>
-                    <TextBlock x:Name="course_details_tb" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="121.594"><Run Text="Course "/><Run Text="Details"/></TextBlock>
+                    <Rectangle Fill="#FF007836" Margin="10,7.273,0,7.727" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7" HorizontalAlignment="Left" Width="141.5"/>
+                    <TextBlock x:Name="course_details_tb" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Width="121.594" Margin="21,17.604,0,17.604"><Run Text="Course "/><Run Text="Details"/></TextBlock>
                 </Grid>
-                <TextBlock x:Name="textBlock" Margin="10,70.038,0,0" TextWrapping="Wrap" Text="Basket Type: " FontSize="13.333" Height="18.96" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <TextBlock x:Name="textBlock1" Margin="10,88.997,0,0" TextWrapping="Wrap" Text="Year Established: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Left"/>
-                <TextBlock x:Name="textBlock3" Margin="0,171.988,51.67,0" TextWrapping="Wrap" Text="Course Type: " FontSize="13.333" Height="22.168" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                <TextBlock x:Name="textBlock6" Margin="0,201.76,85.033,0" TextWrapping="Wrap" Text="Private: " FontSize="13.333" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="10,148.106,0,0" TextWrapping="Wrap" Text="Terrain: " FontSize="13.333" RenderTransformOrigin="0.5,-0.807" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock10" Margin="0,201.761,57.785,0" TextWrapping="Wrap" Text="Pay to Play: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Right" Width="73.215"/>
-                <TextBlock x:Name="textBlock15" Margin="18.587,148.266,0,0" TextWrapping="Wrap" Text="Tee Type: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Left" Grid.Column="1"/>
-                <TextBlock x:Name="textBlock16" Margin="10,106.732,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left"><Run Text="Course "/><Run FontSize="13.333" Text="Designer: "/></TextBlock>
-                <TextBlock x:Name="textBlock17" Margin="0,222.644,-12.1,0" TextWrapping="Wrap" Text="Course Has Guide:" FontSize="13.333" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                <TextBlock x:Name="textBlock18" Margin="10,124.306,0,0" TextWrapping="Wrap" Text="Basket Maker:" VerticalAlignment="Top" FontSize="13.333" Height="18.8" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="85.191"/>
-                <TextBox x:Name="basket_tb" Margin="-25.831,70.038,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Column="1"/>
-                <TextBox x:Name="year_established_tb" Margin="-25.831,88.998,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
-                <TextBox x:Name="basket_maker_tb" Margin="-25.831,124.306,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Column="1"/>
-                <TextBox x:Name="course_designer_tb" Margin="-25.831,106.732,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
-                <ComboBox x:Name="tee_type_cb" Margin="82.967,149.051,10.033,0" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" Height="22" VerticalAlignment="Top" >
+                <TextBlock x:Name="textBlock" Margin="10.033,70.248,0,0" TextWrapping="Wrap" Text="Basket Type: " FontSize="13.333" Height="18.96" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="textBlock1" Margin="10.033,94.208,0,0" TextWrapping="Wrap" Text="Year Established: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="textBlock3" Margin="0,190.476,51.668,0" TextWrapping="Wrap" Text="Course Type: " FontSize="13.333" Height="22.168" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <TextBlock x:Name="textBlock6" Margin="0,220.013,-8.137,0" TextWrapping="Wrap" Text="Private: " FontSize="13.333" VerticalAlignment="Top" HorizontalAlignment="Right" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="2.981,162.531,0,0" TextWrapping="Wrap" Text="Terrain: " FontSize="13.333" RenderTransformOrigin="0.5,-0.807" VerticalAlignment="Top"/>
+                <TextBlock x:Name="textBlock10" Margin="89.836,237.746,-8.134,0" TextWrapping="Wrap" Text="Pay to Play: " VerticalAlignment="Top" FontSize="13.333"/>
+                <TextBlock x:Name="textBlock15" Margin="18.62,161.746,0,0" TextWrapping="Wrap" Text="Tee Type: " VerticalAlignment="Top" FontSize="13.333" HorizontalAlignment="Left" Grid.Column="1"/>
+                <TextBlock x:Name="textBlock16" Margin="10.033,116.942,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="Course "/><Run FontSize="13.333" Text="Designer: "/></TextBlock>
+                <TextBlock x:Name="textBlock17" Margin="0,258.043,-8.135,0" TextWrapping="Wrap" Text="Course Has Guide:" FontSize="13.333" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <TextBlock x:Name="textBlock18" Margin="10.033,139.676,0,0" TextWrapping="Wrap" Text="Basket Maker:" VerticalAlignment="Top" FontSize="13.333" Height="18.8" HorizontalAlignment="Left" Width="85.191"/>
+                <TextBox x:Name="basket_tb" Margin="-25.831,68.36,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="year_established_tb" Margin="-25.831,92.32,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="basket_maker_tb" Margin="-25.83,137.786,10,151.921" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Grid.Column="1"/>
+                <TextBox x:Name="course_designer_tb" Margin="-25.831,115.053,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="tee_type_cb" Margin="83,162.531,10,0" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" Height="22" VerticalAlignment="Top" >
                     <ComboBoxItem x:Name="tti1" Content="Grass"/>
                     <ComboBoxItem x:Name="tti2" Content="Concrete"/>
                     <ComboBoxItem x:Name="tti3" Content="Rubber"/>
                     <ComboBoxItem x:Name="tti4" Content="Mix"/>
                 </ComboBox>
-                <ComboBox x:Name="course_type_cb" Margin="-46.67,174.525,10,0" Height="22" VerticalAlignment="Top" Grid.Column="1">
+                <ComboBox x:Name="course_type_cb" Margin="-46.67,193.013,10,0" Height="22" VerticalAlignment="Top" Grid.Column="1">
                     <ComboBoxItem x:Name="cci1" Content="Permanent"/>
                     <ComboBoxItem x:Name="cci2" Content="Temporary"/>
                     <ComboBoxItem x:Name="cci3" Content="Seasonal"/>
                     <ComboBoxItem x:Name="cci4" Content="Practice"/>
                 </ComboBox>
-                <ComboBox x:Name="terrain_cb" Margin="62.337,149.051,3.663,0" Height="22" VerticalAlignment="Top">
+                <ComboBox x:Name="terrain_cb" Margin="55.318,163.476,10.681,0" Height="22" VerticalAlignment="Top">
                     <ComboBoxItem x:Name="ti1" Content="Open"/>
                     <ComboBoxItem x:Name="ti2" Content="Wooded"/>
                     <ComboBoxItem x:Name="ti3" Content="Rocky"/>
                 </ComboBox>
-                <RadioButton x:Name="private_yes_r" Content="Yes" Margin="0,204.534,38.122,0" GroupName="course_private_r" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="46.911"/>
-                <RadioButton x:Name="p2p_yes_r" Content="Yes" Margin="83.215,204.534,10.874,0" GroupName="p2p_r" RenderTransformOrigin="0.478,0.929" VerticalAlignment="Top"/>
-                <RadioButton x:Name="private_no_r" Content="No" Margin="0,204.197,0,0" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Top" GroupName="course_private_r" Grid.Column="1"/>
-                <RadioButton x:Name="p2p_no_r" Content="No" Margin="-15.037,204.534,0,0" GroupName="p2p_r" VerticalAlignment="Top" HorizontalAlignment="Left" Width="51.467" Grid.Column="1"/>
-                <RadioButton x:Name="course_guide_yes_r" Content="Yes" Margin="0,225.081,107.489,0" VerticalAlignment="Top" GroupName="courseguide_r" Grid.Column="1" HorizontalAlignment="Right" Width="43.411"/>
-                <RadioButton x:Name="course_guide_no_r" Content="No" Margin="65.511,225.081,63.022,0" VerticalAlignment="Top" GroupName="courseguide_r" RenderTransformOrigin="0.657,0.54" Grid.Column="1"/>
+                <RadioButton x:Name="private_yes_r" Content="Yes" Margin="13.135,222.787,0,0" GroupName="course_private_r" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46.911"/>
+                <RadioButton x:Name="p2p_yes_r" Content="Yes" Margin="13.134,242.747,110.621,0" GroupName="p2p_r" RenderTransformOrigin="0.478,0.929" VerticalAlignment="Top" Grid.Column="1"/>
+                <RadioButton x:Name="private_no_r" Content="No" Margin="56.545,222.787,82.46,0" VerticalAlignment="Top" GroupName="course_private_r" Grid.Column="1"/>
+                <RadioButton x:Name="p2p_no_r" Content="No" Margin="56.545,244.15,76.571,0" GroupName="p2p_r" VerticalAlignment="Top" Grid.Column="1"/>
+                <RadioButton x:Name="course_guide_yes_r" Content="Yes" Margin="0,263.537,128.038,0" VerticalAlignment="Top" GroupName="courseguide_r" Grid.Column="1" HorizontalAlignment="Right" Width="43.411"/>
+                <RadioButton x:Name="course_guide_no_r" Content="No" Margin="56.545,262.707,71.988,0" VerticalAlignment="Top" GroupName="courseguide_r" RenderTransformOrigin="0.657,0.54" Grid.Column="1"/>
             </Grid>
-            <Grid x:Name="maindetails_g" Margin="246.833,0.118,314,189.842">
+            <Grid x:Name="maindetails_g" Margin="246.833,0,0,195" HorizontalAlignment="Left" Width="332.167" Height="283.497" VerticalAlignment="Bottom">
                 <Grid.RenderTransform>
                     <TranslateTransform x:Name="tt1"/>
                 </Grid.RenderTransform>
@@ -241,34 +241,39 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Rectangle Fill="White" RadiusY="0" RadiusX="0" Stroke="White"/>
-                <Grid x:Name="maindetails_top_g" Margin="0,0,0,190.238">
+                <Grid x:Name="maindetails_top_g" Height="59.802" VerticalAlignment="Top">
 
                     <Rectangle Fill="#FFC3C3C3" RadiusY="5" Stroke="#FFC3C3C3" d:LayoutOverrides="LeftMargin, RightMargin"/>
                     <Rectangle Fill="#FF007836" Margin="10,10,0,10" RadiusY="5" RadiusX="5" Stroke="#FF007836" Opacity="0.7" HorizontalAlignment="Left" Width="125.093"/>
                     <TextBlock x:Name="maindeatils_tbl1" TextWrapping="Wrap" FontSize="18.667" TextDecorations="{x:Null}" Foreground="White" Text="Main Details" Margin="19,17.486,0,17.486" HorizontalAlignment="Left" VerticalAlignment="Center" d:LayoutOverrides="TopMargin, BottomMargin"/>
                 </Grid>
                 <Grid x:Name="maindetails_bottom_g" Margin="0,59.803,0,0">
-                    <TextBlock x:Name="coursename_tbl1" Margin="10,8.745,0,154.942" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107"/>
+                    <TextBlock x:Name="coursename_tbl1" Margin="10,8.745,0,0" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107" Height="26.55" VerticalAlignment="Top"/>
                     <TextBox x:Name="coursename_tb1" Margin="10,33.745,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="19.333" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
-                    <TextBlock x:Name="website_tbl1" Margin="10,64.447,0,99.28" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5"/>
-                    <TextBox x:Name="website_tb1" Margin="10,93.591,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="phonenumber_tbl1" Margin="10,121.738,0,41.223" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5"/>
-                    <TextBox x:Name="phonenumber_tb1" Margin="10,150.739,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="website_tbl1" Margin="10,73.447,0,0" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5" Height="26.51" VerticalAlignment="Top"/>
+                    <TextBox x:Name="website_tb1" Margin="10,102.591,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="phonenumber_tbl1" Margin="10,143.738,0,0" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
+                    <TextBox x:Name="phonenumber_tb1" Margin="10,172.739,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
                     <TextBlock x:Name="coursename_tbl1_Copy" Margin="0,8.745,10,154.942" TextWrapping="Wrap" Text="Tee Colors" FontSize="16" HorizontalAlignment="Right" Width="85"/>
                 </Grid>
                 <CheckBox x:Name="maintred_chb" Content="Red" HorizontalAlignment="Right" Margin="0,94.881,45.315,0" VerticalAlignment="Top" IsChecked="True"/>
                 <CheckBox x:Name="maintgold_chb" Content="Gold" HorizontalAlignment="Right" Margin="0,114.979,40.598,119.962" d:LayoutOverrides="Height"/>
-                <CheckBox x:Name="maintwhite_chb" Content="White" HorizontalAlignment="Right" Margin="0,0,34.585,99.863" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="maintblue_chb" Content="Blue" HorizontalAlignment="Right" Margin="0,0,42.981,79.764" VerticalAlignment="Bottom"/>
-                <CheckBox x:Name="maintblack_chb" Content="Black" HorizontalAlignment="Right" Margin="0,0,38.434,59.665" VerticalAlignment="Bottom"/>
+                <CheckBox x:Name="maintwhite_chb" Content="White" HorizontalAlignment="Right" Margin="0,135.078,34.585,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="maintblue_chb" Content="Blue" HorizontalAlignment="Right" Margin="0,155.177,42.981,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="maintblack_chb" Content="Black" HorizontalAlignment="Right" Margin="0,175.276,38.434,0" VerticalAlignment="Top"/>
             </Grid>
-            <Grid x:Name="picturedetails_g" Background="Black" HorizontalAlignment="Left" Width="241.833" Margin="0,0,0,190.182">
+            <Grid x:Name="picturedetails_g" Background="Black" HorizontalAlignment="Left" Width="241.833" Margin="0,0,0,194.776" Height="255.655" VerticalAlignment="Bottom">
                 <TextBlock x:Name="textBlock2" Margin="31.5,37,28.04,18.04" TextWrapping="Wrap" Text="Add Picure Area. Defaul pic otherwise" Foreground="White"/>
                 <TextBox x:Name="textBox" Height="31.35" Margin="0,0,71.5,0" TextWrapping="Wrap" Text="File Name" VerticalAlignment="Bottom"/>
                 <Button x:Name="button" Content="Browse" HorizontalAlignment="Right" Height="31.35" VerticalAlignment="Bottom" Width="71.5" RenderTransformOrigin="0.308,-0.921"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Custom_g" Margin="20,10,0,0" Height="440" VerticalAlignment="Top" HorizontalAlignment="Left" Width="880" Visibility="Hidden">
+        <Grid x:Name="Custom_g" Margin="20,55,0,0" Height="440" VerticalAlignment="Top" Visibility="Hidden">
+            <Grid x:Name="selects_g" HorizontalAlignment="Left" Height="62" VerticalAlignment="Bottom" Width="100">
+                <Button x:Name="deselectall_btn" Content="Deselect All" Margin="0,34.96,15,7.08" Background="White" Click="deselectall_btn_Click" HorizontalAlignment="Right" Width="75" d:LayoutOverrides="Height"/>
+                <Button x:Name="selectall_btn" Content="Select All" Margin="10,10,15,32.04" Background="White" Click="selectall_btn_Click" d:LayoutOverrides="Height"/>
+            </Grid>
+
             <Grid x:Name="customsidepanel_g" HorizontalAlignment="Left" Width="126" Background="#FFDADADA" Height="282" VerticalAlignment="Top">
                 <Button x:Name="teeinfo_btn" Content="Tee Info" Margin="0,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="126" Background="White" Height="40" Click="teeinfo_btn_Click"/>
                 <Button x:Name="basics_btn" Content="Basics" VerticalAlignment="Top" Background="White" Height="40" Width="126" HorizontalAlignment="Left" Click="basics_btn_Click"/>
@@ -280,6 +285,12 @@
             </Grid>
 
             <Grid x:Name="custommain_g" Margin="131,0,0,0">
+                <Grid Height="35" VerticalAlignment="Top" Background="White" Margin="0,0,10,0">
+                    <TextBlock x:Name="customholeheading_tb" TextWrapping="Wrap" Text="Hole 1" FontSize="24" Margin="341.011,0,339.011,3.076" d:LayoutOverrides="Width, Height"/>
+                    <Button x:Name="custumback_btn" Content="&lt;" HorizontalAlignment="Right" Margin="0,5,40,5" Width="25" Height="25" Click="custumback_btn_Click"/>
+                    <Button x:Name="custumforward_btn" Content="&gt;" HorizontalAlignment="Right" Margin="0,5,10,5" Width="25" Height="25" Click="custumforward_btn_Click"/>
+                    <TextBlock x:Name="hole_count_custom_tbl" Margin="0,14.04,164.973,5" TextWrapping="Wrap" Text="Hole Count: 0 " d:LayoutOverrides="VerticalAlignment, Height" HorizontalAlignment="Right"/>
+                </Grid>
                 <Grid x:Name="basic_g" Background="White" Height="150" VerticalAlignment="Top" OpacityMask="White" Margin="10,40,0,0" HorizontalAlignment="Left" Width="170">
                     <Grid.RenderTransform>
                         <TranslateTransform x:Name="basictt"/>
@@ -436,20 +447,10 @@
                     <RadioButton x:Name="roady_rb" Content="Yes" Margin="36.242,0,0,98.32" GroupName="roads" HorizontalAlignment="Left" Width="42.911" VerticalAlignment="Bottom"/>
                     <TextBox x:Name="gencomments_tb" Margin="10,0,10,18.36" TextWrapping="Wrap" Height="54" VerticalAlignment="Bottom"/>
                 </Grid>
-                <Grid Height="35" VerticalAlignment="Top" Background="White">
-                    <TextBlock x:Name="customholeheading_tb" TextWrapping="Wrap" Text="Hole 1" FontSize="24" Margin="341.011,0,339.011,3.076" d:LayoutOverrides="Width, Height"/>
-                    <Button x:Name="custumback_btn" Content="&lt;" HorizontalAlignment="Right" Margin="0,5,40,5" Width="25" Height="25" Click="custumback_btn_Click"/>
-                    <Button x:Name="custumforward_btn" Content="&gt;" HorizontalAlignment="Right" Margin="0,5,10,5" Width="25" Height="25" Click="custumforward_btn_Click"/>
-                    <TextBlock x:Name="hole_count_custom_tbl" Margin="0,14.04,164.973,5" TextWrapping="Wrap" Text="Hole Count: 0 " d:LayoutOverrides="VerticalAlignment, Height" HorizontalAlignment="Right"/>
-                </Grid>
-            </Grid>
-            <Grid x:Name="selects_g" HorizontalAlignment="Left" Height="62" VerticalAlignment="Bottom" Width="100">
-                <Button x:Name="deselectall_btn" Content="Deselect All" Margin="0,34.96,15,7.08" Background="White" Click="deselectall_btn_Click" HorizontalAlignment="Right" Width="75" d:LayoutOverrides="Height"/>
-                <Button x:Name="selectall_btn" Content="Select All" Margin="10,10,15,32.04" Background="White" Click="selectall_btn_Click" d:LayoutOverrides="Height"/>
             </Grid>
 
         </Grid>
-        <Grid x:Name="Complex_g" Margin="20,10,20,0" Height="440" VerticalAlignment="Top" Visibility="Hidden">
+        <Grid x:Name="Complex_g" Margin="50,55,50,0" Height="440" VerticalAlignment="Top" Visibility="Hidden">
             <Grid x:Name="hole1_g" Width="280" HorizontalAlignment="Left" Height="390" VerticalAlignment="Bottom">
                 <Grid x:Name="hole1header_g" Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
                     <Rectangle Fill="#FFC3C3C3" Stroke="White"/>
@@ -633,8 +634,8 @@
                 <TextBlock x:Name="textBlock34" HorizontalAlignment="Left" Margin="281.54,17.05,0,14.89" TextWrapping="Wrap" Text="Options" d:LayoutOverrides="Height"/>
             </Grid>
         </Grid>
-        <Grid x:Name="Simple_g" Visibility="Hidden">
-            <WrapPanel Margin="10,35,10,65" d:LayoutOverrides="Height">
+        <Grid x:Name="Simple_g" Margin="0,55,0,0" Visibility="Hidden">
+            <WrapPanel Margin="53.013,35,10,65" d:LayoutOverrides="Height">
                 <Grid x:Name="shole1_g" Width="97" Height="200" d:LayoutOverrides="LeftPosition, RightPosition">
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="50" VerticalAlignment="Top"/>
                     <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,50,0,0"/>
@@ -1038,6 +1039,6 @@
                 <ComboBoxItem x:Name="tblack1" Content="Black" Background="Black" Foreground="White"/>
             </ComboBox>
         </Grid>
-        <TextBlock x:Name="simpleend_tb" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Simpleend" VerticalAlignment="Bottom" Margin="0,0,347.04,1.99"/>
+        <TextBlock x:Name="simpleend_tb" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Simpleend" VerticalAlignment="Bottom" Margin="0,0,347.04,19.52"/>
     </Grid>
 </Page>

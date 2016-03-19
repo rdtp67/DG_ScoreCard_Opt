@@ -12,7 +12,7 @@ namespace WCFwebserviceDG
     public interface IDGservice
     {
         [OperationContract]
-        string getUserID(string id);
+        int getUserID(string id);
 
         [OperationContract]
         void insertLocation(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
@@ -98,6 +98,8 @@ namespace WCFwebserviceDG
         [OperationContract]
         int getHoleLinesID(holeLib h);
 
+        [OperationContract]
+        List<courselist> getMyCourseList(int user_id);
 
     }
 
@@ -306,5 +308,26 @@ namespace WCFwebserviceDG
 
     }
 
+    [DataContract]
+    public class courselist
+    {
+        int course_id;
+        string course_name;
 
-}
+        [DataMember]
+        public int c_id
+        {
+            get { return course_id; }
+            set { course_id = value; }
+        }
+
+        [DataMember]
+        public string c_name
+        {
+            get { return course_name; }
+            set { course_name = value; }
+        }
+    }
+
+
+    }

@@ -45,7 +45,58 @@ namespace DG_ScoreCard
             return int.TryParse(s, out n);
         }
 
-        
+        //Desc: Checks if Field is Under or Equal to 50 Characters
+        //Pre: String
+        //Post: Return True if under or equal
+        public static bool isField50Chars(string field)
+        {
+            if (field.Count() <= 50)
+                return true;
+            return false;
+        }
+
+        //Desc: Checks if Field is Under or Equal to 15 Characters
+        //Pre: String
+        //Post: Return True if under or equal
+        public static bool isField15Chars(string field)
+        {
+            if (field.Count() <= 15)
+                return true;
+            return false;
+        }
+
+        //Desc: Checks if Field is Under or Equal to 30 Characters
+        //Pre: String
+        //Post: Return True if under or equal
+        public static bool isField30Chars(string field)
+        {
+            if (field.Count() <= 30)
+                return true;
+            return false;
+        }
+
+        //Desc: Checks if Field is Under or Equal to 100 Characters
+        //Pre: String
+        //Post: Return True if under or equal
+        public static bool isField100Chars(string field)
+        {
+            if (field.Count() <= 100)
+                return true;
+            return false;
+        }
+
+        //Desc: Checks if Field is Under or Equal to 11 Characters
+        //Pre: String
+        //Post: Return True if under or equal
+        public static bool isField11Chars(string field)
+        {
+            if (field.Count() <= 11)
+                return true;
+            return false;
+        }
+
+
+
 
     }
 }

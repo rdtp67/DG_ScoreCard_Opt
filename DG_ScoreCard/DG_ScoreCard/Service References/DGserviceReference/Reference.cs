@@ -439,15 +439,76 @@ namespace DG_ScoreCard.DGserviceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="courselist", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class courselist : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int c_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_nameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int c_id {
+            get {
+                return this.c_idField;
+            }
+            set {
+                if ((this.c_idField.Equals(value) != true)) {
+                    this.c_idField = value;
+                    this.RaisePropertyChanged("c_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_name {
+            get {
+                return this.c_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_nameField, value) != true)) {
+                    this.c_nameField = value;
+                    this.RaisePropertyChanged("c_name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
     public interface IDGservice {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getUserID", ReplyAction="http://tempuri.org/IDGservice/getUserIDResponse")]
-        string getUserID(string id);
+        int getUserID(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getUserID", ReplyAction="http://tempuri.org/IDGservice/getUserIDResponse")]
-        System.Threading.Tasks.Task<string> getUserIDAsync(string id);
+        System.Threading.Tasks.Task<int> getUserIDAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertLocation", ReplyAction="http://tempuri.org/IDGservice/insertLocationResponse")]
         void insertLocation(string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
@@ -734,6 +795,12 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getHoleLinesID", ReplyAction="http://tempuri.org/IDGservice/getHoleLinesIDResponse")]
         System.Threading.Tasks.Task<int> getHoleLinesIDAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getMyCourseList", ReplyAction="http://tempuri.org/IDGservice/getMyCourseListResponse")]
+        System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.courselist> getMyCourseList(int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getMyCourseList", ReplyAction="http://tempuri.org/IDGservice/getMyCourseListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.courselist>> getMyCourseListAsync(int user_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -763,11 +830,11 @@ namespace DG_ScoreCard.DGserviceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string getUserID(string id) {
+        public int getUserID(string id) {
             return base.Channel.getUserID(id);
         }
         
-        public System.Threading.Tasks.Task<string> getUserIDAsync(string id) {
+        public System.Threading.Tasks.Task<int> getUserIDAsync(string id) {
             return base.Channel.getUserIDAsync(id);
         }
         
@@ -1111,6 +1178,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<int> getHoleLinesIDAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.getHoleLinesIDAsync(h);
+        }
+        
+        public System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.courselist> getMyCourseList(int user_id) {
+            return base.Channel.getMyCourseList(user_id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.courselist>> getMyCourseListAsync(int user_id) {
+            return base.Channel.getMyCourseListAsync(user_id);
         }
     }
 }

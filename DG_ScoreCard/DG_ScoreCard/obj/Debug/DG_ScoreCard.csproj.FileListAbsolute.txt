@@ -37,3 +37,5 @@ C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\DG_ScoreCard.
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\bin\Debug\DG_ScoreCard.application
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.exe.manifest
 C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.application
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\ViewCourse.g.cs
+C:\Users\Ryan\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\ViewCourse.baml

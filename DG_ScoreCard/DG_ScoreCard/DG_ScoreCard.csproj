@@ -112,6 +112,9 @@
     <Compile Include="Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewCourse.xaml.cs">
+      <DependentUpon>ViewCourse.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +210,9 @@
   <ItemGroup>
     <None Include="Service References\DGserviceReference\DGservice2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.courselist.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.holeLib.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
