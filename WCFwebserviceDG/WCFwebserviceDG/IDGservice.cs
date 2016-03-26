@@ -33,7 +33,7 @@ namespace WCFwebserviceDG
         List<login> returnCstringLists(string username);
 
         [OperationContract]
-        void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, int user_id, int loc_id, int park_id);
+        void insertCourse(string name, string website, string phone, string email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, int user_id, int loc_id, int park_id);
 
         [OperationContract]
         int getCourseID (int user_id, int park_id, int loc_id, string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer);
@@ -57,7 +57,7 @@ namespace WCFwebserviceDG
         holeLib getHole();
 
         [OperationContract]
-        void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+        void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string c_email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
 
         [OperationContract]
         void insertHole(holeLib h, int course_id);
@@ -100,6 +100,15 @@ namespace WCFwebserviceDG
 
         [OperationContract]
         List<courselist> getMyCourseList(int user_id);
+
+        [OperationContract]
+        location getParkLoc(int course_id);
+
+        [OperationContract]
+        course getCourse(int course_id, int user_id);
+
+        [OperationContract]
+        park getPark(int course_id, int user_id);
 
     }
 
@@ -329,5 +338,219 @@ namespace WCFwebserviceDG
         }
     }
 
+    [DataContract]
+    public class location
+    {
+        string loc_address;
+        string loc_state;
+        string loc_city;
+        string loc_country;
+        string loc_zip;
+
+        [DataMember]
+        public string l_address
+        {
+            get { return loc_address; }
+            set { loc_address = value; }
+        }
+
+        [DataMember]
+        public string l_state
+        {
+            get { return loc_state; }
+            set { loc_state = value; }
+        }
+
+        [DataMember]
+        public string l_city
+        {
+            get { return loc_city; }
+            set { loc_city = value; }
+        }
+
+        [DataMember]
+        public string l_country
+        {
+            get { return loc_country; }
+            set { loc_country = value; }
+        }
+
+        [DataMember]
+        public string l_zip
+        {
+            get { return loc_zip; }
+            set { loc_zip = value; }
+        }
+    }
+
+    [DataContract]
+    public class course
+    {
+        string course_name;
+        string course_website;
+        string course_phone;
+        string course_email;
+        string course_basket_type;
+        string course_year_est;
+        string course_tee_type;
+        string course_type;
+        string course_terrain;
+        string course_basket_manufacturer;
+        string course_private;
+        string course_pay;
+        string course_has_guides;
+        string course_designer;
+
+        [DataMember]
+        public string c_name
+        {
+            get { return course_name; }
+            set { course_name = value; }
+        }
+
+        [DataMember]
+        public string c_website
+        {
+            get { return course_website; }
+            set { course_website = value; }
+        }
+
+        [DataMember]
+        public string c_phone
+        {
+            get { return course_phone; }
+            set { course_phone = value; }
+        }
+
+        [DataMember]
+        public string c_email
+        {
+            get { return course_email; }
+            set { course_email = value; }
+        }
+
+        [DataMember]
+        public string c_basket_type
+        {
+            get { return course_basket_type; }
+            set { course_basket_type = value; }
+        }
+
+        [DataMember]
+        public string c_year_est
+        {
+            get { return course_year_est; }
+            set { course_year_est = value; }
+        }
+
+        [DataMember]
+        public string c_tee_type
+        {
+            get { return course_tee_type; }
+            set { course_tee_type = value; }
+        }
+
+        [DataMember]
+        public string c_type
+        {
+            get { return course_type; }
+            set { course_type = value; }
+        }
+
+        [DataMember]
+        public string c_terrain
+        {
+            get { return course_terrain; }
+            set { course_terrain = value; }
+        }
+
+        [DataMember]
+        public string c_basket_manu
+        {
+            get { return course_basket_manufacturer; }
+            set { course_basket_manufacturer = value; }
+        }
+
+        [DataMember]
+        public string c_pri
+        {
+            get { return course_private; }
+            set { course_private = value; }
+        }
+
+        [DataMember]
+        public string c_pay
+        {
+            get { return course_pay; }
+            set { course_pay = value; }
+        }
+
+        [DataMember]
+        public string c_has_guide
+        {
+            get { return course_has_guides; }
+            set { course_has_guides = value; }
+        }
+
+        [DataMember]
+        public string c_design
+        {
+            get { return course_designer; }
+            set { course_designer = value; }
+        }
 
     }
+
+    [DataContract]
+    public class park
+    {
+        string park_name;
+        string park_private;
+        string park_hours_high;
+        string park_hours_low;
+        string park_has_guides;
+        string park_pet_friendly;
+
+        [DataMember]
+        public string p_name
+        {
+            get { return park_name; }
+            set { park_name = value; }
+        }
+
+        [DataMember]
+        public string p_private
+        {
+            get { return park_private; }
+            set { park_private = value; }
+        }
+
+        [DataMember]
+        public string p_hours_high
+        {
+            get { return park_hours_high; }
+            set { park_hours_high = value; }
+        }
+
+        [DataMember]
+        public string p_hours_low
+        {
+            get { return park_hours_low; }
+            set { park_hours_low = value; }
+        }
+
+        [DataMember]
+        public string p_has_guides
+        {
+            get { return park_has_guides; }
+            set { park_has_guides = value; }
+        }
+
+        [DataMember]
+        public string p_pet_friendly
+        {
+            get { return park_pet_friendly; }
+            set { park_pet_friendly = value; }
+        }
+    }
+}

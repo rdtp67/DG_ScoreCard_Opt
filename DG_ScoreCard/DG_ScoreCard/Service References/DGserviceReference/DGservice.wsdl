@@ -187,6 +187,24 @@
   <wsdl:message name="IDGservice_getMyCourseList_OutputMessage">
     <wsdl:part name="parameters" element="tns:getMyCourseListResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_getParkLoc_InputMessage">
+    <wsdl:part name="parameters" element="tns:getParkLoc" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getParkLoc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getParkLocResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCourse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getPark_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPark" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getPark_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getParkResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
@@ -307,6 +325,18 @@
     <wsdl:operation name="getMyCourseList">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getMyCourseList" message="tns:IDGservice_getMyCourseList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getMyCourseListResponse" message="tns:IDGservice_getMyCourseList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getParkLoc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getParkLoc" message="tns:IDGservice_getParkLoc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getParkLocResponse" message="tns:IDGservice_getParkLoc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getCourse" message="tns:IDGservice_getCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getCourseResponse" message="tns:IDGservice_getCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPark">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getPark" message="tns:IDGservice_getPark_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getParkResponse" message="tns:IDGservice_getPark_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -574,6 +604,33 @@
     </wsdl:operation>
     <wsdl:operation name="getMyCourseList">
       <soap:operation soapAction="http://tempuri.org/IDGservice/getMyCourseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParkLoc">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getParkLoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourse">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPark">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getPark" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

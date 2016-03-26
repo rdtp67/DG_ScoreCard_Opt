@@ -250,11 +250,13 @@
                 <Grid x:Name="maindetails_bottom_g" Margin="0,59.803,0,0">
                     <TextBlock x:Name="coursename_tbl1" Margin="10,8.745,0,0" TextWrapping="Wrap" Text="Course Name" FontSize="16" HorizontalAlignment="Left" Width="107" Height="26.55" VerticalAlignment="Top"/>
                     <TextBox x:Name="coursename_tb1" Margin="10,33.745,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="19.333" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
-                    <TextBlock x:Name="website_tbl1" Margin="10,73.447,0,0" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5" Height="26.51" VerticalAlignment="Top"/>
-                    <TextBox x:Name="website_tb1" Margin="10,102.591,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="phonenumber_tbl1" Margin="10,143.738,0,0" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
-                    <TextBox x:Name="phonenumber_tb1" Margin="10,172.739,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="website_tbl1" Margin="10,58.078,0,0" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5" Height="26.51" VerticalAlignment="Top"/>
+                    <TextBox x:Name="website_tb1" Margin="10,87.222,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBlock x:Name="phonenumber_tbl1" Margin="10,164.194,0,0" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
+                    <TextBox x:Name="phonenumber_tb1" Margin="10,193.195,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
                     <TextBlock x:Name="coursename_tbl1_Copy" Margin="0,8.745,10,154.942" TextWrapping="Wrap" Text="Tee Colors" FontSize="16" HorizontalAlignment="Right" Width="85"/>
+                    <TextBlock x:Name="phonenumber_tbl1_Copy" Margin="10,109.694,0,0" TextWrapping="Wrap" Text="Email" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
+                    <TextBox x:Name="email_tbl" Margin="10,138.695,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
                 </Grid>
                 <CheckBox x:Name="maintred_chb" Content="Red" HorizontalAlignment="Right" Margin="0,94.881,45.315,0" VerticalAlignment="Top" IsChecked="True"/>
                 <CheckBox x:Name="maintgold_chb" Content="Gold" HorizontalAlignment="Right" Margin="0,114.979,40.598,119.962" d:LayoutOverrides="Height"/>
@@ -1039,6 +1041,6 @@
                 <ComboBoxItem x:Name="tblack1" Content="Black" Background="Black" Foreground="White"/>
             </ComboBox>
         </Grid>
-        <TextBlock x:Name="simpleend_tb" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Simpleend" VerticalAlignment="Bottom" Margin="0,0,347.04,19.52"/>
+        <TextBlock x:Name="simpleend_tb" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,20,27.04" RenderTransformOrigin="0.5,0.5" Width="97"/>
     </Grid>
 </Page>

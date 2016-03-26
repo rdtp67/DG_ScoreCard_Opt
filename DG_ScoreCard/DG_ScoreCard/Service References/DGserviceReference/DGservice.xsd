@@ -124,6 +124,7 @@
         <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="website" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="basket_type" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="year_established" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="tee_type" nillable="true" type="xs:string" />
@@ -280,6 +281,7 @@
         <xs:element minOccurs="0" name="c_name" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="c_website" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="c_phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="c_email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="basket_type" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="year_established" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="tee_type" nillable="true" type="xs:string" />
@@ -493,6 +495,50 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="getMyCourseListResult" nillable="true" type="q38:ArrayOfcourselist" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getParkLoc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="course_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getParkLocResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="getParkLocResult" nillable="true" type="q39:location" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCourse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="course_id" type="xs:int" />
+        <xs:element minOccurs="0" name="user_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCourseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="getCourseResult" nillable="true" type="q40:course" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPark">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="course_id" type="xs:int" />
+        <xs:element minOccurs="0" name="user_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getParkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="getParkResult" nillable="true" type="q41:park" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

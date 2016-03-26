@@ -500,6 +500,493 @@ namespace DG_ScoreCard.DGserviceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="location", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string l_addressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string l_cityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string l_countryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string l_stateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string l_zipField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string l_address {
+            get {
+                return this.l_addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.l_addressField, value) != true)) {
+                    this.l_addressField = value;
+                    this.RaisePropertyChanged("l_address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string l_city {
+            get {
+                return this.l_cityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.l_cityField, value) != true)) {
+                    this.l_cityField = value;
+                    this.RaisePropertyChanged("l_city");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string l_country {
+            get {
+                return this.l_countryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.l_countryField, value) != true)) {
+                    this.l_countryField = value;
+                    this.RaisePropertyChanged("l_country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string l_state {
+            get {
+                return this.l_stateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.l_stateField, value) != true)) {
+                    this.l_stateField = value;
+                    this.RaisePropertyChanged("l_state");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string l_zip {
+            get {
+                return this.l_zipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.l_zipField, value) != true)) {
+                    this.l_zipField = value;
+                    this.RaisePropertyChanged("l_zip");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="course", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class course : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_basket_manuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_basket_typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_designField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_emailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_has_guideField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_payField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_phoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_priField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_tee_typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_terrainField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_websiteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_year_estField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_basket_manu {
+            get {
+                return this.c_basket_manuField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_basket_manuField, value) != true)) {
+                    this.c_basket_manuField = value;
+                    this.RaisePropertyChanged("c_basket_manu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_basket_type {
+            get {
+                return this.c_basket_typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_basket_typeField, value) != true)) {
+                    this.c_basket_typeField = value;
+                    this.RaisePropertyChanged("c_basket_type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_design {
+            get {
+                return this.c_designField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_designField, value) != true)) {
+                    this.c_designField = value;
+                    this.RaisePropertyChanged("c_design");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_email {
+            get {
+                return this.c_emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_emailField, value) != true)) {
+                    this.c_emailField = value;
+                    this.RaisePropertyChanged("c_email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_has_guide {
+            get {
+                return this.c_has_guideField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_has_guideField, value) != true)) {
+                    this.c_has_guideField = value;
+                    this.RaisePropertyChanged("c_has_guide");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_name {
+            get {
+                return this.c_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_nameField, value) != true)) {
+                    this.c_nameField = value;
+                    this.RaisePropertyChanged("c_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_pay {
+            get {
+                return this.c_payField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_payField, value) != true)) {
+                    this.c_payField = value;
+                    this.RaisePropertyChanged("c_pay");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_phone {
+            get {
+                return this.c_phoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_phoneField, value) != true)) {
+                    this.c_phoneField = value;
+                    this.RaisePropertyChanged("c_phone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_pri {
+            get {
+                return this.c_priField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_priField, value) != true)) {
+                    this.c_priField = value;
+                    this.RaisePropertyChanged("c_pri");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_tee_type {
+            get {
+                return this.c_tee_typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_tee_typeField, value) != true)) {
+                    this.c_tee_typeField = value;
+                    this.RaisePropertyChanged("c_tee_type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_terrain {
+            get {
+                return this.c_terrainField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_terrainField, value) != true)) {
+                    this.c_terrainField = value;
+                    this.RaisePropertyChanged("c_terrain");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_type {
+            get {
+                return this.c_typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_typeField, value) != true)) {
+                    this.c_typeField = value;
+                    this.RaisePropertyChanged("c_type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_website {
+            get {
+                return this.c_websiteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_websiteField, value) != true)) {
+                    this.c_websiteField = value;
+                    this.RaisePropertyChanged("c_website");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_year_est {
+            get {
+                return this.c_year_estField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_year_estField, value) != true)) {
+                    this.c_year_estField = value;
+                    this.RaisePropertyChanged("c_year_est");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="park", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class park : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string p_has_guidesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string p_hours_highField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string p_hours_lowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string p_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string p_pet_friendlyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string p_privateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string p_has_guides {
+            get {
+                return this.p_has_guidesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.p_has_guidesField, value) != true)) {
+                    this.p_has_guidesField = value;
+                    this.RaisePropertyChanged("p_has_guides");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string p_hours_high {
+            get {
+                return this.p_hours_highField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.p_hours_highField, value) != true)) {
+                    this.p_hours_highField = value;
+                    this.RaisePropertyChanged("p_hours_high");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string p_hours_low {
+            get {
+                return this.p_hours_lowField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.p_hours_lowField, value) != true)) {
+                    this.p_hours_lowField = value;
+                    this.RaisePropertyChanged("p_hours_low");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string p_name {
+            get {
+                return this.p_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.p_nameField, value) != true)) {
+                    this.p_nameField = value;
+                    this.RaisePropertyChanged("p_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string p_pet_friendly {
+            get {
+                return this.p_pet_friendlyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.p_pet_friendlyField, value) != true)) {
+                    this.p_pet_friendlyField = value;
+                    this.RaisePropertyChanged("p_pet_friendly");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string p_private {
+            get {
+                return this.p_privateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.p_privateField, value) != true)) {
+                    this.p_privateField = value;
+                    this.RaisePropertyChanged("p_private");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
     public interface IDGservice {
@@ -551,6 +1038,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string name, 
                     string website, 
                     string phone, 
+                    string email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -570,6 +1058,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string name, 
                     string website, 
                     string phone, 
+                    string email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -666,6 +1155,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string c_name, 
                     string c_website, 
                     string c_phone, 
+                    string c_email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -696,6 +1186,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string c_name, 
                     string c_website, 
                     string c_phone, 
+                    string c_email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -801,6 +1292,24 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getMyCourseList", ReplyAction="http://tempuri.org/IDGservice/getMyCourseListResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.courselist>> getMyCourseListAsync(int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getParkLoc", ReplyAction="http://tempuri.org/IDGservice/getParkLocResponse")]
+        DG_ScoreCard.DGserviceReference.location getParkLoc(int course_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getParkLoc", ReplyAction="http://tempuri.org/IDGservice/getParkLocResponse")]
+        System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.location> getParkLocAsync(int course_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourse", ReplyAction="http://tempuri.org/IDGservice/getCourseResponse")]
+        DG_ScoreCard.DGserviceReference.course getCourse(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourse", ReplyAction="http://tempuri.org/IDGservice/getCourseResponse")]
+        System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.course> getCourseAsync(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getPark", ReplyAction="http://tempuri.org/IDGservice/getParkResponse")]
+        DG_ScoreCard.DGserviceReference.park getPark(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getPark", ReplyAction="http://tempuri.org/IDGservice/getParkResponse")]
+        System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.park> getParkAsync(int course_id, int user_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -890,6 +1399,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string name, 
                     string website, 
                     string phone, 
+                    string email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -903,13 +1413,14 @@ namespace DG_ScoreCard.DGserviceReference {
                     int user_id, 
                     int loc_id, 
                     int park_id) {
-            base.Channel.insertCourse(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user_id, loc_id, park_id);
+            base.Channel.insertCourse(name, website, phone, email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user_id, loc_id, park_id);
         }
         
         public System.Threading.Tasks.Task insertCourseAsync(
                     string name, 
                     string website, 
                     string phone, 
+                    string email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -923,7 +1434,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     int user_id, 
                     int loc_id, 
                     int park_id) {
-            return base.Channel.insertCourseAsync(name, website, phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user_id, loc_id, park_id);
+            return base.Channel.insertCourseAsync(name, website, phone, email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, guide, course_designer, user_id, loc_id, park_id);
         }
         
         public int getCourseID(
@@ -1021,6 +1532,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string c_name, 
                     string c_website, 
                     string c_phone, 
+                    string c_email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -1042,7 +1554,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string loc_city, 
                     string loc_country, 
                     string loc_zip) {
-            base.Channel.submitCourse(h, hole_count, username, c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
+            base.Channel.submitCourse(h, hole_count, username, c_name, c_website, c_phone, c_email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
         }
         
         public System.Threading.Tasks.Task submitCourseAsync(
@@ -1052,6 +1564,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string c_name, 
                     string c_website, 
                     string c_phone, 
+                    string c_email, 
                     string basket_type, 
                     string year_established, 
                     string tee_type, 
@@ -1073,7 +1586,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string loc_city, 
                     string loc_country, 
                     string loc_zip) {
-            return base.Channel.submitCourseAsync(h, hole_count, username, c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
+            return base.Channel.submitCourseAsync(h, hole_count, username, c_name, c_website, c_phone, c_email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
         }
         
         public void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id) {
@@ -1186,6 +1699,30 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.courselist>> getMyCourseListAsync(int user_id) {
             return base.Channel.getMyCourseListAsync(user_id);
+        }
+        
+        public DG_ScoreCard.DGserviceReference.location getParkLoc(int course_id) {
+            return base.Channel.getParkLoc(course_id);
+        }
+        
+        public System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.location> getParkLocAsync(int course_id) {
+            return base.Channel.getParkLocAsync(course_id);
+        }
+        
+        public DG_ScoreCard.DGserviceReference.course getCourse(int course_id, int user_id) {
+            return base.Channel.getCourse(course_id, user_id);
+        }
+        
+        public System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.course> getCourseAsync(int course_id, int user_id) {
+            return base.Channel.getCourseAsync(course_id, user_id);
+        }
+        
+        public DG_ScoreCard.DGserviceReference.park getPark(int course_id, int user_id) {
+            return base.Channel.getPark(course_id, user_id);
+        }
+        
+        public System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.park> getParkAsync(int course_id, int user_id) {
+            return base.Channel.getParkAsync(course_id, user_id);
         }
     }
 }

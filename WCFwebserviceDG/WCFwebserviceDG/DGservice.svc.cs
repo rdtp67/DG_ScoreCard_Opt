@@ -177,6 +177,8 @@ namespace WCFwebserviceDG
                 {
                     check = rdr["Count"].ToString();
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -210,6 +212,8 @@ namespace WCFwebserviceDG
                 {
                     check = false;
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -263,17 +267,17 @@ namespace WCFwebserviceDG
         }
 
         //Desc: Inserts Course
-        public void insertCourse(string name, string website, string phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, int user_id, int loc_id, int park_id)
+        public void insertCourse(string name, string website, string phone, string email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? guide, string course_designer, int user_id, int loc_id, int park_id)
         {
             try
             {
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "INSERT into course(user_id, loc_id, park_id, course_name, course_website, course_phone_number, course_basket_type, course_year_established, course_tee_type, course_type, course_terrain, course_basket_manufacturer, course_private, course_pay, course_has_guides, course_designer) " +
+                cmd.CommandText = "INSERT into course(user_id, loc_id, park_id, course_name, course_website, course_phone_number, course_email, course_basket_type, course_year_established, course_tee_type, course_type, course_terrain, course_basket_manufacturer, course_private, course_pay, course_has_guides, course_designer, upsrt_user_id) " +
                     "VALUES(@user, " +
                     " @loc_id, " + 
-                    " @park_id, @name, @website, @phone, @basket_type, @year_established, @tee_type, @course_type, @terrain, @basket_maker, @course_private, @p2p, @guide, @course_designer)";
+                    " @park_id, @name, @website, @phone, @email, @basket_type, @year_established, @tee_type, @course_type, @terrain, @basket_maker, @course_private, @p2p, @guide, @course_designer, @user)";
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@user", user_id);
                 cmd.Parameters.AddWithValue("@park_id", park_id);
@@ -281,6 +285,7 @@ namespace WCFwebserviceDG
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@website", website);
                 cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@basket_type", basket_type);
                 cmd.Parameters.AddWithValue("@year_established", year_established);
                 cmd.Parameters.AddWithValue("@tee_type", tee_type);
@@ -375,6 +380,8 @@ namespace WCFwebserviceDG
                 {
                     count = int.Parse((rdr["course_id"]).ToString());
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -405,6 +412,8 @@ namespace WCFwebserviceDG
                 {
                     count = int.Parse((rdr["Count"]).ToString());
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -537,7 +546,7 @@ namespace WCFwebserviceDG
         public holeLib getHole() { holeLib hole = new holeLib(); return hole; }
 
         //Desc: Submits all course
-        public void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip)
+        public void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string c_email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip)
         {
             //Check if user already has course of this name, if so directs them to edit course
 
@@ -558,7 +567,7 @@ namespace WCFwebserviceDG
             int park_id = getParkId(p_name, pri, hour_h, hour_l, guide, pet);
             int user_id = getUserID(username);
             int loc_id = getLocID(loc_address, loc_state, loc_city, loc_country, loc_zip);
-            insertCourse(c_name, c_website, c_phone, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, user_id, loc_id, park_id);
+            insertCourse(c_name, c_website, c_phone, c_email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, user_id, loc_id, park_id);
             int course = getCourseID2(user_id, c_name);
 
             for (int i = 0; i < h.Count(); i++)
@@ -568,12 +577,12 @@ namespace WCFwebserviceDG
                     //basket
                     if (basketExists(h[i]) == false)
                     {
-                        // insertBasket(h[i]);
+                         insertBasket(h[i]);
                     }
                     //tee
                     if (teeExists(h[i]) == false)
                     {
-                        //insertTee(h[i]);
+                        insertTee(h[i]);
                     }
                     //misc
                     if (miscExists(h[i]) == false)
@@ -720,6 +729,7 @@ namespace WCFwebserviceDG
                 {
                     count = int.Parse((rdr["basket_id"]).ToString());
                 }
+                rdr.Close();
 
             }
             catch
@@ -812,6 +822,8 @@ namespace WCFwebserviceDG
                 {
                     count = int.Parse((rdr["tee_id"]).ToString());
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -909,6 +921,8 @@ namespace WCFwebserviceDG
                 {
                     count = int.Parse((rdr["misc_id"]).ToString());
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -997,6 +1011,8 @@ namespace WCFwebserviceDG
                 {
                     count = int.Parse((rdr["hole_lines_id"]).ToString());
                 }
+
+                rdr.Close();
             }
             catch
             {
@@ -1010,6 +1026,9 @@ namespace WCFwebserviceDG
             return count;
         }
 
+        //Desc: Returns course info
+        //Pre: int user id
+        //Post: Course name, id
         public List<courselist> getMyCourseList(int user_id)
         {
             List<courselist> c = new List<courselist>();
@@ -1019,15 +1038,139 @@ namespace WCFwebserviceDG
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "Select c.course_id, c.course_name From course c Join user u on u.user_id = c.user_id Where u.user_id = @user_id";
+                cmd.CommandText = "Select c.course_id AS c_id, c.course_name AS c_name From course c Join user u on u.user_id = c.user_id Where u.user_id = @user_id";
                 cmd.Parameters.AddWithValue("@user_id", user_id);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                while(rdr.Read())
+                while (rdr.HasRows && rdr.Read())
                 {
                     courselist l = new courselist();
-                    l.c_id = rdr.GetInt32(rdr.GetOrdinal("c.course_id"));
-                    l.c_name = rdr.GetString(rdr.GetOrdinal("c.course_name"));
+                    l.c_id = int.Parse((rdr["c_id"]).ToString());
+                    l.c_name = rdr["c_name"].ToString();
                     c.Add(l);
+                }
+                rdr.Close();
+                
+            }
+            catch
+            {
+                
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+
+            return c.ToList();
+        }
+
+        //Desc: Returns back location details for park
+        //Pre: int course id
+        //Post: Park address, city, state, country, zip
+        public location getParkLoc(int c_id)
+        {
+            location loc = new location();
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select l.loc_address as addrs, l.loc_state as st, l.loc_city as city, l.loc_country as co, l.loc_zip as zip " +
+                    " From course c Join location l on l.loc_id = c.loc_id Where c.course_id = @c_id";
+                cmd.Parameters.AddWithValue("@c_id", c_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.HasRows && rdr.Read())
+                {
+                    loc.l_address = rdr["addrs"].ToString();
+                    loc.l_state = rdr["st"].ToString();
+                    loc.l_city = rdr["city"].ToString();
+                    loc.l_country = rdr["co"].ToString();
+                    loc.l_zip = rdr["zip"].ToString();
+                }
+                rdr.Close();
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return loc;
+        }
+
+        //Desc: Returns course values
+        //Pre: course_id, user_id
+        //Post: Course
+        public course getCourse(int course_id, int user_id)
+        {
+            course c = new course();
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select *" +
+                    " From course Where course_id = @course_id and user_id = @user_id";
+                cmd.Parameters.AddWithValue("@course_id", course_id);
+                cmd.Parameters.AddWithValue("@user_id", user_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.HasRows && rdr.Read())
+                {
+                    c.c_name = rdr["course_name"].ToString();
+                    c.c_website = rdr["course_website"].ToString();
+                    c.c_phone = rdr["course_phone_number"].ToString();
+                    c.c_email = rdr["course_email"].ToString();
+                    c.c_basket_type = rdr["course_basket_type"].ToString();
+                    c.c_year_est = rdr["course_year_established"].ToString();
+                    c.c_tee_type = rdr["course_tee_type"].ToString();
+                    c.c_type = rdr["course_type"].ToString();
+                    c.c_terrain = rdr["course_terrain"].ToString();
+                    c.c_basket_manu = rdr["course_basket_manufacturer"].ToString();
+                    c.c_pri = (rdr["course_private"]).ToString();
+                    c.c_pay = rdr["course_pay"].ToString();
+                    c.c_has_guide = (rdr["course_has_guides"]).ToString();
+                    c.c_design = rdr["course_designer"].ToString();
+                }
+
+                rdr.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return c;
+        }
+
+        public park getPark(int course_id, int user_id)
+        {
+            park p = new park();
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select p.park_name name, p.park_private pri, p.park_hours_high hi, p.park_hours_low lo, p.park_has_guides gui, p.park_pet_friendly pet From park p Join course c on c.park_id = p.park_id Where course_id = @cid and c.user_id = @uid";
+                cmd.Parameters.AddWithValue("@cid", course_id);
+                cmd.Parameters.AddWithValue("@uid", user_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read() && rdr.HasRows)
+                {
+                    p.p_name = rdr["name"].ToString();
+                    p.p_private = rdr["pri"].ToString();
+                    p.p_hours_high = rdr["hi"].ToString();
+                    p.p_hours_low = rdr["lo"].ToString();
+                    p.p_has_guides = rdr["gui"].ToString();
+                    p.p_pet_friendly = rdr["pet"].ToString();
                 }
             }
             catch
@@ -1039,8 +1182,7 @@ namespace WCFwebserviceDG
                 myConn.Close();
             }
 
-
-            return c;
+            return p;
         }
 
 

@@ -6,6 +6,6 @@ loc_city varchar(100),
 loc_country varchar(50),
 loc_zip varchar(15),
 loc_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-upsrt_user int NOT NULL,
+upsrt_user_id int NOT NULL,
 PRIMARY KEY(loc_id)
 )

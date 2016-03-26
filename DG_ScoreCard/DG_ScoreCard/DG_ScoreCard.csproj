@@ -211,13 +211,22 @@
     <None Include="Service References\DGserviceReference\DGservice2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.course.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.courselist.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.holeLib.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.login.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.park.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DGserviceReference\Reference.svcmap">

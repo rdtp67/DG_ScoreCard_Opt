@@ -219,12 +219,10 @@ namespace DG_ScoreCard
             p_pet = getRadioButton(park_pet_y_r, park_pet_n_r);
             p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
 
-           
 
-
-                  
-            client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            
+            simpleend_tb.Text = "Saving Course!";     
+            client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            simpleend_tb.Text = "Course Saved!";
 
             /*int b = client.getBasketID(holeList[0]);
             int t = client.getTeeID(holeList[0]);
@@ -237,10 +235,11 @@ namespace DG_ScoreCard
             
         }
 
-        //Desc: Gets Radio button current state
-        //Pre: radio buttons
-        //Post: ischecked returns T or F, nothing returns NULL
-        private char? getRadioButton(RadioButton yes, RadioButton no)
+
+    //Desc: Gets Radio button current state
+    //Pre: radio buttons
+    //Post: ischecked returns T or F, nothing returns NULL
+    private char? getRadioButton(RadioButton yes, RadioButton no)
         {
             if (yes.IsChecked == true)
             {

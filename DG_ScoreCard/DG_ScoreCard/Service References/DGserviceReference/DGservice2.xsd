@@ -59,4 +59,44 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="courselist" nillable="true" type="tns:courselist" />
+  <xs:complexType name="location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="l_address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="l_city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="l_country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="l_state" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="l_zip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="location" nillable="true" type="tns:location" />
+  <xs:complexType name="course">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="c_basket_manu" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_basket_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_design" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_has_guide" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_pay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_pri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_tee_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_terrain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_website" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_year_est" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="course" nillable="true" type="tns:course" />
+  <xs:complexType name="park">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="p_has_guides" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_hours_high" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_hours_low" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_pet_friendly" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_private" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="park" nillable="true" type="tns:park" />
 </xs:schema>
