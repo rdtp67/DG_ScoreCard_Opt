@@ -93,6 +93,7 @@
     <Compile Include="AddCourse.xaml.cs">
       <DependentUpon>AddCourse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ComboBoxItemString.cs" />
     <Compile Include="EditCourse.xaml.cs">
       <DependentUpon>EditCourse.xaml</DependentUpon>
     </Compile>
@@ -211,10 +212,19 @@
     <None Include="Service References\DGserviceReference\DGservice2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.combobox_item_string.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.course.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.courselist.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.course_view_course.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.course_view_holes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DGserviceReference\DG_ScoreCard.DGserviceReference.holeLib.datasource">

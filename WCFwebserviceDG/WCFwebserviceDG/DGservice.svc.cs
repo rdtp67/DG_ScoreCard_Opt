@@ -58,17 +58,21 @@ namespace WCFwebserviceDG
         {
             try
             {
-                myConn.Open();
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = myConn;
-                com.CommandText = "INSERT INTO location(loc_address, loc_state, loc_city, loc_country, loc_zip) VALUES(@loc_address, @loc_state, @loc_city, @loc_country, @loc_zip)";
-                com.Prepare();
-                com.Parameters.AddWithValue("@loc_address", loc_address);
-                com.Parameters.AddWithValue("@loc_state", loc_state);
-                com.Parameters.AddWithValue("@loc_city", loc_city);
-                com.Parameters.AddWithValue("@loc_country", loc_country);
-                com.Parameters.AddWithValue("@loc_zip", loc_zip);
-                com.ExecuteNonQuery();
+                if (checkLocation(loc_address, loc_state, loc_city, loc_country, loc_zip) == false)
+                {
+
+                    myConn.Open();
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = myConn;
+                    com.CommandText = "INSERT INTO location(loc_address, loc_state, loc_city, loc_country, loc_zip) VALUES(@loc_address, @loc_state, @loc_city, @loc_country, @loc_zip)";
+                    com.Prepare();
+                    com.Parameters.AddWithValue("@loc_address", loc_address);
+                    com.Parameters.AddWithValue("@loc_state", loc_state);
+                    com.Parameters.AddWithValue("@loc_city", loc_city);
+                    com.Parameters.AddWithValue("@loc_country", loc_country);
+                    com.Parameters.AddWithValue("@loc_zip", loc_zip);
+                    com.ExecuteNonQuery();
+                }
 
             }
             catch
@@ -435,8 +439,12 @@ namespace WCFwebserviceDG
         //Desc: Inserts Park
         public void insertPark(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri)
         {
+            
             try
             {
+                if (parkExist(name, hour_h, hour_l, guide, pet, pri) == false)
+                {
+                    
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
@@ -451,6 +459,7 @@ namespace WCFwebserviceDG
                 cmd.Parameters.AddWithValue("@pet", pet);
 
                 cmd.ExecuteNonQuery();
+                }
             }
             catch
             {
@@ -543,80 +552,14 @@ namespace WCFwebserviceDG
         }
 
         //DESC: needs work...
-        public holeLib getHole() { holeLib hole = new holeLib(); return hole; }
-
-        //Desc: Submits all course
-        public void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string c_email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip)
-        {
-            //Check if user already has course of this name, if so directs them to edit course
-
-            //location
-
-            //park
-              if(parkExist(p_name, hour_h, hour_l, guide, pet, pri)==false)
-              {
-                insertPark(p_name, hour_h, hour_l, guide, pet, pri);
-              }
-
-              if(checkLocation(loc_address, loc_state, loc_city, loc_country, loc_zip) == false)
-              {
-                insertLocation(loc_address, loc_state, loc_city, loc_country, loc_zip);
-              }
-              
-
-            int park_id = getParkId(p_name, pri, hour_h, hour_l, guide, pet);
-            int user_id = getUserID(username);
-            int loc_id = getLocID(loc_address, loc_state, loc_city, loc_country, loc_zip);
-            insertCourse(c_name, c_website, c_phone, c_email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, user_id, loc_id, park_id);
-            int course = getCourseID2(user_id, c_name);
-
-            for (int i = 0; i < h.Count(); i++)
-            {
-                if(h[i].h_num <= hole_count)
-                {
-                    //basket
-                    if (basketExists(h[i]) == false)
-                    {
-                         insertBasket(h[i]);
-                    }
-                    //tee
-                    if (teeExists(h[i]) == false)
-                    {
-                        insertTee(h[i]);
-                    }
-                    //misc
-                    if (miscExists(h[i]) == false)
-                    {
-                        insertMisc(h[i]);
-                    }
-                    //holelines
-                    if (holelinesExists(h[i]) == false)
-                    {
-                        insertHoleLines(h[i]);
-                    }
-                    //hole
-                    insertHole(h[i], course);
-                }
-
-            }
-
-        }
+        public holeLib getHole() { holeLib hole = new holeLib(); return hole; }   
 
         //Desc: Submits Course to DB
-        public void insertHole(holeLib h, int course_id)
+        public void insertHole(holeLib h, int course_id, int tee, int basket, int misc, int line)
         {
             try
             {
                 //Get Course id
-                
-                //Get tee id
-                int tee = getTeeID(h);
-                //Get basket id
-                int basket = getBasketID(h);
-                //Get misc id
-                int misc = getMiscID(h);
-                //Get hole lines id
-                int line = getHoleLinesID(h);
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
@@ -646,6 +589,29 @@ namespace WCFwebserviceDG
             }
         }
 
+        //Desc: Submits Count to BD based on dynamic SQL
+        public void insertHoleInput(string holeinput)
+        {
+            try
+            {
+                //Get Course id
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "INSERT INTO hole(course_id, tee_id, basket_id, misc_id, hole_lines_id, hole_num, hole_yardage, hole_par, hole_unit, hole_name, hole_mando, hole_hazards) " +
+                                             " VALUES "  + holeinput;
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
         //Desc: Inserts one basket into basket table
         public void insertBasket(holeLib h)
         {
@@ -659,6 +625,26 @@ namespace WCFwebserviceDG
                 cmd.Parameters.AddWithValue("@deduction", h.b_deduction);
                 cmd.Parameters.AddWithValue("@note", h.b_note);
 
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public void insertBasketInput(string basketinput)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into basket(basket_letter, basket_deduction, basket_note) values" + basketinput;
                 cmd.ExecuteNonQuery();
             }
             catch
@@ -768,6 +754,26 @@ namespace WCFwebserviceDG
             }
         }
 
+        public void insertTeeInput(string teeinput)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into tee(tee_color, tee_pad_type, tee_notes) Values" + teeinput;
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
         public bool teeExists(holeLib h)
         {
             int count = -1;
@@ -856,6 +862,26 @@ namespace WCFwebserviceDG
             catch
             {
                
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public void insertMiscInput(string miscinput)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into misc(misc_guidetohole, misc_trashcan, misc_trailsnearby, misc_roadsnearby, misc_generalcomments) Values" + miscinput;
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
             }
             finally
             {
@@ -959,6 +985,26 @@ namespace WCFwebserviceDG
             }
         }
 
+        public void insertHoleLinesInput(string holelinesinput)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Insert Into hole_lines(hole_lines_rec_shot, hole_lines_rec_disc) Values" + holelinesinput;
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
         public bool holelinesExists(holeLib h)
         {
             int count = -1;
@@ -1038,7 +1084,7 @@ namespace WCFwebserviceDG
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "Select c.course_id AS c_id, c.course_name AS c_name From course c Join user u on u.user_id = c.user_id Where u.user_id = @user_id";
+                cmd.CommandText = "Select c.course_id AS c_id, c.course_name AS c_name From course c Join user u on u.user_id = c.user_id Where u.user_id = @user_id Order By c.course_name";
                 cmd.Parameters.AddWithValue("@user_id", user_id);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.HasRows && rdr.Read())
@@ -1185,6 +1231,131 @@ namespace WCFwebserviceDG
             return p;
         }
 
+        //Desc: Gets all hole colors from choosen course and corresponding number of holes and overall par
+        //Pre: course_id, user_id
+        //Post: List of desc
+        public List<course_view_course> getCourseViewCourse(int course_id, int user_id)
+        {
+            List<course_view_course> cvh = new List<course_view_course>();
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "select t.tee_color as 'Color', count(h.hole_id) as 'Count', sum(h.hole_par) as 'Par' " +
+                                   " from hole h " + 
+                                   " join course c on c.course_id = h.course_id " +
+                                   " join user u on u.user_id = c.user_id " +
+                                   " join tee t on t.tee_id = h.tee_id " +
+                                   " where c.course_id = @course_id and u.user_id = @user_id " +
+                                   " group by t.tee_color";
+                cmd.Parameters.AddWithValue("@course_id", course_id);
+                cmd.Parameters.AddWithValue("@user_id", user_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.HasRows && rdr.Read())
+                {
+                    course_view_course c = new course_view_course();
+                    c.h_color = rdr["Color"].ToString();
+                    c.h_count = int.Parse(rdr["Count"].ToString());
+                    c.h_par = int.Parse(rdr["Par"].ToString());
+                    cvh.Add(c);
+                }
+
+            }
+            catch
+            {
+                    
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return cvh;
+        }
+
+        //Desc: Gets all holes num, par, yardage, basket letter, tee color
+        //Pre: course_id, user_id
+        //Post: List of desc
+        public List<course_view_holes> getCourseViewHoles(int course_id, int user_id)
+        {
+            List<course_view_holes> cl = new List<course_view_holes>();
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select h.hole_num as 'Num', (h.hole_yardage - b.basket_deduction) as 'Yard', h.hole_par as 'Par', b.basket_letter as 'Letter', t.tee_color as 'Color' " +
+                                    " from course c " +
+                                    " join hole h on h.course_id = c.course_id " +
+                                    " join basket b on b.basket_id = h.basket_id " +
+                                    " join tee t on t.tee_id = h.tee_id " +
+                                    " where c.course_id = @c_id and c.user_id = @u_id" + 
+                                    " order by h.hole_num, b.basket_letter, t.tee_color";
+                cmd.Parameters.AddWithValue("@c_id", course_id);
+                cmd.Parameters.AddWithValue("@u_id", user_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read() && rdr.HasRows)
+                {
+                    course_view_holes c = new course_view_holes();
+                    c.h_num = rdr["Num"].ToString();
+                    c.h_yard = rdr["Yard"].ToString();
+                    c.h_par = rdr["Par"].ToString();
+                    c.b_letter = rdr["Letter"].ToString();
+                    c.t_color = rdr["Color"].ToString();
+                    cl.Add(c);
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return cl;
+        }
+
+        public List<combobox_item_string> getCourseDistinctHoleColors(int course_id, int user_id)
+        {
+            List<combobox_item_string> c = new List<combobox_item_string>();
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select Distinct t.tee_color as 'Color'" + 
+                                    " from course c" + 
+                                    " join hole h on h.course_id = c.course_id " +
+                                    " join tee t on t.tee_id = h.tee_id" + 
+                                    " where c.course_id = @c_id and c.user_id = @u_id";
+                cmd.Parameters.AddWithValue("@c_id", course_id);
+                cmd.Parameters.AddWithValue("@u_id", user_id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read() && rdr.HasRows)
+                {
+                    combobox_item_string cb = new combobox_item_string();
+                    cb.v_string = rdr["Color"].ToString();
+                    c.Add(cb);
+
+                }
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return c;
+        }
 
 
     }

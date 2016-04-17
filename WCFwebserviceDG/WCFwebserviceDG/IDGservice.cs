@@ -57,13 +57,16 @@ namespace WCFwebserviceDG
         holeLib getHole();
 
         [OperationContract]
-        void submitCourse(holeLib[] h, int hole_count, string username, string c_name, string c_website, string c_phone, string c_email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, char? p2p, char? c_guide, string course_designer, string p_name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip);
+        void insertHole(holeLib h, int course_id, int tee, int basket, int misc, int line);
 
         [OperationContract]
-        void insertHole(holeLib h, int course_id);
+        void insertHoleInput(string holeinput);
 
         [OperationContract]
         void insertBasket(holeLib h);
+
+        [OperationContract]
+        void insertBasketInput(string basketinput);
 
         [OperationContract]
         bool basketExists(holeLib h);
@@ -75,6 +78,9 @@ namespace WCFwebserviceDG
         void insertTee(holeLib h);
 
         [OperationContract]
+        void insertTeeInput(string teeinput);
+
+        [OperationContract]
         bool teeExists(holeLib h);
 
         [OperationContract]
@@ -84,6 +90,9 @@ namespace WCFwebserviceDG
         void insertMisc(holeLib h);
 
         [OperationContract]
+        void insertMiscInput(string miscinput);
+
+        [OperationContract]
         bool miscExists(holeLib h);
 
         [OperationContract]
@@ -91,6 +100,9 @@ namespace WCFwebserviceDG
 
         [OperationContract]
         void insertHoleLines(holeLib h);
+
+        [OperationContract]
+        void insertHoleLinesInput(string holelinesinput);
 
         [OperationContract]
         bool holelinesExists(holeLib h);
@@ -109,6 +121,15 @@ namespace WCFwebserviceDG
 
         [OperationContract]
         park getPark(int course_id, int user_id);
+
+        [OperationContract]
+        List<course_view_course> getCourseViewCourse(int course_id, int user_id);
+
+        [OperationContract]
+        List<course_view_holes> getCourseViewHoles(int course_id, int user_id);
+
+        [OperationContract]
+        List<combobox_item_string> getCourseDistinctHoleColors(int course_id, int user_id);
 
     }
 
@@ -552,5 +573,94 @@ namespace WCFwebserviceDG
             get { return park_pet_friendly; }
             set { park_pet_friendly = value; }
         }
+
     }
+
+    [DataContract]
+    public class course_view_course
+    {
+        string color;
+        int hole_count;
+        int par;
+
+        [DataMember]
+        public string h_color
+        {
+            get { return color; }
+            set { color = value; }
+        } 
+
+        [DataMember]
+        public int h_count
+        {
+            get { return hole_count; }
+            set { hole_count = value; }
+        }
+
+        [DataMember]
+        public int h_par
+        {
+            get { return par; }
+            set { par = value; }
+        }
+    }
+
+    [DataContract]
+    public class course_view_holes
+    {
+        string num;
+        string yard;
+        string par;
+        string letter;
+        string color;
+
+        [DataMember]
+        public string h_num
+        {
+            get { return num; }
+            set { num = value; }
+        }
+
+        [DataMember]
+        public string h_yard
+        {
+            get { return yard; }
+            set { yard = value; }
+        }
+
+        [DataMember]
+        public string h_par
+        {
+            get { return par; }
+            set { par = value; }
+        }
+
+        [DataMember]
+        public string b_letter
+        {
+            get { return letter; }
+            set { letter = value; }
+        }
+
+        [DataMember]
+        public string t_color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+    }
+
+    [DataContract]
+    public class combobox_item_string
+    {
+        string value_string;
+        [DataMember]
+        public string v_string
+        {
+            get { return value_string; }
+            set { value_string = value; }
+        }
+    }
+
 }

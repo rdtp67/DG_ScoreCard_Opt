@@ -987,6 +987,237 @@ namespace DG_ScoreCard.DGserviceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="course_view_course", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class course_view_course : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string h_colorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int h_countField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int h_parField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string h_color {
+            get {
+                return this.h_colorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.h_colorField, value) != true)) {
+                    this.h_colorField = value;
+                    this.RaisePropertyChanged("h_color");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int h_count {
+            get {
+                return this.h_countField;
+            }
+            set {
+                if ((this.h_countField.Equals(value) != true)) {
+                    this.h_countField = value;
+                    this.RaisePropertyChanged("h_count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int h_par {
+            get {
+                return this.h_parField;
+            }
+            set {
+                if ((this.h_parField.Equals(value) != true)) {
+                    this.h_parField = value;
+                    this.RaisePropertyChanged("h_par");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="course_view_holes", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class course_view_holes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string b_letterField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string h_numField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string h_parField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string h_yardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string t_colorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string b_letter {
+            get {
+                return this.b_letterField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.b_letterField, value) != true)) {
+                    this.b_letterField = value;
+                    this.RaisePropertyChanged("b_letter");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string h_num {
+            get {
+                return this.h_numField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.h_numField, value) != true)) {
+                    this.h_numField = value;
+                    this.RaisePropertyChanged("h_num");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string h_par {
+            get {
+                return this.h_parField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.h_parField, value) != true)) {
+                    this.h_parField = value;
+                    this.RaisePropertyChanged("h_par");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string h_yard {
+            get {
+                return this.h_yardField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.h_yardField, value) != true)) {
+                    this.h_yardField = value;
+                    this.RaisePropertyChanged("h_yard");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string t_color {
+            get {
+                return this.t_colorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.t_colorField, value) != true)) {
+                    this.t_colorField = value;
+                    this.RaisePropertyChanged("t_color");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="combobox_item_string", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class combobox_item_string : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_stringField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_string {
+            get {
+                return this.v_stringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_stringField, value) != true)) {
+                    this.v_stringField = value;
+                    this.RaisePropertyChanged("v_string");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
     public interface IDGservice {
@@ -1147,79 +1378,29 @@ namespace DG_ScoreCard.DGserviceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getHole", ReplyAction="http://tempuri.org/IDGservice/getHoleResponse")]
         System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.holeLib> getHoleAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/submitCourse", ReplyAction="http://tempuri.org/IDGservice/submitCourseResponse")]
-        void submitCourse(
-                    System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> h, 
-                    int hole_count, 
-                    string username, 
-                    string c_name, 
-                    string c_website, 
-                    string c_phone, 
-                    string c_email, 
-                    string basket_type, 
-                    string year_established, 
-                    string tee_type, 
-                    string course_type, 
-                    string terrain, 
-                    string basket_maker, 
-                    System.Nullable<char> course_private, 
-                    System.Nullable<char> p2p, 
-                    System.Nullable<char> c_guide, 
-                    string course_designer, 
-                    string p_name, 
-                    string hour_h, 
-                    string hour_l, 
-                    System.Nullable<char> guide, 
-                    System.Nullable<char> pet, 
-                    System.Nullable<char> pri, 
-                    string loc_address, 
-                    string loc_state, 
-                    string loc_city, 
-                    string loc_country, 
-                    string loc_zip);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/submitCourse", ReplyAction="http://tempuri.org/IDGservice/submitCourseResponse")]
-        System.Threading.Tasks.Task submitCourseAsync(
-                    System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> h, 
-                    int hole_count, 
-                    string username, 
-                    string c_name, 
-                    string c_website, 
-                    string c_phone, 
-                    string c_email, 
-                    string basket_type, 
-                    string year_established, 
-                    string tee_type, 
-                    string course_type, 
-                    string terrain, 
-                    string basket_maker, 
-                    System.Nullable<char> course_private, 
-                    System.Nullable<char> p2p, 
-                    System.Nullable<char> c_guide, 
-                    string course_designer, 
-                    string p_name, 
-                    string hour_h, 
-                    string hour_l, 
-                    System.Nullable<char> guide, 
-                    System.Nullable<char> pet, 
-                    System.Nullable<char> pri, 
-                    string loc_address, 
-                    string loc_state, 
-                    string loc_city, 
-                    string loc_country, 
-                    string loc_zip);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHole", ReplyAction="http://tempuri.org/IDGservice/insertHoleResponse")]
+        void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id, int tee, int basket, int misc, int line);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHole", ReplyAction="http://tempuri.org/IDGservice/insertHoleResponse")]
-        void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id);
+        System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h, int course_id, int tee, int basket, int misc, int line);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHole", ReplyAction="http://tempuri.org/IDGservice/insertHoleResponse")]
-        System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h, int course_id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHoleInput", ReplyAction="http://tempuri.org/IDGservice/insertHoleInputResponse")]
+        void insertHoleInput(string holeinput);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHoleInput", ReplyAction="http://tempuri.org/IDGservice/insertHoleInputResponse")]
+        System.Threading.Tasks.Task insertHoleInputAsync(string holeinput);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertBasket", ReplyAction="http://tempuri.org/IDGservice/insertBasketResponse")]
         void insertBasket(DG_ScoreCard.DGserviceReference.holeLib h);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertBasket", ReplyAction="http://tempuri.org/IDGservice/insertBasketResponse")]
         System.Threading.Tasks.Task insertBasketAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertBasketInput", ReplyAction="http://tempuri.org/IDGservice/insertBasketInputResponse")]
+        void insertBasketInput(string basketinput);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertBasketInput", ReplyAction="http://tempuri.org/IDGservice/insertBasketInputResponse")]
+        System.Threading.Tasks.Task insertBasketInputAsync(string basketinput);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/basketExists", ReplyAction="http://tempuri.org/IDGservice/basketExistsResponse")]
         bool basketExists(DG_ScoreCard.DGserviceReference.holeLib h);
@@ -1239,6 +1420,12 @@ namespace DG_ScoreCard.DGserviceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertTee", ReplyAction="http://tempuri.org/IDGservice/insertTeeResponse")]
         System.Threading.Tasks.Task insertTeeAsync(DG_ScoreCard.DGserviceReference.holeLib h);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertTeeInput", ReplyAction="http://tempuri.org/IDGservice/insertTeeInputResponse")]
+        void insertTeeInput(string teeinput);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertTeeInput", ReplyAction="http://tempuri.org/IDGservice/insertTeeInputResponse")]
+        System.Threading.Tasks.Task insertTeeInputAsync(string teeinput);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/teeExists", ReplyAction="http://tempuri.org/IDGservice/teeExistsResponse")]
         bool teeExists(DG_ScoreCard.DGserviceReference.holeLib h);
         
@@ -1257,6 +1444,12 @@ namespace DG_ScoreCard.DGserviceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertMisc", ReplyAction="http://tempuri.org/IDGservice/insertMiscResponse")]
         System.Threading.Tasks.Task insertMiscAsync(DG_ScoreCard.DGserviceReference.holeLib h);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertMiscInput", ReplyAction="http://tempuri.org/IDGservice/insertMiscInputResponse")]
+        void insertMiscInput(string miscinput);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertMiscInput", ReplyAction="http://tempuri.org/IDGservice/insertMiscInputResponse")]
+        System.Threading.Tasks.Task insertMiscInputAsync(string miscinput);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/miscExists", ReplyAction="http://tempuri.org/IDGservice/miscExistsResponse")]
         bool miscExists(DG_ScoreCard.DGserviceReference.holeLib h);
         
@@ -1274,6 +1467,12 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHoleLines", ReplyAction="http://tempuri.org/IDGservice/insertHoleLinesResponse")]
         System.Threading.Tasks.Task insertHoleLinesAsync(DG_ScoreCard.DGserviceReference.holeLib h);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHoleLinesInput", ReplyAction="http://tempuri.org/IDGservice/insertHoleLinesInputResponse")]
+        void insertHoleLinesInput(string holelinesinput);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/insertHoleLinesInput", ReplyAction="http://tempuri.org/IDGservice/insertHoleLinesInputResponse")]
+        System.Threading.Tasks.Task insertHoleLinesInputAsync(string holelinesinput);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/holelinesExists", ReplyAction="http://tempuri.org/IDGservice/holelinesExistsResponse")]
         bool holelinesExists(DG_ScoreCard.DGserviceReference.holeLib h);
@@ -1310,6 +1509,24 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getPark", ReplyAction="http://tempuri.org/IDGservice/getParkResponse")]
         System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.park> getParkAsync(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseViewCourse", ReplyAction="http://tempuri.org/IDGservice/getCourseViewCourseResponse")]
+        System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_course> getCourseViewCourse(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseViewCourse", ReplyAction="http://tempuri.org/IDGservice/getCourseViewCourseResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_course>> getCourseViewCourseAsync(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseViewHoles", ReplyAction="http://tempuri.org/IDGservice/getCourseViewHolesResponse")]
+        System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_holes> getCourseViewHoles(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseViewHoles", ReplyAction="http://tempuri.org/IDGservice/getCourseViewHolesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_holes>> getCourseViewHolesAsync(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColors", ReplyAction="http://tempuri.org/IDGservice/getCourseDistinctHoleColorsResponse")]
+        System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string> getCourseDistinctHoleColors(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColors", ReplyAction="http://tempuri.org/IDGservice/getCourseDistinctHoleColorsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string>> getCourseDistinctHoleColorsAsync(int course_id, int user_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1525,76 +1742,20 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.getHoleAsync();
         }
         
-        public void submitCourse(
-                    System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> h, 
-                    int hole_count, 
-                    string username, 
-                    string c_name, 
-                    string c_website, 
-                    string c_phone, 
-                    string c_email, 
-                    string basket_type, 
-                    string year_established, 
-                    string tee_type, 
-                    string course_type, 
-                    string terrain, 
-                    string basket_maker, 
-                    System.Nullable<char> course_private, 
-                    System.Nullable<char> p2p, 
-                    System.Nullable<char> c_guide, 
-                    string course_designer, 
-                    string p_name, 
-                    string hour_h, 
-                    string hour_l, 
-                    System.Nullable<char> guide, 
-                    System.Nullable<char> pet, 
-                    System.Nullable<char> pri, 
-                    string loc_address, 
-                    string loc_state, 
-                    string loc_city, 
-                    string loc_country, 
-                    string loc_zip) {
-            base.Channel.submitCourse(h, hole_count, username, c_name, c_website, c_phone, c_email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
+        public void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id, int tee, int basket, int misc, int line) {
+            base.Channel.insertHole(h, course_id, tee, basket, misc, line);
         }
         
-        public System.Threading.Tasks.Task submitCourseAsync(
-                    System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> h, 
-                    int hole_count, 
-                    string username, 
-                    string c_name, 
-                    string c_website, 
-                    string c_phone, 
-                    string c_email, 
-                    string basket_type, 
-                    string year_established, 
-                    string tee_type, 
-                    string course_type, 
-                    string terrain, 
-                    string basket_maker, 
-                    System.Nullable<char> course_private, 
-                    System.Nullable<char> p2p, 
-                    System.Nullable<char> c_guide, 
-                    string course_designer, 
-                    string p_name, 
-                    string hour_h, 
-                    string hour_l, 
-                    System.Nullable<char> guide, 
-                    System.Nullable<char> pet, 
-                    System.Nullable<char> pri, 
-                    string loc_address, 
-                    string loc_state, 
-                    string loc_city, 
-                    string loc_country, 
-                    string loc_zip) {
-            return base.Channel.submitCourseAsync(h, hole_count, username, c_name, c_website, c_phone, c_email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer, p_name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip);
+        public System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h, int course_id, int tee, int basket, int misc, int line) {
+            return base.Channel.insertHoleAsync(h, course_id, tee, basket, misc, line);
         }
         
-        public void insertHole(DG_ScoreCard.DGserviceReference.holeLib h, int course_id) {
-            base.Channel.insertHole(h, course_id);
+        public void insertHoleInput(string holeinput) {
+            base.Channel.insertHoleInput(holeinput);
         }
         
-        public System.Threading.Tasks.Task insertHoleAsync(DG_ScoreCard.DGserviceReference.holeLib h, int course_id) {
-            return base.Channel.insertHoleAsync(h, course_id);
+        public System.Threading.Tasks.Task insertHoleInputAsync(string holeinput) {
+            return base.Channel.insertHoleInputAsync(holeinput);
         }
         
         public void insertBasket(DG_ScoreCard.DGserviceReference.holeLib h) {
@@ -1603,6 +1764,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task insertBasketAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.insertBasketAsync(h);
+        }
+        
+        public void insertBasketInput(string basketinput) {
+            base.Channel.insertBasketInput(basketinput);
+        }
+        
+        public System.Threading.Tasks.Task insertBasketInputAsync(string basketinput) {
+            return base.Channel.insertBasketInputAsync(basketinput);
         }
         
         public bool basketExists(DG_ScoreCard.DGserviceReference.holeLib h) {
@@ -1629,6 +1798,14 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.insertTeeAsync(h);
         }
         
+        public void insertTeeInput(string teeinput) {
+            base.Channel.insertTeeInput(teeinput);
+        }
+        
+        public System.Threading.Tasks.Task insertTeeInputAsync(string teeinput) {
+            return base.Channel.insertTeeInputAsync(teeinput);
+        }
+        
         public bool teeExists(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.teeExists(h);
         }
@@ -1653,6 +1830,14 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.insertMiscAsync(h);
         }
         
+        public void insertMiscInput(string miscinput) {
+            base.Channel.insertMiscInput(miscinput);
+        }
+        
+        public System.Threading.Tasks.Task insertMiscInputAsync(string miscinput) {
+            return base.Channel.insertMiscInputAsync(miscinput);
+        }
+        
         public bool miscExists(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.miscExists(h);
         }
@@ -1675,6 +1860,14 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task insertHoleLinesAsync(DG_ScoreCard.DGserviceReference.holeLib h) {
             return base.Channel.insertHoleLinesAsync(h);
+        }
+        
+        public void insertHoleLinesInput(string holelinesinput) {
+            base.Channel.insertHoleLinesInput(holelinesinput);
+        }
+        
+        public System.Threading.Tasks.Task insertHoleLinesInputAsync(string holelinesinput) {
+            return base.Channel.insertHoleLinesInputAsync(holelinesinput);
         }
         
         public bool holelinesExists(DG_ScoreCard.DGserviceReference.holeLib h) {
@@ -1723,6 +1916,30 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.park> getParkAsync(int course_id, int user_id) {
             return base.Channel.getParkAsync(course_id, user_id);
+        }
+        
+        public System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_course> getCourseViewCourse(int course_id, int user_id) {
+            return base.Channel.getCourseViewCourse(course_id, user_id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_course>> getCourseViewCourseAsync(int course_id, int user_id) {
+            return base.Channel.getCourseViewCourseAsync(course_id, user_id);
+        }
+        
+        public System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_holes> getCourseViewHoles(int course_id, int user_id) {
+            return base.Channel.getCourseViewHoles(course_id, user_id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.course_view_holes>> getCourseViewHolesAsync(int course_id, int user_id) {
+            return base.Channel.getCourseViewHolesAsync(course_id, user_id);
+        }
+        
+        public System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string> getCourseDistinctHoleColors(int course_id, int user_id) {
+            return base.Channel.getCourseDistinctHoleColors(course_id, user_id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string>> getCourseDistinctHoleColorsAsync(int course_id, int user_id) {
+            return base.Channel.getCourseDistinctHoleColorsAsync(course_id, user_id);
         }
     }
 }

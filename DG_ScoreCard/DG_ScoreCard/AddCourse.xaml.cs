@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 using DG_ScoreCard.DGserviceReference;
 
 namespace DG_ScoreCard
@@ -34,6 +35,7 @@ namespace DG_ScoreCard
         const char letter_intital = 'A';
         const int deducation_initial = 0;
         private string username = "NULL";
+
         public AddCourse()
         {
             InitializeComponent();
@@ -220,26 +222,90 @@ namespace DG_ScoreCard
             p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
 
 
-            simpleend_tb.Text = "Saving Course!";     
-            client.submitCourse(holeList, hole_count, username, coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            simpleend_tb.Text = "Course Saved!";
+            simpleend_tb.Text = "Saving Course!";
+            client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private);
+            client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            int h_park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
+            int h_user_id = client.getUserID(username);
+            int h_loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, h_user_id, h_loc_id, h_park_id);
 
-            /*int b = client.getBasketID(holeList[0]);
-            int t = client.getTeeID(holeList[0]);
-            int m = client.getMiscID(holeList[0]);
-            int r = client.getHoleLinesID(holeList[0]);
-            
-            int c = client.getCourseID2(int.Parse(u), coursename_tb1.Text);
-            MessageBox.Show(b.ToString() + "," + t.ToString() + "," + m.ToString() + "," + r.ToString() + " , " + u + " , " + c.ToString());
-            */
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
+            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+            worker.RunWorkerAsync();
+
+           
+
+            //    MessageBox.Show(holeInput);
+
             
         }
 
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Dispatcher.Invoke((Action)(() =>
+            {
+                int h_user_id = client.getUserID(username);
+                int course = client.getCourseID2(h_user_id, coursename_tb1.Text);
 
-    //Desc: Gets Radio button current state
-    //Pre: radio buttons
-    //Post: ischecked returns T or F, nothing returns NULL
-    private char? getRadioButton(RadioButton yes, RadioButton no)
+                string holeInput = "";
+                for (int i = 0; i < holeList.Count(); i++)
+                {
+                    if (holeList[i].h_num <= hole_count)
+                    {
+                        //basket
+                        if (client.basketExists(holeList[i]) == false)
+                        {
+                            client.insertBasket(holeList[i]);
+
+                        }
+                        //tee
+                        if (client.teeExists(holeList[i]) == false)
+                        {
+                            client.insertTee(holeList[i]);
+                        }
+                        //misc
+                        if (client.miscExists(holeList[i]) == false)
+                        {
+                            client.insertMisc(holeList[i]);
+                        }
+                        //holelines
+                        if (client.holelinesExists(holeList[i]) == false)
+                        {
+                            client.insertHoleLines(holeList[i]);
+                        }
+                        //hole
+                        int tee = client.getTeeID(holeList[i]);
+                        //Get basket id
+                        int basket = client.getBasketID(holeList[i]);
+                        //Get misc id
+                        int misc = client.getMiscID(holeList[i]);
+                        //Get hole lines id
+                        int line = client.getHoleLinesID(holeList[i]);
+                        //client.insertHole(holeList[i], course, tee, basket, misc, line);
+                        if (i != 0 && i != holeList.Count() - 1)
+                            holeInput += ", ";
+                        holeInput += "(" + course + "," + tee + "," + basket + "," + misc + "," + line + "," + holeList[i].h_num + "," + holeList[i].h_yardage + "," + holeList[i].h_par + ",\"" + holeList[i].h_unit + "\",\"" + holeList[i].h_name + "\",'" + holeList[i].h_mando + "','" + holeList[i].h_hazzards + "')";
+                    }
+                }
+
+
+                client.insertHoleInput(holeInput);
+            }));
+
+        }
+
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            simpleend_tb.Text = "Course Saved!";
+        }
+
+
+        //Desc: Gets Radio button current state
+        //Pre: radio buttons
+        //Post: ischecked returns T or F, nothing returns NULL
+        private char? getRadioButton(RadioButton yes, RadioButton no)
         {
             if (yes.IsChecked == true)
             {
@@ -1025,9 +1091,9 @@ namespace DG_ScoreCard
         //Desc: Get Complex Basket Letter
         private char getComplexLetter(int i)
         {
-            RadioButton[] l1 = { complex1a_rb, complex1b_rb, complex1c_rb, complex1d_rb, complex1e_rb, complex1f_rb, complex1g_rb };
-            RadioButton[] l2 = { complex2a_rb, complex2b_rb, complex2c_rb, complex2d_rb, complex2e_rb, complex2f_rb, complex2g_rb };
-            RadioButton[] l3 = { complex3a_rb, complex3b_rb, complex3c_rb, complex3d_rb, complex3e_rb, complex3f_rb, complex3g_rb };
+            RadioButton[] l1 = { complex1a_rb, complex1b_rb, complex1c_rb, complex1d_rb, complex1e_rb };
+            RadioButton[] l2 = { complex2a_rb, complex2b_rb, complex2c_rb, complex2d_rb, complex2e_rb };
+            RadioButton[] l3 = { complex3a_rb, complex3b_rb, complex3c_rb, complex3d_rb, complex3e_rb };
             List<RadioButton[]> l = new List<RadioButton[]>();
             l.Add(l1); l.Add(l2); l.Add(l3);
 
@@ -1392,7 +1458,7 @@ namespace DG_ScoreCard
 
         private void setCustomFieldsNew(int hole_num, string color, char letter)
         {
-            yardage_tb.Text = yardage_intitial.ToString();
+           // yardage_tb.Text = yardage_intitial.ToString();
             //will not add unit, will pull unit on submit to keep all holes them same
             par_cb.Text = par_initial.ToString();
            // teecolor_cb.Text = color_intital; current

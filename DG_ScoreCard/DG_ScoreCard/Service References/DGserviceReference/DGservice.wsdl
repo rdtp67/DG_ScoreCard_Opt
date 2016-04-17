@@ -97,23 +97,29 @@
   <wsdl:message name="IDGservice_getHole_OutputMessage">
     <wsdl:part name="parameters" element="tns:getHoleResponse" />
   </wsdl:message>
-  <wsdl:message name="IDGservice_submitCourse_InputMessage">
-    <wsdl:part name="parameters" element="tns:submitCourse" />
-  </wsdl:message>
-  <wsdl:message name="IDGservice_submitCourse_OutputMessage">
-    <wsdl:part name="parameters" element="tns:submitCourseResponse" />
-  </wsdl:message>
   <wsdl:message name="IDGservice_insertHole_InputMessage">
     <wsdl:part name="parameters" element="tns:insertHole" />
   </wsdl:message>
   <wsdl:message name="IDGservice_insertHole_OutputMessage">
     <wsdl:part name="parameters" element="tns:insertHoleResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_insertHoleInput_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertHoleInput" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertHoleInput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertHoleInputResponse" />
+  </wsdl:message>
   <wsdl:message name="IDGservice_insertBasket_InputMessage">
     <wsdl:part name="parameters" element="tns:insertBasket" />
   </wsdl:message>
   <wsdl:message name="IDGservice_insertBasket_OutputMessage">
     <wsdl:part name="parameters" element="tns:insertBasketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertBasketInput_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertBasketInput" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertBasketInput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertBasketInputResponse" />
   </wsdl:message>
   <wsdl:message name="IDGservice_basketExists_InputMessage">
     <wsdl:part name="parameters" element="tns:basketExists" />
@@ -133,6 +139,12 @@
   <wsdl:message name="IDGservice_insertTee_OutputMessage">
     <wsdl:part name="parameters" element="tns:insertTeeResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_insertTeeInput_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertTeeInput" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertTeeInput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertTeeInputResponse" />
+  </wsdl:message>
   <wsdl:message name="IDGservice_teeExists_InputMessage">
     <wsdl:part name="parameters" element="tns:teeExists" />
   </wsdl:message>
@@ -151,6 +163,12 @@
   <wsdl:message name="IDGservice_insertMisc_OutputMessage">
     <wsdl:part name="parameters" element="tns:insertMiscResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_insertMiscInput_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertMiscInput" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertMiscInput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertMiscInputResponse" />
+  </wsdl:message>
   <wsdl:message name="IDGservice_miscExists_InputMessage">
     <wsdl:part name="parameters" element="tns:miscExists" />
   </wsdl:message>
@@ -168,6 +186,12 @@
   </wsdl:message>
   <wsdl:message name="IDGservice_insertHoleLines_OutputMessage">
     <wsdl:part name="parameters" element="tns:insertHoleLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertHoleLinesInput_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertHoleLinesInput" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_insertHoleLinesInput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertHoleLinesInputResponse" />
   </wsdl:message>
   <wsdl:message name="IDGservice_holelinesExists_InputMessage">
     <wsdl:part name="parameters" element="tns:holelinesExists" />
@@ -204,6 +228,24 @@
   </wsdl:message>
   <wsdl:message name="IDGservice_getPark_OutputMessage">
     <wsdl:part name="parameters" element="tns:getParkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourseViewCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseViewCourse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourseViewCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseViewCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourseViewHoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseViewHoles" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourseViewHoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseViewHolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourseDistinctHoleColors_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseDistinctHoleColors" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_getCourseDistinctHoleColors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCourseDistinctHoleColorsResponse" />
   </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
@@ -266,17 +308,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getHole" message="tns:IDGservice_getHole_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getHoleResponse" message="tns:IDGservice_getHole_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="submitCourse">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/submitCourse" message="tns:IDGservice_submitCourse_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/submitCourseResponse" message="tns:IDGservice_submitCourse_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="insertHole">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertHole" message="tns:IDGservice_insertHole_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertHoleResponse" message="tns:IDGservice_insertHole_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="insertHoleInput">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertHoleInput" message="tns:IDGservice_insertHoleInput_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertHoleInputResponse" message="tns:IDGservice_insertHoleInput_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="insertBasket">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertBasket" message="tns:IDGservice_insertBasket_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertBasketResponse" message="tns:IDGservice_insertBasket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertBasketInput">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertBasketInput" message="tns:IDGservice_insertBasketInput_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertBasketInputResponse" message="tns:IDGservice_insertBasketInput_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="basketExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/basketExists" message="tns:IDGservice_basketExists_InputMessage" />
@@ -290,6 +336,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertTee" message="tns:IDGservice_insertTee_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertTeeResponse" message="tns:IDGservice_insertTee_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="insertTeeInput">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertTeeInput" message="tns:IDGservice_insertTeeInput_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertTeeInputResponse" message="tns:IDGservice_insertTeeInput_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="teeExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/teeExists" message="tns:IDGservice_teeExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/teeExistsResponse" message="tns:IDGservice_teeExists_OutputMessage" />
@@ -302,6 +352,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertMisc" message="tns:IDGservice_insertMisc_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertMiscResponse" message="tns:IDGservice_insertMisc_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="insertMiscInput">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertMiscInput" message="tns:IDGservice_insertMiscInput_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertMiscInputResponse" message="tns:IDGservice_insertMiscInput_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="miscExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/miscExists" message="tns:IDGservice_miscExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/miscExistsResponse" message="tns:IDGservice_miscExists_OutputMessage" />
@@ -313,6 +367,10 @@
     <wsdl:operation name="insertHoleLines">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertHoleLines" message="tns:IDGservice_insertHoleLines_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertHoleLinesResponse" message="tns:IDGservice_insertHoleLines_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertHoleLinesInput">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/insertHoleLinesInput" message="tns:IDGservice_insertHoleLinesInput_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/insertHoleLinesInputResponse" message="tns:IDGservice_insertHoleLinesInput_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="holelinesExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/holelinesExists" message="tns:IDGservice_holelinesExists_InputMessage" />
@@ -337,6 +395,18 @@
     <wsdl:operation name="getPark">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getPark" message="tns:IDGservice_getPark_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getParkResponse" message="tns:IDGservice_getPark_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseViewCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getCourseViewCourse" message="tns:IDGservice_getCourseViewCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getCourseViewCourseResponse" message="tns:IDGservice_getCourseViewCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseViewHoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getCourseViewHoles" message="tns:IDGservice_getCourseViewHoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getCourseViewHolesResponse" message="tns:IDGservice_getCourseViewHoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseDistinctHoleColors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColors" message="tns:IDGservice_getCourseDistinctHoleColors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColorsResponse" message="tns:IDGservice_getCourseDistinctHoleColors_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -476,15 +546,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="submitCourse">
-      <soap:operation soapAction="http://tempuri.org/IDGservice/submitCourse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="insertHole">
       <soap:operation soapAction="http://tempuri.org/IDGservice/insertHole" style="document" />
       <wsdl:input>
@@ -494,8 +555,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertHoleInput">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertHoleInput" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertBasket">
       <soap:operation soapAction="http://tempuri.org/IDGservice/insertBasket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertBasketInput">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertBasketInput" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -530,6 +609,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertTeeInput">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertTeeInput" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="teeExists">
       <soap:operation soapAction="http://tempuri.org/IDGservice/teeExists" style="document" />
       <wsdl:input>
@@ -557,6 +645,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertMiscInput">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertMiscInput" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="miscExists">
       <soap:operation soapAction="http://tempuri.org/IDGservice/miscExists" style="document" />
       <wsdl:input>
@@ -577,6 +674,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertHoleLines">
       <soap:operation soapAction="http://tempuri.org/IDGservice/insertHoleLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertHoleLinesInput">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/insertHoleLinesInput" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -631,6 +737,33 @@
     </wsdl:operation>
     <wsdl:operation name="getPark">
       <soap:operation soapAction="http://tempuri.org/IDGservice/getPark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseViewCourse">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getCourseViewCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseViewHoles">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getCourseViewHoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseDistinctHoleColors">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/getCourseDistinctHoleColors" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

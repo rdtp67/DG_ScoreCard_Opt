@@ -40,12 +40,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="holeLib" nillable="true" type="tns:holeLib" />
-  <xs:complexType name="ArrayOfholeLib">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="holeLib" nillable="true" type="tns:holeLib" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfholeLib" nillable="true" type="tns:ArrayOfholeLib" />
   <xs:complexType name="ArrayOfcourselist">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="courselist" nillable="true" type="tns:courselist" />
@@ -99,4 +93,46 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="park" nillable="true" type="tns:park" />
+  <xs:complexType name="ArrayOfcourse_view_course">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="course_view_course" nillable="true" type="tns:course_view_course" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcourse_view_course" nillable="true" type="tns:ArrayOfcourse_view_course" />
+  <xs:complexType name="course_view_course">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="h_color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_count" type="xs:int" />
+      <xs:element minOccurs="0" name="h_par" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="course_view_course" nillable="true" type="tns:course_view_course" />
+  <xs:complexType name="ArrayOfcourse_view_holes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="course_view_holes" nillable="true" type="tns:course_view_holes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcourse_view_holes" nillable="true" type="tns:ArrayOfcourse_view_holes" />
+  <xs:complexType name="course_view_holes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="b_letter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_num" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_par" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="h_yard" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="t_color" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="course_view_holes" nillable="true" type="tns:course_view_holes" />
+  <xs:complexType name="ArrayOfcombobox_item_string">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="combobox_item_string" nillable="true" type="tns:combobox_item_string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcombobox_item_string" nillable="true" type="tns:ArrayOfcombobox_item_string" />
+  <xs:complexType name="combobox_item_string">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="v_string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="combobox_item_string" nillable="true" type="tns:combobox_item_string" />
 </xs:schema>
