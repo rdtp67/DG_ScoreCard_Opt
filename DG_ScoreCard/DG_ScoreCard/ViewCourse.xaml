@@ -57,19 +57,19 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="next9_btn" Content="9&gt;" HorizontalAlignment="Right" Margin="0,22.537,62,10" Width="23" d:LayoutOverrides="Height" Click="next9_btn_Click"/>
-            <Button x:Name="prev9_btn" Content="&lt; 9" HorizontalAlignment="Right" Margin="0,22.537,90,10" Width="23" d:LayoutOverrides="Height" RenderTransformOrigin="0.5,0.512" Click="prev9_btn_Click"/>
-            <Button x:Name="next18_btn" Content="18 &gt;" HorizontalAlignment="Right" Margin="0,22.537,24,10" Width="33" d:LayoutOverrides="Height" RenderTransformOrigin="0.303,0.474" Click="next18_btn_Click"/>
-            <Button x:Name="prev18_btn" Content="&lt; 18" HorizontalAlignment="Right" Margin="0,22.537,118,10" Width="33" d:LayoutOverrides="Height" Click="prev18_btn_Click"/>
+            <Button x:Name="next9_btn" Content="9&gt;" HorizontalAlignment="Right" Margin="0,22.537,62,10" Width="23" d:LayoutOverrides="Height" Click="next9_btn_Click" Visibility="Hidden"/>
+            <Button x:Name="prev9_btn" Content="&lt; 9" HorizontalAlignment="Right" Margin="0,22.537,90,10" Width="23" d:LayoutOverrides="Height" RenderTransformOrigin="0.5,0.512" Click="prev9_btn_Click" Visibility="Hidden"/>
+            <Button x:Name="next18_btn" Content="18 &gt;" HorizontalAlignment="Right" Margin="0,22.537,24,10" Width="33" d:LayoutOverrides="Height" RenderTransformOrigin="0.303,0.474" Click="next18_btn_Click" Visibility="Hidden"/>
+            <Button x:Name="prev18_btn" Content="&lt; 18" HorizontalAlignment="Right" Margin="0,22.537,118,10" Width="33" d:LayoutOverrides="Height" Click="prev18_btn_Click" Visibility="Hidden"/>
             <ComboBox x:Name="mycourse_cb" HorizontalAlignment="Left" Margin="243,19.497,0,11.04" Width="150" d:LayoutOverrides="Height" DisplayMemberPath="c_name" DropDownClosed="mycourse_cb_DropDownClosed"/>
             <ComboBox x:Name="favcourse_cb" Margin="406,20.537,0,10" d:LayoutOverrides="Width, Height" Width="150" HorizontalAlignment="Left"/>
             <TextBlock x:Name="textBlock72" HorizontalAlignment="Left" Margin="243,0,0,0" TextWrapping="Wrap" Text="My Courses" VerticalAlignment="Top" Foreground="White"/>
             <TextBlock x:Name="textBlock72_Copy" HorizontalAlignment="Left" Margin="406,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Foreground="White" Text="Favorite "/><Run Foreground="White" Text="Courses"/></TextBlock>
-            <ComboBox x:Name="holecolor_cb" HorizontalAlignment="Right" Margin="0,19.497,235.989,11.04" Width="72" d:LayoutOverrides="Height" DisplayMemberPath="v_string" DropDownClosed="holecolor_cb_DropDownClosed"/>
+            <ComboBox x:Name="holecolor_cb" HorizontalAlignment="Right" Margin="0,19.497,235.989,11.04" Width="72" d:LayoutOverrides="Height" DisplayMemberPath="v_string" DropDownClosed="holecolor_cb_DropDownClosed" Visibility="Hidden" SelectedIndex="0"/>
             <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Left" Margin="10,10,0,5.997" TextWrapping="Wrap" Text="Course Viewer" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
 
         </Grid>
-        <Grid x:Name="course_g" Margin="10,52.497,10,0" Visibility="Hidden" Height="457.836" VerticalAlignment="Top">
+        <Grid x:Name="course_g" Margin="10,52.497,10,0" Height="457.836" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="239*"/>
                 <RowDefinition Height="219*"/>
@@ -103,7 +103,7 @@
             <TextBlock x:Name="website_tbl" Grid.Column="3" Margin="68.356,15.64,10,0" TextWrapping="Wrap" Text="Website:" VerticalAlignment="Top" Foreground="White" Height="15.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
             <TextBlock x:Name="coursemain4_tbl" Grid.Column="2" Margin="167.32,102.665,10,0" TextAlignment="Left" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
         </Grid>
-        <Grid x:Name="hole_g" Margin="0,52.497,0,44.667">
+        <Grid x:Name="hole_g" Margin="0,52.497,0,44.667" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
                 <RowDefinition Height="100*"/>

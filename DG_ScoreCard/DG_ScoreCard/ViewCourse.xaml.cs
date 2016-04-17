@@ -177,6 +177,7 @@ namespace DG_ScoreCard
             cur_num -= 18;
             populateHoleNumbers(cur_num);
             populateCourseViewHoles(c_id, usr_id);
+            setRadioButtonColor(holecolor_cb.Text);
             hideNonUsedHoles();
             unhideUsedHoles();
         }
@@ -191,6 +192,7 @@ namespace DG_ScoreCard
             cur_num -= 9;
             populateHoleNumbers(cur_num);
             populateCourseViewHoles(c_id, usr_id);
+            setRadioButtonColor(holecolor_cb.Text);
             hideNonUsedHoles();
             unhideUsedHoles();
         }
@@ -205,6 +207,7 @@ namespace DG_ScoreCard
             cur_num += 9;
             populateHoleNumbers(cur_num);
             populateCourseViewHoles(c_id, usr_id);
+            setRadioButtonColor(holecolor_cb.Text);
             hideNonUsedHoles();
             unhideUsedHoles();
         }
@@ -219,7 +222,9 @@ namespace DG_ScoreCard
             cur_num += 18;
             populateHoleNumbers(cur_num);
             populateCourseViewHoles(c_id, usr_id);
+            setRadioButtonColor(holecolor_cb.Text);
             hideNonUsedHoles();
+            unhideUsedHoles();
         }
         /****** End Button Clicks *********/
 
@@ -352,6 +357,7 @@ namespace DG_ScoreCard
         {
             colors_list = client.getCourseDistinctHoleColors(course_id, user_id);
             holecolor_cb.ItemsSource = colors_list;
+  
         }
 
         private void populateHoleOnRadioClick(string color, string hole_num, int cur)
