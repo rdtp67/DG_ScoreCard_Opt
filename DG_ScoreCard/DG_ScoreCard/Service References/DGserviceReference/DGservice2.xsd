@@ -104,6 +104,7 @@
       <xs:element minOccurs="0" name="h_color" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="h_count" type="xs:int" />
       <xs:element minOccurs="0" name="h_par" type="xs:int" />
+      <xs:element minOccurs="0" name="h_yardage" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="course_view_course" nillable="true" type="tns:course_view_course" />

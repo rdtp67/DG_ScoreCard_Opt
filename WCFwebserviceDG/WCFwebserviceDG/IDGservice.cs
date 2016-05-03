@@ -582,6 +582,7 @@ namespace WCFwebserviceDG
         string color;
         int hole_count;
         int par;
+        int yardage;
 
         [DataMember]
         public string h_color
@@ -602,6 +603,13 @@ namespace WCFwebserviceDG
         {
             get { return par; }
             set { par = value; }
+        }
+
+        [DataMember]
+        public int h_yardage
+        {
+            get { return yardage; }
+            set { yardage = value; }
         }
     }
 

@@ -1242,15 +1242,18 @@ namespace WCFwebserviceDG
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "select t.tee_color as 'Color', count(h.hole_id) as 'Count', sum(h.hole_par) as 'Par' " +
+                cmd.CommandText = "select t.tee_color as 'Color', count(h.hole_id) as 'Count', sum(h.hole_par) as 'Par', sum(havg.hole_average) as 'Yardage' " +
                                    " from hole h " + 
                                    " join course c on c.course_id = h.course_id " +
                                    " join user u on u.user_id = c.user_id " +
                                    " join tee t on t.tee_id = h.tee_id " +
+                                   " join (Select avg(h.hole_yardage) as 'hole_average', h.hole_id from hole h join course c on c.course_id = h.course_id join basket b on b.basket_id = h.basket_id where c.course_id = @course_id1 and c.user_id = @user_id1 group by h.hole_num) havg on havg.hole_id = h.hole_id " + 
                                    " where c.course_id = @course_id and u.user_id = @user_id " +
                                    " group by t.tee_color";
                 cmd.Parameters.AddWithValue("@course_id", course_id);
                 cmd.Parameters.AddWithValue("@user_id", user_id);
+                cmd.Parameters.AddWithValue("@course_id1", course_id);
+                cmd.Parameters.AddWithValue("@user_id1", user_id);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while(rdr.HasRows && rdr.Read())
                 {
@@ -1258,6 +1261,7 @@ namespace WCFwebserviceDG
                     c.h_color = rdr["Color"].ToString();
                     c.h_count = int.Parse(rdr["Count"].ToString());
                     c.h_par = int.Parse(rdr["Par"].ToString());
+                    c.h_yardage = int.Parse(rdr["Yardage"].ToString());
                     cvh.Add(c);
                 }
 

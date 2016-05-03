@@ -1005,6 +1005,9 @@ namespace DG_ScoreCard.DGserviceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int h_parField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int h_yardageField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1050,6 +1053,19 @@ namespace DG_ScoreCard.DGserviceReference {
                 if ((this.h_parField.Equals(value) != true)) {
                     this.h_parField = value;
                     this.RaisePropertyChanged("h_par");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int h_yardage {
+            get {
+                return this.h_yardageField;
+            }
+            set {
+                if ((this.h_yardageField.Equals(value) != true)) {
+                    this.h_yardageField = value;
+                    this.RaisePropertyChanged("h_yardage");
                 }
             }
         }

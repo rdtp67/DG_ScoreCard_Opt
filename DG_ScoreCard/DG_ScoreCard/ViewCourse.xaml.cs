@@ -291,6 +291,7 @@ namespace DG_ScoreCard
             {
                 coursemain1_tbl.Text = coursemain1_tbl.Text + "Hole Color: " + c[i].h_color + "\n" +
                                                               "Number of Holes: " + c[i].h_count + "\n" +
+                                                              "Total Yardage: " + c[i].h_yardage + "\n" +
                                                               "Par: " + c[i].h_par + "\n\n";
             }
 
