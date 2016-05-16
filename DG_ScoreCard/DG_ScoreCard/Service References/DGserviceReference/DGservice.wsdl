@@ -247,6 +247,18 @@
   <wsdl:message name="IDGservice_getCourseDistinctHoleColors_OutputMessage">
     <wsdl:part name="parameters" element="tns:getCourseDistinctHoleColorsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_Load_Course_Store_Prod_InputMessage">
+    <wsdl:part name="parameters" element="tns:Load_Course_Store_Prod" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_Load_Course_Store_Prod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Load_Course_Store_ProdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_Load_Holes_Stored_Proc_InputMessage">
+    <wsdl:part name="parameters" element="tns:Load_Holes_Stored_Proc" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_Load_Holes_Stored_Proc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Load_Holes_Stored_ProcResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
@@ -407,6 +419,14 @@
     <wsdl:operation name="getCourseDistinctHoleColors">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColors" message="tns:IDGservice_getCourseDistinctHoleColors_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColorsResponse" message="tns:IDGservice_getCourseDistinctHoleColors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Load_Course_Store_Prod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/Load_Course_Store_Prod" message="tns:IDGservice_Load_Course_Store_Prod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/Load_Course_Store_ProdResponse" message="tns:IDGservice_Load_Course_Store_Prod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Load_Holes_Stored_Proc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc" message="tns:IDGservice_Load_Holes_Stored_Proc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/Load_Holes_Stored_ProcResponse" message="tns:IDGservice_Load_Holes_Stored_Proc_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -764,6 +784,24 @@
     </wsdl:operation>
     <wsdl:operation name="getCourseDistinctHoleColors">
       <soap:operation soapAction="http://tempuri.org/IDGservice/getCourseDistinctHoleColors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Load_Course_Store_Prod">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/Load_Course_Store_Prod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Load_Holes_Stored_Proc">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

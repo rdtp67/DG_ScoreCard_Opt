@@ -35,6 +35,7 @@ namespace DG_ScoreCard
         const char letter_intital = 'A';
         const int deducation_initial = 0;
         private string username = "NULL";
+        private int g_user_id = 0;
 
         public AddCourse()
         {
@@ -47,6 +48,7 @@ namespace DG_ScoreCard
             InitializeComponent();
             username = user;
             updateHoleCount();
+            g_user_id = client.getUserID(username);
         }
 
         /********* Move to Different Page *******/
@@ -223,17 +225,31 @@ namespace DG_ScoreCard
 
 
             simpleend_tb.Text = "Saving Course!";
-            client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private);
-            client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            int h_park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
-            int h_user_id = client.getUserID(username);
-            int h_loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, h_user_id, h_loc_id, h_park_id);
+            //client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private);
+            //client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            //int h_park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
+            //int h_user_id = client.getUserID(username);
+            //int h_loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
+            //client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, h_user_id, h_loc_id, h_park_id);
+
+            client.Load_Course_Store_Prod(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text,
+            country_tb1.Text, zip_tb1.Text, g_user_id.ToString(), coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text);
+            for (int i = holeList.Count()-1; i >= 0; i--)
+            {
+                if (holeList[i].h_num > hole_count)
+                {
+                    holeList.RemoveAt(i);
+                }
+
+            }
+
+            MessageBox.Show( client.Load_Holes_Stored_Proc(holeList, client.getCourseID2(g_user_id, coursename_tb1.Text).ToString() ));
+
 
             BackgroundWorker worker = new BackgroundWorker();
-            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            worker.RunWorkerAsync();
+            //worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
+            //worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+            //worker.RunWorkerAsync();
 
            
 

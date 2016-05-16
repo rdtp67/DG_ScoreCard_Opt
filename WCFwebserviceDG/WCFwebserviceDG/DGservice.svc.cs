@@ -1361,6 +1361,295 @@ namespace WCFwebserviceDG
             return c;
         }
 
+        public void Load_Course_Store_Prod(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, 
+            string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip, string user_id,
+            string c_name, string website, string phone, string email, string basket_type, string year_established, string tee_type, string course_type, 
+            string terrain, string basket_maker, char? course_private,
+            char? p2p, char? c_guide, string course_designer)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "Course_Load";
+                cmd.Parameters.AddWithValue("p_parkname", name);
+                cmd.Parameters.AddWithValue("p_hightime", hour_h);
+                cmd.Parameters.AddWithValue("p_lowtime", hour_l);
+                cmd.Parameters.AddWithValue("p_guide", guide.ToString());
+                cmd.Parameters.AddWithValue("p_pet", pet.ToString());
+                cmd.Parameters.AddWithValue("p_private", pri.ToString());
+                cmd.Parameters.AddWithValue("l_add", loc_address);
+                cmd.Parameters.AddWithValue("l_state", loc_state);
+                cmd.Parameters.AddWithValue("l_city", loc_city);
+                cmd.Parameters.AddWithValue("l_country", loc_country);
+                cmd.Parameters.AddWithValue("l_zip", loc_zip);
+                cmd.Parameters.AddWithValue("l_user_id", user_id);
+                cmd.Parameters.AddWithValue("c_name", c_name);
+                cmd.Parameters.AddWithValue("c_website", website);
+                cmd.Parameters.AddWithValue("c_phone", phone);
+                cmd.Parameters.AddWithValue("c_email", email);
+                cmd.Parameters.AddWithValue("c_basket_type", basket_type);
+                cmd.Parameters.AddWithValue("c_year_est", year_established);
+                cmd.Parameters.AddWithValue("c_tee_type", tee_type);
+                cmd.Parameters.AddWithValue("c_type", course_type);
+                cmd.Parameters.AddWithValue("c_terrain", terrain);
+                cmd.Parameters.AddWithValue("c_basket_man", basket_maker);
+                cmd.Parameters.AddWithValue("c_pri", course_private.ToString());
+                cmd.Parameters.AddWithValue("c_pay", p2p.ToString());
+                cmd.Parameters.AddWithValue("c_guides", c_guide.ToString());
+                cmd.Parameters.AddWithValue("c_designer", course_designer);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+        }
+
+        public string Load_Holes_Stored_Proc(List<holeLib> holes, string c_id)
+        {
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                
+
+                cmd.CommandText = "create temporary table basket_load( " +
+                                  "hole_id int, " +
+                                  "basket_id int, " +
+                                  "basket_letter varchar(1), " +
+                                  "basket_deduction int, " +
+                                  "basket_note varchar(55) " +
+                                  "); " +
+                                  "create temporary table tee_load( " +
+                                  "hole_id int, " +
+                                  "tee_id int, " +
+                                  "tee_color varchar(55), " +
+                                  "tee_pad_type varchar(55), " +
+                                  "tee_notes varchar(55) " +
+                                  "); " +
+                                  "create temporary table misc_load( " +
+                                  "hole_id int, " +
+                                  "misc_id int, " +
+                                  "misc_guide varchar(55), " +
+                                  "misc_trash varchar(1), " +
+                                  "misc_trail varchar(1), " +
+                                  "misc_road varchar(1), " +
+                                  "misc_general_comments varchar(55) " +
+                                  "); " +
+                                  "create temporary table hole_lines_load( " +
+                                  "hole_id int, " +
+                                  "rec_id int, " +
+                                  "rec_shot varchar(55), " +
+                                  "rec_disc varchar(55) " +
+                                  "); " +
+                                  "create temporary table hole_load( " +
+                                  "hole_id int, " +
+                                  "basket_id int, " +
+                                  "tee_id int, " +
+                                  "misc_id int, " +
+                                  "rec_id int ," +
+                                  "hole_num int, " +
+                                  "hole_yardage int, " +
+                                  "hole_par int, " +
+                                  "hole_unit int, " +
+                                  "hole_name varchar(55), " +
+                                  "hole_mando varchar(1), " +
+                                  "hole_hazards varchar(1) ); ";
+
+                string basket_insert = "";
+                string tee_insert = "";
+                string misc_insert = "";
+                string lines_insert = "";
+
+                for (int i = 0; i < holes.Count(); i++)
+                {
+                    if(i == 0)
+                    {
+                        basket_insert = basket_insert + "insert into basket_load(hole_id, basket_id, basket_letter, basket_deduction, basket_note)" +
+                    " Values(@b_hole_id" + i + ",(select basket_id from basket where basket_letter = @blet" + i + " and basket_deduction = @bde" + i + " and basket_note = @bnote" + i + "), "
+                             + " @letter" + i + ", @de" + i + ", @note" + i + " ) ";
+                    }
+                    else
+                    {
+                        basket_insert = basket_insert + ", (@b_hole_id" + i + ",(select basket_id from basket where basket_letter = @blet" + i + " and basket_deduction = @bde" + i + " and basket_note = @bnote" + i + "), "
+                             + " @letter" + i + ", @de" + i + ", @note" + i + " ) ";
+                    }
+
+                    if (i == 0)
+                    {
+                        tee_insert = tee_insert + "insert into tee_load(hole_id, tee_id, tee_color, tee_pad_type, tee_notes) " +
+                        "Values(@t_hole_id" + i + ", (select tee_id from tee where tee_color = @tco" + i + " and tee_pad_type = @tpa" + i + " and tee_notes = @tn" + i + " ), "
+                             + " @color" + i + ", @type" + i + ", @tnote" + i + ") ";
+                    }
+                    else
+                    {
+                        tee_insert = tee_insert + ", (@t_hole_id" + i + ", (select tee_id from tee where tee_color = @tco" + i + " and tee_pad_type = @tpa" + i + " and tee_notes = @tn" + i + " ), "
+                             + " @color" + i + ", @type" + i + ", @tnote" + i + ") ";
+                    }
+
+                    if (i == 0)
+                    {
+                        misc_insert = misc_insert + "insert into misc_load(hole_id, misc_id, misc_guide, misc_trash, misc_trail, misc_road, misc_general_comments) " +
+                            " Values(@m_hole_id" + i + ",(select misc_id from misc where misc_guidetohole = @mg" + i + " and misc_trashcan = @mt" + i + " and misc_trailsnearby = @mnb" + i 
+                            + " and misc_roadsnearby = @mr" + i + " and misc_generalcomments = @mgen" + i + " ),"
+                             + " @guide" + i + ", @trash" + i + ", @trail" + i + ", @road" + i + ", @gen" + i + ") ";
+                    }
+                    else
+                    {
+                        misc_insert = misc_insert + ", (@m_hole_id" + i + ",(select misc_id from misc where misc_guidetohole = @mg" + i + " and misc_trashcan = @mt" + i + " and misc_trailsnearby = @mnb" + i
+                            + " and misc_roadsnearby = @mr" + i + " and misc_generalcomments = @mgen" + i + " ),"
+                             + " @guide" + i + ", @trash" + i + ", @trail" + i + ", @road" + i + ", @gen" + i + ") ";
+                    }
+
+                    if (i == 0)
+                    {
+                        lines_insert = lines_insert + "insert into hole_lines_load(hole_id, rec_id, rec_shot, rec_disc) " +
+                            "values(@r_hole_id" + i + ", (select hole_lines_id from hole_lines where hole_lines_rec_shot = @s" + i + " and hole_lines_rec_disc = @d" + i + " ), "
+                             + " @shot" + i + ", @disc" + i + ")";
+                    }
+                    else
+                    {
+                        lines_insert = lines_insert + ", (@r_hole_id" + i + ", (select hole_lines_id from hole_lines where hole_lines_rec_shot = @s" + i + " and hole_lines_rec_disc = @d" + i + " ), "
+                             + " @shot" + i + ", @disc" + i + ") ";
+                    }
+
+
+                    cmd.Parameters.AddWithValue("@b_hole_id" + i + "", i);
+                    cmd.Parameters.AddWithValue("@t_hole_id" + i + "", i);
+                    cmd.Parameters.AddWithValue("@m_hole_id" + i + "", i);
+                    cmd.Parameters.AddWithValue("@r_hole_id" + i + "", i);
+                    cmd.Parameters.AddWithValue("@blet" + i + "", holes[i].b_letter);
+                    cmd.Parameters.AddWithValue("@bde" + i + "", holes[i].b_deduction);
+                    cmd.Parameters.AddWithValue("@bnote" + i + "", holes[i].b_note);
+                    cmd.Parameters.AddWithValue("@letter" + i + "", holes[i].b_letter);
+                    cmd.Parameters.AddWithValue("@de" + i + "", holes[i].b_deduction);
+                    cmd.Parameters.AddWithValue("@note" + i + "", holes[i].b_note);
+                    cmd.Parameters.AddWithValue("@tco" + i + "", holes[i].t_color);
+                    cmd.Parameters.AddWithValue("@tpa" + i + "", holes[i].t_pad_type);
+                    cmd.Parameters.AddWithValue("@tn" + i + "", holes[i].t_notes);
+                    cmd.Parameters.AddWithValue("@color" + i + "", holes[i].t_color);
+                    cmd.Parameters.AddWithValue("@type" + i + "", holes[i].t_pad_type);
+                    cmd.Parameters.AddWithValue("@tnote" + i + "", holes[i].t_notes);
+                    cmd.Parameters.AddWithValue("@mg" + i + "", holes[i].m_guide);
+                    cmd.Parameters.AddWithValue("@mt" + i + "", holes[i].m_trash);
+                    cmd.Parameters.AddWithValue("@mnb" + i + "", holes[i].m_trail);
+                    cmd.Parameters.AddWithValue("@mr" + i + "", holes[i].m_road);
+                    cmd.Parameters.AddWithValue("@mgen" + i + "", holes[i].m_general_comments);
+                    cmd.Parameters.AddWithValue("@guide" + i + "", holes[i].m_guide);
+                    cmd.Parameters.AddWithValue("@trash" + i + "", holes[i].m_trash);
+                    cmd.Parameters.AddWithValue("@trail" + i + "", holes[i].m_trail);
+                    cmd.Parameters.AddWithValue("@road" + i + "", holes[i].m_road);
+                    cmd.Parameters.AddWithValue("@gen" + i + "", holes[i].m_general_comments);
+                    cmd.Parameters.AddWithValue("@s" + i + "", holes[i].r_shots);
+                    cmd.Parameters.AddWithValue("@d" + i + "", holes[i].r_disc);
+                    cmd.Parameters.AddWithValue("@shot" + i + "", holes[i].r_shots);
+                    cmd.Parameters.AddWithValue("@disc" + i + "", holes[i].r_disc);
+                }
+
+
+                basket_insert = basket_insert + "; ";
+                tee_insert = tee_insert + "; ";
+                misc_insert = misc_insert + "; ";
+                lines_insert = lines_insert + "; ";
+
+                cmd.CommandText = cmd.CommandText + basket_insert + tee_insert + misc_insert + lines_insert;
+                cmd.ExecuteNonQuery();
+
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.Connection = myConn;
+                cmd2.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd2.CommandText = "Hole_Attributes_Load";
+                cmd2.ExecuteNonQuery();
+
+                MySqlCommand cmd3 = new MySqlCommand();
+                cmd3.Connection = myConn;
+
+
+                for (int i = 0; i < holes.Count(); i++)
+                {
+
+                    if (i == 0)
+                    {
+                        cmd3.CommandText = cmd3.CommandText + "insert into hole_load(hole_id, basket_id, tee_id, misc_id, rec_id, hole_num, hole_yardage, " +
+                            "hole_par, hole_unit, hole_name, hole_mando, hole_hazards) " +
+                            " Values(@hole_id" + i + ", (select basket_id from basket where basket_letter = @n3blet" + i + " and basket_deduction = @n3bde" + i + " and basket_note = @n3bnote" + i + "), " +
+                            "(select tee_id from tee where tee_color = @n3tco" + i + " and tee_pad_type = @n3tpa" + i + " and tee_notes = @n3tn" + i + " ), " +
+                            "(select misc_id from misc where misc_guidetohole = @n3mg" + i + " and misc_trashcan = @n3mt" + i + " and misc_trailsnearby = @n3mnb" + i +
+                             " and misc_roadsnearby = @n3mr" + i + " and misc_generalcomments = @n3mgen" + i + " ), " +
+                            "(select hole_lines_id from hole_lines where hole_lines_rec_shot = @n3s" + i + " and hole_lines_rec_disc = @n3d" + i + " ) " +
+                            ", @num" + i + ", @yard" + i + ", @par" + i + ", @unit" + i + ", @name" + i + ", @mando" + i + ", @haz" + i + ") ";
+                    }
+                    else
+                    {
+                        cmd3.CommandText = cmd3.CommandText + ", (@hole_id" + i + ", (select basket_id from basket where basket_letter = @n3blet" + i + " and basket_deduction = @n3bde" + i + " and basket_note = @n3bnote" + i + "), " +
+                            "(select tee_id from tee where tee_color = @n3tco" + i + " and tee_pad_type = @n3tpa" + i + " and tee_notes = @n3tn" + i + " ), " +
+                            "(select misc_id from misc where misc_guidetohole = @n3mg" + i + " and misc_trashcan = @n3mt" + i + " and misc_trailsnearby = @n3mnb" + i +
+                             " and misc_roadsnearby = @n3mr" + i + " and misc_generalcomments = @n3mgen" + i + " ), " +
+                            "(select hole_lines_id from hole_lines where hole_lines_rec_shot = @n3s" + i + " and hole_lines_rec_disc = @n3d" + i + " ) " +
+                            ", @num" + i + ", @yard" + i + ", @par" + i + ", @unit" + i + ", @name" + i + ", @mando" + i + ", @haz" + i + ")";
+                    }
+
+                    cmd3.Parameters.AddWithValue("@hole_id" + i + "", i);
+                    cmd3.Parameters.AddWithValue("@num" + i + "", holes[i].h_num);
+                    cmd3.Parameters.AddWithValue("@yard" + i + "", holes[i].h_yardage);
+                    cmd3.Parameters.AddWithValue("@par" + i + "", holes[i].h_par);
+                    cmd3.Parameters.AddWithValue("@unit" + i + "", holes[i].h_unit);
+                    cmd3.Parameters.AddWithValue("@name" + i + "", holes[i].h_name);
+                    cmd3.Parameters.AddWithValue("@mando" + i + "", holes[i].h_mando);
+                    cmd3.Parameters.AddWithValue("@haz" + i + "", holes[i].h_hazzards);
+                    cmd3.Parameters.AddWithValue("@n3blet" + i + "", holes[i].b_letter);
+                    cmd3.Parameters.AddWithValue("@n3bde" + i + "", holes[i].b_deduction);
+                    cmd3.Parameters.AddWithValue("@n3bnote" + i + "", holes[i].b_note);
+                    cmd3.Parameters.AddWithValue("@n3tco" + i + "", holes[i].t_color);
+                    cmd3.Parameters.AddWithValue("@n3tpa" + i + "", holes[i].t_pad_type);
+                    cmd3.Parameters.AddWithValue("@n3tn" + i + "", holes[i].t_notes);
+                    cmd3.Parameters.AddWithValue("@n3mg" + i + "", holes[i].m_guide);
+                    cmd3.Parameters.AddWithValue("@n3mt" + i + "", holes[i].m_trash);
+                    cmd3.Parameters.AddWithValue("@n3mnb" + i + "", holes[i].m_trail);
+                    cmd3.Parameters.AddWithValue("@n3mr" + i + "", holes[i].m_road);
+                    cmd3.Parameters.AddWithValue("@n3mgen" + i + "", holes[i].m_general_comments);
+                    cmd3.Parameters.AddWithValue("@n3s" + i + "", holes[i].r_shots);
+                    cmd3.Parameters.AddWithValue("@n3d" + i + "", holes[i].r_disc);
+
+
+                }
+
+                cmd3.CommandText = cmd3.CommandText + ";";
+                cmd3.ExecuteNonQuery();
+
+                MySqlCommand cmd4 = new MySqlCommand();
+                cmd4.Connection = myConn;
+                cmd4.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd4.CommandText = "Hole_Load";
+                cmd4.Parameters.AddWithValue("@c_id", c_id);
+                cmd4.ExecuteNonQuery();
+
+
+
+            }
+            catch
+            {
+                 return "Error ~ Hole insert failed.";
+
+            }
+            finally
+            {
+                myConn.Close();
+                
+            }
+
+            return "Holes load was successful!";
+        }
+
 
     }
 }

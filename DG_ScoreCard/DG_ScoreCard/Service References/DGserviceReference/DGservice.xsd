@@ -612,4 +612,56 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Load_Course_Store_Prod">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hour_h" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hour_l" nillable="true" type="xs:string" />
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guide" nillable="true" type="q38:char" />
+        <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="pet" nillable="true" type="q39:char" />
+        <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="pri" nillable="true" type="q40:char" />
+        <xs:element minOccurs="0" name="loc_address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loc_state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loc_city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loc_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loc_zip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="user_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="c_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="website" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="basket_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="year_established" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tee_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="course_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="terrain" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="basket_maker" nillable="true" type="xs:string" />
+        <xs:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="course_private" nillable="true" type="q41:char" />
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="p2p" nillable="true" type="q42:char" />
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="c_guide" nillable="true" type="q43:char" />
+        <xs:element minOccurs="0" name="course_designer" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Load_Course_Store_ProdResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Load_Holes_Stored_Proc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/WCFwebserviceDG" minOccurs="0" name="holes" nillable="true" type="q44:ArrayOfholeLib" />
+        <xs:element minOccurs="0" name="course_id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Load_Holes_Stored_ProcResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Load_Holes_Stored_ProcResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -131,6 +131,14 @@ namespace WCFwebserviceDG
         [OperationContract]
         List<combobox_item_string> getCourseDistinctHoleColors(int course_id, int user_id);
 
+        [OperationContract]
+        void Load_Course_Store_Prod(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, 
+            string loc_country, string loc_zip, string user_id,
+            string c_name, string website, string phone, string email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, 
+            char? p2p, char? c_guide, string course_designer);
+
+        [OperationContract]
+        string Load_Holes_Stored_Proc(List<holeLib> holes, string course_id);
     }
 
     [DataContract]

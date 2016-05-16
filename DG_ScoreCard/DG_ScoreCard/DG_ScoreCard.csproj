@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>22E216EF647160E534CF411E52222034B59CE954</ManifestCertificateThumbprint>
@@ -66,7 +66,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web.v20, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -189,9 +190,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\blue-background.jpg" />
-    <Resource Include="Media\brushed-titanium.jpg" />
-    <Resource Include="Media\pacman_like_icon.png" />
+    <Resource Include="Service References\DGserviceReference\Media\blue-background.jpg" />
+    <Resource Include="Service References\DGserviceReference\Media\brushed-titanium.jpg" />
+    <Resource Include="Service References\DGserviceReference\Media\pacman_like_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

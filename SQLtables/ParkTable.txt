@@ -7,5 +7,6 @@ park_hours_low varchar(10),
 park_has_guides char(1),
 park_pet_friendly char(1),
 park_date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+upsrt_user int(11),
 PRIMARY KEY(park_id)
 )

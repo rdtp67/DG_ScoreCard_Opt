@@ -1543,6 +1543,70 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/getCourseDistinctHoleColors", ReplyAction="http://tempuri.org/IDGservice/getCourseDistinctHoleColorsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string>> getCourseDistinctHoleColorsAsync(int course_id, int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Course_Store_Prod", ReplyAction="http://tempuri.org/IDGservice/Load_Course_Store_ProdResponse")]
+        void Load_Course_Store_Prod(
+                    string name, 
+                    string hour_h, 
+                    string hour_l, 
+                    System.Nullable<char> guide, 
+                    System.Nullable<char> pet, 
+                    System.Nullable<char> pri, 
+                    string loc_address, 
+                    string loc_state, 
+                    string loc_city, 
+                    string loc_country, 
+                    string loc_zip, 
+                    string user_id, 
+                    string c_name, 
+                    string website, 
+                    string phone, 
+                    string email, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> c_guide, 
+                    string course_designer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Course_Store_Prod", ReplyAction="http://tempuri.org/IDGservice/Load_Course_Store_ProdResponse")]
+        System.Threading.Tasks.Task Load_Course_Store_ProdAsync(
+                    string name, 
+                    string hour_h, 
+                    string hour_l, 
+                    System.Nullable<char> guide, 
+                    System.Nullable<char> pet, 
+                    System.Nullable<char> pri, 
+                    string loc_address, 
+                    string loc_state, 
+                    string loc_city, 
+                    string loc_country, 
+                    string loc_zip, 
+                    string user_id, 
+                    string c_name, 
+                    string website, 
+                    string phone, 
+                    string email, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> c_guide, 
+                    string course_designer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc", ReplyAction="http://tempuri.org/IDGservice/Load_Holes_Stored_ProcResponse")]
+        string Load_Holes_Stored_Proc(System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> holes, string course_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc", ReplyAction="http://tempuri.org/IDGservice/Load_Holes_Stored_ProcResponse")]
+        System.Threading.Tasks.Task<string> Load_Holes_Stored_ProcAsync(System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> holes, string course_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1956,6 +2020,74 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string>> getCourseDistinctHoleColorsAsync(int course_id, int user_id) {
             return base.Channel.getCourseDistinctHoleColorsAsync(course_id, user_id);
+        }
+        
+        public void Load_Course_Store_Prod(
+                    string name, 
+                    string hour_h, 
+                    string hour_l, 
+                    System.Nullable<char> guide, 
+                    System.Nullable<char> pet, 
+                    System.Nullable<char> pri, 
+                    string loc_address, 
+                    string loc_state, 
+                    string loc_city, 
+                    string loc_country, 
+                    string loc_zip, 
+                    string user_id, 
+                    string c_name, 
+                    string website, 
+                    string phone, 
+                    string email, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> c_guide, 
+                    string course_designer) {
+            base.Channel.Load_Course_Store_Prod(name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip, user_id, c_name, website, phone, email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer);
+        }
+        
+        public System.Threading.Tasks.Task Load_Course_Store_ProdAsync(
+                    string name, 
+                    string hour_h, 
+                    string hour_l, 
+                    System.Nullable<char> guide, 
+                    System.Nullable<char> pet, 
+                    System.Nullable<char> pri, 
+                    string loc_address, 
+                    string loc_state, 
+                    string loc_city, 
+                    string loc_country, 
+                    string loc_zip, 
+                    string user_id, 
+                    string c_name, 
+                    string website, 
+                    string phone, 
+                    string email, 
+                    string basket_type, 
+                    string year_established, 
+                    string tee_type, 
+                    string course_type, 
+                    string terrain, 
+                    string basket_maker, 
+                    System.Nullable<char> course_private, 
+                    System.Nullable<char> p2p, 
+                    System.Nullable<char> c_guide, 
+                    string course_designer) {
+            return base.Channel.Load_Course_Store_ProdAsync(name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip, user_id, c_name, website, phone, email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer);
+        }
+        
+        public string Load_Holes_Stored_Proc(System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> holes, string course_id) {
+            return base.Channel.Load_Holes_Stored_Proc(holes, course_id);
+        }
+        
+        public System.Threading.Tasks.Task<string> Load_Holes_Stored_ProcAsync(System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> holes, string course_id) {
+            return base.Channel.Load_Holes_Stored_ProcAsync(holes, course_id);
         }
     }
 }
