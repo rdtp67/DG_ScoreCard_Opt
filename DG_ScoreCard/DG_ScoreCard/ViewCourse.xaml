@@ -50,9 +50,52 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ViewCourseMiscButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Stretch" Margin="8.82,-1,9,3" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid d:LayoutOverrides="LeftMargin, RightMargin">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF007836" Offset="0"/>
+                <GradientStop Color="#FFEAEAEA" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid x:Name="top_g" Height="52.497" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -66,7 +109,6 @@
             <TextBlock x:Name="textBlock72" HorizontalAlignment="Left" Margin="243,0,0,0" TextWrapping="Wrap" Text="My Courses" VerticalAlignment="Top" Foreground="White"/>
             <TextBlock x:Name="textBlock72_Copy" HorizontalAlignment="Left" Margin="406,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Foreground="White" Text="Favorite "/><Run Foreground="White" Text="Courses"/></TextBlock>
             <ComboBox x:Name="holecolor_cb" HorizontalAlignment="Right" Margin="0,19.497,235.989,11.04" Width="72" d:LayoutOverrides="Height" DisplayMemberPath="v_string" DropDownClosed="holecolor_cb_DropDownClosed" Visibility="Hidden" SelectedIndex="0"/>
-            <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Left" Margin="10,10,0,5.997" TextWrapping="Wrap" Text="Course Viewer" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
 
         </Grid>
         <Grid x:Name="course_g" Margin="10,52.497,10,0" Height="457.836" VerticalAlignment="Top">
@@ -97,7 +139,7 @@
             <TextBlock x:Name="phone_tbl" Grid.Column="3" Margin="68.356,31.6,10,0" TextWrapping="Wrap" Text="Phone Number:" VerticalAlignment="Top" Foreground="White" Height="15.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
             <TextBlock x:Name="email_tbl" Grid.Column="3" Margin="68.356,47.563,10,0" TextWrapping="Wrap" Text="Email: " VerticalAlignment="Top" Foreground="White" Height="15.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
             <TextBlock x:Name="parkdeatils_tbl" Margin="10.039,39.989,10,10" Grid.Row="1" TextWrapping="Wrap" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"><Run Text="Address: "/><LineBreak/><Run Text="City:"/><LineBreak/><Run Text="Statte:"/><LineBreak/><Run Text="Zip:"/><LineBreak/><Run Text="Country:"/><LineBreak/><Run/><LineBreak/><Run Text="Park Hours:"/><LineBreak/><Run Text="Park Private:"/><LineBreak/><Run Text="Pet Friendly:"/><LineBreak/><Run Text="Park has Guides:"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-            <TextBlock x:Name="coursemain1_tbl" Grid.Column="1" Margin="15,102.665,0,10" TextWrapping="Wrap" FontSize="13.333" Grid.RowSpan="2" HorizontalAlignment="Left" Width="130"><LineBreak/><Run/></TextBlock>
+            <TextBlock x:Name="coursemain1_tbl" Grid.Column="1" Margin="15,102.665,0,10" TextWrapping="Wrap" FontSize="13.333" Grid.RowSpan="2" HorizontalAlignment="Left" Width="130"/>
             <TextBlock x:Name="coursemain2_tbl" Grid.Column="2" Margin="10,102.665,167.32,0" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"><Run Text="Course Length:"/><LineBreak/><Run Text="Course Type:"/><LineBreak/><Run Text="Tee Type:"/><LineBreak/><Run Text="Basket Type:"/><LineBreak/><Run Text="Basket Manufacturer:"/><LineBreak/><Run Text="Year Established:"/><LineBreak/><Run Text="Course Designer:"/><LineBreak/><Run Text="Terrain:"/><LineBreak/><Run Text="Private:"/><LineBreak/><Run Text="Pay:"/><LineBreak/><Run Text="Has Guides:"/><LineBreak/><LineBreak/><LineBreak/><LineBreak/></TextBlock>
             <TextBlock x:Name="coursemain3_tbl" Grid.Column="3" Margin="10,102.665,10.32,36.96" TextWrapping="Wrap" FontSize="16" Grid.RowSpan="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"><Run Text="Course rating"/><LineBreak/><Run Text="Layout:"/><LineBreak/><Run Text="View:"/><LineBreak/><Run Text="Difficulty:"/><LineBreak/></TextBlock>
             <TextBlock x:Name="website_tbl" Grid.Column="3" Margin="68.356,15.64,10,0" TextWrapping="Wrap" Text="Website:" VerticalAlignment="Top" Foreground="White" Height="15.96" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
@@ -119,366 +161,51 @@
                 <ColumnDefinition Width="106*"/>
                 <ColumnDefinition Width="106*"/>
             </Grid.ColumnDefinitions>
-
-            <Grid x:Name="Hole1_g" Margin="2,0,0,0">
+            <Grid x:Name="Hole18_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="8">
                 <Grid Height="40" VerticalAlignment="Top">
                     <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num1_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                    <TextBlock x:Name="num18_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
                 </Grid>
                 <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock1" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr1_rb" Content="0r" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91" Tag="1" Click="radio_Click"/>
-                <RadioButton x:Name="cg1_rb" Content="0g" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91" Click="radio_Click"/>
-                <RadioButton x:Name="cb1_rb" Content="0b" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl1_rb" Content="0l" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw1_rb" Content="0w" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <TextBlock x:Name="textBlock69" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr18_rb" Content="17r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg18_rb" Content="17g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb18_rb" Content="17b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl18_rb" Content="17l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
+                <RadioButton x:Name="cw18_rb" Content="17w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="holel1_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="textBlock3" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holep1_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey1_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <TextBlock x:Name="textBlock1_Copy17" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel18_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep18_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey18_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc18_btn" Tag="17" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
             </Grid>
-            <Grid x:Name="Hole2_g" Margin="2,0,0,0" Grid.Column="1">
+            <Grid x:Name="Hole17_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="7">
                 <Grid Height="40" VerticalAlignment="Top">
                     <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num2_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                    <TextBlock x:Name="num17_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
                 </Grid>
                 <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock5" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr2_rb" Content="1r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg2_rb" Content="1g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb2_rb" Content="1b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl2_rb" Content="1l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw2_rb" Content="1w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <TextBlock x:Name="textBlock65" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr17_rb" Content="16r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg17_rb" Content="16g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb17_rb" Content="16b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl17_rb" Content="16l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
+                <RadioButton x:Name="cw17_rb" Content="16w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy1" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock7" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel2_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep2_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey2_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole3_g" Margin="2,0,0,0" Grid.Column="2">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num3_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock9" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr3_rb" Content="2r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg3_rb" Content="2g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb3_rb" Content="2b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl3_rb" Content="2l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw3_rb" Content="2w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy2" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock11" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel3_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep3_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey3_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole4_g" Margin="2,0,0,0" Grid.Column="3">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num4_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock13" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr4_rb" Content="3r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg4_rb" Content="3g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb4_rb" Content="3b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl4_rb" Content="3l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw4_rb" Content="3w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy3" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock15" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel4_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep4_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey4_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole5_g" Margin="2,0,0,0" Grid.Column="4">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num5_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock17" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr5_rb" Content="4r" Click="radio_Click"  Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg5_rb" Content="4g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb5_rb" Content="4b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl5_rb" Content="4l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw5_rb" Content="4w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy4" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock19" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel5_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep5_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey5_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole6_g" Margin="2,0,0,0" Grid.Column="5">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num6_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock21" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr6_rb" Content="5r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg6_rb" Content="5g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb6_rb" Content="5b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl6_rb" Content="5l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw6_rb" Content="5w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy5" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock23" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel6_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep6_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey6_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole7_g" Margin="2,0,0,0" Grid.Column="6">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num7_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock25" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr7_rb" Content="6r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg7_rb" Content="6g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb7_rb" Content="6b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl7_rb" Content="6l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw7_rb" Content="6w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy6" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock27" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel7_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep7_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey7_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole8_g" Margin="2,0,0,0" Grid.Column="7">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num8_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock29" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr8_rb" Content="7r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg8_rb" Content="7g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb8_rb" Content="7b" Click="radio_Click"  Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl8_rb" Content="7l" Click="radio_Click" HorizontalAlignment="Left" Width="12.91" VerticalAlignment="Top" Margin="52.91,63.04,0,0"/>
-                <RadioButton x:Name="cw8_rb" Content="7w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy7" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock31" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel8_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep8_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey8_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole9_g" Margin="2,0,0,0" Grid.Column="8">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num9_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock33" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr9_rb" Content="8r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg9_rb" Content="8g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb9_rb" Content="8b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl9_rb" Content="8l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw9_rb" Content="8w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy8" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock35" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel9_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep9_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey9_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole10_g" Margin="2,0,0,0" Grid.Row="1">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num10_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock37" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr10_rb" Content="9r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg10_rb" Content="9g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb10_rb" Content="9b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl10_rb" Content="9l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw10_rb" Content="9w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy9" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock39" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel10_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep10_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey10_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole11_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="1">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num11_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock41" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr11_rb" Content="10r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg11_rb" Content="10g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb11_rb" Content="10b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl11_rb" Content="10l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw11_rb" Content="10w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy10" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock43" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel11_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep11_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey11_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole12_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="2">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num12_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock45" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr12_rb" Content="11r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg12_rb" Content="11g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb12_rb" Content="11b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl12_rb" Content="11l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw12_rb" Content="11w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy11" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock47" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel12_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep12_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey12_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole13_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="3">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num13_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock49" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr13_rb" Content="12r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg13_rb" Content="12g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb13_rb" Content="12b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl13_rb" Content="12l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw13_rb" Content="12w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy12" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock51" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel13_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep13_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey13_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole14_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="4">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num14_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock53" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr14_rb" Content="13r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg14_rb" Content="13g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb14_rb" Content="13b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl14_rb" Content="13l"  Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw14_rb" Content="13w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy13" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock55" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel14_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep14_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey14_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
-            </Grid>
-            <Grid x:Name="Hole15_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="5">
-                <Grid Height="40" VerticalAlignment="Top">
-                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num15_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
-                </Grid>
-                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock57" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr15_rb" Content="14r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg15_rb" Content="14g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb15_rb" Content="14b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl15_rb" Content="14l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cw15_rb" Content="14w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy14" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock59" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel15_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep15_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey15_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <TextBlock x:Name="textBlock1_Copy16" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel17_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep17_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey17_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc17_btn" Tag="17" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
             </Grid>
             <Grid x:Name="Hole16_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="6">
                 <Grid Height="40" VerticalAlignment="Top">
@@ -496,61 +223,485 @@
                 <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
                 <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <TextBlock x:Name="textBlock1_Copy15" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock63" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
                 <TextBlock x:Name="holel16_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
                 <TextBlock x:Name="holep16_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
                 <TextBlock x:Name="holey16_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc16_btn" Tag="16" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
             </Grid>
-            <Grid x:Name="Hole17_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="7">
+            <Grid x:Name="Hole15_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="5">
                 <Grid Height="40" VerticalAlignment="Top">
                     <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num17_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                    <TextBlock x:Name="num15_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
                 </Grid>
                 <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock65" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr17_rb" Content="16r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg17_rb" Content="16g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb17_rb" Content="16b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl17_rb" Content="16l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <TextBlock x:Name="textBlock57" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr15_rb" Content="14r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg15_rb" Content="14g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb15_rb" Content="14b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl15_rb" Content="14l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw15_rb" Content="14w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <RadioButton x:Name="cw17_rb" Content="16w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy16" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock67" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel17_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep17_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey17_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <TextBlock x:Name="textBlock1_Copy14" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel15_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep15_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey15_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc15_btn" Tag="15" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
             </Grid>
-            <Grid x:Name="Hole18_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="8">
+            <Grid x:Name="Hole14_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="4">
                 <Grid Height="40" VerticalAlignment="Top">
                     <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
-                    <TextBlock x:Name="num18_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                    <TextBlock x:Name="num14_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
                 </Grid>
                 <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
-                <TextBlock x:Name="textBlock69" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
-                <RadioButton x:Name="cr18_rb" Content="17r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cg18_rb" Content="17g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cb18_rb" Content="17b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
-                <RadioButton x:Name="cl18_rb" Content="17l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <TextBlock x:Name="textBlock53" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr14_rb" Content="13r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg14_rb" Content="13g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb14_rb" Content="13b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl14_rb" Content="13l"  Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw14_rb" Content="13w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
                 <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
-                <Rectangle Fill="#FFE6E6E6" Height="14" Margin="0,83,10,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Right" Width="38.694"/>
-                <RadioButton x:Name="cw18_rb" Content="17w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
                 <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
-                <TextBlock x:Name="textBlock1_Copy17" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
-                <TextBlock x:Name="textBlock71" Margin="0,81.46,12.45,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.46" Height="14"><Run Text="Misc"/></TextBlock>
-                <TextBlock x:Name="holel18_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holep18_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
-                <TextBlock x:Name="holey18_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <TextBlock x:Name="textBlock1_Copy13" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel14_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep14_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey14_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc14_btn" Tag="14" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole13_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="3">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num13_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock49" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr13_rb" Content="12r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg13_rb" Content="12g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb13_rb" Content="12b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl13_rb" Content="12l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw13_rb" Content="12w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy12" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel13_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep13_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey13_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc13_btn" Tag="13" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole12_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="2">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num12_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock45" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr12_rb" Content="11r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg12_rb" Content="11g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb12_rb" Content="11b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl12_rb" Content="11l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw12_rb" Content="11w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy11" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel12_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep12_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey12_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc12_btn" Tag="12" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole11_g" Margin="2,0,0,0" Grid.Row="1" Grid.Column="1">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num11_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock41" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr11_rb" Content="10r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg11_rb" Content="10g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb11_rb" Content="10b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl11_rb" Content="10l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw11_rb" Content="10w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy10" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel11_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep11_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey11_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc11_btn" Tag="11" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole10_g" Margin="2,0,0,0" Grid.Row="1">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num10_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock37" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr10_rb" Content="9r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg10_rb" Content="9g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb10_rb" Content="9b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl10_rb" Content="9l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw10_rb" Content="9w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy9" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel10_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep10_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey10_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc10_btn" Tag="10" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,9.964,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole9_g" Margin="2,0,0,0" Grid.Column="8">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num9_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock33" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr9_rb" Content="8r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg9_rb" Content="8g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb9_rb" Content="8b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl9_rb" Content="8l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw9_rb" Content="8w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy8" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel9_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep9_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey9_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc9_btn" Tag="9" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole8_g" Margin="2,0,0,0" Grid.Column="7">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num8_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock29" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr8_rb" Content="7r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg8_rb" Content="7g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb8_rb" Content="7b" Click="radio_Click"  Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl8_rb" Content="7l" Click="radio_Click" HorizontalAlignment="Left" Width="12.91" VerticalAlignment="Top" Margin="52.91,63.04,0,0"/>
+                <RadioButton x:Name="cw8_rb" Content="7w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy7" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel8_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep8_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey8_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc8_btn" Tag="8" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole7_g" Margin="2,0,0,0" Grid.Column="6">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num7_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock25" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr7_rb" Content="6r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg7_rb" Content="6g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb7_rb" Content="6b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl7_rb" Content="6l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw7_rb" Content="6w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy6" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel7_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep7_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey7_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc7_btn" Tag="7" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole6_g" Margin="2,0,0,0" Grid.Column="5">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num6_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock21" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr6_rb" Content="5r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg6_rb" Content="5g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb6_rb" Content="5b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl6_rb" Content="5l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw6_rb" Content="5w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy5" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel6_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep6_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey6_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc6_btn" Tag="6" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole5_g" Margin="2,0,0,0" Grid.Column="4">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num5_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock17" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr5_rb" Content="4r" Click="radio_Click"  Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg5_rb" Content="4g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb5_rb" Content="4b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl5_rb" Content="4l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw5_rb" Content="4w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy4" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel5_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep5_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey5_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc5_btn" Tag="5" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole4_g" Margin="2,0,0,0" Grid.Column="3">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num4_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock13" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr4_rb" Content="3r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg4_rb" Content="3g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb4_rb" Content="3b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl4_rb" Content="3l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw4_rb" Content="3w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy3" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel4_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep4_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey4_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc4_btn" Tag="4" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole3_g" Margin="2,0,0,0" Grid.Column="2">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num3_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock9" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr3_rb" Content="2r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg3_rb" Content="2g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb3_rb" Content="2b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl3_rb" Content="2l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw3_rb" Content="2w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy2" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel3_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep3_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey3_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc3_btn" Tag="3" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" Content="Misc" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole2_g" Margin="2,0,0,0" Grid.Column="1">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num2_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock5" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr2_rb" Content="1r" Click="radio_Click" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cg2_rb" Content="1g" Click="radio_Click" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cb2_rb" Content="1b" Click="radio_Click" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl2_rb" Content="1l" Click="radio_Click" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw2_rb" Content="1w" Click="radio_Click" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy1" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel2_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep2_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey2_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc2_btn"  Content="Misc" Tag="2" MouseEnter="misc_mouse_enter" MouseLeave="misc_mouse_leave" HorizontalAlignment="Right" Margin="0,83,8.957,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="Hole1_g" Margin="2,0,0,0">
+                <Grid Height="40" VerticalAlignment="Top">
+                    <Rectangle Fill="#FFF0F0F0" Stroke="Black" RadiusX="50" RadiusY="5"/>
+                    <TextBlock x:Name="num1_tbl" TextWrapping="Wrap" FontSize="16" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Hole 1"/>
+                </Grid>
+                <Rectangle Fill="White" Stroke="Black" Margin="0,31.333,0,0"/>
+                <TextBlock x:Name="textBlock1" Margin="22.91,102,0,112.04" TextWrapping="Wrap" Text="Par" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="22"/>
+                <RadioButton x:Name="cr1_rb" Content="0r" Margin="5,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91" Tag="1" Click="radio_Click"/>
+                <RadioButton x:Name="cg1_rb" Content="0g" Margin="5,64.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91" Click="radio_Click"/>
+                <RadioButton x:Name="cb1_rb" Content="0b" Margin="52.91,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cl1_rb" Content="0l" Margin="52.91,64,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <RadioButton x:Name="cw1_rb" Content="0w" Margin="5,83.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="12.91"/>
+                <Rectangle Fill="Red" Height="14" Margin="22.91,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FF004FC1" Height="14" Margin="70.82,45,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="#FFDCE60A" Height="14" Margin="22.91,64,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <Rectangle Fill="Black" Height="14" Margin="70.784,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="25" HorizontalAlignment="Left"/>
+                <Rectangle Fill="White" Height="14" Margin="22.91,83,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="25"/>
+                <TextBlock x:Name="textBlock1_Copy" Margin="49.91,102,0,112.04" TextWrapping="Wrap" Text="Yardage" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="45.874"/>
+                <TextBlock x:Name="holel1_tbl" Margin="5,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="15.91" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holep1_tbl" Margin="25.91,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="22" d:LayoutOverrides="HorizontalAlignment"/>
+                <TextBlock x:Name="holey1_tbl" Margin="57.09,0,0,31.04" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="81" HorizontalAlignment="Left" Width="36.244"/>
+                <Button x:Name="misc1_btn" Tag="1" Content="Misc1" MouseLeave="misc_mouse_leave" MouseEnter="misc_mouse_enter" HorizontalAlignment="Right" Margin="0,83,9.964,0" VerticalAlignment="Top" Width="38.73" Height="14" FontSize="9.333" Style="{DynamicResource ViewCourseMiscButton}"/>
+            </Grid>
+            <Grid x:Name="misc1_g" Margin="2,0,-4,-42.333" Grid.ColumnSpan="4" Visibility="Hidden">
+                <Rectangle Fill="#FF1E6291" Margin="-5,0,10,0" Stroke="#FF616161" Height="56.333" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" RadiusX="3" RadiusY="3">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="10,10,0,0" Stroke="#FF272727" Width="125.001" Height="37.497" VerticalAlignment="Top" RadiusX="1" RadiusY="1"/>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="28.161" Margin="19.5,19.336,0,0" TextWrapping="Wrap" Text="Hole ## Info" VerticalAlignment="Top" Width="108.501" Foreground="White" FontFamily="Franklin Gothic Medium" FontSize="20"/>
+                <Rectangle Fill="White" Margin="-5,52.497,10,10" Stroke="#FF616161" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,56.333,0,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667"/>
+                <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="19.5,61.333,0,0" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="74.068" VerticalAlignment="Top"><Run Text="Tee Pad Type:"/><LineBreak/><Run Text="Tee Notes:"/></TextBlock>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,0,0,22.904" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667" Height="94.964" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="19.5,0,0,35.171" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="73.556" VerticalAlignment="Bottom" Text="Basket Notes:"/>
+                <Rectangle Fill="#FF272727" Margin="192.882,56.333,13.899,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161"/>
+                <TextBlock x:Name="textBlock2_Copy1" Margin="202.899,61.333,28.454,135.078" TextWrapping="Wrap" Foreground="White"><Run Text="Guide to Hole:"/><LineBreak/><Run Text="General Comments:"/></TextBlock>
+                <Rectangle Fill="#FF272727" Margin="195.333,0,16.143,23.917" RadiusY="3" RadiusX="3" Stroke="#FF616161" Height="93.951" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy2" Margin="207.077,0,28.454,35.171" TextWrapping="Wrap" Foreground="White" Height="73.556" VerticalAlignment="Bottom"><Run Text="Recommended Shot:"/><LineBreak/><Run Text="Recommended Disc:"/></TextBlock>
+            </Grid>
+            <Grid x:Name="misc2_g" Margin="2,-37.666,-4,-4.667" Grid.ColumnSpan="4" Grid.Row="1" Visibility="Hidden">
+                <Rectangle Fill="#FF1E6291" Margin="-5,0,10,0" Stroke="#FF616161" Height="56.333" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" RadiusX="3" RadiusY="3">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="10,10,0,0" Stroke="#FF272727" Width="125.001" Height="37.497" VerticalAlignment="Top" RadiusX="1" RadiusY="1"/>
+                <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Height="28.161" Margin="19.5,19.336,0,0" TextWrapping="Wrap" Text="Hole ## Info" VerticalAlignment="Top" Width="108.501" Foreground="White" FontFamily="Franklin Gothic Medium" FontSize="20"/>
+                <Rectangle Fill="White" Margin="-5,52.497,10,10" Stroke="#FF616161" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,56.333,0,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667"/>
+                <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="19.5,61.333,0,0" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="74.068" VerticalAlignment="Top"><Run Text="Tee Pad Type:"/><LineBreak/><Run Text="Tee Notes:"/></TextBlock>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,0,0,22.904" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667" Height="94.964" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy6" HorizontalAlignment="Left" Margin="19.5,0,0,35.171" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="73.556" VerticalAlignment="Bottom" Text="Basket Notes:"/>
+                <Rectangle Fill="#FF272727" Margin="192.882,56.333,13.899,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161"/>
+                <TextBlock x:Name="textBlock2_Copy7" Margin="202.899,61.333,28.454,135.078" TextWrapping="Wrap" Foreground="White"><Run Text="Guide to Hole:"/><LineBreak/><Run Text="General Comments:"/></TextBlock>
+                <Rectangle Fill="#FF272727" Margin="195.333,0,16.143,23.917" RadiusY="3" RadiusX="3" Stroke="#FF616161" Height="93.951" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy8" Margin="207.077,0,28.454,35.171" TextWrapping="Wrap" Foreground="White" Height="73.556" VerticalAlignment="Bottom"><Run Text="Recommended Shot:"/><LineBreak/><Run Text="Recommended Disc:"/></TextBlock>
+            </Grid>
+            <Grid x:Name="misc3_g" Margin="2,0,-5.007,-42.333" Grid.ColumnSpan="4" Grid.Column="5" Visibility="Hidden">
+                <Rectangle Fill="#FF1E6291" Margin="-5,0,10,0" Stroke="#FF616161" Height="56.333" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" RadiusX="3" RadiusY="3">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="10,10,0,0" Stroke="#FF272727" Width="125.001" Height="37.497" VerticalAlignment="Top" RadiusX="1" RadiusY="1"/>
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Height="28.161" Margin="19.5,19.336,0,0" TextWrapping="Wrap" Text="Hole ## Info" VerticalAlignment="Top" Width="108.501" Foreground="White" FontFamily="Franklin Gothic Medium" FontSize="20"/>
+                <Rectangle Fill="White" Margin="-5,52.497,10,10" Stroke="#FF616161" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,56.333,0,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667"/>
+                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="19.5,61.333,0,0" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="74.068" VerticalAlignment="Top"><Run Text="Tee Pad Type:"/><LineBreak/><Run Text="Tee Notes:"/></TextBlock>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,0,0,22.904" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667" Height="94.964" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy3" HorizontalAlignment="Left" Margin="19.5,0,0,35.171" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="73.556" VerticalAlignment="Bottom" Text="Basket Notes:"/>
+                <Rectangle Fill="#FF272727" Margin="192.882,56.333,13.899,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161"/>
+                <TextBlock x:Name="textBlock2_Copy4" Margin="202.899,61.333,28.454,135.078" TextWrapping="Wrap" Foreground="White"><Run Text="Guide to Hole:"/><LineBreak/><Run Text="General Comments:"/></TextBlock>
+                <Rectangle Fill="#FF272727" Margin="195.333,0,16.143,23.917" RadiusY="3" RadiusX="3" Stroke="#FF616161" Height="93.951" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy5" Margin="207.077,0,28.454,35.171" TextWrapping="Wrap" Foreground="White" Height="73.556" VerticalAlignment="Bottom"><Run Text="Recommended Shot:"/><LineBreak/><Run Text="Recommended Disc:"/></TextBlock>
+            </Grid>
+            <Grid x:Name="misc4_g" Margin="2,-37.666,-5.007,-4.667" Grid.ColumnSpan="4" Grid.Column="5" Grid.Row="1" Visibility="Hidden">
+                <Rectangle Fill="#FF1E6291" Margin="-5,0,10,0" Stroke="#FF616161" Height="56.333" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" RadiusX="3" RadiusY="3">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="10,10,0,0" Stroke="#FF272727" Width="125.001" Height="37.497" VerticalAlignment="Top" RadiusX="1" RadiusY="1"/>
+                <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Height="28.161" Margin="19.5,19.336,0,0" TextWrapping="Wrap" Text="Hole ## Info" VerticalAlignment="Top" Width="108.501" Foreground="White" FontFamily="Franklin Gothic Medium" FontSize="20"/>
+                <Rectangle Fill="White" Margin="-5,52.497,10,10" Stroke="#FF616161" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,56.333,0,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667"/>
+                <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="19.5,61.333,0,0" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="74.068" VerticalAlignment="Top"><Run Text="Tee Pad Type:"/><LineBreak/><Run Text="Tee Notes:"/></TextBlock>
+                <Rectangle Fill="#FF272727" HorizontalAlignment="Left" Margin="9.666,0,0,22.904" RadiusY="3" RadiusX="3" Stroke="#FF616161" Width="180.667" Height="94.964" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy9" HorizontalAlignment="Left" Margin="19.5,0,0,35.171" TextWrapping="Wrap" Foreground="White" Width="160.79" Height="73.556" VerticalAlignment="Bottom" Text="Basket Notes:"/>
+                <Rectangle Fill="#FF272727" Margin="192.882,56.333,13.899,122.868" RadiusY="3" RadiusX="3" Stroke="#FF616161"/>
+                <TextBlock x:Name="textBlock2_Copy10" Margin="202.899,61.333,28.454,135.078" TextWrapping="Wrap" Foreground="White"><Run Text="Guide to Hole:"/><LineBreak/><Run Text="General Comments:"/></TextBlock>
+                <Rectangle Fill="#FF272727" Margin="195.333,0,16.143,23.917" RadiusY="3" RadiusX="3" Stroke="#FF616161" Height="93.951" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="textBlock2_Copy11" Margin="207.077,0,28.454,35.171" TextWrapping="Wrap" Foreground="White" Height="73.556" VerticalAlignment="Bottom"><Run Text="Recommended Shot:"/><LineBreak/><Run Text="Recommended Disc:"/></TextBlock>
             </Grid>
         </Grid>
         <Button x:Name="coursedetails_btn" Content="Course Details" HorizontalAlignment="Left" Margin="10,0,0,10" Width="87" Height="31" VerticalAlignment="Bottom" Click="coursedetails_btn_Click"/>

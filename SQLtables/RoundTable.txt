@@ -1,0 +1,14 @@
+create table round(
+round_id int NULL AUTO_INCREMENT,
+course_id int,
+round_weather varchar(30),
+round_date date,
+round_time int,
+round_type varchar(30),
+round_wind varchar(30),
+upsrt_usr_id int,
+upsrt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(round_id),
+FOREIGN KEY(course_id) REFERENCES course(course_id),
+FOREIGN KEY(upsrt_usr_id) REFERENCES user(user_id)
+)

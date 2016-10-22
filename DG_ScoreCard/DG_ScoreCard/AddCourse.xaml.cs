@@ -207,7 +207,12 @@ namespace DG_ScoreCard
 
             /******************************************************************************************************/
 
-
+            if (Simple_g.Visibility == Visibility.Visible)
+                setHoleListSimple();
+            if (Custom_g.Visibility == Visibility.Visible)
+                setHoleListcustom();
+            if (Complex_g.Visibility == Visibility.Visible)
+                updateComplexHoles();
 
             char? c_private = null;
             char? c_p2p = null;
@@ -222,18 +227,9 @@ namespace DG_ScoreCard
             p_private = getRadioButton(park_private_y_r, park_private_n_r);
             p_pet = getRadioButton(park_pet_y_r, park_pet_n_r);
             p_guide = getRadioButton(park_guide_y_r, park_guide_n_r);
-
-
-            simpleend_tb.Text = "Saving Course!";
-            //client.insertPark(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private);
-            //client.insertLocation(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            //int h_park_id = client.getParkId(parkname_tb.Text, p_private, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet);
-            //int h_user_id = client.getUserID(username);
-            //int h_loc_id = client.getLocID(address_tb1.Text, state_tb1.Text, city_tb1.Text, country_tb1.Text, zip_tb1.Text);
-            //client.insertCourse(coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text, h_user_id, h_loc_id, h_park_id);
-
-            client.Load_Course_Store_Prod(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text,
-            country_tb1.Text, zip_tb1.Text, g_user_id.ToString(), coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text);
+            string load_messages = "Load Notes: \n";
+            load_messages += client.Load_Course_Store_Prod(parkname_tb.Text, hightime_cb.Text, lowtime_cb.Text, p_guide, p_pet, p_private, address_tb1.Text, state_tb1.Text, city_tb1.Text,
+            country_tb1.Text, zip_tb1.Text, g_user_id.ToString(), coursename_tb1.Text, website_tb1.Text, phonenumber_tb1.Text, email_tbl.Text, basket_tb.Text, year_established_tb.Text, tee_type_cb.Text, course_type_cb.Text, terrain_cb.Text, basket_maker_tb.Text, c_private, c_p2p, c_guide, course_designer_tb.Text) + "\n";
             for (int i = holeList.Count()-1; i >= 0; i--)
             {
                 if (holeList[i].h_num > hole_count)
@@ -243,79 +239,13 @@ namespace DG_ScoreCard
 
             }
 
-            MessageBox.Show( client.Load_Holes_Stored_Proc(holeList, client.getCourseID2(g_user_id, coursename_tb1.Text).ToString() ));
-
-
-            BackgroundWorker worker = new BackgroundWorker();
-            //worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            //worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            //worker.RunWorkerAsync();
-
-           
-
-            //    MessageBox.Show(holeInput);
+            load_messages += client.Load_Holes_Stored_Proc(holeList, client.getCourseID2(g_user_id, coursename_tb1.Text).ToString());
+ 
+            MessageBox.Show(load_messages);
 
             
         }
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            this.Dispatcher.Invoke((Action)(() =>
-            {
-                int h_user_id = client.getUserID(username);
-                int course = client.getCourseID2(h_user_id, coursename_tb1.Text);
-
-                string holeInput = "";
-                for (int i = 0; i < holeList.Count(); i++)
-                {
-                    if (holeList[i].h_num <= hole_count)
-                    {
-                        //basket
-                        if (client.basketExists(holeList[i]) == false)
-                        {
-                            client.insertBasket(holeList[i]);
-
-                        }
-                        //tee
-                        if (client.teeExists(holeList[i]) == false)
-                        {
-                            client.insertTee(holeList[i]);
-                        }
-                        //misc
-                        if (client.miscExists(holeList[i]) == false)
-                        {
-                            client.insertMisc(holeList[i]);
-                        }
-                        //holelines
-                        if (client.holelinesExists(holeList[i]) == false)
-                        {
-                            client.insertHoleLines(holeList[i]);
-                        }
-                        //hole
-                        int tee = client.getTeeID(holeList[i]);
-                        //Get basket id
-                        int basket = client.getBasketID(holeList[i]);
-                        //Get misc id
-                        int misc = client.getMiscID(holeList[i]);
-                        //Get hole lines id
-                        int line = client.getHoleLinesID(holeList[i]);
-                        //client.insertHole(holeList[i], course, tee, basket, misc, line);
-                        if (i != 0 && i != holeList.Count() - 1)
-                            holeInput += ", ";
-                        holeInput += "(" + course + "," + tee + "," + basket + "," + misc + "," + line + "," + holeList[i].h_num + "," + holeList[i].h_yardage + "," + holeList[i].h_par + ",\"" + holeList[i].h_unit + "\",\"" + holeList[i].h_name + "\",'" + holeList[i].h_mando + "','" + holeList[i].h_hazzards + "')";
-                    }
-                }
-
-
-                client.insertHoleInput(holeInput);
-            }));
-
-        }
-
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            simpleend_tb.Text = "Course Saved!";
-        }
 
 
         //Desc: Gets Radio button current state

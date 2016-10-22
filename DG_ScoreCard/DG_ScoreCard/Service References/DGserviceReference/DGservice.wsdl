@@ -259,6 +259,36 @@
   <wsdl:message name="IDGservice_Load_Holes_Stored_Proc_OutputMessage">
     <wsdl:part name="parameters" element="tns:Load_Holes_Stored_ProcResponse" />
   </wsdl:message>
+  <wsdl:message name="IDGservice_Load_Disc_Store_Proc_InputMessage">
+    <wsdl:part name="parameters" element="tns:Load_Disc_Store_Proc" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_Load_Disc_Store_Proc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Load_Disc_Store_ProcResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_get_discInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_discInfo" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_get_discInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_discInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_update_disc_InputMessage">
+    <wsdl:part name="parameters" element="tns:update_disc" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_update_disc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:update_discResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_delete_disc_InputMessage">
+    <wsdl:part name="parameters" element="tns:delete_disc" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_delete_disc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:delete_discResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_get_discNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_discNames" />
+  </wsdl:message>
+  <wsdl:message name="IDGservice_get_discNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_discNamesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDGservice">
     <wsdl:operation name="getUserID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/getUserID" message="tns:IDGservice_getUserID_InputMessage" />
@@ -427,6 +457,26 @@
     <wsdl:operation name="Load_Holes_Stored_Proc">
       <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc" message="tns:IDGservice_Load_Holes_Stored_Proc_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/Load_Holes_Stored_ProcResponse" message="tns:IDGservice_Load_Holes_Stored_Proc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Load_Disc_Store_Proc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/Load_Disc_Store_Proc" message="tns:IDGservice_Load_Disc_Store_Proc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/Load_Disc_Store_ProcResponse" message="tns:IDGservice_Load_Disc_Store_Proc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_discInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/get_discInfo" message="tns:IDGservice_get_discInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/get_discInfoResponse" message="tns:IDGservice_get_discInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="update_disc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/update_disc" message="tns:IDGservice_update_disc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/update_discResponse" message="tns:IDGservice_update_disc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_disc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/delete_disc" message="tns:IDGservice_delete_disc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/delete_discResponse" message="tns:IDGservice_delete_disc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_discNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDGservice/get_discNames" message="tns:IDGservice_get_discNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDGservice/get_discNamesResponse" message="tns:IDGservice_get_discNames_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDGservice" type="tns:IDGservice">
@@ -802,6 +852,51 @@
     </wsdl:operation>
     <wsdl:operation name="Load_Holes_Stored_Proc">
       <soap:operation soapAction="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Load_Disc_Store_Proc">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/Load_Disc_Store_Proc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_discInfo">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/get_discInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update_disc">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/update_disc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_disc">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/delete_disc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_discNames">
+      <soap:operation soapAction="http://tempuri.org/IDGservice/get_discNames" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

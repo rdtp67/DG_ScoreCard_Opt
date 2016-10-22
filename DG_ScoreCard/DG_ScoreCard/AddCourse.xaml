@@ -10,13 +10,18 @@
       Title="AddCourse" Width="963.5" Height="562.497">
 
     <Grid x:Name="course_designer_g" d:LayoutOverrides="Width, Height">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF336C4D" Offset="0"/>
+                <GradientStop Color="#FFEAEAEA" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <RadioButton x:Name="simple_rb" Content="Simple" HorizontalAlignment="Left" Margin="286,0,0,17.52" VerticalAlignment="Bottom" IsChecked="True" GroupName="holemode_rbg" Click="simple_rb_Click"/>
         <RadioButton x:Name="complex_rb" Content="Complex" Margin="345.853,0,0,17.52" VerticalAlignment="Bottom" HorizontalAlignment="Left" GroupName="holemode_rbg" Click="complex_rb_Click"/>
         <RadioButton x:Name="custom_rb" Content="Custom" Margin="416.393,0,423.86,17.52" VerticalAlignment="Bottom" d:LayoutOverrides="Width" GroupName="holemode_rbg" Click="custom_rb_Click"/>
-        <TextBlock x:Name="coursedesigner_tbl" HorizontalAlignment="Left" Height="38" Margin="10,10,0,0" TextWrapping="Wrap" Text="Course Creator" VerticalAlignment="Top" Width="192" FontWeight="Bold" FontSize="24" Foreground="White"/>
         <Button x:Name="main_btn" Content="Main Page" HorizontalAlignment="Left" Margin="10,0,0,12" Width="87" Click="main_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="addholes_btn" Content="Hole Page" HorizontalAlignment="Left" Margin="102,0,0,12" Width="87" Click="addholes_btn_Click" Height="31" VerticalAlignment="Bottom"/>
         <Button x:Name="displayholes_btn" Content="DisplayHoles" HorizontalAlignment="Right" Margin="0,0,253,18" VerticalAlignment="Bottom" Width="75" Click="displayholes_btn_Click"/>
@@ -30,12 +35,7 @@
                 <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,0,50.922,50.92" TextWrapping="Wrap" Text="Private: " VerticalAlignment="Bottom" FontSize="13.333"/>
                 <TextBlock x:Name="textBlock8" Margin="10,0,0,10" TextWrapping="Wrap" Text="Park Has Guide:" RenderTransformOrigin="-0.103,1.312" HorizontalAlignment="Left" Width="97.46" FontSize="13.333" VerticalAlignment="Bottom"/>
                 <TextBlock x:Name="textBlock19" Margin="10,0,339.077,47.147" TextWrapping="Wrap" Text="Park Hours: " VerticalAlignment="Bottom" FontSize="13.333"/>
-                <RadioButton x:Name="park_guide_y_r" Content="Yes" Margin="112.46,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="parkguide_r"/>
-                <RadioButton x:Name="park_guide_n_r" Content="No" Margin="159.371,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45.578" GroupName="parkguide_r" d:LayoutOverrides="HorizontalAlignment"/>
-                <RadioButton x:Name="park_private_y_r" Content="Yes" Margin="0,0,60.578,29.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="park_private_r"/>
-                <RadioButton x:Name="park_private_n_r" Content="No" Margin="0,0,10,30.96" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="park_private_r"/>
-                <RadioButton x:Name="park_pet_y_r" Content="Yes" Margin="0,94.01,60.578,0" HorizontalAlignment="Right" Width="46.911" GroupName="pet_r" VerticalAlignment="Top"/>
-                <RadioButton x:Name="park_pet_n_r" Content="No" Margin="0,94.01,10,0" HorizontalAlignment="Right" Width="45.578" GroupName="pet_r" VerticalAlignment="Top"/>
+                <TextBox x:Name="parkname_tb" Margin="10,84.666,144.833,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Top"/>
                 <Grid HorizontalAlignment="Left" Height="29.5" Margin="14,13,0,0" VerticalAlignment="Top" Width="157.58">
                     <TextBlock TextDecorations="{x:Null}" Text="Park Details" TextWrapping="Wrap" x:Name="locationdetials_tbl1_Copy" FontSize="18.667" RenderTransformOrigin="0.394,0.463" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
@@ -140,9 +140,14 @@
                     <ComboBoxItem x:Name="hi46" Content="11:00PM"/>
                     <ComboBoxItem x:Name="hi47" Content="11:30PM"/>
                 </ComboBox>
+                <RadioButton x:Name="park_guide_y_r" Content="Yes" Margin="112.46,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="46.911" GroupName="parkguide_r"/>
+                <RadioButton x:Name="park_guide_n_r" Content="No" Margin="159.371,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="45.578" GroupName="parkguide_r" d:LayoutOverrides="HorizontalAlignment"/>
+                <RadioButton x:Name="park_pet_y_r" Content="Yes" Margin="0,94.01,60.578,0" HorizontalAlignment="Right" Width="46.911" GroupName="pet_r" VerticalAlignment="Top"/>
+                <RadioButton x:Name="park_pet_n_r" Content="No" Margin="0,94.01,10,0" HorizontalAlignment="Right" Width="45.578" GroupName="pet_r" VerticalAlignment="Top"/>
+                <RadioButton x:Name="park_private_y_r" Content="Yes" Margin="0,0,60.578,29.96" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="46.911" GroupName="park_private_r"/>
+                <RadioButton x:Name="park_private_n_r" Content="No" Margin="0,0,10,30.96" HorizontalAlignment="Right" Width="45.578" VerticalAlignment="Bottom" GroupName="park_private_r"/>
                 <Label x:Name="label" Content="to" Margin="170.193,117.601,227.006,0" RenderTransformOrigin="1.228,0.518" Height="30.829" VerticalAlignment="Top"/>
                 <TextBlock Text="Park Name" TextWrapping="Wrap" x:Name="parkname_tbl" Margin="10,58.386,0,0" HorizontalAlignment="Left" FontSize="16" Width="77.257" Height="21.28" VerticalAlignment="Top"/>
-                <TextBox x:Name="parkname_tb" Margin="10,84.666,144.833,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="23.5" VerticalAlignment="Top"/>
             </Grid>
             <Grid x:Name="locationdetails_g" Height="190" VerticalAlignment="Bottom" Margin="430,0,0,0">
                 <Grid.RowDefinitions>
@@ -203,8 +208,13 @@
                 <TextBlock x:Name="textBlock18" Margin="10.033,139.676,0,0" TextWrapping="Wrap" Text="Basket Maker:" VerticalAlignment="Top" FontSize="13.333" Height="18.8" HorizontalAlignment="Left" Width="85.191"/>
                 <TextBox x:Name="basket_tb" Margin="-25.831,68.36,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="18.96" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBox x:Name="year_established_tb" Margin="-25.831,92.32,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
-                <TextBox x:Name="basket_maker_tb" Margin="-25.83,137.786,10,151.921" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Grid.Column="1"/>
                 <TextBox x:Name="course_designer_tb" Margin="-25.831,115.053,10,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Height="17.733" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="basket_maker_tb" Margin="-25.83,137.786,10,151.921" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="13.333" SelectionBrush="Black" BorderBrush="Black" Grid.Column="1"/>
+                <ComboBox x:Name="terrain_cb" Margin="55.318,163.476,10.681,0" Height="22" VerticalAlignment="Top">
+                    <ComboBoxItem x:Name="ti1" Content="Open"/>
+                    <ComboBoxItem x:Name="ti2" Content="Wooded"/>
+                    <ComboBoxItem x:Name="ti3" Content="Rocky"/>
+                </ComboBox>
                 <ComboBox x:Name="tee_type_cb" Margin="83,162.531,10,0" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" Height="22" VerticalAlignment="Top" >
                     <ComboBoxItem x:Name="tti1" Content="Grass"/>
                     <ComboBoxItem x:Name="tti2" Content="Concrete"/>
@@ -217,14 +227,9 @@
                     <ComboBoxItem x:Name="cci3" Content="Seasonal"/>
                     <ComboBoxItem x:Name="cci4" Content="Practice"/>
                 </ComboBox>
-                <ComboBox x:Name="terrain_cb" Margin="55.318,163.476,10.681,0" Height="22" VerticalAlignment="Top">
-                    <ComboBoxItem x:Name="ti1" Content="Open"/>
-                    <ComboBoxItem x:Name="ti2" Content="Wooded"/>
-                    <ComboBoxItem x:Name="ti3" Content="Rocky"/>
-                </ComboBox>
                 <RadioButton x:Name="private_yes_r" Content="Yes" Margin="13.135,222.787,0,0" GroupName="course_private_r" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46.911"/>
-                <RadioButton x:Name="p2p_yes_r" Content="Yes" Margin="13.134,242.747,110.621,0" GroupName="p2p_r" RenderTransformOrigin="0.478,0.929" VerticalAlignment="Top" Grid.Column="1"/>
                 <RadioButton x:Name="private_no_r" Content="No" Margin="56.545,222.787,82.46,0" VerticalAlignment="Top" GroupName="course_private_r" Grid.Column="1"/>
+                <RadioButton x:Name="p2p_yes_r" Content="Yes" Margin="13.134,242.747,110.621,0" GroupName="p2p_r" RenderTransformOrigin="0.478,0.929" VerticalAlignment="Top" Grid.Column="1"/>
                 <RadioButton x:Name="p2p_no_r" Content="No" Margin="56.545,244.15,76.571,0" GroupName="p2p_r" VerticalAlignment="Top" Grid.Column="1"/>
                 <RadioButton x:Name="course_guide_yes_r" Content="Yes" Margin="0,263.537,128.038,0" VerticalAlignment="Top" GroupName="courseguide_r" Grid.Column="1" HorizontalAlignment="Right" Width="43.411"/>
                 <RadioButton x:Name="course_guide_no_r" Content="No" Margin="56.545,262.707,71.988,0" VerticalAlignment="Top" GroupName="courseguide_r" RenderTransformOrigin="0.657,0.54" Grid.Column="1"/>
@@ -252,19 +257,19 @@
                     <TextBox x:Name="coursename_tb1" Margin="10,33.745,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="19.333" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
                     <TextBlock x:Name="website_tbl1" Margin="10,58.078,0,0" TextWrapping="Wrap" Text="Website" FontSize="16" HorizontalAlignment="Left" Width="72.5" Height="26.51" VerticalAlignment="Top"/>
                     <TextBox x:Name="website_tb1" Margin="10,87.222,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.216" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBlock x:Name="phonenumber_tbl1_Copy" Margin="10,109.694,0,0" TextWrapping="Wrap" Text="Email" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
+                    <TextBox x:Name="email_tbl" Margin="10,138.695,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
                     <TextBlock x:Name="phonenumber_tbl1" Margin="10,164.194,0,0" TextWrapping="Wrap" Text="Phone Number" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
                     <TextBox x:Name="phonenumber_tb1" Margin="10,193.195,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
                     <TextBlock x:Name="coursename_tbl1_Copy" Margin="0,8.745,10,154.942" TextWrapping="Wrap" Text="Tee Colors" FontSize="16" HorizontalAlignment="Right" Width="85"/>
-                    <TextBlock x:Name="phonenumber_tbl1_Copy" Margin="10,109.694,0,0" TextWrapping="Wrap" Text="Email" FontSize="16" HorizontalAlignment="Left" Width="111.5" Height="27.276" VerticalAlignment="Top"/>
-                    <TextBox x:Name="email_tbl" Margin="10,138.695,127,0" TextWrapping="Wrap" VerticalContentAlignment="Center" FontSize="14.667" SelectionBrush="Black" BorderBrush="Black" Height="20.499" VerticalAlignment="Top"/>
                 </Grid>
                 <CheckBox x:Name="maintred_chb" Content="Red" HorizontalAlignment="Right" Margin="0,94.881,45.315,0" VerticalAlignment="Top" IsChecked="True"/>
-                <CheckBox x:Name="maintgold_chb" Content="Gold" HorizontalAlignment="Right" Margin="0,114.979,40.598,119.962" d:LayoutOverrides="Height"/>
+                <CheckBox x:Name="maintgold_chb" Content="Gold" HorizontalAlignment="Right" Margin="0,114.979,40.598,0" Height="15.099" VerticalAlignment="Top"/>
                 <CheckBox x:Name="maintwhite_chb" Content="White" HorizontalAlignment="Right" Margin="0,135.078,34.585,0" VerticalAlignment="Top"/>
                 <CheckBox x:Name="maintblue_chb" Content="Blue" HorizontalAlignment="Right" Margin="0,155.177,42.981,0" VerticalAlignment="Top"/>
                 <CheckBox x:Name="maintblack_chb" Content="Black" HorizontalAlignment="Right" Margin="0,175.276,38.434,0" VerticalAlignment="Top"/>
             </Grid>
-            <Grid x:Name="picturedetails_g" Background="Black" HorizontalAlignment="Left" Width="241.833" Margin="0,0,0,194.776" Height="255.655" VerticalAlignment="Bottom">
+            <Grid x:Name="picturedetails_g" Background="Black" HorizontalAlignment="Left" Width="241.833" Margin="0,0,0,194.776" Height="280.721" VerticalAlignment="Bottom">
                 <TextBlock x:Name="textBlock2" Margin="31.5,37,28.04,18.04" TextWrapping="Wrap" Text="Add Picure Area. Defaul pic otherwise" Foreground="White"/>
                 <TextBox x:Name="textBox" Height="31.35" Margin="0,0,71.5,0" TextWrapping="Wrap" Text="File Name" VerticalAlignment="Bottom"/>
                 <Button x:Name="button" Content="Browse" HorizontalAlignment="Right" Height="31.35" VerticalAlignment="Bottom" Width="71.5" RenderTransformOrigin="0.308,-0.921"/>
@@ -362,7 +367,6 @@
                         <Rectangle x:Name="basketloc_r" Fill="White" Height="9.25" Margin="10,2.5,10,0" VerticalAlignment="Top" Opacity="0.155" RadiusX="5" RadiusY="5" MouseDown="basketloc_r_MouseDown" MouseMove="basketloc_r_MouseMove" MouseUp="basketloc_r_MouseUp" Cursor="SizeAll"/>
                     </Grid>
                     <ComboBox x:Name="basketletter_cb" Margin="10,57.96,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.183" DropDownOpened="teecolor_cb_DropDownOpened" DropDownClosed="teecolor_cb_DropDownClosed">
-                        <ComboBoxItem Content=""/>
                         <ComboBoxItem Content="A" IsSelected="True"/>
                         <ComboBoxItem Content="B"/>
                         <ComboBoxItem Content="C"/>

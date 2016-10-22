@@ -132,13 +132,30 @@ namespace WCFwebserviceDG
         List<combobox_item_string> getCourseDistinctHoleColors(int course_id, int user_id);
 
         [OperationContract]
-        void Load_Course_Store_Prod(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, 
+        string Load_Course_Store_Prod(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, string loc_address, string loc_state, string loc_city, 
             string loc_country, string loc_zip, string user_id,
             string c_name, string website, string phone, string email, string basket_type, string year_established, string tee_type, string course_type, string terrain, string basket_maker, char? course_private, 
             char? p2p, char? c_guide, string course_designer);
 
         [OperationContract]
         string Load_Holes_Stored_Proc(List<holeLib> holes, string course_id);
+
+        [OperationContract]
+        string Load_Disc_Store_Proc(string d_type, string d_name, string d_brand, string d_mold, int d_weight, string d_color, byte[] d_image, string d_comment, int d_speed, int d_glide, int d_turn, int d_fade, int u_id);
+
+        [OperationContract]
+        disc get_discInfo(int id);
+
+        [OperationContract]
+        string update_disc(disc d);
+
+        [OperationContract]
+        string delete_disc(int id);
+
+        [OperationContract]
+        List<disc> get_discNames(int id);
+
+
     }
 
     [DataContract]
@@ -679,4 +696,107 @@ namespace WCFwebserviceDG
         }
     }
 
+    [DataContract]
+    public class disc
+    {
+        int disc_id;
+        string disc_type;
+        string disc_name;
+        string disc_brand;
+        string disc_mold;
+        int disc_weight;
+        string disc_color;
+        byte[] disc_image;
+        string disc_comment;
+        int disc_speed;
+        int disc_glide;
+        int disc_turn;
+        int disc_fade;
+        string upsrt_usr;
+
+        [DataMember]
+        public int d_id
+        {
+            get { return disc_id; }
+            set { disc_id = value; }
+        }
+        [DataMember]
+        public string d_type
+        {
+            get { return disc_type; }
+            set { disc_type = value; }
+        }
+        [DataMember]
+        public string d_name
+        {
+            get { return disc_name; }
+            set { disc_name = value; }
+        }
+        [DataMember]
+        public string d_brand
+        {
+            get { return disc_brand; }
+            set { disc_brand = value; }
+        }
+        [DataMember]
+        public string d_mold
+        {
+            get { return disc_mold; }
+            set { disc_mold = value; }
+        }
+        [DataMember]
+        public int d_weight
+        {
+            get { return disc_weight; }
+            set { disc_weight = value; }
+        }
+        [DataMember]
+        public string d_color
+        {
+            get { return disc_color; }
+            set { disc_color = value; }
+        }
+        [DataMember]
+        public byte[] d_image
+        {
+            get { return disc_image; }
+            set { disc_image = value; }
+        }
+        [DataMember]
+        public string d_comment
+        {
+            get { return disc_comment; }
+            set { disc_comment = value; }
+        }
+        [DataMember]
+        public int d_speed
+        {
+            get { return disc_speed; }
+            set { disc_speed = value; }
+        }
+        [DataMember]
+        public int d_glide
+        {
+            get { return disc_glide; }
+            set { disc_glide = value; }
+        }
+        [DataMember]
+        public int d_turn
+        {
+            get { return disc_turn; }
+            set { disc_turn = value; }
+        }
+        [DataMember]
+        public int d_fade
+        {
+            get { return disc_fade; }
+            set { disc_fade = value; }
+        }
+        [DataMember]
+        public string usr
+        {
+            get { return upsrt_usr; }
+            set { upsrt_usr = value; }
+        }
+    }
 }

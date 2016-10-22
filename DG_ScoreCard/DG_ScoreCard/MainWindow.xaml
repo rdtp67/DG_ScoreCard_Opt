@@ -589,7 +589,7 @@
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <Grid x:Name="grid" Margin="-1">
                                 <Rectangle Fill="White" Margin="10,5,10,0" Stroke="White" Height="14.5" VerticalAlignment="Top" RadiusX="5" RadiusY="5" Opacity="0.15"/>
-                                <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="My Discs" Width="Auto" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="My Bag" Width="Auto" VerticalAlignment="Center"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>

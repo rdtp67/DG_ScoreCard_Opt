@@ -142,4 +142,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfholeLib" nillable="true" type="tns:ArrayOfholeLib" />
+  <xs:complexType name="disc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="d_brand" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="d_color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="d_comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="d_fade" type="xs:int" />
+      <xs:element minOccurs="0" name="d_glide" type="xs:int" />
+      <xs:element minOccurs="0" name="d_id" type="xs:int" />
+      <xs:element minOccurs="0" name="d_image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="d_mold" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="d_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="d_speed" type="xs:int" />
+      <xs:element minOccurs="0" name="d_turn" type="xs:int" />
+      <xs:element minOccurs="0" name="d_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="d_weight" type="xs:int" />
+      <xs:element minOccurs="0" name="usr" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="disc" nillable="true" type="tns:disc" />
+  <xs:complexType name="ArrayOfdisc">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="disc" nillable="true" type="tns:disc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfdisc" nillable="true" type="tns:ArrayOfdisc" />
 </xs:schema>

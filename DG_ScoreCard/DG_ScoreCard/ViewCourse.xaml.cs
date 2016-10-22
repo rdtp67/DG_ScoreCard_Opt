@@ -287,7 +287,7 @@ namespace DG_ScoreCard
             coursemain1_tbl.Text = "";
 
             List<course_view_course> c = client.getCourseViewCourse(course_id, user_id);
-            for(int i = 0; i<c.Count(); i++)
+            for(int i = 0; i < c.Count(); i++)
             {
                 coursemain1_tbl.Text = coursemain1_tbl.Text + "Hole Color: " + c[i].h_color + "\n" +
                                                               "Number of Holes: " + c[i].h_count + "\n" +
@@ -600,6 +600,58 @@ namespace DG_ScoreCard
                 
             }
             
+        }
+
+        //Makes the misc screen appear
+        private void misc_mouse_enter(object sender, RoutedEventArgs e)
+        {
+            var tag = ((Button)sender).Tag;
+            if(int.Parse(tag.ToString()) <= 4)
+            {
+                misc3_g.Visibility = Visibility.Visible;
+            }
+            else if(int.Parse(tag.ToString()) >= 5 && int.Parse(tag.ToString()) < 10)
+            {
+                misc1_g.Visibility = Visibility.Visible;
+            }
+            else if(int.Parse(tag.ToString()) >= 10 && int.Parse(tag.ToString()) < 14)
+            {
+                misc4_g.Visibility = Visibility.Visible;
+            }
+            else if(int.Parse(tag.ToString()) >= 14 && int.Parse(tag.ToString()) < 19)
+            {
+                misc2_g.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Misc Tag > 18 or < 1... Panic!");
+            }
+
+            
+            
+        }
+
+        //Makes the misc screen not appear
+        private void misc_mouse_leave(object sender, RoutedEventArgs e)
+        {
+            if(misc1_g.Visibility == Visibility.Visible)
+            {
+                misc1_g.Visibility = Visibility.Hidden;
+            }
+            if (misc2_g.Visibility == Visibility.Visible)
+            {
+                misc2_g.Visibility = Visibility.Hidden;
+            }
+            if (misc3_g.Visibility == Visibility.Visible)
+            {
+                misc3_g.Visibility = Visibility.Hidden;
+            }
+            if (misc4_g.Visibility == Visibility.Visible)
+            {
+                misc4_g.Visibility = Visibility.Hidden;
+            }
+
+
         }
         /***** End Help Funcitons            ****/
     }

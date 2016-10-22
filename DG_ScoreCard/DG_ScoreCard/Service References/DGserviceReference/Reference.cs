@@ -1234,6 +1234,259 @@ namespace DG_ScoreCard.DGserviceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="disc", Namespace="http://schemas.datacontract.org/2004/07/WCFwebserviceDG")]
+    [System.SerializableAttribute()]
+    public partial class disc : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string d_brandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string d_colorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string d_commentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int d_fadeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int d_glideField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int d_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] d_imageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string d_moldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string d_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int d_speedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int d_turnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string d_typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int d_weightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string usrField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string d_brand {
+            get {
+                return this.d_brandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_brandField, value) != true)) {
+                    this.d_brandField = value;
+                    this.RaisePropertyChanged("d_brand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string d_color {
+            get {
+                return this.d_colorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_colorField, value) != true)) {
+                    this.d_colorField = value;
+                    this.RaisePropertyChanged("d_color");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string d_comment {
+            get {
+                return this.d_commentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_commentField, value) != true)) {
+                    this.d_commentField = value;
+                    this.RaisePropertyChanged("d_comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int d_fade {
+            get {
+                return this.d_fadeField;
+            }
+            set {
+                if ((this.d_fadeField.Equals(value) != true)) {
+                    this.d_fadeField = value;
+                    this.RaisePropertyChanged("d_fade");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int d_glide {
+            get {
+                return this.d_glideField;
+            }
+            set {
+                if ((this.d_glideField.Equals(value) != true)) {
+                    this.d_glideField = value;
+                    this.RaisePropertyChanged("d_glide");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int d_id {
+            get {
+                return this.d_idField;
+            }
+            set {
+                if ((this.d_idField.Equals(value) != true)) {
+                    this.d_idField = value;
+                    this.RaisePropertyChanged("d_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] d_image {
+            get {
+                return this.d_imageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_imageField, value) != true)) {
+                    this.d_imageField = value;
+                    this.RaisePropertyChanged("d_image");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string d_mold {
+            get {
+                return this.d_moldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_moldField, value) != true)) {
+                    this.d_moldField = value;
+                    this.RaisePropertyChanged("d_mold");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string d_name {
+            get {
+                return this.d_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_nameField, value) != true)) {
+                    this.d_nameField = value;
+                    this.RaisePropertyChanged("d_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int d_speed {
+            get {
+                return this.d_speedField;
+            }
+            set {
+                if ((this.d_speedField.Equals(value) != true)) {
+                    this.d_speedField = value;
+                    this.RaisePropertyChanged("d_speed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int d_turn {
+            get {
+                return this.d_turnField;
+            }
+            set {
+                if ((this.d_turnField.Equals(value) != true)) {
+                    this.d_turnField = value;
+                    this.RaisePropertyChanged("d_turn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string d_type {
+            get {
+                return this.d_typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.d_typeField, value) != true)) {
+                    this.d_typeField = value;
+                    this.RaisePropertyChanged("d_type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int d_weight {
+            get {
+                return this.d_weightField;
+            }
+            set {
+                if ((this.d_weightField.Equals(value) != true)) {
+                    this.d_weightField = value;
+                    this.RaisePropertyChanged("d_weight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string usr {
+            get {
+                return this.usrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.usrField, value) != true)) {
+                    this.usrField = value;
+                    this.RaisePropertyChanged("usr");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DGserviceReference.IDGservice")]
     public interface IDGservice {
@@ -1545,7 +1798,7 @@ namespace DG_ScoreCard.DGserviceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.combobox_item_string>> getCourseDistinctHoleColorsAsync(int course_id, int user_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Course_Store_Prod", ReplyAction="http://tempuri.org/IDGservice/Load_Course_Store_ProdResponse")]
-        void Load_Course_Store_Prod(
+        string Load_Course_Store_Prod(
                     string name, 
                     string hour_h, 
                     string hour_l, 
@@ -1574,7 +1827,7 @@ namespace DG_ScoreCard.DGserviceReference {
                     string course_designer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Course_Store_Prod", ReplyAction="http://tempuri.org/IDGservice/Load_Course_Store_ProdResponse")]
-        System.Threading.Tasks.Task Load_Course_Store_ProdAsync(
+        System.Threading.Tasks.Task<string> Load_Course_Store_ProdAsync(
                     string name, 
                     string hour_h, 
                     string hour_l, 
@@ -1607,6 +1860,36 @@ namespace DG_ScoreCard.DGserviceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Holes_Stored_Proc", ReplyAction="http://tempuri.org/IDGservice/Load_Holes_Stored_ProcResponse")]
         System.Threading.Tasks.Task<string> Load_Holes_Stored_ProcAsync(System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> holes, string course_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Disc_Store_Proc", ReplyAction="http://tempuri.org/IDGservice/Load_Disc_Store_ProcResponse")]
+        string Load_Disc_Store_Proc(string d_type, string d_name, string d_brand, string d_mold, int d_weight, string d_color, byte[] d_image, string d_comment, int d_speed, int d_glide, int d_turn, int d_fade, int u_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/Load_Disc_Store_Proc", ReplyAction="http://tempuri.org/IDGservice/Load_Disc_Store_ProcResponse")]
+        System.Threading.Tasks.Task<string> Load_Disc_Store_ProcAsync(string d_type, string d_name, string d_brand, string d_mold, int d_weight, string d_color, byte[] d_image, string d_comment, int d_speed, int d_glide, int d_turn, int d_fade, int u_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/get_discInfo", ReplyAction="http://tempuri.org/IDGservice/get_discInfoResponse")]
+        DG_ScoreCard.DGserviceReference.disc get_discInfo(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/get_discInfo", ReplyAction="http://tempuri.org/IDGservice/get_discInfoResponse")]
+        System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.disc> get_discInfoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/update_disc", ReplyAction="http://tempuri.org/IDGservice/update_discResponse")]
+        string update_disc(DG_ScoreCard.DGserviceReference.disc d);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/update_disc", ReplyAction="http://tempuri.org/IDGservice/update_discResponse")]
+        System.Threading.Tasks.Task<string> update_discAsync(DG_ScoreCard.DGserviceReference.disc d);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/delete_disc", ReplyAction="http://tempuri.org/IDGservice/delete_discResponse")]
+        string delete_disc(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/delete_disc", ReplyAction="http://tempuri.org/IDGservice/delete_discResponse")]
+        System.Threading.Tasks.Task<string> delete_discAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/get_discNames", ReplyAction="http://tempuri.org/IDGservice/get_discNamesResponse")]
+        System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.disc> get_discNames(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDGservice/get_discNames", ReplyAction="http://tempuri.org/IDGservice/get_discNamesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.disc>> get_discNamesAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2022,7 +2305,7 @@ namespace DG_ScoreCard.DGserviceReference {
             return base.Channel.getCourseDistinctHoleColorsAsync(course_id, user_id);
         }
         
-        public void Load_Course_Store_Prod(
+        public string Load_Course_Store_Prod(
                     string name, 
                     string hour_h, 
                     string hour_l, 
@@ -2049,10 +2332,10 @@ namespace DG_ScoreCard.DGserviceReference {
                     System.Nullable<char> p2p, 
                     System.Nullable<char> c_guide, 
                     string course_designer) {
-            base.Channel.Load_Course_Store_Prod(name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip, user_id, c_name, website, phone, email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer);
+            return base.Channel.Load_Course_Store_Prod(name, hour_h, hour_l, guide, pet, pri, loc_address, loc_state, loc_city, loc_country, loc_zip, user_id, c_name, website, phone, email, basket_type, year_established, tee_type, course_type, terrain, basket_maker, course_private, p2p, c_guide, course_designer);
         }
         
-        public System.Threading.Tasks.Task Load_Course_Store_ProdAsync(
+        public System.Threading.Tasks.Task<string> Load_Course_Store_ProdAsync(
                     string name, 
                     string hour_h, 
                     string hour_l, 
@@ -2088,6 +2371,46 @@ namespace DG_ScoreCard.DGserviceReference {
         
         public System.Threading.Tasks.Task<string> Load_Holes_Stored_ProcAsync(System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.holeLib> holes, string course_id) {
             return base.Channel.Load_Holes_Stored_ProcAsync(holes, course_id);
+        }
+        
+        public string Load_Disc_Store_Proc(string d_type, string d_name, string d_brand, string d_mold, int d_weight, string d_color, byte[] d_image, string d_comment, int d_speed, int d_glide, int d_turn, int d_fade, int u_id) {
+            return base.Channel.Load_Disc_Store_Proc(d_type, d_name, d_brand, d_mold, d_weight, d_color, d_image, d_comment, d_speed, d_glide, d_turn, d_fade, u_id);
+        }
+        
+        public System.Threading.Tasks.Task<string> Load_Disc_Store_ProcAsync(string d_type, string d_name, string d_brand, string d_mold, int d_weight, string d_color, byte[] d_image, string d_comment, int d_speed, int d_glide, int d_turn, int d_fade, int u_id) {
+            return base.Channel.Load_Disc_Store_ProcAsync(d_type, d_name, d_brand, d_mold, d_weight, d_color, d_image, d_comment, d_speed, d_glide, d_turn, d_fade, u_id);
+        }
+        
+        public DG_ScoreCard.DGserviceReference.disc get_discInfo(int id) {
+            return base.Channel.get_discInfo(id);
+        }
+        
+        public System.Threading.Tasks.Task<DG_ScoreCard.DGserviceReference.disc> get_discInfoAsync(int id) {
+            return base.Channel.get_discInfoAsync(id);
+        }
+        
+        public string update_disc(DG_ScoreCard.DGserviceReference.disc d) {
+            return base.Channel.update_disc(d);
+        }
+        
+        public System.Threading.Tasks.Task<string> update_discAsync(DG_ScoreCard.DGserviceReference.disc d) {
+            return base.Channel.update_discAsync(d);
+        }
+        
+        public string delete_disc(int id) {
+            return base.Channel.delete_disc(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> delete_discAsync(int id) {
+            return base.Channel.delete_discAsync(id);
+        }
+        
+        public System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.disc> get_discNames(int id) {
+            return base.Channel.get_discNames(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<DG_ScoreCard.DGserviceReference.disc>> get_discNamesAsync(int id) {
+            return base.Channel.get_discNamesAsync(id);
         }
     }
 }

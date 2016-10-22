@@ -1,0 +1,9 @@
+create table score(
+score_id int NULL AUTO_INCREMENT,
+round_id int,
+upsrt_usr_id int,
+upsrt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(score_id),
+FOREIGN KEY(round_id) REFERENCES round(round_id),
+FOREIGN KEY(upsrt_usr_id) REFERENCES user(user_id)
+)

@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 
 namespace WCFwebserviceDG
@@ -1242,12 +1243,12 @@ namespace WCFwebserviceDG
                 myConn.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = myConn;
-                cmd.CommandText = "select t.tee_color as 'Color', count(h.hole_id) as 'Count', sum(h.hole_par) as 'Par', sum(havg.hole_average) as 'Yardage' " +
+                cmd.CommandText = "select t.tee_color as 'Color', count(h.hole_id) as 'Count', sum(h.hole_par) as 'Par', round(sum(havg.hole_average),0) as 'Yardage' " +
                                    " from hole h " + 
                                    " join course c on c.course_id = h.course_id " +
                                    " join user u on u.user_id = c.user_id " +
                                    " join tee t on t.tee_id = h.tee_id " +
-                                   " join (Select avg(h.hole_yardage) as 'hole_average', h.hole_id from hole h join course c on c.course_id = h.course_id join basket b on b.basket_id = h.basket_id where c.course_id = @course_id1 and c.user_id = @user_id1 group by h.hole_num) havg on havg.hole_id = h.hole_id " + 
+                                   " join (Select avg(h.hole_yardage) as 'hole_average', h.hole_id from hole h join course c on c.course_id = h.course_id join tee t on t.tee_id = h.tee_id where c.course_id = @course_id1 and c.user_id = @user_id1 group by t.tee_id, h.hole_num) havg on havg.hole_id = h.hole_id " + 
                                    " where c.course_id = @course_id and u.user_id = @user_id " +
                                    " group by t.tee_color";
                 cmd.Parameters.AddWithValue("@course_id", course_id);
@@ -1255,9 +1256,10 @@ namespace WCFwebserviceDG
                 cmd.Parameters.AddWithValue("@course_id1", course_id);
                 cmd.Parameters.AddWithValue("@user_id1", user_id);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                while(rdr.HasRows && rdr.Read())
+                course_view_course c = new course_view_course();
+                while (rdr.HasRows && rdr.Read())
                 {
-                    course_view_course c = new course_view_course();
+                    c = new course_view_course();
                     c.h_color = rdr["Color"].ToString();
                     c.h_count = int.Parse(rdr["Count"].ToString());
                     c.h_par = int.Parse(rdr["Par"].ToString());
@@ -1361,7 +1363,7 @@ namespace WCFwebserviceDG
             return c;
         }
 
-        public void Load_Course_Store_Prod(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, 
+        public string Load_Course_Store_Prod(string name, string hour_h, string hour_l, char? guide, char? pet, char? pri, 
             string loc_address, string loc_state, string loc_city, string loc_country, string loc_zip, string user_id,
             string c_name, string website, string phone, string email, string basket_type, string year_established, string tee_type, string course_type, 
             string terrain, string basket_maker, char? course_private,
@@ -1404,12 +1406,14 @@ namespace WCFwebserviceDG
             }
             catch
             {
-
+                return "Error - Course Load Failed!";
             }
             finally
             {
                 myConn.Close();
             }
+
+            return "** Course load was successful";
         }
 
         public string Load_Holes_Stored_Proc(List<holeLib> holes, string c_id)
@@ -1647,9 +1651,192 @@ namespace WCFwebserviceDG
                 
             }
 
-            return "Holes load was successful!";
+            return "** Holes load was successful. **";
         }
 
+        public string Load_Disc_Store_Proc(string d_type, string d_name, string d_brand, string d_mold, int d_weight, string d_color, byte[] d_image, string d_comment, int d_speed, int d_glide, int d_turn, int d_fade, int u_id)
+        {
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "Disc_Load";
+                cmd.Parameters.AddWithValue("d_type", d_type);
+                cmd.Parameters.AddWithValue("d_name", d_name);
+                cmd.Parameters.AddWithValue("d_brand", d_brand);
+                cmd.Parameters.AddWithValue("d_mold", d_mold);
+                cmd.Parameters.AddWithValue("d_weight", d_weight);
+                cmd.Parameters.AddWithValue("d_color", d_color);
+                cmd.Parameters.AddWithValue("d_image", d_image);
+                cmd.Parameters.AddWithValue("d_comment", d_comment);
+                cmd.Parameters.AddWithValue("d_speed", d_speed);
+                cmd.Parameters.AddWithValue("d_glide", d_glide);
+                cmd.Parameters.AddWithValue("d_turn", d_turn);
+                cmd.Parameters.AddWithValue("d_fade", d_fade);
+                cmd.Parameters.AddWithValue("usr_id", u_id);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                return "Error ~ Disc insert failed.";
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return "** Disc Load was successful. **";
+        }
+
+        public disc get_discInfo(int id)
+        {
+            disc d = new disc();
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select d.disc_type, d.disc_name, d.disc_brand, d.disc_mold, d.disc_weight, d.disc_color, d.disc_image, d.disc_comment, d.disc_speed, d.disc_glide, d.disc_turn, d.disc_fade, u.user_name, d.disc_id from disc d join user u on u.user_id = d.upsrt_usr_id where d.disc_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    
+                    d.d_type = rdr["disc_type"].ToString();
+                    d.d_name = rdr["disc_name"].ToString();
+                    d.d_brand = rdr["disc_brand"].ToString();
+                    d.d_mold = rdr["disc_mold"].ToString();
+                    d.d_weight = int.Parse(rdr["disc_weight"].ToString());
+                    d.d_color = rdr["disc_color"].ToString();
+                    d.d_comment = rdr["disc_comment"].ToString();
+                    d.d_speed = int.Parse(rdr["disc_speed"].ToString());
+                    d.d_glide = int.Parse(rdr["disc_glide"].ToString());
+                    d.d_turn = int.Parse(rdr["disc_turn"].ToString());
+                    d.d_fade = int.Parse(rdr["disc_fade"].ToString());
+                    if (rdr.IsDBNull(6) == false)
+                    {
+                        d.d_image = (byte[])rdr["disc_image"];
+                    }
+                    d.usr = rdr["user_name"].ToString();
+                    d.d_id = int.Parse(rdr["disc_id"].ToString());
+                }
+                
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return d;
+        }
+
+        public string update_disc(disc d)
+        {
+            string output = "Disc was updated successfully!";
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Update disc set disc_type = @type, disc_name = @name, disc_brand = @brand, disc_mold = @mold, disc_weight = @weight, disc_color = @color, disc_image = @image, disc_comment = @comment, " +
+                    "disc_speed = @speed, disc_glide = @glide, disc_turn = @turn, disc_fade = @fade where disc_id = @id";
+                cmd.Parameters.AddWithValue("@id", d.d_id);
+                cmd.Parameters.AddWithValue("@type", d.d_type);
+                cmd.Parameters.AddWithValue("@name", d.d_name);
+                cmd.Parameters.AddWithValue("@brand", d.d_brand);
+                cmd.Parameters.AddWithValue("@mold", d.d_mold);
+                cmd.Parameters.AddWithValue("@weight", d.d_weight);
+                cmd.Parameters.AddWithValue("@color", d.d_color);
+                cmd.Parameters.AddWithValue("@image", d.d_image);
+                cmd.Parameters.AddWithValue("@comment", d.d_comment);
+                cmd.Parameters.AddWithValue("@speed", d.d_speed);
+                cmd.Parameters.AddWithValue("@glide", d.d_glide);
+                cmd.Parameters.AddWithValue("@turn", d.d_turn);
+                cmd.Parameters.AddWithValue("@fade", d.d_fade);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                output = "Error ~ Disc Update Failed!";
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+
+            return output;
+        }
+
+        public string delete_disc(int id)
+        {
+            string output = "Disc deletion was successful!";
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Delete from disc where disc_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                output = "Error ~ Disc deletion was unsuccessful.";
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return output;
+        }
+
+        public List<disc> get_discNames(int id)
+        {
+            List<disc> disc = new List<disc>();
+
+            try
+            {
+                myConn.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = myConn;
+                cmd.CommandText = "Select d.disc_type, d.disc_name, d.disc_id, d.disc_mold, d.disc_weight, d.disc_color from disc d where d.upsrt_usr_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    disc d = new disc();
+                    d.d_type = rdr["disc_type"].ToString();
+                    d.d_name = rdr["disc_name"].ToString();
+                    d.d_mold = rdr["disc_mold"].ToString();
+                    d.d_weight = int.Parse(rdr["disc_weight"].ToString());
+                    d.d_color = rdr["disc_color"].ToString();
+                    d.d_id = int.Parse(rdr["disc_id"].ToString());
+                    disc.Add(d);
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            return disc;
+        }
 
     }
 }

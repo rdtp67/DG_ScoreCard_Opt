@@ -81,3 +81,7 @@ C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_Scor
 C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.application
 C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.exe
 C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\DG_ScoreCard.pdb
+C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Disc_add.g.cs
+C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Disc_add.baml
+C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Disc_view.g.cs
+C:\DG_ScoreCard_Opt\DG_ScoreCard_Opt\DG_ScoreCard\DG_ScoreCard\obj\Debug\Disc_view.baml

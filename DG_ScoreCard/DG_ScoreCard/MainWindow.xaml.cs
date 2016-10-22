@@ -381,14 +381,27 @@ namespace DG_ScoreCard
         //Desc: Disc my disc clicked
         private void disc_mydiscs3_btn_Click(object sender, RoutedEventArgs e)
         {
-            Button[] dark = { disc_adddisc3_btn, disc_searchdisc3_btn };
-            setSidePanelButtons(dark, disc_mydiscs3_btn);
+
+            if (currentbutton != "disc_view")
+            {
+                Button[] dark = { disc_adddisc3_btn, disc_searchdisc3_btn };
+                setSidePanelButtons(dark, disc_mydiscs3_btn);
+                Disc_view da = new Disc_view(username);
+                pageload3_f.NavigationService.Navigate(da);
+                currentbutton = "disc_view";
+            }
         }
         //Desc: Disc add disc clicked
         private void disc_adddisc3_btn_Click(object sender, RoutedEventArgs e)
         {
-            Button[] dark = { disc_mydiscs3_btn, disc_searchdisc3_btn };
-            setSidePanelButtons(dark, disc_adddisc3_btn);
+            if (currentbutton != "disc_add")
+            {
+                Button[] dark = { disc_mydiscs3_btn, disc_searchdisc3_btn };
+                setSidePanelButtons(dark, disc_adddisc3_btn);
+                Disc_add da = new Disc_add(username);
+                pageload3_f.NavigationService.Navigate(da);
+                currentbutton = "disc_add";
+            }
         }
         //Desc: Disc search disc clicked
         private void disc_searchdisc3_btn_Click(object sender, RoutedEventArgs e)
